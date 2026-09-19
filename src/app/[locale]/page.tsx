@@ -190,21 +190,26 @@ export default async function EngagementPage({
           <SectionTitle center>{c.howItWorks.title}</SectionTitle>
           <Lead center>{c.howItWorks.subtitle}</Lead>
 
-          <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <ol className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4 lg:grid-cols-4">
             {c.howItWorks.steps.map((step, index) => (
-              <li key={step.title} className="panel-plain gold-tips px-6 py-7 text-center">
+              <li
+                key={step.title}
+                className="panel-plain gold-tips px-4 py-6 text-center sm:px-6 sm:py-7"
+              >
                 <span
-                  className="display brushed-text block text-2xl"
+                  className="display brushed-text block text-xl sm:text-2xl"
                   aria-hidden
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span
-                  className="brushed-rule-soft mx-auto mt-4 mb-5 block h-px w-10 opacity-70"
+                  className="brushed-rule-soft mx-auto mt-3 mb-4 block h-px w-8 opacity-70 sm:mt-4 sm:mb-5 sm:w-10"
                   aria-hidden
                 />
-                <h3 className="eyebrow-caps text-white/80">{step.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-pretty text-white/50">
+                <h3 className="text-[0.62rem] font-semibold tracking-[0.2em] text-white/80 uppercase sm:text-[0.68rem] sm:tracking-[0.34em]">
+                  {step.title}
+                </h3>
+                <p className="mt-2.5 text-xs leading-relaxed text-pretty text-white/50 sm:mt-3 sm:text-sm">
                   {step.description}
                 </p>
               </li>
@@ -224,16 +229,21 @@ export default async function EngagementPage({
           <SectionTitle center>{c.included.title}</SectionTitle>
           <Lead center>{c.included.subtitle}</Lead>
 
-          <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4 lg:grid-cols-3">
             {c.included.items.map((item) => (
-              <li key={item.title} className="panel-plain gold-tips px-6 py-7">
-                <span className="gold-seal mb-5 size-9">
+              <li
+                key={item.title}
+                className="panel-plain gold-tips px-4 py-6 sm:px-6 sm:py-7"
+              >
+                <span className="gold-seal mb-4 size-8 sm:mb-5 sm:size-9">
                   <span>
                     <CheckIcon />
                   </span>
                 </span>
-                <h3 className="eyebrow-caps text-white/80">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/50">
+                <h3 className="text-[0.62rem] font-semibold tracking-[0.2em] text-white/80 uppercase sm:text-[0.68rem] sm:tracking-[0.34em]">
+                  {item.title}
+                </h3>
+                <p className="mt-2.5 text-xs leading-relaxed text-white/50 sm:mt-3 sm:text-sm">
                   {item.description}
                 </p>
               </li>
@@ -248,21 +258,24 @@ export default async function EngagementPage({
       <section id="limite" className="px-4 py-14 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
           <GoldFrame label={c.limit.eyebrow}>
-            <div className="grid gap-10 lg:grid-cols-[auto_1fr] lg:gap-14">
+            <div className="grid gap-8 lg:grid-cols-[auto_1fr] lg:gap-14">
               <div className="text-center lg:pt-1 lg:text-left">
                 <span
-                  className="display brushed-text block text-7xl leading-none sm:text-8xl"
+                  className="display brushed-text block text-[5.5rem] leading-[0.85] sm:text-8xl"
                   aria-hidden
                 >
                   30
                 </span>
+                <span className="eyebrow-caps mt-3 block text-gold-300/70 lg:mt-4">
+                  {c.limit.eyebrow}
+                </span>
               </div>
 
               <div>
-                <h2 className="display brushed-text text-xl text-balance sm:text-3xl">
+                <h2 className="display brushed-text text-2xl text-balance sm:text-3xl">
                   {c.limit.title}
                 </h2>
-                <p className="mt-5 text-base leading-relaxed text-white/60">
+                <p className="mt-5 text-base leading-relaxed text-white/70">
                   {c.limit.lead}
                 </p>
 
@@ -317,26 +330,52 @@ export default async function EngagementPage({
           </div>
 
           {/* Vitrine do perfil da própria WeCare, sem dado de cliente. */}
-          <OrnateCard className="mx-auto w-full max-w-sm">
+          <OrnateCard highlighted className="mx-auto w-full max-w-sm">
             <div className="px-7 py-9">
               <div className="flex flex-col items-center text-center">
+                <span className="eyebrow-caps mb-5 text-gold-300/80">
+                  {c.demo.eyebrow}
+                </span>
                 <Logo alt={c.hero.logoAlt} className="max-w-[12rem]" />
                 <span
-                  className="brushed-rule-soft mt-6 h-px w-full opacity-50"
+                  className="brushed-rule mt-6 h-px w-full opacity-70"
                   aria-hidden
                 />
               </div>
 
-              <div className="mt-6 grid grid-cols-3 gap-2" aria-hidden>
-                {Array.from({ length: 9 }).map((_, index) => (
-                  <div
-                    key={index}
-                    className="aspect-square border border-gold-700/25 bg-linear-to-br from-white/[0.05] to-transparent"
-                  />
-                ))}
+              {/* Mosaico do perfil: um losango de ouro no centro e brilho
+                  decrescente nas bordas, sem nenhuma imagem de cliente. */}
+              <div className="mt-6 grid grid-cols-3 gap-1.5" aria-hidden>
+                {Array.from({ length: 9 }).map((_, index) => {
+                  const center = index === 4;
+                  return (
+                    <div
+                      key={index}
+                      className={`flex aspect-square items-center justify-center border ${
+                        center
+                          ? "border-gold-400/60 bg-linear-to-br from-gold-500/25 to-transparent"
+                          : "border-gold-700/30 bg-linear-to-br from-white/[0.06] to-transparent"
+                      }`}
+                    >
+                      {center && (
+                        <svg
+                          viewBox="0 0 12 12"
+                          className="size-3 text-gold-300"
+                          fill="none"
+                        >
+                          <path d="m6 0 6 6-6 6-6-6z" fill="currentColor" />
+                        </svg>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
 
-              <p className="mt-6 text-center text-xs leading-relaxed text-white/40">
+              <span
+                className="brushed-rule-soft mt-6 block h-px w-full opacity-40"
+                aria-hidden
+              />
+              <p className="mt-4 text-center text-xs leading-relaxed text-white/45">
                 {c.privacy.bullets[2]}
               </p>
             </div>
@@ -353,15 +392,22 @@ export default async function EngagementPage({
           <SectionTitle center>{c.privacy.title}</SectionTitle>
           <Lead center>{c.privacy.lead}</Lead>
 
-          <ul className="mt-12 grid gap-4 md:grid-cols-3">
-            {c.privacy.bullets.map((bullet) => (
-              <li key={bullet} className="panel-plain gold-tips px-6 py-7 text-center">
-                <span className="gold-seal mx-auto mb-4 size-9">
+          <ul className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4 md:grid-cols-3">
+            {c.privacy.bullets.map((bullet, index) => (
+              <li
+                key={bullet}
+                className={`panel-plain gold-tips px-4 py-6 text-center sm:px-6 sm:py-7 ${
+                  index === c.privacy.bullets.length - 1 && index % 2 === 0
+                    ? "col-span-2 md:col-span-1"
+                    : ""
+                }`}
+              >
+                <span className="gold-seal mx-auto mb-4 size-8 sm:size-9">
                   <span>
                     <CheckIcon />
                   </span>
                 </span>
-                <p className="text-sm leading-relaxed text-white/60">
+                <p className="text-xs leading-relaxed text-white/60 sm:text-sm">
                   {bullet}
                 </p>
               </li>
@@ -376,20 +422,27 @@ export default async function EngagementPage({
       {/* FAQ                                                               */}
       {/* ---------------------------------------------------------------- */}
       <section id="faq" className="px-4 py-14 sm:px-6 sm:py-20">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-5xl">
           <Eyebrow center>{c.faq.eyebrow}</Eyebrow>
           <SectionTitle center>{c.faq.title}</SectionTitle>
 
-          <div className="panel-plain mt-12 divide-y divide-gold-700/25">
-            {c.faq.items.map((item) => (
-              <details key={item.question} className="group px-6">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-base font-medium text-white/80 marker:content-none">
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4">
+            {c.faq.items.map((item, index) => (
+              <details
+                key={item.question}
+                className={`panel-plain group px-4 py-1 sm:px-5 ${
+                  index === c.faq.items.length - 1 && index % 2 === 0
+                    ? "col-span-2"
+                    : ""
+                }`}
+              >
+                <summary className="flex cursor-pointer list-none items-start justify-between gap-3 py-4 text-left text-xs leading-snug font-medium text-white/80 marker:content-none sm:py-5 sm:text-sm">
                   {item.question}
                   <span
-                    className="flex size-7 shrink-0 items-center justify-center border border-gold-600/40 text-gold-200 transition-transform duration-200 group-open:rotate-45"
+                    className="mt-0.5 flex size-6 shrink-0 items-center justify-center border border-gold-600/40 text-gold-200 transition-transform duration-200 group-open:rotate-45 sm:size-7"
                     aria-hidden
                   >
-                    <svg viewBox="0 0 16 16" fill="none" className="size-3.5">
+                    <svg viewBox="0 0 16 16" fill="none" className="size-3">
                       <path
                         d="M8 3v10M3 8h10"
                         stroke="currentColor"
@@ -399,7 +452,7 @@ export default async function EngagementPage({
                     </svg>
                   </span>
                 </summary>
-                <p className="pb-5 text-sm leading-relaxed text-white/50">
+                <p className="border-t border-gold-700/25 py-4 text-xs leading-relaxed text-white/50 sm:text-sm">
                   {item.answer}
                 </p>
               </details>
@@ -407,6 +460,8 @@ export default async function EngagementPage({
           </div>
         </div>
       </section>
+
+      <Diamond className="my-2" />
 
       {/* ---------------------------------------------------------------- */}
       {/* CTA final                                                         */}

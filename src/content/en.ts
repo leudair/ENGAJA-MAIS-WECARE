@@ -17,7 +17,8 @@ export const en: Content = {
   },
   hero: {
     logoAlt: "Agência WeCare Mídias Sociais",
-    method: "The WeCare Method",
+    method: "The We Care Method",
+    frameTitle: "Monthly Engaja Mais Strategy",
     methodNote:
       "How WeCare keeps a profile alive: engagement on every post in the cycle, not one stray post now and then.",
     title: "A still profile doesn't sell.",
@@ -133,6 +134,7 @@ export const en: Content = {
       "All of them cover up to 30 posts per monthly cycle. Choose by the delivery intensity that fits your profile.",
     priceUndefined: "On request",
     priceUndefinedNote: "price confirmed when you get in touch",
+    detailsLabel: "See what's included",
     items: [
       {
         id: "start",
@@ -209,7 +211,7 @@ export const en: Content = {
   },
   viral: {
     eyebrow: "A separate track",
-    title: "Looking for reach beyond monthly engagement?",
+    title: "Viral Strategy",
     lead:
       "Viral Growth is our track focused on expanding reach. It runs separately from the monthly engagement plans.",
     cta: "Go to Viral Growth",

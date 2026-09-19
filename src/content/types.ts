@@ -69,8 +69,10 @@ export type Content = {
   hero: {
     /** Texto alternativo da logo, para leitores de tela. */
     logoAlt: string;
-    /** Destaque logo abaixo da logo, o maior texto da página. */
+    /** Rótulo gravado no filete superior da moldura. */
     method: string;
+    /** O maior texto da página, dentro da moldura dourada. */
+    frameTitle: string;
     /** Uma linha curta que explica a metodologia. */
     methodNote: string;
     /** Copy de valor. `highlight` sai em ouro escovado, na mesma frase. */
@@ -108,6 +110,8 @@ export type Content = {
     subtitle: string;
     priceUndefined: string;
     priceUndefinedNote: string;
+    /** Rótulo do expansor que abre o que o plano inclui. */
+    detailsLabel: string;
     items: Plan[];
     disclaimer: string;
   };

@@ -1,30 +1,196 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-export function Eyebrow({ children }: { children: ReactNode }) {
+/* ------------------------------------------------------------------ */
+/* Tipografia                                                          */
+/* ------------------------------------------------------------------ */
+
+export function Eyebrow({
+  children,
+  center = false,
+}: {
+  children: ReactNode;
+  center?: boolean;
+}) {
   return (
-    <p className="mb-4 flex items-center gap-3 text-[0.7rem] font-semibold tracking-[0.22em] text-gold-300 uppercase">
-      <span className="brushed-rule h-px w-6 shrink-0 rounded-full" aria-hidden />
+    <p
+      className={`eyebrow-caps mb-5 flex items-center gap-4 text-gold-300 ${
+        center ? "justify-center" : ""
+      }`}
+    >
+      <span
+        className="brushed-rule-soft h-px w-8 shrink-0 opacity-80"
+        aria-hidden
+      />
       {children}
+      {center && (
+        <span
+          className="brushed-rule-soft h-px w-8 shrink-0 opacity-80"
+          aria-hidden
+        />
+      )}
     </p>
   );
 }
 
-export function SectionTitle({ children }: { children: ReactNode }) {
+export function SectionTitle({
+  children,
+  center = false,
+}: {
+  children: ReactNode;
+  center?: boolean;
+}) {
   return (
-    <h2 className="text-3xl leading-[1.15] font-semibold text-balance text-white sm:text-4xl lg:text-[2.75rem]">
+    <h2
+      className={`display brushed-text text-[1.75rem] text-balance sm:text-4xl lg:text-[2.6rem] ${
+        center ? "text-center" : ""
+      }`}
+    >
       {children}
     </h2>
   );
 }
 
-export function Lead({ children }: { children: ReactNode }) {
+export function Lead({
+  children,
+  center = false,
+}: {
+  children: ReactNode;
+  center?: boolean;
+}) {
   return (
-    <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/60 sm:text-lg">
+    <p
+      className={`mt-5 max-w-2xl text-base leading-relaxed text-pretty text-white/55 sm:text-lg ${
+        center ? "mx-auto text-center" : ""
+      }`}
+    >
       {children}
     </p>
   );
 }
+
+/* ------------------------------------------------------------------ */
+/* Moldura de título                                                   */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Moldura dourada dupla com o rótulo cortando o filete de cima, como nos
+ * rótulos gravados: a linha superior abre espaço para o texto.
+ */
+export function GoldFrame({
+  label,
+  children,
+  className = "",
+}: {
+  label: string;
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`relative ${className}`}>
+      <div className="flex items-center gap-4 sm:gap-6">
+        <span className="brushed-rule-soft h-px flex-1" aria-hidden />
+        <span className="eyebrow-caps shrink-0 text-center text-gold-200">
+          {label}
+        </span>
+        <span className="brushed-rule-soft h-px flex-1" aria-hidden />
+      </div>
+
+      <div className="relative -mt-px">
+        {/* Filetes laterais e inferior, fechando a moldura. */}
+        <span
+          className="brushed-rule-soft absolute inset-y-0 left-0 w-px"
+          aria-hidden
+        />
+        <span
+          className="brushed-rule-soft absolute inset-y-0 right-0 w-px"
+          aria-hidden
+        />
+        <span
+          className="brushed-rule-soft absolute inset-x-0 bottom-0 h-px"
+          aria-hidden
+        />
+        {/* Segundo filete, por dentro, mais discreto. */}
+        <span
+          className="pointer-events-none absolute inset-2 border border-gold-500/30 sm:inset-2.5"
+          aria-hidden
+        />
+        <div className="px-6 py-8 sm:px-12 sm:py-11">{children}</div>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Cantos ornamentais                                                  */
+/* ------------------------------------------------------------------ */
+
+function OrnateCorner({ className }: { className: string }) {
+  return (
+    <svg
+      viewBox="0 0 44 44"
+      fill="none"
+      aria-hidden
+      className={`pointer-events-none absolute size-9 text-gold-400 sm:size-11 ${className}`}
+    >
+      <path
+        d="M2 18V6a4 4 0 0 1 4-4h12"
+        stroke="currentColor"
+        strokeWidth="1.6"
+      />
+      <path
+        d="M7 22V11a4 4 0 0 1 4-4h11"
+        stroke="currentColor"
+        strokeWidth="1"
+        opacity="0.75"
+      />
+      <path d="m12 12 4-4 4 4-4 4z" fill="currentColor" opacity="0.9" />
+    </svg>
+  );
+}
+
+/** Card com os quatro cantos ornamentados, no espírito das molduras gravadas. */
+export function OrnateCard({
+  children,
+  highlighted = false,
+  className = "",
+}: {
+  children: ReactNode;
+  highlighted?: boolean;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`relative ${
+        highlighted
+          ? "shadow-[0_0_60px_-24px_rgba(208,173,79,0.55)]"
+          : ""
+      } ${className}`}
+    >
+      <div
+        className={`relative h-full border bg-ink-900/75 backdrop-blur-sm ${
+          highlighted ? "border-gold-400/55" : "border-gold-600/35"
+        }`}
+      >
+        <span
+          className={`pointer-events-none absolute inset-[5px] border ${
+            highlighted ? "border-gold-500/40" : "border-gold-700/35"
+          }`}
+          aria-hidden
+        />
+        <OrnateCorner className="top-0 left-0" />
+        <OrnateCorner className="top-0 right-0 rotate-90" />
+        <OrnateCorner className="right-0 bottom-0 rotate-180" />
+        <OrnateCorner className="bottom-0 left-0 -rotate-90" />
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Botões                                                              */
+/* ------------------------------------------------------------------ */
 
 type ButtonProps = {
   href: string;
@@ -32,34 +198,25 @@ type ButtonProps = {
   className?: string;
 };
 
-/** Botão principal em ouro escovado. */
 export function GoldButton({ href, children, className = "" }: ButtonProps) {
   return (
-    <Link
-      href={href}
-      className={`group relative inline-flex min-h-12 items-center justify-center overflow-hidden rounded-full px-7 py-3.5 text-sm font-semibold text-ink-950 shadow-[0_18px_40px_-18px_rgba(212,175,55,0.75)] transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0 ${className}`}
-    >
-      <span className="brushed-rule absolute inset-0" aria-hidden />
-      <span
-        className="absolute inset-0 bg-linear-to-b from-white/45 to-transparent to-45%"
-        aria-hidden
-      />
-      <span className="relative">{children}</span>
-    </Link>
-  );
-}
-
-/** Botão secundário com contorno dourado discreto. */
-export function GhostButton({ href, children, className = "" }: ButtonProps) {
-  return (
-    <Link
-      href={href}
-      className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-gold-400/35 bg-white/[0.03] px-7 py-3.5 text-sm font-semibold text-gold-100 backdrop-blur-sm transition-colors duration-200 hover:border-gold-300/70 hover:bg-gold-400/10 ${className}`}
-    >
+    <Link href={href} className={`btn-gold ${className}`}>
       {children}
     </Link>
   );
 }
+
+export function GhostButton({ href, children, className = "" }: ButtonProps) {
+  return (
+    <Link href={href} className={`btn-outline ${className}`}>
+      {children}
+    </Link>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Ícones                                                              */
+/* ------------------------------------------------------------------ */
 
 export function CheckIcon({ className = "" }: { className?: string }) {
   return (
@@ -96,5 +253,21 @@ export function ArrowIcon({ className = "" }: { className?: string }) {
         strokeLinejoin="round"
       />
     </svg>
+  );
+}
+
+/** Losango usado como separador entre blocos. */
+export function Diamond({ className = "" }: { className?: string }) {
+  return (
+    <span
+      className={`flex items-center justify-center gap-3 ${className}`}
+      aria-hidden
+    >
+      <span className="brushed-rule-soft h-px w-12 opacity-70" />
+      <svg viewBox="0 0 12 12" className="size-2.5 text-gold-400" fill="none">
+        <path d="m6 0 6 6-6 6-6-6z" fill="currentColor" />
+      </svg>
+      <span className="brushed-rule-soft h-px w-12 opacity-70" />
+    </span>
   );
 }

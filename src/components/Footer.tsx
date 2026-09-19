@@ -12,7 +12,7 @@ export function Footer({
   content: Content;
 }) {
   return (
-    <footer className="relative border-t border-white/10 bg-ink-900/60">
+    <footer className="relative mt-8 border-t border-gold-700/30 bg-ink-950/70">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-12 sm:px-8 md:flex-row md:items-start md:justify-between">
         <div className="max-w-sm">
           <Logo alt={content.hero.logoAlt} />
@@ -24,26 +24,26 @@ export function Footer({
         <nav aria-label={content.footer.engagement} className="flex flex-col gap-3">
           <Link
             href={engagementPath(locale)}
-            className="text-sm text-white/60 transition-colors hover:text-gold-100"
+            className="eyebrow-caps text-white/45 transition-colors hover:text-gold-100"
           >
             {content.footer.engagement}
           </Link>
           <Link
             href={viralGrowthPath(locale)}
-            className="text-sm text-white/60 transition-colors hover:text-gold-100"
+            className="eyebrow-caps text-white/45 transition-colors hover:text-gold-100"
           >
             {content.footer.viralGrowth}
           </Link>
           <Link
             href={`${engagementPath(locale)}#faq`}
-            className="text-sm text-white/60 transition-colors hover:text-gold-100"
+            className="eyebrow-caps text-white/45 transition-colors hover:text-gold-100"
           >
             {content.nav.faq}
           </Link>
         </nav>
       </div>
 
-      <div className="brushed-rule h-px w-full opacity-25" aria-hidden />
+      <div className="brushed-rule-soft h-px w-full opacity-30" aria-hidden />
 
       <p className="mx-auto max-w-6xl px-5 py-6 text-xs text-white/35 sm:px-8">
         © {new Date().getFullYear()} {siteConfig.brand}. {content.footer.rights}

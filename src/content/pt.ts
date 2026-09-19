@@ -17,7 +17,8 @@ export const pt: Content = {
   },
   hero: {
     logoAlt: "Agência WeCare Mídias Sociais",
-    method: "Metodologia WeCare",
+    method: "Metodologia We Care",
+    frameTitle: "Estratégia Engaja Mais Mensal",
     methodNote:
       "O jeito da WeCare de manter um perfil vivo: engajamento em cada publicação do ciclo, e não em um post solto de vez em quando.",
     title: "Perfil parado não vende.",
@@ -133,6 +134,7 @@ export const pt: Content = {
       "Todas atendem até 30 publicações por ciclo mensal. Escolha pela intensidade de entrega que faz sentido para o seu perfil.",
     priceUndefined: "Sob consulta",
     priceUndefinedNote: "valor informado no atendimento",
+    detailsLabel: "Ver o que inclui",
     items: [
       {
         id: "start",
@@ -211,7 +213,7 @@ export const pt: Content = {
   },
   viral: {
     eyebrow: "Outra frente",
-    title: "Procurando alcance além do engajamento mensal?",
+    title: "Estratégia Viral",
     lead:
       "O Crescimento Viral é a nossa frente voltada para expansão de alcance. Ela funciona separada dos planos mensais de engajamento.",
     cta: "Ir para Crescimento Viral",

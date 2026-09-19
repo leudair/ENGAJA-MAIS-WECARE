@@ -15,15 +15,7 @@ export function Header({
   content: Content;
 }) {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const home = engagementPath(locale);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -40,55 +32,16 @@ export function Header({
   ];
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || open
-          ? "border-b border-white/10 bg-ink-950/85 backdrop-blur-xl"
-          : "border-b border-transparent"
-      }`}
-    >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:h-20 sm:px-8">
-        <Link
-          href={home}
-          className="shrink-0"
-          onClick={() => setOpen(false)}
-        >
-          <Logo alt={content.hero.logoAlt} />
-        </Link>
-
-        <nav
-          aria-label={content.nav.plans}
-          className="hidden items-center gap-7 lg:flex"
-        >
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm text-white/60 transition-colors hover:text-gold-100"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-2 sm:gap-3">
-          <LocaleSwitcher
-            current={locale}
-            label={content.nav.languageLabel}
-            className="hidden sm:flex"
-          />
-          <Link
-            href={viralGrowthPath(locale)}
-            className="hidden rounded-full border border-gold-400/35 px-4 py-2 text-xs font-semibold text-gold-100 transition-colors hover:border-gold-300/70 hover:bg-gold-400/10 md:inline-flex"
-          >
-            {content.nav.viralGrowth}
-          </Link>
+    <header className="px-4 pt-4 sm:px-6 sm:pt-6">
+      {/* Barra: um painel com filete dourado e a marca no centro. */}
+      <div className="panel mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
+        <div className="flex flex-1 items-center justify-start">
           <button
             type="button"
             onClick={() => setOpen((value) => !value)}
             aria-expanded={open}
-            aria-controls="menu-mobile"
-            className="inline-flex size-10 items-center justify-center rounded-full border border-white/10 text-white/80 lg:hidden"
+            aria-controls="menu-principal"
+            className="inline-flex size-10 items-center justify-center border border-gold-600/35 text-gold-100/80 transition-colors hover:border-gold-400/60 xl:hidden"
           >
             <span className="sr-only">{content.nav.plans}</span>
             <svg viewBox="0 0 24 24" fill="none" aria-hidden className="size-5">
@@ -96,34 +49,75 @@ export function Header({
                 <path
                   d="m6 6 12 12M18 6 6 18"
                   stroke="currentColor"
-                  strokeWidth="1.8"
+                  strokeWidth="1.6"
                   strokeLinecap="round"
                 />
               ) : (
                 <path
                   d="M4 7h16M4 12h16M4 17h16"
                   stroke="currentColor"
-                  strokeWidth="1.8"
+                  strokeWidth="1.6"
                   strokeLinecap="round"
                 />
               )}
             </svg>
           </button>
+
+          <nav
+            aria-label={content.nav.plans}
+            className="hidden items-center gap-7 xl:flex"
+          >
+            {links.slice(0, 2).map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-[0.66rem] font-semibold tracking-[0.2em] whitespace-nowrap text-white/45 uppercase transition-colors hover:text-gold-100"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        <Link href={home} className="shrink-0" onClick={() => setOpen(false)}>
+          <Logo alt={content.hero.logoAlt} />
+        </Link>
+
+        <div className="flex flex-1 items-center justify-end gap-4">
+          <nav
+            aria-label={content.nav.faq}
+            className="hidden items-center gap-7 xl:flex"
+          >
+            {links.slice(2).map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-[0.66rem] font-semibold tracking-[0.2em] whitespace-nowrap text-white/45 uppercase transition-colors hover:text-gold-100"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+          <LocaleSwitcher
+            current={locale}
+            label={content.nav.languageLabel}
+            className="hidden sm:flex"
+          />
         </div>
       </div>
 
       {open && (
         <div
-          id="menu-mobile"
-          className="border-t border-white/10 bg-ink-950/95 px-5 pt-4 pb-8 backdrop-blur-xl lg:hidden"
+          id="menu-principal"
+          className="panel mx-auto mt-2 max-w-6xl px-5 pt-2 pb-6 xl:hidden"
         >
           <ul className="flex flex-col">
             {links.map((link) => (
-              <li key={link.href} className="border-b border-white/[0.07]">
+              <li key={link.href} className="border-b border-gold-700/25">
                 <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="block py-4 text-base text-white/75"
+                  className="eyebrow-caps block py-4 text-white/65"
                 >
                   {link.label}
                 </Link>
@@ -133,7 +127,7 @@ export function Header({
               <Link
                 href={viralGrowthPath(locale)}
                 onClick={() => setOpen(false)}
-                className="block py-4 text-base font-semibold text-gold-100"
+                className="eyebrow-caps block py-4 text-gold-200"
               >
                 {content.nav.viralGrowth}
               </Link>

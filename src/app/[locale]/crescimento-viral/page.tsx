@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowIcon, Eyebrow, GhostButton } from "@/components/ui";
+import { ArrowIcon, GhostButton, GoldFrame } from "@/components/ui";
 import { getContent, localeHtmlLang, locales, type Locale } from "@/content";
 import { engagementPath, isLocale } from "@/lib/routes";
 
@@ -51,27 +51,24 @@ export default async function ViralGrowthPage({
   const c = getContent(locale);
 
   return (
-    <section className="relative flex min-h-[70dvh] items-center overflow-hidden px-5 py-28 sm:px-8 sm:py-36">
-      <div
-        className="glow -top-24 left-1/2 size-[30rem] -translate-x-1/2 bg-gold-600/20"
-        aria-hidden
-      />
-      <div className="relative z-10 mx-auto max-w-2xl text-center">
-        <div className="flex justify-center">
-          <Eyebrow>{c.viralPage.eyebrow}</Eyebrow>
-        </div>
-        <h1 className="brushed-text text-4xl leading-tight font-semibold tracking-tight text-balance sm:text-6xl">
-          {c.viralPage.title}
-        </h1>
-        <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-pretty text-white/60 sm:text-lg">
-          {c.viralPage.lead}
-        </p>
-        <div className="mt-9 flex justify-center">
-          <GhostButton href={engagementPath(locale)}>
-            <ArrowIcon className="rotate-180" />
-            {c.viralPage.backCta}
-          </GhostButton>
-        </div>
+    <section className="px-4 py-20 sm:px-6 sm:py-28">
+      <div className="mx-auto max-w-3xl">
+        <GoldFrame label={c.viralPage.eyebrow}>
+          <div className="text-center">
+            <h1 className="display brushed-text text-[1.9rem] text-balance sm:text-5xl">
+              {c.viralPage.title}
+            </h1>
+            <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-pretty text-white/55 sm:text-base">
+              {c.viralPage.lead}
+            </p>
+            <div className="mt-9 flex justify-center">
+              <GhostButton href={engagementPath(locale)}>
+                <ArrowIcon className="rotate-180" />
+                {c.viralPage.backCta}
+              </GhostButton>
+            </div>
+          </div>
+        </GoldFrame>
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Cinzel, Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -10,7 +10,15 @@ import "../globals.css";
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-geist",
+  variable: "--font-body",
+});
+
+// Capitular romana: é o que dá o ar gravado aos títulos.
+const cinzel = Cinzel({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-display-face",
 });
 
 export function generateStaticParams() {
@@ -54,11 +62,14 @@ export default async function LocaleLayout({
   const content = getContent(locale);
 
   return (
-    <html lang={localeHtmlLang[locale]} className={inter.variable}>
-      <body className="grain relative min-h-dvh">
+    <html
+      lang={localeHtmlLang[locale]}
+      className={`${inter.variable} ${cinzel.variable}`}
+    >
+      <body className="relative min-h-dvh">
         <a
           href="#conteudo"
-          className="sr-only rounded-full bg-gold-400 px-4 py-2 text-sm font-semibold text-ink-950 focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60]"
+          className="sr-only rounded-md bg-gold-400 px-4 py-2 text-sm font-semibold text-ink-950 focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60]"
         >
           {content.nav.skipToContent}
         </a>

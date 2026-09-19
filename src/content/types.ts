@@ -67,13 +67,21 @@ export type Content = {
     languageLabel: string;
   };
   hero: {
-    eyebrow: string;
+    /** Texto alternativo da logo, para leitores de tela. */
+    logoAlt: string;
+    /** Destaque logo abaixo da logo, o maior texto da página. */
+    method: string;
+    /** Uma linha curta que explica a metodologia. */
+    methodNote: string;
+    /** Copy de valor. `highlight` sai em ouro escovado, na mesma frase. */
     title: string;
     highlight: string;
     subtitle: string;
     primaryCta: string;
     secondaryCta: string;
     note: string;
+    /** Faixa de provas abaixo do hero. Só fatos já definidos. */
+    proofs: { title: string; description: string }[];
   };
   howItWorks: {
     eyebrow: string;

@@ -16,14 +16,35 @@ export const es: Content = {
     languageLabel: "Idioma",
   },
   hero: {
-    eyebrow: "Engagement mensual",
-    title: "Tu perfil con movimiento constante,",
-    highlight: "publicación tras publicación",
+    logoAlt: "Engaja Mais WeCare",
+    method: "Metodología WeCare",
+    methodNote:
+      "La forma de WeCare de mantener un perfil vivo: engagement en cada publicación del ciclo, y no en una publicación suelta de vez en cuando.",
+    title: "Un perfil quieto no vende.",
+    highlight: "El tuyo no se va a quedar quieto.",
     subtitle:
       "Planes mensuales que reparten el engagement entre tus publicaciones a lo largo del ciclo, con hasta 30 publicaciones atendidas. Tú publicas, nosotros nos ocupamos del resto.",
     primaryCta: "Ver planes",
     secondaryCta: "Conocer Crecimiento Viral",
     note: "Planes desde R$ 197 por ciclo mensual.",
+    proofs: [
+      {
+        title: "Hasta 30 publicaciones",
+        description: "atendidas dentro de cada ciclo mensual",
+      },
+      {
+        title: "Sin contraseña",
+        description: "nunca pedimos acceso a tu cuenta",
+      },
+      {
+        title: "Identidad preservada",
+        description: "no divulgamos quién contrata",
+      },
+      {
+        title: "Desde R$ 197",
+        description: "por ciclo mensual, en el plan Start",
+      },
+    ],
   },
   howItWorks: {
     eyebrow: "Cómo funciona",

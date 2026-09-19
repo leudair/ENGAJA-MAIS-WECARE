@@ -9,6 +9,7 @@ import {
   Lead,
   SectionTitle,
 } from "@/components/ui";
+import { Logo } from "@/components/Logo";
 import { contactHref, getContent, siteConfig, type Locale } from "@/content";
 import { isLocale, viralGrowthPath } from "@/lib/routes";
 
@@ -28,33 +29,47 @@ export default async function EngagementPage({
       {/* ---------------------------------------------------------------- */}
       {/* Hero                                                              */}
       {/* ---------------------------------------------------------------- */}
-      <section className="relative overflow-hidden px-5 pt-28 pb-20 sm:px-8 sm:pt-36 sm:pb-28">
+      <section className="relative overflow-hidden px-5 pt-24 pb-0 sm:px-8 sm:pt-32">
         <div
-          className="glow -top-40 left-1/2 size-[32rem] -translate-x-1/2 bg-gold-500/20"
+          className="glow -top-44 left-1/2 size-[34rem] -translate-x-1/2 bg-gold-500/25"
           aria-hidden
         />
         <div
-          className="glow top-40 -right-32 size-80 bg-gold-700/25 sm:size-96"
+          className="glow top-52 -right-32 size-80 bg-gold-700/25 sm:size-96"
+          aria-hidden
+        />
+        <div
+          className="glow top-64 -left-32 size-72 bg-gold-800/30 sm:size-80"
           aria-hidden
         />
 
-        <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-gold-400/30 bg-gold-400/[0.07] px-4 py-1.5 text-[0.7rem] font-semibold tracking-[0.18em] text-gold-200 uppercase">
-            {c.hero.eyebrow}
-          </span>
+        <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center text-center">
+          <Logo variant="stacked" alt={c.hero.logoAlt} />
 
-          <h1 className="mt-7 text-[2.1rem] leading-[1.1] font-semibold tracking-tight text-balance text-white sm:text-5xl lg:text-6xl">
-            {c.hero.title}{" "}
-            <span className="brushed-text block sm:inline">
-              {c.hero.highlight}
-            </span>
+          {/* O maior texto da página: a metodologia que dá nome ao serviço. */}
+          <h1 className="brushed-text mt-10 text-[2.4rem] leading-[1.05] font-semibold tracking-tight text-balance sm:text-6xl lg:text-7xl">
+            {c.hero.method}
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-pretty text-white/60 sm:text-lg">
+          <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-pretty text-white/50 sm:text-base">
+            {c.hero.methodNote}
+          </p>
+
+          <span
+            className="brushed-rule mt-10 h-px w-16 rounded-full opacity-70"
+            aria-hidden
+          />
+
+          <p className="mt-10 max-w-3xl text-2xl leading-[1.2] font-semibold text-balance text-white sm:text-3xl lg:text-4xl">
+            <span className="block">{c.hero.title}</span>
+            <span className="brushed-text mt-1.5 block">{c.hero.highlight}</span>
+          </p>
+
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-pretty text-white/60 sm:text-lg">
             {c.hero.subtitle}
           </p>
 
-          <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center">
+          <div className="mt-9 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center sm:justify-center">
             <GoldButton href="#planos">{c.hero.primaryCta}</GoldButton>
             <GhostButton href={viralHref}>
               {c.hero.secondaryCta}
@@ -64,6 +79,23 @@ export default async function EngagementPage({
 
           <p className="mt-6 text-sm text-white/40">{c.hero.note}</p>
         </div>
+
+        {/* Faixa de provas: só fatos já definidos, nenhum número inventado. */}
+        <ul className="relative z-10 mx-auto mt-16 grid max-w-6xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.06] sm:mt-20 lg:grid-cols-4">
+          {c.hero.proofs.map((proof) => (
+            <li
+              key={proof.title}
+              className="bg-ink-900/90 px-5 py-6 text-center sm:px-6 sm:py-7"
+            >
+              <p className="text-base font-semibold text-balance text-gold-200 sm:text-lg">
+                {proof.title}
+              </p>
+              <p className="mt-1.5 text-xs leading-relaxed text-pretty text-white/45 sm:text-sm">
+                {proof.description}
+              </p>
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* ---------------------------------------------------------------- */}

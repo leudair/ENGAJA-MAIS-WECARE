@@ -16,14 +16,35 @@ export const en: Content = {
     languageLabel: "Language",
   },
   hero: {
-    eyebrow: "Monthly engagement",
-    title: "Keep your profile moving,",
-    highlight: "post after post",
+    logoAlt: "Engaja Mais WeCare",
+    method: "The WeCare Method",
+    methodNote:
+      "How WeCare keeps a profile alive: engagement on every post in the cycle, not one stray post now and then.",
+    title: "A still profile doesn't sell.",
+    highlight: "Yours won't stand still.",
     subtitle:
       "Monthly plans that spread engagement across your posts throughout the cycle, covering up to 30 posts. You publish, we handle the rest.",
     primaryCta: "See plans",
     secondaryCta: "Explore Viral Growth",
     note: "Plans from R$ 197 per monthly cycle.",
+    proofs: [
+      {
+        title: "Up to 30 posts",
+        description: "covered within each monthly cycle",
+      },
+      {
+        title: "No password",
+        description: "we never ask for access to your account",
+      },
+      {
+        title: "Identity kept private",
+        description: "we don't disclose who our clients are",
+      },
+      {
+        title: "From R$ 197",
+        description: "per monthly cycle, on the Start plan",
+      },
+    ],
   },
   howItWorks: {
     eyebrow: "How it works",

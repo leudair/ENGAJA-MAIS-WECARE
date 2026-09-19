@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import type { Content, Locale } from "@/content";
 import { engagementPath, viralGrowthPath } from "@/lib/routes";
 import { LocaleSwitcher } from "./LocaleSwitcher";
+import { Logo } from "./Logo";
 
 export function Header({
   locale,
@@ -49,15 +50,10 @@ export function Header({
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:h-20 sm:px-8">
         <Link
           href={home}
-          className="flex shrink-0 flex-col leading-none"
+          className="shrink-0"
           onClick={() => setOpen(false)}
         >
-          <span className="text-[0.62rem] font-semibold tracking-[0.3em] text-white/45 uppercase">
-            Engaja Mais
-          </span>
-          <span className="brushed-text text-lg font-semibold tracking-tight sm:text-xl">
-            WeCare
-          </span>
+          <Logo alt={content.hero.logoAlt} />
         </Link>
 
         <nav

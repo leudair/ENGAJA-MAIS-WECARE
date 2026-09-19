@@ -73,6 +73,8 @@ export default async function LocaleLayout({
         >
           {content.nav.skipToContent}
         </a>
+        {/* Fio de ouro fechando o topo da página. */}
+        <span className="gold-hairline block w-full" aria-hidden />
         <Header locale={locale} content={content} />
         <main id="conteudo">{children}</main>
         <Footer locale={locale} content={content} />

@@ -47,6 +47,22 @@ export default async function EngagementPage({
           <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-pretty text-white/55 sm:text-base">
             {c.hero.subtitle}
           </p>
+
+          {/* Faixa de selos: só fatos já definidos, separados por fio de ouro. */}
+          <ul className="mt-12 grid grid-cols-2 gap-px bg-gold-700/40 lg:grid-cols-4">
+            {c.hero.proofs.map((proof) => (
+              <li key={proof.title} className="bg-black px-5 py-6 text-center">
+                {/* Cor cheia, não gradiente: em texto curto o ouro escovado
+                    deixa metade da palavra escura. */}
+                <p className="display flex min-h-[2.6rem] items-center justify-center text-sm text-balance text-gold-200 sm:text-base">
+                  {proof.title}
+                </p>
+                <p className="mt-2 text-xs leading-relaxed text-pretty text-white/45">
+                  {proof.description}
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -54,7 +70,7 @@ export default async function EngagementPage({
       {/* Card da Estratégia Viral                                          */}
       {/* ---------------------------------------------------------------- */}
       <section className="px-4 py-8 sm:px-6 sm:py-10">
-        <div className="panel mx-auto max-w-5xl px-6 py-10 text-center sm:px-12 sm:py-12">
+        <div className="panel gold-tips mx-auto max-w-5xl px-6 py-10 text-center sm:px-12 sm:py-12">
           <h2 className="display brushed-text text-[1.6rem] text-balance sm:text-4xl">
             {c.viral.title}
           </h2>
@@ -176,7 +192,7 @@ export default async function EngagementPage({
 
           <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {c.howItWorks.steps.map((step, index) => (
-              <li key={step.title} className="panel-plain px-6 py-7 text-center">
+              <li key={step.title} className="panel-plain gold-tips px-6 py-7 text-center">
                 <span
                   className="display brushed-text block text-2xl"
                   aria-hidden
@@ -197,6 +213,8 @@ export default async function EngagementPage({
         </div>
       </section>
 
+      <Diamond className="my-2" />
+
       {/* ---------------------------------------------------------------- */}
       {/* O que está incluso                                                */}
       {/* ---------------------------------------------------------------- */}
@@ -208,9 +226,11 @@ export default async function EngagementPage({
 
           <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {c.included.items.map((item) => (
-              <li key={item.title} className="panel-plain px-6 py-7">
-                <span className="gold-edge mb-5 inline-flex size-9 items-center justify-center text-gold-200">
-                  <CheckIcon />
+              <li key={item.title} className="panel-plain gold-tips px-6 py-7">
+                <span className="gold-seal mb-5 size-9">
+                  <span>
+                    <CheckIcon />
+                  </span>
                 </span>
                 <h3 className="eyebrow-caps text-white/80">{item.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-white/50">
@@ -265,6 +285,8 @@ export default async function EngagementPage({
           </GoldFrame>
         </div>
       </section>
+
+      <Diamond className="my-2" />
 
       {/* ---------------------------------------------------------------- */}
       {/* Demonstração: perfil da WeCare                                    */}
@@ -333,8 +355,12 @@ export default async function EngagementPage({
 
           <ul className="mt-12 grid gap-4 md:grid-cols-3">
             {c.privacy.bullets.map((bullet) => (
-              <li key={bullet} className="panel-plain px-6 py-7 text-center">
-                <CheckIcon className="mx-auto mb-4 text-gold-400" />
+              <li key={bullet} className="panel-plain gold-tips px-6 py-7 text-center">
+                <span className="gold-seal mx-auto mb-4 size-9">
+                  <span>
+                    <CheckIcon />
+                  </span>
+                </span>
                 <p className="text-sm leading-relaxed text-white/60">
                   {bullet}
                 </p>
@@ -343,6 +369,8 @@ export default async function EngagementPage({
           </ul>
         </div>
       </section>
+
+      <Diamond className="my-2" />
 
       {/* ---------------------------------------------------------------- */}
       {/* FAQ                                                               */}

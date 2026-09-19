@@ -247,3 +247,65 @@ body {
   letter-spacing: 0.34em;
   text-transform: uppercase;
 }
+
+/* ---------------------------------------------------------------- */
+/* Acabamentos em ouro                                               */
+/* ---------------------------------------------------------------- */
+
+/* Fio de ouro que fecha o topo e o pé da página. */
+.gold-hairline {
+  height: 2px;
+  background-image: var(--brushed);
+  background-size: 200% 100%;
+  background-position: 35% 0;
+}
+
+/* Selo redondo de ouro escovado com o miolo escuro. */
+.gold-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background-image: var(--brushed);
+  background-size: 200% 100%;
+  background-position: 35% 0;
+  padding: 1px;
+  box-shadow: 0 0 18px -6px rgb(208 173 79 / 0.6);
+}
+
+.gold-seal > * {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background: var(--color-ink-900);
+  color: var(--color-gold-200);
+}
+
+/* Cantos de ouro marcando um painel, sem fechar a moldura. */
+.gold-tips::before,
+.gold-tips::after {
+  content: "";
+  position: absolute;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid var(--color-gold-400);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.gold-tips::before {
+  top: -1px;
+  left: -1px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.gold-tips::after {
+  right: -1px;
+  bottom: -1px;
+  border-top: 0;
+  border-left: 0;
+}

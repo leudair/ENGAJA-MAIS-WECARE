@@ -21,7 +21,10 @@ export function Footer({
           </p>
         </div>
 
-        <nav aria-label={content.footer.engagement} className="flex flex-col gap-3">
+        <nav
+          aria-label={content.footer.engagement}
+          className="flex flex-col gap-3"
+        >
           <Link
             href={engagementPath(locale)}
             className="eyebrow-caps text-white/45 transition-colors hover:text-gold-100"

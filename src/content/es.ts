@@ -116,8 +116,7 @@ export const es: Content = {
   limit: {
     eyebrow: "Límite del ciclo",
     title: "Hasta 30 publicaciones por ciclo. Sin letra pequeña.",
-    lead:
-      "Todos los planes atienden hasta 30 publicaciones dentro de un ciclo mensual. Ese es el tope y vale para todas las familias de plan.",
+    lead: "Todos los planes atienden hasta 30 publicaciones dentro de un ciclo mensual. Ese es el tope y vale para todas las familias de plan.",
     bullets: [
       "El ciclo es mensual y el contador de publicaciones se reinicia en cada renovación.",
       "Si publicas menos de 30 veces en el ciclo, lo que sobra no se acumula para el ciclo siguiente.",
@@ -129,71 +128,48 @@ export const es: Content = {
   },
   plans: {
     eyebrow: "Planes",
-    title: "Tres familias, el mismo cuidado",
+    title: "Nueve combos mensuales, tres familias",
     subtitle:
-      "Todas atienden hasta 30 publicaciones por ciclo mensual. Elige según la intensidad de entrega que tenga sentido para tu perfil.",
-    priceUndefined: "A consultar",
-    priceUndefinedNote: "valor informado durante la atención",
-    detailsLabel: "Ver qué incluye",
-    items: [
-      {
-        id: "start",
-        name: "Start",
-        price: "R$ 197",
-        priceNote: "por ciclo mensual",
-        summary:
-          "La puerta de entrada para quien empieza a darle ritmo al perfil.",
-        features: [
-          "Hasta 30 publicaciones atendidas por ciclo",
-          "Entrega repartida a lo largo del ciclo mensual",
-          "Sin acceso a tu cuenta",
-          "Identidad del cliente preservada",
-        ],
-        cta: "Quiero el Start",
-        highlighted: false,
-      },
-      {
-        id: "intermediate",
-        name: "Intermedio",
-        price: null,
-        priceNote: "por ciclo mensual",
-        summary:
-          "Para perfiles que ya publican con frecuencia y quieren una presencia más firme.",
-        features: [
-          "Hasta 30 publicaciones atendidas por ciclo",
-          "Volumen de engagement superior al Start",
-          "Entrega repartida a lo largo del ciclo mensual",
-          "Identidad del cliente preservada",
-        ],
-        cta: "Quiero el Intermedio",
-        highlighted: true,
-        badge: "El más solicitado",
-      },
-      {
-        id: "premium",
+      "Todos atienden hasta 30 publicaciones por ciclo mensual. Los rangos de abajo son por publicación: lo que cambia entre los combos es la intensidad de la entrega en cada post.",
+    families: {
+      premium: {
         name: "Premium",
-        price: null,
-        priceNote: "por ciclo mensual",
-        summary:
-          "El nivel más alto de entrega para quien trata el perfil como su escaparate principal.",
-        features: [
-          "Hasta 30 publicaciones atendidas por ciclo",
-          "El mayor volumen de engagement entre las familias",
-          "Entrega repartida a lo largo del ciclo mensual",
-          "Identidad del cliente preservada",
-        ],
-        cta: "Quiero el Premium",
-        highlighted: false,
+        tagline:
+          "Para quien trata el perfil como su escaparate principal y quiere el mayor volumen de entrega en cada publicación.",
       },
+      intermediate: {
+        name: "Intermedio",
+        tagline:
+          "Para perfiles que ya publican con frecuencia y quieren una presencia firme durante todo el ciclo.",
+      },
+      start: {
+        name: "Start",
+        tagline:
+          "La puerta de entrada para quien empieza a darle ritmo al perfil.",
+      },
+    },
+    metricLabels: [
+      "Visualizaciones",
+      "Me gusta brasileños",
+      "Compartidos",
+      "Reposteos",
+      "Comentarios personalizados",
     ],
+    rangeSeparator: " a ",
+    priceNote: "por ciclo mensual",
+    cycleNote: "hasta 30 publicaciones por ciclo",
+    metricsTitle: "Por publicación",
+    metricsToggle: "Ver la entrega por publicación",
+    noFollowers:
+      "Son planes de engagement: no incluyen seguidores. Los comentarios son personalizados.",
+    cta: "Quiero este combo",
     disclaimer:
-      "Los valores y condiciones de cada plan se confirman durante la atención, antes de contratar.",
+      "Los rangos valen para cada publicación atendida en el ciclo, hasta el límite de 30. Precios en reales en los tres idiomas. Las condiciones de activación y renovación se confirman durante la atención, antes de contratar.",
   },
   demo: {
     eyebrow: "Demostración",
     title: "El perfil de WeCare es el escaparate",
-    lead:
-      "En lugar de exponer clientes, mostramos nuestro propio perfil aplicando la misma estrategia que entregamos.",
+    lead: "En lugar de exponer clientes, mostramos nuestro propio perfil aplicando la misma estrategia que entregamos.",
     paragraphs: [
       "Quien contrata quiere ver el servicio funcionando antes de decidir. Pero mostrar el perfil de un cliente significaría entregar la identidad de quien confió en nosotros, y eso no lo hacemos.",
       "Por eso la demostración es el propio perfil de WeCare. Ahí puedes observar el ritmo de publicación y el comportamiento del engagement a lo largo del ciclo, con la misma estrategia de los planes.",
@@ -203,8 +179,7 @@ export const es: Content = {
   privacy: {
     eyebrow: "Discreción",
     title: "La identidad de quien contrata queda preservada",
-    lead:
-      "La discreción no es un extra del plan. Es parte de cómo trabaja WeCare.",
+    lead: "La discreción no es un extra del plan. Es parte de cómo trabaja WeCare.",
     bullets: [
       "No divulgamos nombres, perfiles ni capturas de los clientes atendidos.",
       "No pedimos contraseña ni acceso a tu cuenta en ningún momento.",
@@ -214,8 +189,7 @@ export const es: Content = {
   viral: {
     eyebrow: "Otro frente",
     title: "Estrategia Viral",
-    lead:
-      "Crecimiento Viral es nuestro frente enfocado en expandir el alcance. Funciona por separado de los planes mensuales de engagement.",
+    lead: "Crecimiento Viral es nuestro frente enfocado en expandir el alcance. Funciona por separado de los planes mensuales de engagement.",
     cta: "Ir a Crecimiento Viral",
   },
   faq: {
@@ -269,8 +243,7 @@ export const es: Content = {
   viralPage: {
     eyebrow: "En construcción",
     title: "Crecimiento Viral",
-    lead:
-      "Esta página se está preparando. Mientras tanto, los planes mensuales de engagement ya están disponibles.",
+    lead: "Esta página se está preparando. Mientras tanto, los planes mensuales de engagement ya están disponibles.",
     backCta: "Volver a Engagement",
   },
   footer: {

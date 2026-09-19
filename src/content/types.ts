@@ -20,26 +20,14 @@ export const localeHtmlLang: Record<Locale, string> = {
   es: "es",
 };
 
-export type PlanTier = "start" | "intermediate" | "premium";
+import type { PlanFamilyId } from "./plans-data";
 
-export type Plan = {
-  /** Identificador estável do plano. Não traduzir. */
-  id: PlanTier;
+export type { PlanFamilyId };
+
+/** Textos fixos de uma família de planos (Premium, Intermediário, Start). */
+export type PlanFamilyCopy = {
   name: string;
-  /**
-   * Preço já formatado para o idioma. Use `null` quando o valor ainda não
-   * estiver definido comercialmente — a interface mostra `priceUndefined`.
-   */
-  price: string | null;
-  /** Texto curto ao lado do preço, ex.: "por ciclo mensal". */
-  priceNote: string;
-  summary: string;
-  features: string[];
-  cta: string;
-  /** Destaca visualmente o card. Apenas um plano deve ter `true`. */
-  highlighted: boolean;
-  /** Selo exibido no topo do card destacado. */
-  badge?: string;
+  tagline: string;
 };
 
 export type FaqItem = {
@@ -108,11 +96,23 @@ export type Content = {
     eyebrow: string;
     title: string;
     subtitle: string;
-    priceUndefined: string;
-    priceUndefinedNote: string;
-    /** Rótulo do expansor que abre o que o plano inclui. */
-    detailsLabel: string;
-    items: Plan[];
+    /** Nome e linha de apoio de cada família, na ordem de `planFamilyOrder`. */
+    families: Record<PlanFamilyId, PlanFamilyCopy>;
+    /** Rótulos das cinco métricas, na ordem de `metrics` em `plans-data.ts`. */
+    metricLabels: [string, string, string, string, string];
+    /** Palavra entre o mínimo e o máximo de uma faixa, ex.: " a ". */
+    rangeSeparator: string;
+    /** Sob o preço, ex.: "por ciclo mensal". */
+    priceNote: string;
+    /** Lembrete do teto, repetido em cada card. */
+    cycleNote: string;
+    /** Título da lista de entrega dentro do card. */
+    metricsTitle: string;
+    /** Rótulo do expansor que abre a entrega no celular. */
+    metricsToggle: string;
+    /** Aviso de que os planos não incluem seguidores. */
+    noFollowers: string;
+    cta: string;
     disclaimer: string;
   };
   demo: {

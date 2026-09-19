@@ -13,7 +13,29 @@ import {
   SectionTitle,
 } from "@/components/ui";
 import { contactHref, getContent, siteConfig, type Locale } from "@/content";
+import { getPlanFamilies, type PlanCard } from "@/lib/plans";
 import { isLocale, viralGrowthPath } from "@/lib/routes";
+
+/** Lista de entrega por publicação, usada aberta no desktop e no expansor. */
+function PlanMetrics({ metrics }: { metrics: PlanCard["metrics"] }) {
+  return (
+    <ul className="space-y-px bg-gold-700/25 text-left">
+      {metrics.map((metric) => (
+        <li
+          key={metric.label}
+          className="flex flex-col gap-0.5 bg-black py-1.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3 sm:px-1 sm:py-2"
+        >
+          <span className="hyphens-auto text-[0.5rem] leading-snug text-pretty text-white/45 sm:text-xs">
+            {metric.label}
+          </span>
+          <span className="display text-[0.55rem] leading-tight break-words text-gold-200 sm:shrink-0 sm:text-sm sm:whitespace-nowrap">
+            {metric.value}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default async function EngagementPage({
   params,
@@ -25,6 +47,7 @@ export default async function EngagementPage({
   const locale = raw as Locale;
   const c = getContent(locale);
   const viralHref = viralGrowthPath(locale);
+  const families = getPlanFamilies(locale, c);
 
   return (
     <>
@@ -88,92 +111,106 @@ export default async function EngagementPage({
       {/* ---------------------------------------------------------------- */}
       <section id="planos" className="px-4 py-10 sm:px-6 sm:py-14">
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-5 lg:grid-cols-3">
-            {c.plans.items.map((plan) => (
-              <OrnateCard key={plan.id} highlighted={plan.highlighted}>
-                <div className="flex h-full flex-col px-6 py-9 text-center sm:px-7 sm:py-10">
-                  {/* A linha do selo existe nos três cards, mesmo vazia, para
-                      nome, resumo e preço ficarem na mesma altura. */}
-                  <span className="eyebrow-caps mb-4 block h-4 text-gold-300">
-                    {plan.badge ?? "\u00A0"}
-                  </span>
+          <Eyebrow center>{c.plans.eyebrow}</Eyebrow>
+          <SectionTitle center>{c.plans.title}</SectionTitle>
+          <Lead center>{c.plans.subtitle}</Lead>
 
-                  <h3 className="eyebrow-caps text-white/70">{plan.name}</h3>
+          {families.map((family) => (
+            <div key={family.id} className="mt-14 first:mt-12">
+              {/* Cabeçalho da família: o nome quebra o filete de ouro. */}
+              <div className="flex items-center gap-4 sm:gap-6">
+                <span className="brushed-rule-soft h-px flex-1" aria-hidden />
+                <h3 className="display text-lg text-gold-200 sm:text-2xl">
+                  {family.name}
+                </h3>
+                <span className="brushed-rule-soft h-px flex-1" aria-hidden />
+              </div>
+              <p className="mx-auto mt-4 max-w-2xl text-center text-xs leading-relaxed text-pretty text-white/45 sm:text-sm">
+                {family.tagline}
+              </p>
 
-                  <p className="mx-auto mt-3 flex min-h-[4.5rem] max-w-[24ch] items-start justify-center text-xs leading-relaxed text-pretty text-white/45 sm:text-sm">
-                    {plan.summary}
-                  </p>
+              {/* Três cards por família, lado a lado também no celular:
+                  cada família ocupa uma linha só e a página não estica. */}
+              <div className="mt-6 grid grid-cols-3 gap-2 sm:mt-7 sm:gap-4 lg:gap-5">
+                {family.plans.map((plan) => (
+                  <OrnateCard key={plan.id} highlighted={plan.featured} compact>
+                    <div className="flex h-full flex-col px-1.5 py-5 text-center sm:px-6 sm:py-9">
+                      {/* Cor cheia, não gradiente: em texto curto o ouro
+                          escovado deixa metade da palavra escura. */}
+                      <h4 className="eyebrow-caps min-h-[2.2rem] text-[0.46rem]! leading-[1.45] tracking-[0.04em]! text-balance text-gold-200 sm:min-h-0 sm:text-[0.7rem]! sm:tracking-[0.2em]!">
+                        {plan.name}
+                      </h4>
 
-                  <div className="flex min-h-[6rem] flex-col justify-center">
-                    {plan.price ? (
-                      <>
-                        <p className="display brushed-text text-4xl sm:text-[2.75rem]">
-                          {plan.price}
+                      <p className="display brushed-text mt-2 text-[0.95rem] whitespace-nowrap sm:mt-4 sm:text-2xl lg:text-[2.3rem]">
+                        {plan.price}
+                      </p>
+                      <p className="mt-1.5 text-[0.55rem] leading-tight tracking-wide text-white/40 sm:mt-2 sm:text-[0.7rem]">
+                        {c.plans.priceNote}
+                      </p>
+                      <p className="mt-1 text-[0.55rem] leading-tight tracking-wide text-balance text-gold-300/70 sm:text-[0.7rem]">
+                        {c.plans.cycleNote}
+                      </p>
+
+                      {/* No desktop a entrega fica aberta; no celular vai para
+                          um expansor, para a página não esticar com 9 cards. */}
+                      <div className="mt-6 hidden lg:block">
+                        <p className="eyebrow-caps mb-3 text-[0.6rem] text-white/35">
+                          {c.plans.metricsTitle}
                         </p>
-                        <p className="mt-2 text-[0.7rem] tracking-wide text-white/40">
-                          {plan.priceNote}
-                        </p>
-                      </>
-                    ) : (
-                      <>
-                        <p className="display text-2xl text-white/75 sm:text-[1.75rem]">
-                          {c.plans.priceUndefined}
-                        </p>
-                        <p className="mt-2 text-[0.7rem] tracking-wide text-white/40">
-                          {c.plans.priceUndefinedNote}
-                        </p>
-                      </>
-                    )}
-                  </div>
+                        <PlanMetrics metrics={plan.metrics} />
+                      </div>
 
-                  {/* Expansor: mantém o card curto e abre o que inclui. */}
-                  <details className="group mt-7 text-left">
-                    <summary className="flex cursor-pointer list-none items-center justify-between gap-3 border border-gold-700/35 bg-white/[0.02] px-4 py-3 text-[0.68rem] font-semibold tracking-[0.18em] text-gold-100/80 uppercase marker:content-none">
-                      {c.plans.detailsLabel}
-                      <svg
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        aria-hidden
-                        className="size-3.5 shrink-0 transition-transform duration-200 group-open:rotate-180"
-                      >
-                        <path
-                          d="m3 6 5 5 5-5"
-                          stroke="currentColor"
-                          strokeWidth="1.6"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </summary>
-                    <ul className="space-y-3 border-x border-b border-gold-700/25 px-4 py-4">
-                      {plan.features.map((feature) => (
-                        <li key={feature} className="flex gap-2.5">
-                          <CheckIcon className="mt-0.5 text-gold-400" />
-                          <span className="text-sm leading-relaxed text-white/60">
-                            {feature}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </details>
+                      <details className="group mt-4 text-left sm:mt-6 lg:hidden">
+                        <summary className="flex cursor-pointer list-none items-center justify-center gap-1.5 border border-gold-700/35 bg-white/[0.02] px-1.5 py-2 text-center text-[0.5rem] leading-tight font-semibold tracking-[0.08em] text-gold-100/80 uppercase marker:content-none sm:justify-between sm:gap-3 sm:px-4 sm:py-3 sm:text-[0.62rem] sm:tracking-[0.16em]">
+                          {c.plans.metricsTitle}
+                          <svg
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            aria-hidden
+                            className="size-2.5 shrink-0 transition-transform duration-200 group-open:rotate-180 sm:size-3.5"
+                          >
+                            <path
+                              d="m3 6 5 5 5-5"
+                              stroke="currentColor"
+                              strokeWidth="1.6"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </summary>
+                        <div className="border-x border-b border-gold-700/25 px-0.5 py-2 sm:px-4 sm:py-4">
+                          <PlanMetrics metrics={plan.metrics} />
+                        </div>
+                      </details>
 
-                  <div className="mt-7 flex flex-1 items-end justify-center">
-                    {plan.highlighted ? (
-                      <GoldButton href={contactHref} className="w-full">
-                        {plan.cta}
-                      </GoldButton>
-                    ) : (
-                      <GhostButton href={contactHref} className="w-full">
-                        {plan.cta}
-                      </GhostButton>
-                    )}
-                  </div>
-                </div>
-              </OrnateCard>
-            ))}
-          </div>
+                      <div className="mt-4 flex flex-1 items-end justify-center sm:mt-6">
+                        {plan.featured ? (
+                          <GoldButton
+                            href={contactHref}
+                            className="w-full px-1.5! text-[0.5rem]! leading-tight! tracking-[0.06em]! sm:px-5! sm:text-[0.72rem]! sm:tracking-[0.12em]!"
+                          >
+                            {c.plans.cta}
+                          </GoldButton>
+                        ) : (
+                          <GhostButton
+                            href={contactHref}
+                            className="w-full px-1.5! text-[0.5rem]! leading-tight! tracking-[0.06em]! sm:px-5! sm:text-[0.72rem]! sm:tracking-[0.12em]!"
+                          >
+                            {c.plans.cta}
+                          </GhostButton>
+                        )}
+                      </div>
+                    </div>
+                  </OrnateCard>
+                ))}
+              </div>
+            </div>
+          ))}
 
-          <p className="mt-8 text-center text-xs text-white/35">
+          <p className="mt-12 text-center text-sm text-pretty text-gold-100/70">
+            {c.plans.noFollowers}
+          </p>
+          <p className="mx-auto mt-4 max-w-3xl text-center text-xs leading-relaxed text-pretty text-white/35">
             {c.plans.disclaimer}
           </p>
         </div>

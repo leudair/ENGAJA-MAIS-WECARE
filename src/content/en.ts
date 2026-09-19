@@ -116,8 +116,7 @@ export const en: Content = {
   limit: {
     eyebrow: "Cycle limit",
     title: "Up to 30 posts per cycle. No fine print.",
-    lead:
-      "Every plan covers up to 30 posts within a monthly cycle. That is the ceiling, and it applies to all plan families.",
+    lead: "Every plan covers up to 30 posts within a monthly cycle. That is the ceiling, and it applies to all plan families.",
     bullets: [
       "The cycle is monthly and the post counter resets at every renewal.",
       "If you post fewer than 30 times in a cycle, the remainder does not roll over to the next one.",
@@ -129,70 +128,47 @@ export const en: Content = {
   },
   plans: {
     eyebrow: "Plans",
-    title: "Three families, the same care",
+    title: "Nine monthly combos, three families",
     subtitle:
-      "All of them cover up to 30 posts per monthly cycle. Choose by the delivery intensity that fits your profile.",
-    priceUndefined: "On request",
-    priceUndefinedNote: "price confirmed when you get in touch",
-    detailsLabel: "See what's included",
-    items: [
-      {
-        id: "start",
-        name: "Start",
-        price: "R$ 197",
-        priceNote: "per monthly cycle",
-        summary: "The entry point for profiles starting to build a rhythm.",
-        features: [
-          "Up to 30 posts covered per cycle",
-          "Delivery spread across the monthly cycle",
-          "No access to your account",
-          "Client identity kept private",
-        ],
-        cta: "I want Start",
-        highlighted: false,
-      },
-      {
-        id: "intermediate",
-        name: "Intermediate",
-        price: null,
-        priceNote: "per monthly cycle",
-        summary:
-          "For profiles already posting often that want a firmer presence.",
-        features: [
-          "Up to 30 posts covered per cycle",
-          "Engagement volume above Start",
-          "Delivery spread across the monthly cycle",
-          "Client identity kept private",
-        ],
-        cta: "I want Intermediate",
-        highlighted: true,
-        badge: "Most requested",
-      },
-      {
-        id: "premium",
+      "All of them cover up to 30 posts per monthly cycle. The ranges below are per post: what changes between combos is how intense the delivery is on each one.",
+    families: {
+      premium: {
         name: "Premium",
-        price: null,
-        priceNote: "per monthly cycle",
-        summary:
-          "The highest delivery level, for profiles that are the main storefront.",
-        features: [
-          "Up to 30 posts covered per cycle",
-          "The largest engagement volume of the three families",
-          "Delivery spread across the monthly cycle",
-          "Client identity kept private",
-        ],
-        cta: "I want Premium",
-        highlighted: false,
+        tagline:
+          "For profiles that are the main storefront and want the largest delivery volume on every post.",
       },
+      intermediate: {
+        name: "Intermediate",
+        tagline:
+          "For profiles already posting often that want a firm presence throughout the cycle.",
+      },
+      start: {
+        name: "Start",
+        tagline: "The entry point for profiles starting to build a rhythm.",
+      },
+    },
+    metricLabels: [
+      "Views",
+      "Brazilian likes",
+      "Shares",
+      "Reposts",
+      "Personalised comments",
     ],
+    rangeSeparator: " to ",
+    priceNote: "per monthly cycle",
+    cycleNote: "up to 30 posts per cycle",
+    metricsTitle: "Per post",
+    metricsToggle: "See the delivery per post",
+    noFollowers:
+      "These are engagement plans: they do not include followers. Comments are personalised.",
+    cta: "I want this combo",
     disclaimer:
-      "Prices and conditions for each plan are confirmed when you get in touch, before you sign up.",
+      "The ranges apply to each post covered in the cycle, up to the limit of 30. Prices are in Brazilian reais in all three languages. Activation and renewal conditions are confirmed when you get in touch, before you sign up.",
   },
   demo: {
     eyebrow: "Demonstration",
     title: "The WeCare profile is the showcase",
-    lead:
-      "Instead of exposing clients, we show our own profile running the same strategy we deliver.",
+    lead: "Instead of exposing clients, we show our own profile running the same strategy we deliver.",
     paragraphs: [
       "People want to see the service working before they decide. But showing a client profile would mean handing over the identity of someone who trusted us — and we don't do that.",
       "So the demonstration is WeCare's own profile. That's where you can watch the posting rhythm and how engagement behaves across the cycle, with the same strategy used in the plans.",
@@ -212,8 +188,7 @@ export const en: Content = {
   viral: {
     eyebrow: "A separate track",
     title: "Viral Strategy",
-    lead:
-      "Viral Growth is our track focused on expanding reach. It runs separately from the monthly engagement plans.",
+    lead: "Viral Growth is our track focused on expanding reach. It runs separately from the monthly engagement plans.",
     cta: "Go to Viral Growth",
   },
   faq: {
@@ -267,8 +242,7 @@ export const en: Content = {
   viralPage: {
     eyebrow: "Coming soon",
     title: "Viral Growth",
-    lead:
-      "This page is being prepared. In the meantime, the monthly engagement plans are already available.",
+    lead: "This page is being prepared. In the meantime, the monthly engagement plans are already available.",
     backCta: "Back to Engagement",
   },
   footer: {

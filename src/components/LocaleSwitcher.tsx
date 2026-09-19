@@ -2,7 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { locales, localeLabels, localeShortLabels, type Locale } from "@/content";
+import {
+  locales,
+  localeLabels,
+  localeShortLabels,
+  type Locale,
+} from "@/content";
 import { switchLocalePath } from "@/lib/routes";
 
 export function LocaleSwitcher({

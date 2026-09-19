@@ -125,13 +125,21 @@ export function GoldFrame({
 /* Cantos ornamentais                                                  */
 /* ------------------------------------------------------------------ */
 
-function OrnateCorner({ className }: { className: string }) {
+function OrnateCorner({
+  className,
+  compact = false,
+}: {
+  className: string;
+  compact?: boolean;
+}) {
   return (
     <svg
       viewBox="0 0 44 44"
       fill="none"
       aria-hidden
-      className={`pointer-events-none absolute size-9 text-gold-400 sm:size-11 ${className}`}
+      className={`pointer-events-none absolute text-gold-400 sm:size-11 ${
+        compact ? "size-5" : "size-9"
+      } ${className}`}
     >
       <path
         d="M2 18V6a4 4 0 0 1 4-4h12"
@@ -153,18 +161,19 @@ function OrnateCorner({ className }: { className: string }) {
 export function OrnateCard({
   children,
   highlighted = false,
+  compact = false,
   className = "",
 }: {
   children: ReactNode;
   highlighted?: boolean;
+  /** Encolhe os cantos ornamentados, para cards estreitos no celular. */
+  compact?: boolean;
   className?: string;
 }) {
   return (
     <div
       className={`relative ${
-        highlighted
-          ? "shadow-[0_0_60px_-24px_rgba(208,173,79,0.55)]"
-          : ""
+        highlighted ? "shadow-[0_0_60px_-24px_rgba(208,173,79,0.55)]" : ""
       } ${className}`}
     >
       <div
@@ -178,10 +187,16 @@ export function OrnateCard({
           }`}
           aria-hidden
         />
-        <OrnateCorner className="top-0 left-0" />
-        <OrnateCorner className="top-0 right-0 rotate-90" />
-        <OrnateCorner className="right-0 bottom-0 rotate-180" />
-        <OrnateCorner className="bottom-0 left-0 -rotate-90" />
+        <OrnateCorner className="top-0 left-0" compact={compact} />
+        <OrnateCorner className="top-0 right-0 rotate-90" compact={compact} />
+        <OrnateCorner
+          className="right-0 bottom-0 rotate-180"
+          compact={compact}
+        />
+        <OrnateCorner
+          className="bottom-0 left-0 -rotate-90"
+          compact={compact}
+        />
         {children}
       </div>
     </div>

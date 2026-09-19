@@ -16,7 +16,7 @@ export const es: Content = {
     languageLabel: "Idioma",
   },
   hero: {
-    logoAlt: "Engaja Mais WeCare",
+    logoAlt: "Agência WeCare Mídias Sociais",
     method: "Metodología WeCare",
     methodNote:
       "La forma de WeCare de mantener un perfil vivo: engagement en cada publicación del ciclo, y no en una publicación suelta de vez en cuando.",

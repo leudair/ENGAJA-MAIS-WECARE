@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Content, Locale } from "@/content";
 import { siteConfig } from "@/content";
 import { engagementPath, viralGrowthPath } from "@/lib/routes";
+import { Logo } from "./Logo";
 
 export function Footer({
   locale,
@@ -14,13 +15,8 @@ export function Footer({
     <footer className="relative border-t border-white/10 bg-ink-900/60">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-12 sm:px-8 md:flex-row md:items-start md:justify-between">
         <div className="max-w-sm">
-          <span className="block text-[0.62rem] font-semibold tracking-[0.3em] text-white/45 uppercase">
-            Engaja Mais
-          </span>
-          <span className="brushed-text text-xl font-semibold tracking-tight">
-            WeCare
-          </span>
-          <p className="mt-3 text-sm leading-relaxed text-white/50">
+          <Logo alt={content.hero.logoAlt} />
+          <p className="mt-4 text-sm leading-relaxed text-white/50">
             {content.footer.tagline}
           </p>
         </div>

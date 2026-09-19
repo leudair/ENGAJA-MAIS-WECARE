@@ -24,7 +24,11 @@ export function Logo({
       <img
         src={siteConfig.logoUrl}
         alt={alt}
-        className={`${stacked ? "h-20 sm:h-24" : "h-8 sm:h-9"} w-auto ${className}`}
+        width={831}
+        height={353}
+        className={`${
+          stacked ? "h-20 sm:h-32" : "h-9 sm:h-11"
+        } w-auto drop-shadow-[0_10px_24px_rgba(0,0,0,0.65)] ${className}`}
       />
     );
   }

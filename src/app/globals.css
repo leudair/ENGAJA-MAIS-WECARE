@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink-950: #040405;
+  --color-ink-950: #000000;
   --color-ink-900: #08080a;
   --color-ink-850: #0d0d10;
   --color-ink-800: #131316;
@@ -78,19 +78,17 @@ html {
 body {
   margin: 0;
   min-height: 100dvh;
-  background-color: var(--color-ink-950);
-  /* Cetim preto: a imagem cobre a largura e o resto cai para o preto. */
-  background-image:
-    radial-gradient(
-      120% 70% at 50% 0%,
-      rgb(208 173 79 / 0.1),
-      transparent 60%
-    ),
-    url("/silk.jpg");
-  background-repeat: no-repeat, no-repeat;
-  background-size: 100% auto, 100% auto;
-  background-position: center top, center top;
-  background-attachment: scroll, scroll;
+  /* Preto sólido, com um halo dourado discreto no alto da página.
+     A textura de cetim continua em public/silk.jpg, caso volte a ser usada. */
+  background-color: #000;
+  background-image: radial-gradient(
+    120% 62% at 50% 0%,
+    rgb(208 173 79 / 0.09),
+    transparent 62%
+  );
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: scroll;
   color: rgb(238 236 231 / 0.84);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;

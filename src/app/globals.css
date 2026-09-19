@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink-950: #050506;
+  --color-ink-900: #0a0a0c;
+  --color-ink-850: #101013;
+  --color-ink-800: #16161a;
+  --color-ink-700: #202026;
+  --color-ink-600: #2c2c34;
+
+  --color-gold-50: #fdf6e0;
+  --color-gold-100: #f7e7b4;
+  --color-gold-200: #eed894;
+  --color-gold-300: #e2c473;
+  --color-gold-400: #d4af37;
+  --color-gold-500: #b8912e;
+  --color-gold-600: #957123;
+  --color-gold-700: #6f531a;
+  --color-gold-800: #4a3711;
+
+  --font-sans: var(--font-geist, ui-sans-serif, system-ui, -apple-system,
+      "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+
+  --shadow-lift: 0 1px 0 0 rgb(255 255 255 / 0.04) inset,
+    0 24px 48px -24px rgb(0 0 0 / 0.9);
+  --shadow-gold: 0 0 0 1px rgb(212 175 55 / 0.28),
+    0 30px 60px -30px rgb(212 175 55 / 0.35);
+}
+
+:root {
+  color-scheme: dark;
+  --brushed: linear-gradient(
+    100deg,
+    #8a6a1e 0%,
+    #e2c473 18%,
+    #fff3cf 33%,
+    #c9a344 48%,
+    #f0d896 66%,
+    #b8912e 82%,
+    #e8d095 100%
+  );
+}
+
+* {
+  border-color: rgb(255 255 255 / 0.07);
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  background-color: var(--color-ink-950);
+  color: rgb(235 235 240 / 0.86);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgb(212 175 55 / 0.3);
+  color: #fff8e4;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold-300);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Texto com acabamento de ouro escovado. */
+.brushed-text {
+  background-image: var(--brushed);
+  background-size: 180% 100%;
+  background-position: 30% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Filete dourado usado em bordas e divisores. */
+.brushed-rule {
+  background-image: var(--brushed);
+}
+
+/* Superfície com profundidade: leve elevação e brilho superior. */
+.surface {
+  background-image:
+    linear-gradient(180deg, rgb(255 255 255 / 0.045), rgb(255 255 255 / 0) 42%),
+    linear-gradient(180deg, var(--color-ink-850), var(--color-ink-900));
+  border: 1px solid rgb(255 255 255 / 0.08);
+  box-shadow: var(--shadow-lift);
+}
+
+.surface-gold {
+  background-image:
+    linear-gradient(180deg, rgb(212 175 55 / 0.1), rgb(212 175 55 / 0) 45%),
+    linear-gradient(180deg, var(--color-ink-850), var(--color-ink-900));
+  border: 1px solid rgb(212 175 55 / 0.3);
+  box-shadow: var(--shadow-gold);
+}
+
+/* Halo dourado difuso do fundo. */
+.glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Textura sutil para o preto não ficar chapado. */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}

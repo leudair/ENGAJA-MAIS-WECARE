@@ -16,7 +16,7 @@ export function Footer({
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-12 sm:px-8 md:flex-row md:items-start md:justify-between">
         <div className="max-w-sm">
           <Logo alt={content.hero.logoAlt} />
-          <p className="mt-4 text-sm leading-relaxed text-white/50">
+          <p className="mt-4 text-sm leading-relaxed text-white/66">
             {content.footer.tagline}
           </p>
         </div>
@@ -27,19 +27,19 @@ export function Footer({
         >
           <Link
             href={engagementPath(locale)}
-            className="eyebrow-caps text-white/45 transition-colors hover:text-gold-100"
+            className="eyebrow-caps text-white/62 transition-colors hover:text-gold-100"
           >
             {content.footer.engagement}
           </Link>
           <Link
             href={viralGrowthPath(locale)}
-            className="eyebrow-caps text-white/45 transition-colors hover:text-gold-100"
+            className="eyebrow-caps text-white/62 transition-colors hover:text-gold-100"
           >
             {content.footer.viralGrowth}
           </Link>
           <Link
             href={`${engagementPath(locale)}#faq`}
-            className="eyebrow-caps text-white/45 transition-colors hover:text-gold-100"
+            className="eyebrow-caps text-white/62 transition-colors hover:text-gold-100"
           >
             {content.nav.faq}
           </Link>
@@ -48,7 +48,7 @@ export function Footer({
 
       <div className="brushed-rule-soft h-px w-full opacity-30" aria-hidden />
 
-      <p className="mx-auto max-w-6xl px-5 py-6 text-xs text-white/35 sm:px-8">
+      <p className="mx-auto max-w-6xl px-5 py-6 text-xs text-white/52 sm:px-8">
         © {new Date().getFullYear()} {siteConfig.brand}. {content.footer.rights}
       </p>
     </footer>

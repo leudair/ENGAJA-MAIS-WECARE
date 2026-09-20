@@ -27,8 +27,8 @@ export function Logo({
         width={831}
         height={353}
         className={`${
-          stacked ? "h-20 sm:h-32" : "h-9 sm:h-11"
-        } w-auto drop-shadow-[0_10px_24px_rgba(0,0,0,0.65)] ${className}`}
+          stacked ? "h-24 sm:h-40 lg:h-44" : "h-9 sm:h-11"
+        } w-auto drop-shadow-[0_12px_30px_rgba(0,0,0,0.75)] ${className}`}
       />
     );
   }
@@ -64,7 +64,7 @@ export function Logo({
         className={`flex flex-col leading-none ${stacked ? "items-center gap-1.5" : "gap-0.5"}`}
       >
         <span
-          className={`font-semibold text-white/45 uppercase ${
+          className={`font-semibold text-white/62 uppercase ${
             stacked
               ? "text-[0.7rem] tracking-[0.42em] sm:text-xs"
               : "text-[0.6rem] tracking-[0.3em]"

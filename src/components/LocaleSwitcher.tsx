@@ -39,7 +39,7 @@ export function LocaleSwitcher({
             className={`px-3 py-1.5 text-[0.68rem] font-semibold tracking-[0.18em] transition-colors ${
               active
                 ? "bg-gold-500/20 text-gold-100"
-                : "text-white/45 hover:text-white/75"
+                : "text-white/62 hover:text-white/85"
             }`}
           >
             <span aria-hidden>{localeShortLabels[locale]}</span>

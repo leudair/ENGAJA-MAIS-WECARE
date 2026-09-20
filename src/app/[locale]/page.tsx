@@ -25,7 +25,7 @@ function PlanMetrics({ metrics }: { metrics: PlanCard["metrics"] }) {
           key={metric.label}
           className="flex flex-col gap-0.5 bg-black py-1.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3 sm:px-1 sm:py-2"
         >
-          <span className="hyphens-auto text-[0.5rem] leading-snug text-pretty text-white/45 sm:text-xs">
+          <span className="hyphens-auto text-[0.5rem] leading-snug text-pretty text-white/62 sm:text-xs">
             {metric.label}
           </span>
           <span className="display text-[0.55rem] leading-tight break-words text-gold-200 sm:shrink-0 sm:text-sm sm:whitespace-nowrap">
@@ -54,20 +54,34 @@ export default async function EngagementPage({
       {/* ---------------------------------------------------------------- */}
       {/* Abertura: moldura da metodologia                                  */}
       {/* ---------------------------------------------------------------- */}
-      <section className="px-4 pt-10 pb-4 sm:px-6 sm:pt-16">
-        <div className="mx-auto max-w-5xl">
+      <section className="relative overflow-hidden px-4 pt-8 pb-4 sm:px-6 sm:pt-12">
+        {/* Halo dourado só atrás da abertura, para o topo pesar mais que o
+            resto da página. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 -top-40 h-[34rem] bg-[radial-gradient(52%_60%_at_50%_45%,rgba(208,173,79,0.22),transparent_72%)]"
+        />
+
+        <div className="relative mx-auto max-w-5xl">
+          {/* A logo abre a página, no tamanho que ela merece. */}
+          <div className="flex justify-center pb-8 sm:pb-10">
+            <Logo variant="stacked" alt={c.hero.logoAlt} />
+          </div>
+
           <GoldFrame label={c.hero.method}>
-            <h1 className="display brushed-text text-center text-[1.6rem] leading-[1.15] text-balance sm:text-4xl lg:text-[3.2rem]">
+            <h1 className="display brushed-text sheen text-center text-[2rem] leading-[1.1] text-balance sm:text-5xl lg:text-[4rem]">
               {c.hero.frameTitle}
             </h1>
           </GoldFrame>
 
-          <p className="mx-auto mt-10 max-w-3xl text-center text-xl leading-snug font-medium text-balance text-white/90 sm:text-2xl lg:text-[1.75rem]">
+          <p className="mx-auto mt-10 max-w-3xl text-center text-[1.4rem] leading-tight font-semibold text-balance text-white/94 sm:text-3xl lg:text-[2.1rem]">
             <span className="block">{c.hero.title}</span>
-            <span className="brushed-text mt-1 block">{c.hero.highlight}</span>
+            <span className="brushed-text sheen mt-1.5 block">
+              {c.hero.highlight}
+            </span>
           </p>
 
-          <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-pretty text-white/55 sm:text-base">
+          <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-pretty text-white/72 sm:text-base">
             {c.hero.subtitle}
           </p>
 
@@ -80,7 +94,7 @@ export default async function EngagementPage({
                 <p className="display flex min-h-[2.6rem] items-center justify-center text-sm text-balance text-gold-200 sm:text-base">
                   {proof.title}
                 </p>
-                <p className="mt-2 text-xs leading-relaxed text-pretty text-white/45">
+                <p className="mt-2 text-xs leading-relaxed text-pretty text-white/62">
                   {proof.description}
                 </p>
               </li>
@@ -97,7 +111,7 @@ export default async function EngagementPage({
           <h2 className="display brushed-text text-[1.6rem] text-balance sm:text-4xl">
             {c.viral.title}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-pretty text-white/55 sm:text-base">
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-pretty text-white/72 sm:text-base">
             {c.viral.lead}
           </p>
           <div className="mt-8 flex justify-center">
@@ -125,7 +139,7 @@ export default async function EngagementPage({
                 </h3>
                 <span className="brushed-rule-soft h-px flex-1" aria-hidden />
               </div>
-              <p className="mx-auto mt-4 max-w-2xl text-center text-xs leading-relaxed text-pretty text-white/45 sm:text-sm">
+              <p className="mx-auto mt-4 max-w-2xl text-center text-xs leading-relaxed text-pretty text-white/62 sm:text-sm">
                 {family.tagline}
               </p>
 
@@ -144,7 +158,7 @@ export default async function EngagementPage({
                       <p className="display brushed-text mt-2 text-[0.95rem] whitespace-nowrap sm:mt-4 sm:text-2xl lg:text-[2.3rem]">
                         {plan.price}
                       </p>
-                      <p className="mt-1.5 text-[0.55rem] leading-tight tracking-wide text-white/40 sm:mt-2 sm:text-[0.7rem]">
+                      <p className="mt-1.5 text-[0.55rem] leading-tight tracking-wide text-white/56 sm:mt-2 sm:text-[0.7rem]">
                         {c.plans.priceNote}
                       </p>
                       <p className="mt-1 text-[0.55rem] leading-tight tracking-wide text-balance text-gold-300/70 sm:text-[0.7rem]">
@@ -154,7 +168,7 @@ export default async function EngagementPage({
                       {/* No desktop a entrega fica aberta; no celular vai para
                           um expansor, para a página não esticar com 9 cards. */}
                       <div className="mt-6 hidden lg:block">
-                        <p className="eyebrow-caps mb-3 text-[0.6rem] text-white/35">
+                        <p className="eyebrow-caps mb-3 text-[0.6rem] text-white/52">
                           {c.plans.metricsTitle}
                         </p>
                         <PlanMetrics metrics={plan.metrics} />
@@ -210,7 +224,7 @@ export default async function EngagementPage({
           <p className="mt-12 text-center text-sm text-pretty text-gold-100/70">
             {c.plans.noFollowers}
           </p>
-          <p className="mx-auto mt-4 max-w-3xl text-center text-xs leading-relaxed text-pretty text-white/35">
+          <p className="mx-auto mt-4 max-w-3xl text-center text-xs leading-relaxed text-pretty text-white/52">
             {c.plans.disclaimer}
           </p>
         </div>
@@ -243,10 +257,10 @@ export default async function EngagementPage({
                   className="brushed-rule-soft mx-auto mt-3 mb-4 block h-px w-8 opacity-70 sm:mt-4 sm:mb-5 sm:w-10"
                   aria-hidden
                 />
-                <h3 className="text-[0.62rem] font-semibold tracking-[0.2em] text-white/80 uppercase sm:text-[0.68rem] sm:tracking-[0.34em]">
+                <h3 className="text-[0.62rem] font-semibold tracking-[0.2em] text-white/88 uppercase sm:text-[0.68rem] sm:tracking-[0.34em]">
                   {step.title}
                 </h3>
-                <p className="mt-2.5 text-xs leading-relaxed text-pretty text-white/50 sm:mt-3 sm:text-sm">
+                <p className="mt-2.5 text-xs leading-relaxed text-pretty text-white/66 sm:mt-3 sm:text-sm">
                   {step.description}
                 </p>
               </li>
@@ -277,10 +291,10 @@ export default async function EngagementPage({
                     <CheckIcon />
                   </span>
                 </span>
-                <h3 className="text-[0.62rem] font-semibold tracking-[0.2em] text-white/80 uppercase sm:text-[0.68rem] sm:tracking-[0.34em]">
+                <h3 className="text-[0.62rem] font-semibold tracking-[0.2em] text-white/88 uppercase sm:text-[0.68rem] sm:tracking-[0.34em]">
                   {item.title}
                 </h3>
-                <p className="mt-2.5 text-xs leading-relaxed text-white/50 sm:mt-3 sm:text-sm">
+                <p className="mt-2.5 text-xs leading-relaxed text-white/66 sm:mt-3 sm:text-sm">
                   {item.description}
                 </p>
               </li>
@@ -312,7 +326,7 @@ export default async function EngagementPage({
                 <h2 className="display brushed-text text-2xl text-balance sm:text-3xl">
                   {c.limit.title}
                 </h2>
-                <p className="mt-5 text-base leading-relaxed text-white/70">
+                <p className="mt-5 text-base leading-relaxed text-white/82">
                   {c.limit.lead}
                 </p>
 
@@ -320,14 +334,14 @@ export default async function EngagementPage({
                   {c.limit.bullets.map((bullet) => (
                     <li key={bullet} className="flex gap-3">
                       <CheckIcon className="mt-1 text-gold-400" />
-                      <span className="text-sm leading-relaxed text-white/60 sm:text-base">
+                      <span className="text-sm leading-relaxed text-white/76 sm:text-base">
                         {bullet}
                       </span>
                     </li>
                   ))}
                 </ul>
 
-                <p className="mt-7 border-t border-gold-700/35 pt-5 text-sm text-white/40">
+                <p className="mt-7 border-t border-gold-700/35 pt-5 text-sm text-white/56">
                   {c.limit.footnote}
                 </p>
               </div>
@@ -350,7 +364,7 @@ export default async function EngagementPage({
             {c.demo.paragraphs.map((paragraph) => (
               <p
                 key={paragraph}
-                className="mt-4 max-w-2xl text-sm leading-relaxed text-white/45 sm:text-base"
+                className="mt-4 max-w-2xl text-sm leading-relaxed text-white/62 sm:text-base"
               >
                 {paragraph}
               </p>
@@ -412,7 +426,7 @@ export default async function EngagementPage({
                 className="brushed-rule-soft mt-6 block h-px w-full opacity-40"
                 aria-hidden
               />
-              <p className="mt-4 text-center text-xs leading-relaxed text-white/45">
+              <p className="mt-4 text-center text-xs leading-relaxed text-white/62">
                 {c.privacy.bullets[2]}
               </p>
             </div>
@@ -444,7 +458,7 @@ export default async function EngagementPage({
                     <CheckIcon />
                   </span>
                 </span>
-                <p className="text-xs leading-relaxed text-white/60 sm:text-sm">
+                <p className="text-xs leading-relaxed text-white/76 sm:text-sm">
                   {bullet}
                 </p>
               </li>
@@ -473,7 +487,7 @@ export default async function EngagementPage({
                     : ""
                 }`}
               >
-                <summary className="flex cursor-pointer list-none items-start justify-between gap-3 py-4 text-left text-xs leading-snug font-medium text-white/80 marker:content-none sm:py-5 sm:text-sm">
+                <summary className="flex cursor-pointer list-none items-start justify-between gap-3 py-4 text-left text-xs leading-snug font-medium text-white/88 marker:content-none sm:py-5 sm:text-sm">
                   {item.question}
                   <span
                     className="mt-0.5 flex size-6 shrink-0 items-center justify-center border border-gold-600/40 text-gold-200 transition-transform duration-200 group-open:rotate-45 sm:size-7"
@@ -489,7 +503,7 @@ export default async function EngagementPage({
                     </svg>
                   </span>
                 </summary>
-                <p className="border-t border-gold-700/25 py-4 text-xs leading-relaxed text-white/50 sm:text-sm">
+                <p className="border-t border-gold-700/25 py-4 text-xs leading-relaxed text-white/66 sm:text-sm">
                   {item.answer}
                 </p>
               </details>
@@ -510,7 +524,7 @@ export default async function EngagementPage({
               <h2 className="display brushed-text text-2xl text-balance sm:text-4xl">
                 {c.finalCta.title}
               </h2>
-              <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-pretty text-white/55 sm:text-base">
+              <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-pretty text-white/72 sm:text-base">
                 {c.finalCta.subtitle}
               </p>
               <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center">

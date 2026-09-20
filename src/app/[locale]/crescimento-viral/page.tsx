@@ -58,7 +58,7 @@ export default async function ViralGrowthPage({
             <h1 className="display brushed-text text-[1.9rem] text-balance sm:text-5xl">
               {c.viralPage.title}
             </h1>
-            <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-pretty text-white/55 sm:text-base">
+            <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-pretty text-white/72 sm:text-base">
               {c.viralPage.lead}
             </p>
             <div className="mt-9 flex justify-center">

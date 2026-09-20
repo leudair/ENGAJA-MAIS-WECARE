@@ -60,7 +60,7 @@ export function Lead({
 }) {
   return (
     <p
-      className={`mt-5 max-w-2xl text-base leading-relaxed text-pretty text-white/55 sm:text-lg ${
+      className={`mt-5 max-w-2xl text-base leading-relaxed text-pretty text-white/72 sm:text-lg ${
         center ? "mx-auto text-center" : ""
       }`}
     >

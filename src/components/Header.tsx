@@ -15,7 +15,17 @@ export function Header({
   content: Content;
 }) {
   const [open, setOpen] = useState(false);
+  // A logo da barra só aparece depois que a logo grande da abertura sai da
+  // tela, para as duas não ficarem uma embaixo da outra.
+  const [scrolled, setScrolled] = useState(false);
   const home = engagementPath(locale);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 200);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -71,7 +81,7 @@ export function Header({
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[0.66rem] font-semibold tracking-[0.2em] whitespace-nowrap text-white/45 uppercase transition-colors hover:text-gold-100"
+                className="text-[0.66rem] font-semibold tracking-[0.2em] whitespace-nowrap text-white/62 uppercase transition-colors hover:text-gold-100"
               >
                 {link.label}
               </Link>
@@ -79,7 +89,15 @@ export function Header({
           </nav>
         </div>
 
-        <Link href={home} className="shrink-0" onClick={() => setOpen(false)}>
+        <Link
+          href={home}
+          className={`shrink-0 transition-opacity duration-300 ${
+            scrolled ? "opacity-100" : "opacity-0"
+          }`}
+          aria-hidden={!scrolled}
+          tabIndex={scrolled ? undefined : -1}
+          onClick={() => setOpen(false)}
+        >
           <Logo alt={content.hero.logoAlt} />
         </Link>
 
@@ -92,7 +110,7 @@ export function Header({
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[0.66rem] font-semibold tracking-[0.2em] whitespace-nowrap text-white/45 uppercase transition-colors hover:text-gold-100"
+                className="text-[0.66rem] font-semibold tracking-[0.2em] whitespace-nowrap text-white/62 uppercase transition-colors hover:text-gold-100"
               >
                 {link.label}
               </Link>
@@ -117,7 +135,7 @@ export function Header({
                 <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="eyebrow-caps block py-4 text-white/65"
+                  className="eyebrow-caps block py-4 text-white/80"
                 >
                   {link.label}
                 </Link>

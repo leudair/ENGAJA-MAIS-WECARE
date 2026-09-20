@@ -7,7 +7,7 @@ export default function NotFound() {
       <body className="grain flex min-h-dvh items-center justify-center px-6 text-center">
         <div>
           <p className="brushed-text text-6xl font-semibold">404</p>
-          <p className="mt-4 text-white/60">
+          <p className="mt-4 text-white/76">
             Página não encontrada / Page not found / Página no encontrada
           </p>
           <Link

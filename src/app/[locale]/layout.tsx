@@ -67,6 +67,8 @@ export default async function LocaleLayout({
       className={`${inter.variable} ${cinzel.variable}`}
     >
       <body className="relative min-h-dvh">
+        {/* Seda em movimento atrás de toda a página. */}
+        <div className="bg-motion" aria-hidden />
         <a
           href="#conteudo"
           className="sr-only rounded-md bg-gold-400 px-4 py-2 text-sm font-semibold text-ink-950 focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60]"

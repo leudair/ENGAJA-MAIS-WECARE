@@ -50,12 +50,6 @@ export type PlanCard = {
   name: string;
   price: string;
   metrics: { label: string; value: string }[];
-  /**
-   * Se o plano tem nome comercial próprio. Os combos da família
-   * Intermediária não têm: ali o preço é a identidade, e repetir
-   * "Intermediário • 1.497" em cima de "R$ 1.497" só polui.
-   */
-  ownName: boolean;
   featured: boolean;
   /**
    * Posição dentro da família, do mais caro para o mais barato. Manda no
@@ -86,12 +80,13 @@ const familyMetal: Record<PlanFamilyId, MetalKind> = {
   start: "bronze",
 };
 
-function cardName(locale: Locale, c: Content, plan: PlanData): string {
+function cardName(c: Content, plan: PlanData): string {
   if (plan.name) return plan.name;
-  // Sem nome comercial próprio: a família mais o preço identificam o plano,
-  // como no documento de combos ("Intermediário • 1.497").
+  // Sem nome comercial próprio: a família mais o sufixo, no mesmo padrão da
+  // família Start (Start Max, Start Plus, Start).
   const family = c.plans.families[plan.family].name;
-  return `${family} • ${number(locale, plan.priceBRL)}`;
+  if (!plan.suffix) return family;
+  return `${family} ${c.plans.suffixes[plan.suffix]}`;
 }
 
 function toCard(
@@ -102,8 +97,7 @@ function toCard(
 ): PlanCard {
   return {
     id: plan.id,
-    name: cardName(locale, c, plan),
-    ownName: plan.name !== null,
+    name: cardName(c, plan),
     price: formatPrice(locale, plan.priceBRL),
     metrics: plan.metrics.map((range, i) => ({
       label: c.plans.metricLabels[i],

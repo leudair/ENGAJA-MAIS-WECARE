@@ -136,6 +136,8 @@ export type Content = {
     recommended: string;
     /** Tarja do plano de maior volume dentro da família. */
     topLabel: string;
+    /** Sufixos dos combos sem nome comercial próprio. */
+    suffixes: { max: string; plus: string };
     /** Título da lista de entrega dentro de cada combo. */
     metricsTitle: string;
     /** Aviso de que os planos não incluem seguidores. */

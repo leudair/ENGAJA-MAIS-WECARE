@@ -162,17 +162,15 @@ export function PlanFamilyCard({
                     <span className="offer-crown mt-3">{c.plans.topLabel}</span>
                   )}
 
-                  {plan.ownName && (
-                    <h3
-                      className={`display-caps text-onmetal ${
-                        plan.tier === 1
-                          ? "mt-3 text-2xl sm:text-[1.7rem]"
-                          : "mt-2 text-lg sm:text-xl"
-                      }`}
-                    >
-                      {plan.name}
-                    </h3>
-                  )}
+                  <h3
+                    className={`display-caps text-onmetal ${
+                      plan.tier === 1
+                        ? "mt-3 text-2xl sm:text-[1.7rem]"
+                        : "mt-2 text-lg sm:text-xl"
+                    }`}
+                  >
+                    {plan.name}
+                  </h3>
                   <p
                     className={`display mt-2 leading-none text-onmetal ${
                       plan.tier === 1 ? "text-[2.9rem]" : "text-[2.4rem]"
@@ -316,48 +314,87 @@ export function PlanComparison({
             <p className="eyebrow">{family.name}</p>
 
             <div className="mt-3 grid grid-cols-[minmax(0,1fr)] gap-3 sm:grid-cols-3">
-              {family.plans.map((plan) => (
-                <div
-                  key={plan.id}
-                  className="flex flex-col rounded-[14px] border border-white/10 bg-ink-800/70 px-4 pt-4 pb-5"
-                >
-                  {plan.ownName && (
-                    <p className="display-caps text-[0.78rem] text-gold-bright">
+              {family.plans.map((plan) => {
+                // O combo de maior volume é chapa de ouro: ali o texto é
+                // escuro, como em toda peça de metal claro da página.
+                const onMetal = plan.tier === 1;
+                return (
+                  <div
+                    key={plan.id}
+                    className={`combo combo-${plan.tier} flex flex-col`}
+                  >
+                    {onMetal && (
+                      <span className="offer-crown mb-3 self-start">
+                        {c.plans.topLabel}
+                      </span>
+                    )}
+
+                    <p
+                      className={`display-caps text-[0.82rem] ${
+                        onMetal ? "text-onmetal" : "text-gold-bright"
+                      }`}
+                    >
                       {plan.name}
                     </p>
-                  )}
-                  <p
-                    className={`display text-xl text-paper ${
-                      plan.ownName ? "mt-1" : ""
-                    }`}
-                  >
-                    {plan.price}
-                  </p>
+                    <p
+                      className={`display mt-1 ${
+                        onMetal ? "text-2xl text-onmetal" : "text-xl text-paper"
+                      }`}
+                    >
+                      {plan.price}
+                    </p>
 
-                  <ul className="mt-3 flex-1 space-y-0">
-                    {plan.metrics.map((metric) => (
-                      <li
-                        key={metric.label}
-                        className="flex items-baseline justify-between gap-2 border-t border-white/12 py-1.5"
+                    <ul className="mt-3 flex-1 space-y-0">
+                      {plan.metrics.map((metric) => (
+                        <li
+                          key={metric.label}
+                          className={`flex items-baseline justify-between gap-2 border-t py-1.5 ${
+                            onMetal ? "border-black/25" : "border-white/12"
+                          }`}
+                        >
+                          <span
+                            className={`text-[0.74rem] leading-snug ${
+                              onMetal ? "text-onmetal-soft" : "text-paper-dim"
+                            }`}
+                          >
+                            {metric.label}
+                          </span>
+                          <span
+                            className={`display shrink-0 text-right text-[0.82rem] ${
+                              onMetal ? "text-onmetal" : "text-gold-bright"
+                            }`}
+                          >
+                            {metric.value}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {plan.tier === 1 ? (
+                      <RubyButton
+                        href={contactHref}
+                        className="mt-4 w-full px-2 text-[0.6rem]"
                       >
-                        <span className="text-[0.7rem] leading-snug text-paper-weak">
-                          {metric.label}
-                        </span>
-                        <span className="display shrink-0 text-right text-[0.78rem] text-gold-bright">
-                          {metric.value}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <QuietButton
-                    href={contactHref}
-                    className="mt-4 w-full px-2 text-[0.6rem]"
-                  >
-                    {c.plans.cta}
-                  </QuietButton>
-                </div>
-              ))}
+                        {c.plans.cta}
+                      </RubyButton>
+                    ) : plan.tier === 2 ? (
+                      <MetalButton
+                        href={contactHref}
+                        className="mt-4 w-full px-2 text-[0.6rem]"
+                      >
+                        {c.plans.cta}
+                      </MetalButton>
+                    ) : (
+                      <QuietButton
+                        href={contactHref}
+                        className="mt-4 w-full px-2 text-[0.6rem]"
+                      >
+                        {c.plans.cta}
+                      </QuietButton>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         ))}

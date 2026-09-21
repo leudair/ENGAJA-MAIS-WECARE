@@ -23,12 +23,14 @@ export type Range = readonly [number, number];
 export type PlanData = {
   id: string;
   family: PlanFamilyId;
-  /**
-   * Nome comercial fixo, igual nos três idiomas. Quando é `null`, o nome sai
-   * da família mais o preço, como no documento ("Intermediário • 1.497"), que
-   * identifica o valor e não cria nome comercial novo.
-   */
+  /** Nome comercial fixo, igual nos três idiomas. */
   name: string | null;
+  /**
+   * Quando o combo não tem nome comercial fixo, o nome sai da família mais
+   * este sufixo, traduzido em `plans.suffixes`. A família Intermediária usa
+   * o mesmo padrão da Start: Max no maior, Plus no do meio, nada no menor.
+   */
+  suffix?: "max" | "plus";
   priceBRL: number;
   /** Na ordem dos rótulos em `plans.metricLabels`. */
   metrics: readonly [Range, Range, Range, Range, Range];
@@ -90,6 +92,7 @@ export const plansData: readonly PlanData[] = [
     id: "intermediario-1497",
     family: "intermediate",
     name: null,
+    suffix: "max",
     priceBRL: 1497,
     metrics: [
       [20000, 35000],
@@ -104,6 +107,7 @@ export const plansData: readonly PlanData[] = [
     id: "intermediario-997",
     family: "intermediate",
     name: null,
+    suffix: "plus",
     priceBRL: 997,
     metrics: [
       [12000, 20000],

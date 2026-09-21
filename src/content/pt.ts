@@ -173,7 +173,7 @@ export const pt: Content = {
     compareLabel: "Comparar todos os planos",
     compareNote: "Os nove planos, com preço e números por publicação.",
     recommended: "Recomendado",
-    topLabel: "Maior volume da família",
+    crowns: { influencer: "Plano Influencer" },
     suffixes: { max: "Max", plus: "Plus" },
     metricsTitle: "Por publicação",
     noFollowers:

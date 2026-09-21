@@ -87,6 +87,15 @@ export function MetalButton({ href, children, className = "" }: ButtonProps) {
   );
 }
 
+/** Chapa de ouro com filete de LED vermelho: o botão do combo de topo. */
+export function LedButton({ href, children, className = "" }: ButtonProps) {
+  return (
+    <Link href={href} className={`btn btn-led ${className}`}>
+      {children}
+    </Link>
+  );
+}
+
 /** Botão secundário, só com o fio dourado. */
 export function QuietButton({ href, children, className = "" }: ButtonProps) {
   return (

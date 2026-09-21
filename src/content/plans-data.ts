@@ -36,6 +36,8 @@ export type PlanData = {
   metrics: readonly [Range, Range, Range, Range, Range];
   /** Card em destaque na família. Um por família. */
   featured?: boolean;
+  /** Tarja de posicionamento, quando o combo tem uma. */
+  crown?: "influencer";
 };
 
 export const planFamilyOrder: readonly PlanFamilyId[] = [
@@ -50,6 +52,7 @@ export const plansData: readonly PlanData[] = [
     id: "executivo-black",
     family: "premium",
     name: "Executivo Black",
+    crown: "influencer",
     priceBRL: 4987,
     metrics: [
       [80000, 120000],

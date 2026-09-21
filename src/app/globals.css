@@ -411,50 +411,69 @@ body {
 }
 
 /*
- * Os nove combos da lista de comparação. Mesma ideia das ofertas: o de
- * maior volume da família é chapa de ouro escovado levantada, o do meio
- * é preto com fio dourado e leve relevo, o de entrada é preto liso.
+ * Os nove combos da lista de comparação. Cada um é chapa de metal
+ * escovado, e o metal desce com o preço dentro da família: ouro no de
+ * maior volume, prata no do meio, bronze no de entrada. A espessura da
+ * parede acompanha o mesmo caminho.
  */
 .combo {
+  position: relative;
   border-radius: 16px;
   padding: 1rem 1rem 1.15rem;
-}
-
-.combo-3 {
-  background: var(--color-ink-850);
-  box-shadow:
-    inset 0 0 0 1px rgb(255 255 255 / 0.07),
-    inset 0 1px 0 rgb(255 255 255 / 0.05);
-}
-
-.combo-2 {
-  background: linear-gradient(180deg, #1b1c1e 0%, #0e0f10 100%);
-  box-shadow:
-    inset 0 0 0 1px rgb(210 174 100 / 0.38),
-    inset 0 1px 0 rgb(242 217 147 / 0.16),
-    0 1px 0 #3a2a0d,
-    0 2px 0 #2a1e09,
-    0 3px 0 #1c1406,
-    0 8px 14px -5px rgb(0 0 0 / 0.75);
-}
-
-.combo-1 {
-  background-image: var(--brush-lines), var(--metal-gold);
+  background-image: var(--brush-lines), var(--metal);
   background-size:
     100% 2px,
     100% 100%;
+  color: var(--color-onmetal);
+}
+
+.combo-1 {
   box-shadow:
     inset 0 1px 0 rgb(255 253 243 / 0.85),
     inset 0 0 0 1px rgb(123 84 32 / 0.6),
     inset 0 -8px 14px rgb(74 53 8 / 0.28),
-    0 1px 0 #8a6524,
-    0 2px 0 #7b5a1f,
-    0 3px 0 #6b4f1c,
-    0 4px 0 #56400f,
-    0 5px 0 #41300b,
-    0 6px 0 #2d2108,
+    0 1px 0 var(--plate-1),
+    0 2px 0 var(--plate-1),
+    0 3px 0 var(--plate-2),
+    0 4px 0 var(--plate-2),
+    0 5px 0 var(--plate-3),
+    0 6px 0 var(--plate-4),
     0 14px 22px -6px rgb(0 0 0 / 0.7),
     0 0 40px -12px rgb(210 174 100 / 0.5);
+}
+
+.combo-2 {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.7),
+    inset 0 0 0 1px rgb(0 0 0 / 0.35),
+    inset 0 -7px 12px rgb(0 0 0 / 0.2),
+    0 1px 0 var(--plate-1),
+    0 2px 0 var(--plate-2),
+    0 3px 0 var(--plate-3),
+    0 4px 0 var(--plate-4),
+    0 11px 18px -6px rgb(0 0 0 / 0.7);
+}
+
+.combo-3 {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.55),
+    inset 0 0 0 1px rgb(0 0 0 / 0.38),
+    inset 0 -6px 10px rgb(0 0 0 / 0.22),
+    0 1px 0 var(--plate-2),
+    0 2px 0 var(--plate-3),
+    0 3px 0 var(--plate-4),
+    0 9px 15px -6px rgb(0 0 0 / 0.68);
+}
+
+/*
+ * Número em relevo. O fio claro em cima e a sombra embaixo dão a letra
+ * gravada na chapa, sem estourar o espaço da linha.
+ */
+.num-emboss {
+  text-shadow:
+    0 1px 0 rgb(255 255 255 / 0.55),
+    0 -1px 0 rgb(0 0 0 / 0.22),
+    0 2px 2px rgb(0 0 0 / 0.18);
 }
 
 /* Tarja do plano de maior volume, acima da caixa. */
@@ -618,6 +637,60 @@ body {
     0 2px 0 #4b070c,
     0 4px 8px -3px rgb(0 0 0 / 0.75),
     0 0 22px -8px rgb(181 24 31 / 0.5);
+}
+
+/*
+ * Chapa de ouro com filete de LED vermelho em volta: é o botão dos combos
+ * de maior volume. O vermelho vira contorno e brilho, e não o fundo.
+ */
+.btn-led {
+  border: 2px solid var(--color-ruby-500);
+  border-top-color: #d9313a;
+  background-image: var(--brush-lines), var(--metal-gold);
+  background-size:
+    100% 2px,
+    100% 100%;
+  color: #141414;
+  text-shadow: 0 1px 0 rgb(255 250 227 / 0.55);
+  box-shadow:
+    inset 0 1px 0 rgb(255 253 243 / 0.9),
+    inset 0 -5px 10px rgb(74 53 8 / 0.35),
+    0 1px 0 #8a6524,
+    0 2px 0 #7b5a1f,
+    0 3px 0 #6b4f1c,
+    0 4px 0 #56400f,
+    0 5px 0 #41300b,
+    0 8px 13px -4px rgb(0 0 0 / 0.7),
+    0 0 14px -1px rgb(181 24 31 / 0.85),
+    0 0 30px -4px rgb(181 24 31 / 0.6);
+}
+
+.btn-led:hover {
+  transform: translateY(-2px);
+  border-color: #e0343b;
+  box-shadow:
+    inset 0 1px 0 rgb(255 253 243 / 1),
+    inset 0 -5px 10px rgb(74 53 8 / 0.35),
+    0 1px 0 #8a6524,
+    0 2px 0 #7b5a1f,
+    0 3px 0 #6b4f1c,
+    0 4px 0 #56400f,
+    0 5px 0 #41300b,
+    0 6px 0 #2d2108,
+    0 7px 0 #1f1706,
+    0 12px 18px -4px rgb(0 0 0 / 0.75),
+    0 0 20px 0 rgb(181 24 31 / 1),
+    0 0 44px -4px rgb(181 24 31 / 0.75);
+}
+
+.btn-led:active {
+  transform: translateY(4px);
+  box-shadow:
+    inset 0 3px 7px rgb(74 53 8 / 0.5),
+    0 1px 0 #6b4f1c,
+    0 2px 0 #41300b,
+    0 4px 8px -3px rgb(0 0 0 / 0.75),
+    0 0 12px -2px rgb(181 24 31 / 0.7);
 }
 
 /* Botão discreto: mesma espessura, só que sem a chapa cheia. */

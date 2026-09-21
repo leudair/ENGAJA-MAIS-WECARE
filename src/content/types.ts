@@ -134,8 +134,8 @@ export type Content = {
     compareNote: string;
     /** Selo da família recomendada. */
     recommended: string;
-    /** Tarja do plano de maior volume dentro da família. */
-    topLabel: string;
+    /** Tarjas de posicionamento, por chave usada em `plans-data`. */
+    crowns: { influencer: string };
     /** Sufixos dos combos sem nome comercial próprio. */
     suffixes: { max: string; plus: string };
     /** Título da lista de entrega dentro de cada combo. */

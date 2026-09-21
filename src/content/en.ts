@@ -171,7 +171,7 @@ export const en: Content = {
     compareLabel: "Compare every plan",
     compareNote: "All nine plans, with price and per-post numbers.",
     recommended: "Recommended",
-    topLabel: "Highest volume in the family",
+    crowns: { influencer: "Influencer Plan" },
     suffixes: { max: "Max", plus: "Plus" },
     metricsTitle: "Per post",
     noFollowers:

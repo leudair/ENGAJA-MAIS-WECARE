@@ -3,14 +3,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import type { Content } from "@/content";
 import type { PlanCard, PlanFamilyCard } from "@/lib/plans";
-import {
-  Bullet,
-  ChevronIcon,
-  MetalButton,
-  MetalPlate,
-  QuietButton,
-  RubyButton,
-} from "./ui";
+import { Bullet, ChevronIcon, LedButton, MetalButton, MetalPlate } from "./ui";
 
 /** Lista de entrega por publicação, com o valor alinhado à direita. */
 function PlanMetrics({ metrics }: { metrics: PlanCard["metrics"] }) {
@@ -21,10 +14,10 @@ function PlanMetrics({ metrics }: { metrics: PlanCard["metrics"] }) {
           key={metric.label}
           className="flex items-baseline justify-between gap-3 border-b border-black/25 py-2.5 last:border-0"
         >
-          <span className="text-[0.82rem] leading-snug font-medium text-onmetal">
+          <span className="text-[0.84rem] leading-snug font-bold text-onmetal">
             {metric.label}
           </span>
-          <span className="display shrink-0 text-right text-[1rem] text-onmetal">
+          <span className="display num-emboss shrink-0 text-right text-[1.02rem] text-onmetal">
             {metric.value}
           </span>
         </li>
@@ -32,6 +25,16 @@ function PlanMetrics({ metrics }: { metrics: PlanCard["metrics"] }) {
     </ul>
   );
 }
+
+/**
+ * O metal de cada combo na lista de comparação: ouro no de maior volume
+ * da família, prata no do meio, bronze no de entrada.
+ */
+const comboMetal: Record<1 | 2 | 3, string> = {
+  1: "metal-gold",
+  2: "metal-silver",
+  3: "metal-bronze",
+};
 
 /** Quanto mais caro o plano, mais trabalhada é a caixa da oferta. */
 const offerClass: Record<1 | 2 | 3, string> = {
@@ -158,8 +161,8 @@ export function PlanFamilyCard({
                     {family.name}
                   </p>
 
-                  {plan.tier === 1 && (
-                    <span className="offer-crown mt-3">{c.plans.topLabel}</span>
+                  {plan.crown && (
+                    <span className="offer-crown mt-3">{plan.crown}</span>
                   )}
 
                   <h3
@@ -225,12 +228,12 @@ export function PlanFamilyCard({
 
                   {offer &&
                     (offer.tier === 1 ? (
-                      <RubyButton
+                      <LedButton
                         href={contactHref}
                         className="flex-1 px-2 text-[0.62rem] sm:text-[0.7rem]"
                       >
                         {c.plans.cta}
-                      </RubyButton>
+                      </LedButton>
                     ) : (
                       <MetalButton
                         href={contactHref}
@@ -314,87 +317,57 @@ export function PlanComparison({
             <p className="eyebrow">{family.name}</p>
 
             <div className="mt-3 grid grid-cols-[minmax(0,1fr)] gap-3 sm:grid-cols-3">
-              {family.plans.map((plan) => {
-                // O combo de maior volume é chapa de ouro: ali o texto é
-                // escuro, como em toda peça de metal claro da página.
-                const onMetal = plan.tier === 1;
-                return (
-                  <div
-                    key={plan.id}
-                    className={`combo combo-${plan.tier} flex flex-col`}
-                  >
-                    {onMetal && (
-                      <span className="offer-crown mb-3 self-start">
-                        {c.plans.topLabel}
-                      </span>
-                    )}
+              {family.plans.map((plan) => (
+                <div
+                  key={plan.id}
+                  className={`combo metal ${comboMetal[plan.tier]} combo-${plan.tier} flex flex-col`}
+                >
+                  {plan.crown && (
+                    <span className="offer-crown mb-3 self-start">
+                      {plan.crown}
+                    </span>
+                  )}
 
-                    <p
-                      className={`display-caps text-[0.82rem] ${
-                        onMetal ? "text-onmetal" : "text-gold-bright"
-                      }`}
+                  <p className="display-caps text-[0.84rem] text-onmetal">
+                    {plan.name}
+                  </p>
+                  <p className="display num-emboss mt-1 text-2xl text-onmetal">
+                    {plan.price}
+                  </p>
+
+                  <ul className="mt-3 flex-1 space-y-0">
+                    {plan.metrics.map((metric) => (
+                      <li
+                        key={metric.label}
+                        className="flex items-baseline justify-between gap-2 border-t border-black/25 py-1.5"
+                      >
+                        <span className="text-[0.76rem] leading-snug font-bold text-onmetal">
+                          {metric.label}
+                        </span>
+                        <span className="display num-emboss shrink-0 text-right text-[0.86rem] text-onmetal">
+                          {metric.value}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {plan.tier === 1 ? (
+                    <LedButton
+                      href={contactHref}
+                      className="mt-4 w-full px-2 text-[0.6rem]"
                     >
-                      {plan.name}
-                    </p>
-                    <p
-                      className={`display mt-1 ${
-                        onMetal ? "text-2xl text-onmetal" : "text-xl text-paper"
-                      }`}
+                      {c.plans.cta}
+                    </LedButton>
+                  ) : (
+                    <MetalButton
+                      href={contactHref}
+                      className="mt-4 w-full px-2 text-[0.6rem]"
                     >
-                      {plan.price}
-                    </p>
-
-                    <ul className="mt-3 flex-1 space-y-0">
-                      {plan.metrics.map((metric) => (
-                        <li
-                          key={metric.label}
-                          className={`flex items-baseline justify-between gap-2 border-t py-1.5 ${
-                            onMetal ? "border-black/25" : "border-white/12"
-                          }`}
-                        >
-                          <span
-                            className={`text-[0.74rem] leading-snug ${
-                              onMetal ? "text-onmetal-soft" : "text-paper-dim"
-                            }`}
-                          >
-                            {metric.label}
-                          </span>
-                          <span
-                            className={`display shrink-0 text-right text-[0.82rem] ${
-                              onMetal ? "text-onmetal" : "text-gold-bright"
-                            }`}
-                          >
-                            {metric.value}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {plan.tier === 1 ? (
-                      <RubyButton
-                        href={contactHref}
-                        className="mt-4 w-full px-2 text-[0.6rem]"
-                      >
-                        {c.plans.cta}
-                      </RubyButton>
-                    ) : plan.tier === 2 ? (
-                      <MetalButton
-                        href={contactHref}
-                        className="mt-4 w-full px-2 text-[0.6rem]"
-                      >
-                        {c.plans.cta}
-                      </MetalButton>
-                    ) : (
-                      <QuietButton
-                        href={contactHref}
-                        className="mt-4 w-full px-2 text-[0.6rem]"
-                      >
-                        {c.plans.cta}
-                      </QuietButton>
-                    )}
-                  </div>
-                );
-              })}
+                      {c.plans.cta}
+                    </MetalButton>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         ))}

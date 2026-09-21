@@ -51,6 +51,8 @@ export type PlanCard = {
   price: string;
   metrics: { label: string; value: string }[];
   featured: boolean;
+  /** Tarja de posicionamento, já traduzida, quando o combo tem uma. */
+  crown: string | null;
   /**
    * Posição dentro da família, do mais caro para o mais barato. Manda no
    * acabamento da oferta: 1 é a chapa em relevo, 3 é a caixa simples.
@@ -104,6 +106,7 @@ function toCard(
       value: formatRange(locale, range, c.plans.rangeSeparator),
     })),
     featured: plan.featured === true,
+    crown: plan.crown ? c.plans.crowns[plan.crown] : null,
     tier,
   };
 }

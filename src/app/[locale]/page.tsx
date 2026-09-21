@@ -6,9 +6,8 @@ import {
   Bullet,
   Eyebrow,
   Lead,
-  DarkCard,
-  GoldPlate,
   MetalButton,
+  MetalPlate,
   QuietButton,
   RubyButton,
   Rule,
@@ -20,18 +19,32 @@ import { getPlanFamilies, getShowcasePlan, type PlanCard } from "@/lib/plans";
 import { isLocale, viralGrowthPath } from "@/lib/routes";
 
 /** Lista de entrega por publicação, com o valor alinhado à direita. */
-function PlanMetrics({ metrics }: { metrics: PlanCard["metrics"] }) {
+function PlanMetrics({
+  metrics,
+  tone = "dark",
+}: {
+  metrics: PlanCard["metrics"];
+  tone?: "dark" | "metal";
+}) {
+  const label = tone === "metal" ? "text-onmetal-soft/85" : "text-paper-dim";
+  const value = tone === "metal" ? "text-onmetal" : "text-gold-bright";
+  const line = tone === "metal" ? "border-black/15" : "border-white/8";
+
   return (
     <ul className="space-y-0">
       {metrics.map((metric) => (
         <li
           key={metric.label}
-          className="rule-card flex flex-col gap-0.5 py-2 first:border-t-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4 sm:py-2.5"
+          className={`flex flex-col gap-0.5 border-b py-2 last:border-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4 sm:py-2.5 ${line}`}
         >
-          <span className="text-[0.78rem] leading-snug text-list sm:text-[0.82rem]">
+          <span
+            className={`text-[0.78rem] leading-snug sm:text-[0.82rem] ${label}`}
+          >
             {metric.label}
           </span>
-          <span className="display text-[0.95rem] text-gold-soft sm:shrink-0 sm:text-right">
+          <span
+            className={`display text-[0.95rem] sm:shrink-0 sm:text-right ${value}`}
+          >
             {metric.value}
           </span>
         </li>
@@ -79,8 +92,8 @@ export default async function EngagementPage({
             </div>
           </div>
 
-          {/* Placa de ouro com o limite do ciclo, o dado que mais pesa. */}
-          <GoldPlate className="mx-auto w-full max-w-sm">
+          {/* Chapa de bronze com o limite do ciclo, o dado que mais pesa. */}
+          <MetalPlate kind="bronze" className="mx-auto w-full max-w-sm">
             <div className="px-7 py-9 text-center sm:px-9 sm:py-11">
               <p className="text-[0.66rem] font-bold tracking-[0.3em] text-onmetal-soft/80 uppercase">
                 {c.hero.badge.brand}
@@ -96,7 +109,7 @@ export default async function EngagementPage({
                 {c.hero.badge.note}
               </p>
             </div>
-          </GoldPlate>
+          </MetalPlate>
         </div>
 
         {/* Faixa de selos: só fatos já definidos. */}
@@ -155,7 +168,7 @@ export default async function EngagementPage({
           {/* O teto do ciclo é a dúvida número um de quem compra, então ele
               aparece numa chapa própria, antes dos preços. */}
           <div className="mx-auto mt-9 max-w-2xl">
-            <GoldPlate>
+            <MetalPlate kind="gold">
               <div className="flex items-center gap-4 px-4 py-4 sm:gap-6 sm:px-7 sm:py-6">
                 <p className="display shrink-0 text-[3.2rem] leading-none text-onmetal sm:text-[4rem]">
                   {c.plans.highlight.amount}
@@ -170,7 +183,7 @@ export default async function EngagementPage({
                   </p>
                 </div>
               </div>
-            </GoldPlate>
+            </MetalPlate>
           </div>
 
           <div className="mt-12 grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-3 lg:gap-7">
@@ -206,24 +219,24 @@ export default async function EngagementPage({
             <Lead>{c.showcase.lead}</Lead>
           </div>
 
-          {/* Card escuro com moldura rubi: o exemplo de plano real. */}
-          <div className="rounded-[22px] p-[3px] shadow-[0_0_44px_-16px_rgba(181,24,31,0.55)] ring-2 ring-ruby-500/80">
-            <DarkCard kind="gold">
+          {/* Chapa de ouro com borda rubi: o card de exemplo do documento. */}
+          <div className="rounded-[23px] p-[2px] shadow-[0_0_44px_-16px_rgba(181,24,31,0.55)] ring-2 ring-ruby-500/80">
+            <MetalPlate kind="gold">
               <div className="px-6 py-8 sm:px-9 sm:py-10">
-                <h3 className="display-caps text-2xl text-gold-line sm:text-[2rem]">
+                <h3 className="display-caps text-2xl text-onmetal sm:text-[2rem]">
                   {showcase.name}
                 </h3>
-                <p className="display mt-3 text-[3rem] leading-none text-paper sm:text-[3.6rem]">
+                <p className="display mt-3 text-[3rem] leading-none text-onmetal sm:text-[3.6rem]">
                   {showcase.price}
                 </p>
-                <p className="mt-3 text-[0.68rem] font-bold tracking-[0.2em] text-gold-line uppercase">
+                <p className="mt-3 text-[0.68rem] font-bold tracking-[0.2em] text-onmetal-soft/85 uppercase">
                   {c.showcase.planNote}
                 </p>
 
-                <div className="rule-card mt-6" />
+                <span className="mt-6 block h-px bg-black/20" />
 
                 <div className="mt-4">
-                  <PlanMetrics metrics={showcase.metrics} />
+                  <PlanMetrics metrics={showcase.metrics} tone="metal" />
                 </div>
 
                 <div className="mt-7">
@@ -232,7 +245,7 @@ export default async function EngagementPage({
                   </RubyButton>
                 </div>
               </div>
-            </DarkCard>
+            </MetalPlate>
           </div>
         </div>
       </section>

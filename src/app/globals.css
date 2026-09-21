@@ -41,15 +41,6 @@
   --color-bronze-500: #885c39;
   --color-bronze-700: #835735;
 
-  /* Ouro da referência do Gemini: moldura, título e filete dos cards. */
-  --color-gold-line: #c9a45c;
-  --color-gold-soft: #e8d39a;
-  --color-gold-deep: #8c6239;
-  --color-gold-rim: #ffe4a0;
-  /* Texto das listas sobre o card escuro. */
-  --color-list: #d1d5db;
-  --color-list-soft: #b8b6b0;
-
   /* Rubi: só no plano recomendado, nos CTAs principais e nos marcadores. */
   --color-ruby-500: #b5181f;
   --color-ruby-600: #a61412;
@@ -368,135 +359,8 @@ body {
 }
 
 /* ------------------------------------------------------------------ */
-/* Card escuro com moldura                                             */
-/* ------------------------------------------------------------------ */
-
-/*
- * O card de plano: fundo preto em degradê, moldura fina na cor da família
- * e a mesma espessura dos botões desenhada por sombras sólidas embaixo.
- * A cor da moldura vem de --card-accent, então ouro, prata e bronze
- * continuam separando Premium, Intermediário e Start.
- */
-.card-dark {
-  position: relative;
-  border-radius: 18px;
-  border: 2px solid var(--card-accent);
-  background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.07),
-    inset 0 0 30px rgb(0 0 0 / 0.5),
-    0 1px 0 var(--card-wall-1),
-    0 2px 0 var(--card-wall-1),
-    0 3px 0 var(--card-wall-2),
-    0 4px 0 var(--card-wall-2),
-    0 5px 0 var(--card-wall-3),
-    0 6px 0 var(--card-wall-3),
-    0 7px 0 var(--card-wall-4),
-    0 8px 0 var(--card-wall-4),
-    0 14px 20px -6px rgb(0 0 0 / 0.8),
-    0 30px 50px -20px rgb(0 0 0 / 0.95);
-}
-
-.card-gold {
-  --card-accent: var(--color-gold-line);
-  --card-wall-1: #7b5a1f;
-  --card-wall-2: #5e4417;
-  --card-wall-3: #422f10;
-  --card-wall-4: #281c09;
-}
-
-.card-silver {
-  --card-accent: #a6a7a7;
-  --card-wall-1: #5f6061;
-  --card-wall-2: #494a4b;
-  --card-wall-3: #343536;
-  --card-wall-4: #202021;
-}
-
-.card-bronze {
-  --card-accent: #b0825a;
-  --card-wall-1: #6a4830;
-  --card-wall-2: #513624;
-  --card-wall-3: #382518;
-  --card-wall-4: #21160e;
-}
-
-/* Filete que separa o cabeçalho e um serviço do outro. */
-.rule-card {
-  border-top: 1px solid rgb(201 164 92 / 0.28);
-}
-
-/*
- * Placa de ouro: o bloco do limite de 30 e o selo do topo. Degradê na
- * diagonal com aresta clara, como na referência.
- */
-.plate-gold {
-  border-radius: 14px;
-  border: 1px solid var(--color-gold-rim);
-  background: linear-gradient(145deg, #e8d39a 0%, #c9a45c 55%, #8c6239 100%);
-  color: #141414;
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.55),
-    0 1px 0 #8a6524,
-    0 2px 0 #7b5a1f,
-    0 3px 0 #6b4f1c,
-    0 4px 0 #56400f,
-    0 5px 0 #41300b,
-    0 6px 0 #2d2108,
-    0 12px 18px -6px rgb(0 0 0 / 0.7),
-    0 0 34px -8px rgb(201 164 92 / 0.45);
-}
-
-/* ------------------------------------------------------------------ */
 /* Botões                                                              */
 /* ------------------------------------------------------------------ */
-
-/*
- * Botão de filete dourado sobre preto, o padrão dos cards escuros. Mantém
- * a parede lateral, para continuar com o relevo que o Leudair pediu.
- */
-.btn-outline {
-  border: 1.5px solid var(--color-gold-line);
-  border-top-color: var(--color-gold-rim);
-  background: linear-gradient(180deg, #151515 0%, #050505 100%);
-  color: var(--color-gold-soft);
-  text-shadow: 0 1px 2px rgb(0 0 0 / 0.6);
-  box-shadow:
-    inset 0 0 14px rgb(201 164 92 / 0.14),
-    inset 0 1px 0 rgb(255 228 160 / 0.22),
-    0 1px 0 #7b5a1f,
-    0 2px 0 #6b4f1c,
-    0 3px 0 #56400f,
-    0 4px 0 #41300b,
-    0 5px 0 #2d2108,
-    0 9px 14px -4px rgb(0 0 0 / 0.75);
-}
-
-.btn-outline:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-gold-rim);
-  box-shadow:
-    inset 0 0 18px rgb(201 164 92 / 0.22),
-    inset 0 1px 0 rgb(255 228 160 / 0.3),
-    0 1px 0 #7b5a1f,
-    0 2px 0 #6b4f1c,
-    0 3px 0 #56400f,
-    0 4px 0 #41300b,
-    0 5px 0 #2d2108,
-    0 6px 0 #1f1706,
-    0 7px 0 #150f04,
-    0 13px 18px -4px rgb(0 0 0 / 0.8);
-}
-
-.btn-outline:active {
-  transform: translateY(4px);
-  box-shadow:
-    inset 0 3px 8px rgb(0 0 0 / 0.7),
-    inset 0 0 14px rgb(201 164 92 / 0.12),
-    0 1px 0 #56400f,
-    0 2px 0 #2d2108,
-    0 4px 8px -3px rgb(0 0 0 / 0.75);
-}
 
 .btn {
   display: inline-flex;
@@ -716,9 +580,9 @@ body {
 .badge-ruby {
   display: inline-flex;
   align-items: center;
-  border-radius: 8px;
-  border: 1px solid #8f1014;
-  background: #a81616;
+  border-radius: 9999px;
+  border: 1px solid var(--color-ruby-600);
+  background: var(--color-ruby-500);
   padding: 0.3rem 0.85rem;
   color: #fff;
   font-size: 0.6rem;

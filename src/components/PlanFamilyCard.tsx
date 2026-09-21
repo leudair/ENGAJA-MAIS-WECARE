@@ -3,7 +3,14 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import type { Content } from "@/content";
 import type { PlanCard, PlanFamilyCard } from "@/lib/plans";
-import { Bullet, ChevronIcon, MetalPlate, QuietButton, RubyButton } from "./ui";
+import {
+  CheckIcon,
+  ChevronIcon,
+  DarkCard,
+  OutlineButton,
+  QuietButton,
+  RubyButton,
+} from "./ui";
 
 /** Lista de entrega por publicação, com o valor alinhado à direita. */
 function PlanMetrics({ metrics }: { metrics: PlanCard["metrics"] }) {
@@ -12,12 +19,12 @@ function PlanMetrics({ metrics }: { metrics: PlanCard["metrics"] }) {
       {metrics.map((metric) => (
         <li
           key={metric.label}
-          className="flex items-baseline justify-between gap-3 border-b border-black/30 py-2.5 last:border-0"
+          className="rule-card flex items-baseline justify-between gap-3 py-2.5 first:border-t-0"
         >
-          <span className="text-[0.78rem] leading-snug text-onmetal-soft/85">
+          <span className="text-[0.82rem] leading-snug text-list">
             {metric.label}
           </span>
-          <span className="display shrink-0 text-right text-[0.92rem] text-onmetal">
+          <span className="display shrink-0 text-right text-[0.95rem] text-gold-soft">
             {metric.value}
           </span>
         </li>
@@ -69,13 +76,13 @@ export function PlanFamilyCard({
   return (
     <div className="relative">
       {family.recommended && (
-        <span className="badge-ruby absolute -top-3 right-5 z-10">
+        <span className="badge-ruby absolute -top-3 right-6 z-10">
           {c.plans.recommended}
         </span>
       )}
 
-      <MetalPlate kind={family.metal} className="h-full">
-        <div className="flex h-full flex-col px-5 pt-7 pb-9 sm:px-7 sm:pt-9 sm:pb-11">
+      <DarkCard kind={family.metal} className="h-full">
+        <div className="flex h-full flex-col px-6 pt-8 pb-9 sm:px-7 sm:pt-9 sm:pb-10">
           <div
             className="overflow-hidden transition-[height] duration-300 ease-out"
             style={height ? { height } : undefined}
@@ -92,40 +99,40 @@ export function PlanFamilyCard({
                 className="w-full shrink-0 self-start"
                 aria-hidden={page !== 0}
               >
-                <h3 className="display-caps text-xl text-onmetal sm:text-2xl">
+                <h3 className="display-caps text-2xl text-gold-line sm:text-[1.75rem]">
                   {family.name}
                 </h3>
-                <p className="mt-2 text-[0.82rem] leading-snug text-pretty text-onmetal-soft/80">
+                <p className="mt-1.5 text-[0.84rem] leading-snug text-pretty text-list-soft">
                   {family.tagline}
                 </p>
 
-                <p className="mt-6 text-[0.62rem] font-bold tracking-[0.26em] text-onmetal-soft/75 uppercase">
+                <p className="mt-6 text-[0.62rem] font-bold tracking-[0.22em] text-gold-deep uppercase">
                   {c.plans.fromLabel}
                 </p>
-                <p className="display mt-1 text-[2.6rem] leading-none text-onmetal">
+                <p className="display mt-1 text-[2.7rem] leading-none text-paper">
                   {family.fromPrice}
                 </p>
-                <p className="mt-2 text-[0.66rem] font-bold tracking-[0.2em] text-onmetal-soft/80 uppercase">
+                <p className="mt-2 text-[0.66rem] font-bold tracking-[0.18em] text-gold-line uppercase">
                   {c.plans.cycleLabel}
                 </p>
 
-                <span className="mt-6 block h-px bg-black/35" />
+                <div className="rule-card mt-6" />
 
-                <ul className="mt-5">
+                <ul className="mt-4">
                   {c.plans.metricLabels.map((label) => (
                     <li
                       key={label}
-                      className="flex items-start gap-2.5 border-b border-black/30 py-2.5 last:border-0"
+                      className="rule-card flex items-start gap-3 py-2.5 first:border-t-0"
                     >
-                      <Bullet />
-                      <span className="text-[0.85rem] leading-snug text-onmetal-soft">
+                      <CheckIcon />
+                      <span className="text-[0.88rem] leading-snug text-list">
                         {label}
                       </span>
                     </li>
                   ))}
                 </ul>
 
-                <p className="mt-5 text-[0.82rem] leading-snug text-pretty text-onmetal-soft/85">
+                <p className="mt-6 text-center text-[0.78rem] leading-snug text-pretty text-paper-weak italic">
                   {family.pitch}
                 </p>
               </div>
@@ -140,22 +147,22 @@ export function PlanFamilyCard({
                   className="w-full shrink-0 self-start"
                   aria-hidden={page !== index + 1}
                 >
-                  <p className="text-[0.6rem] font-bold tracking-[0.26em] text-onmetal-soft/70 uppercase">
+                  <p className="text-[0.6rem] font-bold tracking-[0.24em] text-gold-deep uppercase">
                     {family.name}
                   </p>
-                  <h3 className="display-caps mt-2 text-lg text-onmetal sm:text-xl">
+                  <h3 className="display-caps mt-2 text-xl text-gold-line">
                     {plan.name}
                   </h3>
-                  <p className="display mt-2 text-[2.4rem] leading-none text-onmetal">
+                  <p className="display mt-2 text-[2.5rem] leading-none text-paper">
                     {plan.price}
                   </p>
-                  <p className="mt-1.5 text-[0.66rem] font-bold tracking-[0.18em] text-onmetal-soft/80 uppercase">
+                  <p className="mt-1.5 text-[0.66rem] font-bold tracking-[0.18em] text-gold-line uppercase">
                     {c.plans.priceNote}
                   </p>
 
-                  <span className="mt-5 block h-px bg-black/35" />
+                  <div className="rule-card mt-5" />
 
-                  <p className="mt-4 text-[0.6rem] font-bold tracking-[0.24em] text-onmetal-soft/70 uppercase">
+                  <p className="mt-4 text-[0.6rem] font-bold tracking-[0.22em] text-gold-deep uppercase">
                     {c.plans.metricsTitle}
                   </p>
                   <div className="mt-1">
@@ -172,9 +179,7 @@ export function PlanFamilyCard({
               <button
                 type="button"
                 onClick={() => setPage(1)}
-                className={`btn w-full ${
-                  family.recommended ? "btn-ruby" : "btn-metal"
-                }`}
+                className="btn btn-outline w-full"
               >
                 {c.plans.openLabel}
                 <ChevronIcon className="-rotate-90" />
@@ -188,7 +193,7 @@ export function PlanFamilyCard({
                     aria-label={
                       page === 1 ? c.plans.backLabel : c.plans.prevLabel
                     }
-                    className="btn btn-quiet min-h-12 w-12 shrink-0 px-0"
+                    className="btn btn-outline min-h-12 w-12 shrink-0 px-0"
                   >
                     <ChevronIcon className="rotate-90" />
                   </button>
@@ -207,7 +212,7 @@ export function PlanFamilyCard({
                     onClick={() => setPage(page + 1)}
                     disabled={page === total}
                     aria-label={c.plans.nextLabel}
-                    className="btn btn-quiet min-h-12 w-12 shrink-0 px-0 disabled:pointer-events-none disabled:opacity-35"
+                    className="btn btn-outline min-h-12 w-12 shrink-0 px-0 disabled:pointer-events-none disabled:opacity-35"
                   >
                     <ChevronIcon className="-rotate-90" />
                   </button>
@@ -224,12 +229,12 @@ export function PlanFamilyCard({
                       aria-current={page === index + 1}
                       className={`h-1.5 rounded-full transition-all ${
                         page === index + 1
-                          ? "w-6 bg-black/55"
-                          : "w-1.5 bg-black/25"
+                          ? "w-6 bg-gold-line"
+                          : "w-1.5 bg-gold-line/30"
                       }`}
                     />
                   ))}
-                  <span className="ml-2 text-[0.62rem] font-bold tracking-[0.14em] text-onmetal-soft/70 uppercase">
+                  <span className="ml-2 text-[0.62rem] font-bold tracking-[0.14em] text-gold-deep uppercase">
                     {counter}
                   </span>
                 </div>
@@ -237,7 +242,7 @@ export function PlanFamilyCard({
             )}
           </div>
         </div>
-      </MetalPlate>
+      </DarkCard>
     </div>
   );
 }
@@ -260,17 +265,17 @@ export function PlanComparison({
     <details className="surface group mt-10 px-4 py-1 sm:px-6">
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3 py-4 text-left marker:content-none sm:py-5">
         <span>
-          <span className="display-caps block text-sm text-gold-bright sm:text-base">
+          <span className="display-caps block text-sm text-gold-line sm:text-base">
             {c.plans.compareLabel}
           </span>
           <span className="mt-1 block text-xs text-paper-faint">
             {c.plans.compareNote}
           </span>
         </span>
-        <ChevronIcon className="text-gold-bright transition-transform duration-200 group-open:rotate-180" />
+        <ChevronIcon className="text-gold-line transition-transform duration-200 group-open:rotate-180" />
       </summary>
 
-      <div className="border-t border-white/12 py-5">
+      <div className="rule-card py-5">
         {families.map((family) => (
           <div key={family.id} className="mb-8 last:mb-0">
             <p className="eyebrow">{family.name}</p>
@@ -279,9 +284,9 @@ export function PlanComparison({
               {family.plans.map((plan) => (
                 <div
                   key={plan.id}
-                  className="flex flex-col rounded-[14px] border border-white/10 bg-ink-800/70 px-4 pt-4 pb-5"
+                  className="flex flex-col rounded-[14px] border border-gold-line/25 bg-ink-900 px-4 pt-4 pb-5"
                 >
-                  <p className="display-caps text-[0.78rem] text-gold-bright">
+                  <p className="display-caps text-[0.78rem] text-gold-line">
                     {plan.name}
                   </p>
                   <p className="display mt-1 text-xl text-paper">
@@ -292,12 +297,12 @@ export function PlanComparison({
                     {plan.metrics.map((metric) => (
                       <li
                         key={metric.label}
-                        className="flex items-baseline justify-between gap-2 border-t border-white/12 py-1.5"
+                        className="rule-card flex items-baseline justify-between gap-2 py-1.5"
                       >
-                        <span className="text-[0.7rem] leading-snug text-paper-weak">
+                        <span className="text-[0.7rem] leading-snug text-list-soft">
                           {metric.label}
                         </span>
-                        <span className="display shrink-0 text-right text-[0.78rem] text-gold-bright">
+                        <span className="display shrink-0 text-right text-[0.78rem] text-gold-soft">
                           {metric.value}
                         </span>
                       </li>

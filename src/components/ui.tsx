@@ -87,6 +87,15 @@ export function MetalButton({ href, children, className = "" }: ButtonProps) {
   );
 }
 
+/** Filete dourado sobre preto: o botão dos cards escuros. */
+export function OutlineButton({ href, children, className = "" }: ButtonProps) {
+  return (
+    <Link href={href} className={`btn btn-outline ${className}`}>
+      {children}
+    </Link>
+  );
+}
+
 /** Botão secundário, só com o fio dourado. */
 export function QuietButton({ href, children, className = "" }: ButtonProps) {
   return (
@@ -100,20 +109,21 @@ export function QuietButton({ href, children, className = "" }: ButtonProps) {
 /* Superfícies                                                         */
 /* ------------------------------------------------------------------ */
 
+/** A cor da moldura de cada família: ouro, prata e bronze. */
 export type MetalKind = "gold" | "silver" | "bronze";
 
-const metalClass: Record<MetalKind, string> = {
-  gold: "metal-gold",
-  silver: "metal-silver",
-  bronze: "metal-bronze",
+const cardClass: Record<MetalKind, string> = {
+  gold: "card-gold",
+  silver: "card-silver",
+  bronze: "card-bronze",
 };
 
 /**
- * Chapa de metal escovado. É a superfície dos cards de família e do card
- * de exemplo: o degradê, a estria e a espessura são CSS, então preço e
- * métrica seguem sendo texto que dá para selecionar e traduzir.
+ * Card escuro com moldura fina na cor da família. Substituiu a chapa de
+ * metal claro depois da referência que o Leudair mandou em 21/09/2026:
+ * fundo preto, moldura dourada e a espessura desenhada por sombras.
  */
-export function MetalPlate({
+export function DarkCard({
   kind,
   children,
   className = "",
@@ -123,11 +133,21 @@ export function MetalPlate({
   className?: string;
 }) {
   return (
-    <div className={`metal plate ${metalClass[kind]} ${className}`}>
-      {/* Quina de dentro: aresta escura por fora e fio claro logo depois. */}
-      <div className="plate-rim relative">{children}</div>
+    <div className={`card-dark ${cardClass[kind]} ${className}`}>
+      {children}
     </div>
   );
+}
+
+/** Placa de ouro maciça: o limite de 30 e o selo do topo. */
+export function GoldPlate({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return <div className={`plate-gold ${className}`}>{children}</div>;
 }
 
 /** Painel escuro com fio dourado. */
@@ -154,6 +174,26 @@ export function Surface({
 /** Marcador circular rubi das listas. */
 export function Bullet() {
   return <span className="bullet-ruby mt-2" aria-hidden />;
+}
+
+/** Visto dourado que abre cada linha de serviço. */
+export function CheckIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden
+      className={`mt-[0.3rem] size-3.5 shrink-0 text-gold-line ${className}`}
+    >
+      <path
+        d="m3 8.5 3.2 3.2L13 5"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
 }
 
 export function ArrowIcon({ className = "" }: { className?: string }) {

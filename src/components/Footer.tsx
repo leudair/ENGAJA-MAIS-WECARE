@@ -12,11 +12,11 @@ export function Footer({
   content: Content;
 }) {
   return (
-    <footer className="relative mt-8 border-t border-gold-700/30 bg-ink-950/70">
+    <footer className="relative mt-8 border-t border-gold-edge/40 bg-ink-900/80">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-12 sm:px-8 md:flex-row md:items-start md:justify-between">
         <div className="max-w-sm">
           <Logo alt={content.hero.logoAlt} />
-          <p className="mt-4 text-sm leading-relaxed text-white/66">
+          <p className="mt-4 text-sm leading-relaxed text-paper-dim">
             {content.footer.tagline}
           </p>
         </div>
@@ -27,28 +27,28 @@ export function Footer({
         >
           <Link
             href={engagementPath(locale)}
-            className="eyebrow-caps text-white/62 transition-colors hover:text-gold-100"
+            className="eyebrow transition-colors hover:text-gold-bright"
           >
             {content.footer.engagement}
           </Link>
           <Link
             href={viralGrowthPath(locale)}
-            className="eyebrow-caps text-white/62 transition-colors hover:text-gold-100"
+            className="eyebrow transition-colors hover:text-gold-bright"
           >
             {content.footer.viralGrowth}
           </Link>
           <Link
             href={`${engagementPath(locale)}#faq`}
-            className="eyebrow-caps text-white/62 transition-colors hover:text-gold-100"
+            className="eyebrow transition-colors hover:text-gold-bright"
           >
             {content.nav.faq}
           </Link>
         </nav>
       </div>
 
-      <div className="brushed-rule-soft h-px w-full opacity-30" aria-hidden />
+      <div className="rule-gold h-px w-full opacity-30" aria-hidden />
 
-      <p className="mx-auto max-w-6xl px-5 py-6 text-xs text-white/52 sm:px-8">
+      <p className="mx-auto max-w-6xl px-5 py-6 text-xs text-paper-weak sm:px-8">
         © {new Date().getFullYear()} {siteConfig.brand}. {content.footer.rights}
       </p>
     </footer>

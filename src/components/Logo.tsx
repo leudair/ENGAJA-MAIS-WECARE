@@ -27,8 +27,8 @@ export function Logo({
         width={831}
         height={353}
         className={`${
-          stacked ? "h-24 sm:h-40 lg:h-44" : "h-9 sm:h-11"
-        } w-auto drop-shadow-[0_12px_30px_rgba(0,0,0,0.75)] ${className}`}
+          stacked ? "h-24 sm:h-40 lg:h-44" : "h-8 sm:h-10"
+        } w-auto drop-shadow-[0_6px_14px_rgba(0,0,0,0.45)] ${className}`}
       />
     );
   }

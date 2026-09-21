@@ -24,7 +24,7 @@ export function LocaleSwitcher({
   return (
     <nav
       aria-label={label}
-      className={`flex items-center gap-0.5 border border-gold-700/35 bg-white/[0.03] p-1 ${className}`}
+      className={`flex items-center gap-0.5 rounded-[9px] border border-black/30 bg-black/12 p-1 ${className}`}
     >
       {locales.map((locale) => {
         const active = locale === current;
@@ -36,10 +36,10 @@ export function LocaleSwitcher({
             lang={locale}
             aria-current={active ? "true" : undefined}
             title={localeLabels[locale]}
-            className={`px-3 py-1.5 text-[0.68rem] font-semibold tracking-[0.18em] transition-colors ${
+            className={`rounded-[6px] px-2.5 py-1.5 text-[0.64rem] font-bold tracking-[0.14em] transition-colors ${
               active
-                ? "bg-gold-500/20 text-gold-100"
-                : "text-white/62 hover:text-white/85"
+                ? "bg-ink-950 text-gold-bright"
+                : "text-onmetal-soft/75 hover:text-onmetal"
             }`}
           >
             <span aria-hidden>{localeShortLabels[locale]}</span>

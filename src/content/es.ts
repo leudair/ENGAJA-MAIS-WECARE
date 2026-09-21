@@ -7,27 +7,28 @@ export const es: Content = {
       "Planes mensuales de engagement para hasta 30 publicaciones por ciclo. Start, Intermedio y Premium, desde R$ 197.",
   },
   nav: {
-    howItWorks: "Cómo funciona",
     plans: "Planes",
-    limit: "Límite del ciclo",
-    faq: "Preguntas frecuentes",
+    howItWorks: "Cómo funciona",
     viralGrowth: "Crecimiento Viral",
+    faq: "Dudas",
+    cta: "Ver planes",
     skipToContent: "Ir al contenido",
     languageLabel: "Idioma",
   },
   hero: {
-    logoAlt: "Agência WeCare Mídias Sociais",
-    method: "Metodología We Care",
-    frameTitle: "Estrategia Engaja Mais Mensual",
-    methodNote:
-      "La forma de WeCare de mantener un perfil vivo: engagement en cada publicación del ciclo, y no en una publicación suelta de vez en cuando.",
-    title: "Un perfil quieto no vende.",
-    highlight: "El tuyo no se va a quedar quieto.",
-    subtitle:
-      "Planes mensuales que reparten el engagement entre tus publicaciones a lo largo del ciclo, con hasta 30 publicaciones atendidas. Tú publicas, nosotros nos ocupamos del resto.",
-    primaryCta: "Ver planes",
-    secondaryCta: "Conocer Crecimiento Viral",
-    note: "Planes desde R$ 197 por ciclo mensual.",
+    logoAlt: "Agencia WeCare Medios Sociales",
+    eyebrow: "Metodología WeCare",
+    titleTop: "Engagement que",
+    titleBottom: "acompaña tu mes.",
+    paragraph:
+      "Planes mensuales para fortalecer la presencia de tus publicaciones con estrategia, constancia y presentación profesional.",
+    cta: "Conocer los planes",
+    badge: {
+      brand: "Engaja Mais",
+      amount: "Hasta 30",
+      unit: "publicaciones por ciclo",
+      note: "Engagement por publicación",
+    },
     proofs: [
       {
         title: "Hasta 30 publicaciones",
@@ -128,24 +129,23 @@ export const es: Content = {
   },
   plans: {
     eyebrow: "Planes",
-    title: "Nueve combos mensuales, tres familias",
+    title: "Tres familias, nueve combos mensuales",
     subtitle:
-      "Todos atienden hasta 30 publicaciones por ciclo mensual. Los rangos de abajo son por publicación: lo que cambia entre los combos es la intensidad de la entrega en cada post.",
+      "Todas atienden hasta 30 publicaciones por ciclo. Los rangos son por publicación y cada familia abre tres opciones de precio.",
     families: {
       premium: {
         name: "Premium",
         tagline:
-          "Para quien trata el perfil como su escaparate principal y quiere el mayor volumen de entrega en cada publicación.",
+          "Autoridad y exclusividad para el perfil que es el escaparate.",
       },
       intermediate: {
         name: "Intermedio",
-        tagline:
-          "Para perfiles que ya publican con frecuencia y quieren una presencia firme durante todo el ciclo.",
+        tagline: "Evolución y constancia para quien ya publica con frecuencia.",
       },
       start: {
         name: "Start",
         tagline:
-          "La puerta de entrada para quien empieza a darle ritmo al perfil.",
+          "Entrada accesible para quien empieza a darle ritmo al perfil.",
       },
     },
     metricLabels: [
@@ -156,15 +156,25 @@ export const es: Content = {
       "Comentarios personalizados",
     ],
     rangeSeparator: " a ",
+    fromLabel: "Desde",
+    cycleLabel: "Hasta 30 publicaciones",
     priceNote: "por ciclo mensual",
-    cycleNote: "hasta 30 publicaciones por ciclo",
+    openLabel: "Ver planes",
+    optionsTitle: "Tres opciones en esta familia",
+    recommended: "Recomendado",
     metricsTitle: "Por publicación",
-    metricsToggle: "Ver la entrega por publicación",
     noFollowers:
       "Son planes de engagement: no incluyen seguidores. Los comentarios son personalizados.",
-    cta: "Quiero este combo",
+    cta: "Quiero este plan",
     disclaimer:
       "Los rangos valen para cada publicación atendida en el ciclo, hasta el límite de 30. Precios en reales en los tres idiomas. Las condiciones de activación y renovación se confirman durante la atención, antes de contratar.",
+  },
+  showcase: {
+    eyebrow: "Ejemplo de plan",
+    title: "Cómo se ve un plan",
+    lead: "El combo más completo de la familia Premium, con los rangos que entrega en cada publicación del ciclo.",
+    planNote: "Plan mensual — hasta 30 publicaciones",
+    cta: "Quiero este plan",
   },
   demo: {
     eyebrow: "Demostración",
@@ -187,10 +197,11 @@ export const es: Content = {
     ],
   },
   viral: {
-    eyebrow: "Otro frente",
-    title: "Estrategia Viral",
-    lead: "Crecimiento Viral es nuestro frente enfocado en expandir el alcance. Funciona por separado de los planes mensuales de engagement.",
-    cta: "Ir a Crecimiento Viral",
+    eyebrow: "Metodología WeCare",
+    title: "Crecimiento Viral",
+    lead: "Estrategias dedicadas a los contenidos que quieres destacar.",
+    cta: "Conocer la estrategia",
+    note: "Un frente separado de los planes mensuales de engagement.",
   },
   faq: {
     eyebrow: "Preguntas frecuentes",

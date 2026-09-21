@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="92" height="160" viewBox="0 0 92 160">
+  <!-- Favo hexagonal em vermelho escuríssimo: textura do fundo, nunca decoração. -->
+  <g fill="none" stroke="#3a0a0d" stroke-width="1.4">
+    <path d="M46 0 92 26.7 92 80 46 106.7 0 80 0 26.7 46 0Z"/>
+    <path d="M46 53.3 92 80 92 133.3 46 160 0 133.3 0 80 46 53.3Z"/>
+  </g>
+</svg>

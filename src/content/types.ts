@@ -46,30 +46,31 @@ export type Content = {
     description: string;
   };
   nav: {
-    howItWorks: string;
     plans: string;
-    limit: string;
-    faq: string;
+    howItWorks: string;
     viralGrowth: string;
+    faq: string;
+    /** CTA da barra do topo, em moldura rubi. */
+    cta: string;
     skipToContent: string;
     languageLabel: string;
   };
   hero: {
     /** Texto alternativo da logo, para leitores de tela. */
     logoAlt: string;
-    /** Rótulo gravado no filete superior da moldura. */
-    method: string;
-    /** O maior texto da página, dentro da moldura dourada. */
-    frameTitle: string;
-    /** Uma linha curta que explica a metodologia. */
-    methodNote: string;
-    /** Copy de valor. `highlight` sai em ouro escovado, na mesma frase. */
-    title: string;
-    highlight: string;
-    subtitle: string;
-    primaryCta: string;
-    secondaryCta: string;
-    note: string;
+    eyebrow: string;
+    /** H1 em duas linhas: a primeira branca, a segunda em ouro. */
+    titleTop: string;
+    titleBottom: string;
+    paragraph: string;
+    cta: string;
+    /** Chapa de bronze ao lado do H1. */
+    badge: {
+      brand: string;
+      amount: string;
+      unit: string;
+      note: string;
+    };
     /** Faixa de provas abaixo do hero. Só fatos já definidos. */
     proofs: { title: string; description: string }[];
   };
@@ -102,18 +103,33 @@ export type Content = {
     metricLabels: [string, string, string, string, string];
     /** Palavra entre o mínimo e o máximo de uma faixa, ex.: " a ". */
     rangeSeparator: string;
-    /** Sob o preço, ex.: "por ciclo mensal". */
+    /** Acima do preço do card de família. */
+    fromLabel: string;
+    /** Abaixo do preço, o teto do ciclo. */
+    cycleLabel: string;
+    /** Sob o preço dos combos, ex.: "por ciclo mensal". */
     priceNote: string;
-    /** Lembrete do teto, repetido em cada card. */
-    cycleNote: string;
-    /** Título da lista de entrega dentro do card. */
+    /** Abre as três opções de preço da família. */
+    openLabel: string;
+    /** Título da lista de opções, dentro da família aberta. */
+    optionsTitle: string;
+    /** Selo da família recomendada. */
+    recommended: string;
+    /** Título da lista de entrega dentro de cada combo. */
     metricsTitle: string;
-    /** Rótulo do expansor que abre a entrega no celular. */
-    metricsToggle: string;
     /** Aviso de que os planos não incluem seguidores. */
     noFollowers: string;
     cta: string;
     disclaimer: string;
+  };
+  /** Exemplo de um plano real, em chapa de ouro com borda rubi. */
+  showcase: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    /** Linha sob o nome do plano, ex.: "Plano mensal — até 30 publicações". */
+    planNote: string;
+    cta: string;
   };
   demo: {
     eyebrow: string;
@@ -133,6 +149,8 @@ export type Content = {
     title: string;
     lead: string;
     cta: string;
+    /** Ressalva obrigatória: a página não promete viralização. */
+    note: string;
   };
   faq: {
     eyebrow: string;

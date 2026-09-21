@@ -67,16 +67,16 @@ export default async function LocaleLayout({
       className={`${inter.variable} ${cinzel.variable}`}
     >
       <body className="relative min-h-dvh">
-        {/* Seda em movimento atrás de toda a página. */}
-        <div className="bg-motion" aria-hidden />
+        {/* Preto texturizado: favos e linhas finas, atrás de toda a página. */}
+        <div className="page-texture" aria-hidden />
+        {/* Fio dourado emoldurando a página, afastado da borda da tela. */}
+        <div className="page-frame" aria-hidden />
         <a
           href="#conteudo"
-          className="sr-only rounded-md bg-gold-400 px-4 py-2 text-sm font-semibold text-ink-950 focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60]"
+          className="sr-only rounded-md bg-gold-bright px-4 py-2 text-sm font-semibold text-ink-950 focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60]"
         >
           {content.nav.skipToContent}
         </a>
-        {/* Fio de ouro fechando o topo da página. */}
-        <span className="gold-hairline block w-full" aria-hidden />
         <Header locale={locale} content={content} />
         <main id="conteudo">{children}</main>
         <Footer locale={locale} content={content} />

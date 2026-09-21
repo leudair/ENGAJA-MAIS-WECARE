@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowIcon, GhostButton, GoldFrame } from "@/components/ui";
+import { ArrowIcon, Eyebrow, QuietButton, Surface } from "@/components/ui";
 import { getContent, localeHtmlLang, locales, type Locale } from "@/content";
 import { engagementPath, isLocale } from "@/lib/routes";
 
@@ -53,22 +53,21 @@ export default async function ViralGrowthPage({
   return (
     <section className="px-4 py-20 sm:px-6 sm:py-28">
       <div className="mx-auto max-w-3xl">
-        <GoldFrame label={c.viralPage.eyebrow}>
-          <div className="text-center">
-            <h1 className="display brushed-text text-[1.9rem] text-balance sm:text-5xl">
-              {c.viralPage.title}
-            </h1>
-            <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-pretty text-white/72 sm:text-base">
-              {c.viralPage.lead}
-            </p>
-            <div className="mt-9 flex justify-center">
-              <GhostButton href={engagementPath(locale)}>
-                <ArrowIcon className="rotate-180" />
-                {c.viralPage.backCta}
-              </GhostButton>
-            </div>
+        <Surface gold className="px-6 py-14 text-center sm:px-14 sm:py-16">
+          <Eyebrow center>{c.viralPage.eyebrow}</Eyebrow>
+          <h1 className="display-caps mt-4 text-[1.9rem] text-balance text-paper sm:text-5xl">
+            {c.viralPage.title}
+          </h1>
+          <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-pretty text-paper-dim sm:text-base">
+            {c.viralPage.lead}
+          </p>
+          <div className="mt-9 flex justify-center">
+            <QuietButton href={engagementPath(locale)}>
+              <ArrowIcon className="rotate-180" />
+              {c.viralPage.backCta}
+            </QuietButton>
           </div>
-        </GoldFrame>
+        </Surface>
       </div>
     </section>
   );

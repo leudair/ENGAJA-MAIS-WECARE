@@ -5,6 +5,7 @@ import {
   type PlanFamilyId,
   type Range,
 } from "@/content/plans-data";
+import type { MetalKind } from "@/components/ui";
 import type { Content, Locale } from "@/content/types";
 
 /**
@@ -56,7 +57,20 @@ export type PlanFamilyCard = {
   id: PlanFamilyId;
   name: string;
   tagline: string;
+  /** Metal da chapa: bronze na entrada, prata no meio, ouro no topo. */
+  metal: MetalKind;
+  /** Menor preço da família, já formatado, para o "a partir de". */
+  fromPrice: string;
+  /** Só a família Premium leva o selo de recomendado. */
+  recommended: boolean;
   plans: PlanCard[];
+};
+
+/** Material de cada família, conforme a direção visual. */
+const familyMetal: Record<PlanFamilyId, MetalKind> = {
+  premium: "gold",
+  intermediate: "silver",
+  start: "bronze",
 };
 
 function cardName(locale: Locale, c: Content, plan: PlanData): string {
@@ -67,23 +81,44 @@ function cardName(locale: Locale, c: Content, plan: PlanData): string {
   return `${family} • ${number(locale, plan.priceBRL)}`;
 }
 
+function toCard(locale: Locale, c: Content, plan: PlanData): PlanCard {
+  return {
+    id: plan.id,
+    name: cardName(locale, c, plan),
+    price: formatPrice(locale, plan.priceBRL),
+    metrics: plan.metrics.map((range, i) => ({
+      label: c.plans.metricLabels[i],
+      value: formatRange(locale, range, c.plans.rangeSeparator),
+    })),
+    featured: plan.featured === true,
+  };
+}
+
 /** Monta as três famílias já formatadas para o idioma da página. */
 export function getPlanFamilies(locale: Locale, c: Content): PlanFamilyCard[] {
-  return planFamilyOrder.map((familyId) => ({
-    id: familyId,
-    name: c.plans.families[familyId].name,
-    tagline: c.plans.families[familyId].tagline,
-    plans: plansData
-      .filter((plan) => plan.family === familyId)
-      .map((plan) => ({
-        id: plan.id,
-        name: cardName(locale, c, plan),
-        price: formatPrice(locale, plan.priceBRL),
-        metrics: plan.metrics.map((range, i) => ({
-          label: c.plans.metricLabels[i],
-          value: formatRange(locale, range, c.plans.rangeSeparator),
-        })),
-        featured: plan.featured === true,
-      })),
-  }));
+  return planFamilyOrder.map((familyId) => {
+    const plans = plansData.filter((plan) => plan.family === familyId);
+    return {
+      id: familyId,
+      name: c.plans.families[familyId].name,
+      tagline: c.plans.families[familyId].tagline,
+      metal: familyMetal[familyId],
+      fromPrice: formatPrice(
+        locale,
+        Math.min(...plans.map((plan) => plan.priceBRL)),
+      ),
+      recommended: familyId === "premium",
+      plans: plans.map((plan) => toCard(locale, c, plan)),
+    };
+  });
+}
+
+/**
+ * O plano usado como exemplo na página: o mais completo da família Premium.
+ * A direção visual pede um card real, com métricas em texto.
+ */
+export function getShowcasePlan(locale: Locale, c: Content): PlanCard {
+  const plan =
+    plansData.find((item) => item.id === "executivo-black") ?? plansData[0];
+  return toCard(locale, c, plan);
 }

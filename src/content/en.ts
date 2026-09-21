@@ -171,6 +171,7 @@ export const en: Content = {
     compareLabel: "Compare every plan",
     compareNote: "All nine plans, with price and per-post numbers.",
     recommended: "Recommended",
+    topLabel: "Highest volume in the family",
     metricsTitle: "Per post",
     noFollowers:
       "These are engagement plans: they do not include followers. Comments are personalized.",

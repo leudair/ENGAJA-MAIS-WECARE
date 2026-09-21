@@ -173,6 +173,7 @@ export const es: Content = {
     compareLabel: "Comparar todos los planes",
     compareNote: "Los nueve planes, con precio y números por publicación.",
     recommended: "Recomendado",
+    topLabel: "Mayor volumen de la familia",
     metricsTitle: "Por publicación",
     noFollowers:
       "Estos planes no incluyen seguidores. Los comentarios son personalizados.",

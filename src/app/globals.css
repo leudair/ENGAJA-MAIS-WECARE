@@ -359,6 +359,82 @@ body {
 }
 
 /* ------------------------------------------------------------------ */
+/* A caixa da oferta, dentro do card                                   */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Quando a pessoa folheia o card, a oferta precisa estar à altura da capa.
+ * As entregas ficam numa caixa própria, e o acabamento dessa caixa sobe
+ * junto com o preço: a de entrada é escavada na chapa, a do meio ganha um
+ * fio dourado, e a do plano de maior volume é uma chapa à parte, levantada
+ * do card, com parede lateral como os botões.
+ */
+.offer {
+  border-radius: 16px;
+  padding: 0.9rem 1rem 0.3rem;
+}
+
+/* Entrada: um rebaixo discreto na própria chapa. */
+.offer-3 {
+  background: rgb(0 0 0 / 0.07);
+  box-shadow:
+    inset 0 2px 4px rgb(0 0 0 / 0.22),
+    inset 0 -1px 0 rgb(255 255 255 / 0.28);
+}
+
+/* Meio: o mesmo rebaixo, com o fio dourado em volta. */
+.offer-2 {
+  background: rgb(0 0 0 / 0.11);
+  box-shadow:
+    inset 0 0 0 1px rgb(123 84 32 / 0.5),
+    inset 0 3px 6px rgb(0 0 0 / 0.26),
+    inset 0 -1px 0 rgb(255 255 255 / 0.3);
+}
+
+/* Maior volume: chapa de ouro escovado levantada, com espessura. */
+.offer-1 {
+  background-image: var(--brush-lines), var(--metal-gold);
+  background-size:
+    100% 2px,
+    100% 100%;
+  box-shadow:
+    inset 0 1px 0 rgb(255 253 243 / 0.85),
+    inset 0 0 0 1px rgb(123 84 32 / 0.65),
+    inset 0 -6px 12px rgb(74 53 8 / 0.3),
+    0 1px 0 #8a6524,
+    0 2px 0 #7b5a1f,
+    0 3px 0 #6b4f1c,
+    0 4px 0 #56400f,
+    0 5px 0 #41300b,
+    0 6px 0 #2d2108,
+    0 12px 18px -6px rgb(0 0 0 / 0.55);
+}
+
+/* Tarja do plano de maior volume, acima da caixa. */
+.offer-crown {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 8px;
+  border: 1px solid #8f1014;
+  border-top-color: #e0343b;
+  background: #a81616;
+  padding: 0.28rem 0.7rem;
+  color: #fff;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.45);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.35),
+    0 1px 0 #7d0e13,
+    0 2px 0 #61090f,
+    0 3px 0 #46070b,
+    0 6px 9px -3px rgb(0 0 0 / 0.6);
+}
+
+/* ------------------------------------------------------------------ */
 /* Botões                                                              */
 /* ------------------------------------------------------------------ */
 

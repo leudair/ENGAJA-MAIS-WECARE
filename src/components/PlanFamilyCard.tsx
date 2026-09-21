@@ -3,7 +3,14 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import type { Content } from "@/content";
 import type { PlanCard, PlanFamilyCard } from "@/lib/plans";
-import { Bullet, ChevronIcon, MetalPlate, QuietButton, RubyButton } from "./ui";
+import {
+  Bullet,
+  ChevronIcon,
+  MetalButton,
+  MetalPlate,
+  QuietButton,
+  RubyButton,
+} from "./ui";
 
 /** Lista de entrega por publicação, com o valor alinhado à direita. */
 function PlanMetrics({ metrics }: { metrics: PlanCard["metrics"] }) {
@@ -12,12 +19,12 @@ function PlanMetrics({ metrics }: { metrics: PlanCard["metrics"] }) {
       {metrics.map((metric) => (
         <li
           key={metric.label}
-          className="flex items-baseline justify-between gap-3 border-b border-black/30 py-2.5 last:border-0"
+          className="flex items-baseline justify-between gap-3 border-b border-black/25 py-2.5 last:border-0"
         >
-          <span className="text-[0.78rem] leading-snug text-onmetal-soft/85">
+          <span className="text-[0.82rem] leading-snug font-medium text-onmetal">
             {metric.label}
           </span>
-          <span className="display shrink-0 text-right text-[0.92rem] text-onmetal">
+          <span className="display shrink-0 text-right text-[1rem] text-onmetal">
             {metric.value}
           </span>
         </li>
@@ -25,6 +32,13 @@ function PlanMetrics({ metrics }: { metrics: PlanCard["metrics"] }) {
     </ul>
   );
 }
+
+/** Quanto mais caro o plano, mais trabalhada é a caixa da oferta. */
+const offerClass: Record<1 | 2 | 3, string> = {
+  1: "offer offer-1",
+  2: "offer offer-2",
+  3: "offer offer-3",
+};
 
 /**
  * Card de uma família de planos.
@@ -140,26 +154,44 @@ export function PlanFamilyCard({
                   className="w-full shrink-0 self-start"
                   aria-hidden={page !== index + 1}
                 >
-                  <p className="text-[0.6rem] font-bold tracking-[0.26em] text-onmetal-soft/70 uppercase">
+                  <p className="text-[0.6rem] font-bold tracking-[0.26em] text-onmetal-soft uppercase">
                     {family.name}
                   </p>
-                  <h3 className="display-caps mt-2 text-lg text-onmetal sm:text-xl">
-                    {plan.name}
-                  </h3>
-                  <p className="display mt-2 text-[2.4rem] leading-none text-onmetal">
+
+                  {plan.tier === 1 && (
+                    <span className="offer-crown mt-3">{c.plans.topLabel}</span>
+                  )}
+
+                  {plan.ownName && (
+                    <h3
+                      className={`display-caps text-onmetal ${
+                        plan.tier === 1
+                          ? "mt-3 text-2xl sm:text-[1.7rem]"
+                          : "mt-2 text-lg sm:text-xl"
+                      }`}
+                    >
+                      {plan.name}
+                    </h3>
+                  )}
+                  <p
+                    className={`display mt-2 leading-none text-onmetal ${
+                      plan.tier === 1 ? "text-[2.9rem]" : "text-[2.4rem]"
+                    }`}
+                  >
                     {plan.price}
                   </p>
-                  <p className="mt-1.5 text-[0.66rem] font-bold tracking-[0.18em] text-onmetal-soft/80 uppercase">
+                  <p className="mt-1.5 text-[0.66rem] font-bold tracking-[0.18em] text-onmetal-soft uppercase">
                     {c.plans.priceNote}
                   </p>
 
-                  <span className="mt-5 block h-px bg-black/35" />
-
-                  <p className="mt-4 text-[0.6rem] font-bold tracking-[0.24em] text-onmetal-soft/70 uppercase">
-                    {c.plans.metricsTitle}
-                  </p>
-                  <div className="mt-1">
-                    <PlanMetrics metrics={plan.metrics} />
+                  {/* A caixa das entregas: o acabamento sobe com o preço. */}
+                  <div className={`mt-5 ${offerClass[plan.tier]}`}>
+                    <p className="text-[0.58rem] font-bold tracking-[0.24em] text-onmetal-soft uppercase">
+                      {c.plans.metricsTitle}
+                    </p>
+                    <div className="mt-1">
+                      <PlanMetrics metrics={plan.metrics} />
+                    </div>
                   </div>
                 </div>
               ))}
@@ -193,14 +225,22 @@ export function PlanFamilyCard({
                     <ChevronIcon className="rotate-90" />
                   </button>
 
-                  {offer && (
-                    <RubyButton
-                      href={contactHref}
-                      className="flex-1 px-2 text-[0.62rem] sm:text-[0.7rem]"
-                    >
-                      {c.plans.cta}
-                    </RubyButton>
-                  )}
+                  {offer &&
+                    (offer.tier === 1 ? (
+                      <RubyButton
+                        href={contactHref}
+                        className="flex-1 px-2 text-[0.62rem] sm:text-[0.7rem]"
+                      >
+                        {c.plans.cta}
+                      </RubyButton>
+                    ) : (
+                      <MetalButton
+                        href={contactHref}
+                        className="flex-1 px-2 text-[0.62rem] sm:text-[0.7rem]"
+                      >
+                        {c.plans.cta}
+                      </MetalButton>
+                    ))}
 
                   <button
                     type="button"
@@ -281,10 +321,16 @@ export function PlanComparison({
                   key={plan.id}
                   className="flex flex-col rounded-[14px] border border-white/10 bg-ink-800/70 px-4 pt-4 pb-5"
                 >
-                  <p className="display-caps text-[0.78rem] text-gold-bright">
-                    {plan.name}
-                  </p>
-                  <p className="display mt-1 text-xl text-paper">
+                  {plan.ownName && (
+                    <p className="display-caps text-[0.78rem] text-gold-bright">
+                      {plan.name}
+                    </p>
+                  )}
+                  <p
+                    className={`display text-xl text-paper ${
+                      plan.ownName ? "mt-1" : ""
+                    }`}
+                  >
                     {plan.price}
                   </p>
 

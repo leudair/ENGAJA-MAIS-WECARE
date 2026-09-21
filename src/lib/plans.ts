@@ -50,7 +50,18 @@ export type PlanCard = {
   name: string;
   price: string;
   metrics: { label: string; value: string }[];
+  /**
+   * Se o plano tem nome comercial próprio. Os combos da família
+   * Intermediária não têm: ali o preço é a identidade, e repetir
+   * "Intermediário • 1.497" em cima de "R$ 1.497" só polui.
+   */
+  ownName: boolean;
   featured: boolean;
+  /**
+   * Posição dentro da família, do mais caro para o mais barato. Manda no
+   * acabamento da oferta: 1 é a chapa em relevo, 3 é a caixa simples.
+   */
+  tier: 1 | 2 | 3;
 };
 
 export type PlanFamilyCard = {
@@ -83,16 +94,23 @@ function cardName(locale: Locale, c: Content, plan: PlanData): string {
   return `${family} • ${number(locale, plan.priceBRL)}`;
 }
 
-function toCard(locale: Locale, c: Content, plan: PlanData): PlanCard {
+function toCard(
+  locale: Locale,
+  c: Content,
+  plan: PlanData,
+  tier: 1 | 2 | 3,
+): PlanCard {
   return {
     id: plan.id,
     name: cardName(locale, c, plan),
+    ownName: plan.name !== null,
     price: formatPrice(locale, plan.priceBRL),
     metrics: plan.metrics.map((range, i) => ({
       label: c.plans.metricLabels[i],
       value: formatRange(locale, range, c.plans.rangeSeparator),
     })),
     featured: plan.featured === true,
+    tier,
   };
 }
 
@@ -111,7 +129,9 @@ export function getPlanFamilies(locale: Locale, c: Content): PlanFamilyCard[] {
         Math.min(...plans.map((plan) => plan.priceBRL)),
       ),
       recommended: familyId === "premium",
-      plans: plans.map((plan) => toCard(locale, c, plan)),
+      plans: plans.map((plan, index) =>
+        toCard(locale, c, plan, (index + 1) as 1 | 2 | 3),
+      ),
     };
   });
 }
@@ -123,5 +143,5 @@ export function getPlanFamilies(locale: Locale, c: Content): PlanFamilyCard[] {
 export function getShowcasePlan(locale: Locale, c: Content): PlanCard {
   const plan =
     plansData.find((item) => item.id === "executivo-black") ?? plansData[0];
-  return toCard(locale, c, plan);
+  return toCard(locale, c, plan, 1);
 }

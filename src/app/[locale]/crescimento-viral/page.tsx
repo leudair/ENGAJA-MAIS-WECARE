@@ -17,7 +17,7 @@ export async function generateMetadata({
   if (!isLocale(locale)) return {};
   const c = getContent(locale);
   return {
-    title: `${c.viralPage.title} — ${c.footer.tagline}`,
+    title: `${c.viralPage.title}, ${c.footer.tagline}`,
     description: c.viral.lead,
     alternates: {
       canonical: `/${locale}/crescimento-viral`,

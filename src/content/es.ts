@@ -2,7 +2,7 @@ import type { Content } from "./types";
 
 export const es: Content = {
   meta: {
-    title: "Engaja Mais WeCare — Planes mensuales de engagement",
+    title: "Engaja Mais WeCare, planes mensuales de engagement",
     description:
       "Planes mensuales de engagement para hasta 30 publicaciones por ciclo. Start, Intermedio y Premium, desde R$ 197.",
   },
@@ -80,7 +80,7 @@ export const es: Content = {
     eyebrow: "Qué incluye",
     title: "Lo que trae todo plan",
     subtitle:
-      "Es igual en las tres familias. Lo que cambia entre ellas es el volumen de engagement.",
+      "Es igual en todos los planes. Lo que cambia de uno a otro es el volumen de engagement.",
     items: [
       {
         title: "Atención por publicación",
@@ -117,12 +117,12 @@ export const es: Content = {
   limit: {
     eyebrow: "Límite del ciclo",
     title: "Hasta 30 publicaciones por ciclo. Sin letra pequeña.",
-    lead: "Todos los planes atienden hasta 30 publicaciones dentro de un ciclo mensual. Ese es el tope y vale para todas las familias de plan.",
+    lead: "Todos los planes atienden hasta 30 publicaciones dentro de un ciclo mensual. Ese es el tope y vale para todos los planes.",
     bullets: [
       "El ciclo es mensual y el contador de publicaciones se reinicia en cada renovación.",
       "Si publicas menos de 30 veces en el ciclo, lo que sobra no se acumula para el ciclo siguiente.",
       "Si publicas más de 30 veces en el ciclo, las publicaciones que superan el límite no entran en la atención de ese ciclo.",
-      "El límite es de publicaciones atendidas: lo que cambia entre las familias de plan es el volumen de engagement en cada una.",
+      "El límite es de publicaciones atendidas: lo que cambia de un plan a otro es el volumen de engagement en cada una.",
     ],
     footnote:
       "¿Quieres saber cómo encaja este límite en tu calendario de contenido? Habla con nosotros antes de contratar.",
@@ -185,8 +185,8 @@ export const es: Content = {
   showcase: {
     eyebrow: "Ejemplo de plan",
     title: "El plan más completo",
-    lead: "El mayor plan de la familia Premium y lo que entrega en cada publicación del ciclo.",
-    planNote: "Plan mensual — hasta 30 publicaciones",
+    lead: "Nuestro mayor plan y lo que entrega en cada publicación del ciclo.",
+    planNote: "Plan mensual, hasta 30 publicaciones",
     cta: "Quiero este plan",
   },
   demo: {
@@ -248,7 +248,7 @@ export const es: Content = {
       {
         question: "¿Cuál es la diferencia entre los planes?",
         answer:
-          "Todas las familias atienden hasta 30 publicaciones por ciclo. Lo que cambia es el volumen de engagement entregado en cada una.",
+          "Todos los planes atienden hasta 30 publicaciones por ciclo. Lo que cambia es el volumen de engagement entregado en cada una.",
       },
       {
         question: "¿Engagement mensual es lo mismo que Crecimiento Viral?",

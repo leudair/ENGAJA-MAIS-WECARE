@@ -150,7 +150,7 @@ export type Content = {
     eyebrow: string;
     title: string;
     lead: string;
-    /** Linha sob o nome do plano, ex.: "Plano mensal — até 30 publicações". */
+    /** Linha sob o nome do plano, ex.: "Plano mensal, até 30 publicações". */
     planNote: string;
     cta: string;
   };

@@ -2,7 +2,7 @@ import type { Content } from "./types";
 
 export const en: Content = {
   meta: {
-    title: "Engaja Mais WeCare — Monthly engagement plans",
+    title: "Engaja Mais WeCare, monthly engagement plans",
     description:
       "Monthly engagement plans covering up to 30 posts per cycle. Start, Intermediate and Premium, from R$ 197.",
   },
@@ -79,7 +79,7 @@ export const en: Content = {
     eyebrow: "What's included",
     title: "What every plan includes",
     subtitle:
-      "The same in all three families. What changes between them is the engagement volume.",
+      "The same in every plan. What changes from one to the next is the engagement volume.",
     items: [
       {
         title: "Coverage per post",
@@ -116,7 +116,7 @@ export const en: Content = {
   limit: {
     eyebrow: "Cycle limit",
     title: "Up to 30 posts per cycle. No fine print.",
-    lead: "Every plan covers up to 30 posts within a monthly cycle. That is the ceiling, and it applies to all plan families.",
+    lead: "Every plan covers up to 30 posts within a monthly cycle. That is the ceiling, and it applies to every plan.",
     bullets: [
       "The cycle is monthly and the post counter resets at every renewal.",
       "If you post fewer than 30 times in a cycle, the remainder does not roll over to the next one.",
@@ -183,8 +183,8 @@ export const en: Content = {
   showcase: {
     eyebrow: "Plan example",
     title: "The most complete plan",
-    lead: "The biggest plan in the Premium family, and what it delivers on every post of the cycle.",
-    planNote: "Monthly plan — up to 30 posts",
+    lead: "Our biggest plan, and what it delivers on every post of the cycle.",
+    planNote: "Monthly plan, up to 30 posts",
     cta: "I want this plan",
   },
   demo: {
@@ -192,7 +192,7 @@ export const en: Content = {
     title: "The WeCare profile is the showcase",
     lead: "Instead of exposing clients, we show our own profile running the same strategy we deliver.",
     paragraphs: [
-      "People want to see the service working before they decide. But showing a client profile would mean handing over the identity of someone who trusted us — and we don't do that.",
+      "People want to see the service working before they decide. But showing a client profile would mean handing over the identity of someone who trusted us, and we don't do that.",
       "So the demonstration is WeCare's own profile. That's where you can watch the posting rhythm and how engagement behaves across the cycle, with the same strategy used in the plans.",
     ],
     cta: "See the WeCare profile",
@@ -246,7 +246,7 @@ export const en: Content = {
       {
         question: "What's the difference between the plans?",
         answer:
-          "Every family covers up to 30 posts per cycle. What changes is the engagement volume delivered on each one.",
+          "Every plan covers up to 30 posts per cycle. What changes is the engagement volume delivered on each one.",
       },
       {
         question: "Is monthly engagement the same as Viral Growth?",

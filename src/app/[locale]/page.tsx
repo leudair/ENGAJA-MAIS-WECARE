@@ -6,13 +6,14 @@ import {
   Bullet,
   Eyebrow,
   Lead,
+  LedButton,
   MetalButton,
   MetalPlate,
+  OnMetalButton,
   QuietButton,
   RubyButton,
   Rule,
   SectionTitle,
-  Surface,
 } from "@/components/ui";
 import { contactHref, getContent, siteConfig, type Locale } from "@/content";
 import { getPlanFamilies, getShowcasePlan, type PlanCard } from "@/lib/plans";
@@ -278,7 +279,7 @@ export default async function EngagementPage({
                 <h3 className="mt-4 text-[0.68rem] font-bold tracking-[0.18em] text-gold-bright uppercase sm:text-[0.72rem]">
                   {step.title}
                 </h3>
-                <p className="mt-2.5 text-xs leading-relaxed text-pretty text-paper-dim sm:text-sm">
+                <p className="mt-2.5 text-xs leading-relaxed text-pretty text-paper sm:text-sm">
                   {step.description}
                 </p>
               </li>
@@ -296,19 +297,19 @@ export default async function EngagementPage({
           <SectionTitle center>{c.included.title}</SectionTitle>
           <Lead center>{c.included.subtitle}</Lead>
 
-          <ul className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4 lg:grid-cols-3">
+          <ul className="mt-10 grid grid-cols-2 gap-x-3 gap-y-5 sm:mt-12 sm:gap-x-4 sm:gap-y-6 lg:grid-cols-3">
             {c.included.items.map((item) => (
               <li
                 key={item.title}
-                className="surface px-4 py-6 sm:px-6 sm:py-7"
+                className="gold-frame px-4 py-6 sm:px-6 sm:py-7"
               >
                 <div className="flex items-start gap-2.5">
                   <Bullet />
-                  <h3 className="text-[0.68rem] font-bold tracking-[0.18em] text-paper uppercase sm:text-[0.72rem]">
+                  <h3 className="text-[0.68rem] font-bold tracking-[0.18em] text-gold-bright uppercase sm:text-[0.72rem]">
                     {item.title}
                   </h3>
                 </div>
-                <p className="mt-2.5 text-xs leading-relaxed text-paper-dim sm:text-sm">
+                <p className="mt-2.5 text-xs leading-relaxed text-paper sm:text-sm">
                   {item.description}
                 </p>
               </li>
@@ -322,25 +323,27 @@ export default async function EngagementPage({
       {/* ---------------------------------------------------------------- */}
       <section id="limite" className="px-4 py-14 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <Surface gold className="px-5 py-10 sm:px-12 sm:py-14">
-            <div className="grid gap-8 lg:grid-cols-[auto_1fr] lg:gap-14">
+          {/* O limite é a regra que vale para todos os planos, então ele fica
+              na própria chapa de ouro, e não num painel escuro. */}
+          <MetalPlate kind="gold">
+            <div className="grid gap-8 px-5 py-10 sm:px-12 sm:py-14 lg:grid-cols-[auto_1fr] lg:gap-14">
               <div className="text-center lg:pt-1 lg:text-left">
                 <span
-                  className="display text-metal-gold block text-[5.5rem] leading-[0.85] sm:text-8xl"
+                  className="display num-emboss block text-[5.5rem] leading-[0.85] text-onmetal sm:text-8xl"
                   aria-hidden
                 >
                   30
                 </span>
-                <span className="eyebrow mt-3 block lg:mt-4">
+                <span className="mt-3 block text-[0.68rem] font-bold tracking-[0.28em] text-onmetal-soft uppercase lg:mt-4">
                   {c.limit.eyebrow}
                 </span>
               </div>
 
               <div>
-                <h2 className="display-caps text-2xl text-balance text-paper sm:text-3xl">
+                <h2 className="display-caps text-2xl text-balance text-onmetal sm:text-3xl">
                   {c.limit.title}
                 </h2>
-                <p className="mt-5 text-base leading-relaxed text-paper-dim">
+                <p className="mt-5 text-base leading-relaxed font-medium text-onmetal-soft">
                   {c.limit.lead}
                 </p>
 
@@ -348,19 +351,19 @@ export default async function EngagementPage({
                   {c.limit.bullets.map((bullet) => (
                     <li key={bullet} className="flex gap-3">
                       <Bullet />
-                      <span className="text-sm leading-relaxed text-paper-dim sm:text-base">
+                      <span className="text-sm leading-relaxed font-medium text-onmetal-soft sm:text-base">
                         {bullet}
                       </span>
                     </li>
                   ))}
                 </ul>
 
-                <p className="mt-7 border-t border-gold-edge/40 pt-5 text-sm text-paper-faint">
+                <p className="mt-7 border-t border-black/30 pt-5 text-sm font-medium text-onmetal-soft/85">
                   {c.limit.footnote}
                 </p>
               </div>
             </div>
-          </Surface>
+          </MetalPlate>
         </div>
       </section>
 
@@ -395,7 +398,7 @@ export default async function EngagementPage({
           </div>
 
           {/* Vitrine do perfil da própria WeCare, sem dado de cliente. */}
-          <Surface gold className="mx-auto w-full max-w-sm px-7 py-9">
+          <div className="gold-frame mx-auto w-full max-w-sm px-7 py-9">
             <div className="flex flex-col items-center text-center">
               <Eyebrow>{c.demo.eyebrow}</Eyebrow>
               <div className="mt-5">
@@ -427,10 +430,10 @@ export default async function EngagementPage({
             </div>
 
             <span className="rule-gold mt-6 block h-px w-full opacity-30" />
-            <p className="mt-4 text-center text-xs leading-relaxed text-paper-faint">
+            <p className="mt-4 text-center text-xs leading-relaxed text-paper">
               {c.privacy.bullets[2]}
             </p>
-          </Surface>
+          </div>
         </div>
       </section>
 
@@ -443,11 +446,11 @@ export default async function EngagementPage({
           <SectionTitle center>{c.privacy.title}</SectionTitle>
           <Lead center>{c.privacy.lead}</Lead>
 
-          <ul className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4 md:grid-cols-3">
+          <ul className="mt-10 grid grid-cols-2 gap-x-3 gap-y-5 sm:mt-12 sm:gap-x-4 sm:gap-y-6 md:grid-cols-3">
             {c.privacy.bullets.map((bullet, index) => (
               <li
                 key={bullet}
-                className={`surface px-4 py-6 sm:px-6 sm:py-7 ${
+                className={`gold-frame px-4 py-6 sm:px-6 sm:py-7 ${
                   index === c.privacy.bullets.length - 1 && index % 2 === 0
                     ? "col-span-2 md:col-span-1"
                     : ""
@@ -455,7 +458,7 @@ export default async function EngagementPage({
               >
                 <div className="flex items-start gap-2.5">
                   <Bullet />
-                  <p className="text-xs leading-relaxed text-paper-dim sm:text-sm">
+                  <p className="text-xs leading-relaxed text-paper sm:text-sm">
                     {bullet}
                   </p>
                 </div>
@@ -475,11 +478,11 @@ export default async function EngagementPage({
           <Eyebrow center>{c.faq.eyebrow}</Eyebrow>
           <SectionTitle center>{c.faq.title}</SectionTitle>
 
-          <div className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4">
+          <div className="mt-10 grid grid-cols-2 gap-x-3 gap-y-5 sm:mt-12 sm:gap-x-4 sm:gap-y-6">
             {c.faq.items.map((item, index) => (
               <details
                 key={item.question}
-                className={`surface group px-4 py-1 sm:px-5 ${
+                className={`gold-frame group px-4 py-1 sm:px-5 ${
                   index === c.faq.items.length - 1 && index % 2 === 0
                     ? "col-span-2"
                     : ""
@@ -501,7 +504,7 @@ export default async function EngagementPage({
                     </svg>
                   </span>
                 </summary>
-                <p className="border-t border-white/8 py-4 text-xs leading-relaxed text-paper-dim sm:text-sm">
+                <p className="border-t border-white/8 py-4 text-xs leading-relaxed text-paper sm:text-sm">
                   {item.answer}
                 </p>
               </details>
@@ -515,22 +518,26 @@ export default async function EngagementPage({
       {/* ---------------------------------------------------------------- */}
       <section id="contato" className="px-4 py-16 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-4xl">
-          <Surface gold className="px-6 py-12 text-center sm:px-14 sm:py-16">
-            <h2 className="display-caps text-2xl text-balance text-paper sm:text-4xl">
-              {c.finalCta.title}
-            </h2>
-            <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-pretty text-paper-dim sm:text-base">
-              {c.finalCta.subtitle}
-            </p>
-            <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center">
-              <RubyButton href={siteConfig.contactUrl ?? "#planos"}>
-                {siteConfig.contactUrl ? c.finalCta.primaryCta : c.hero.cta}
-              </RubyButton>
-              <QuietButton href={viralHref}>
-                {c.finalCta.secondaryCta}
-              </QuietButton>
+          {/* O fecho da página é a chapa de ouro inteira, com o botão de
+              conversão em cima dela. */}
+          <MetalPlate kind="gold">
+            <div className="px-6 py-12 text-center sm:px-14 sm:py-16">
+              <h2 className="display-caps text-2xl text-balance text-onmetal sm:text-4xl">
+                {c.finalCta.title}
+              </h2>
+              <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-pretty font-medium text-onmetal-soft sm:text-base">
+                {c.finalCta.subtitle}
+              </p>
+              <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center">
+                <LedButton href={siteConfig.contactUrl ?? "#planos"}>
+                  {siteConfig.contactUrl ? c.finalCta.primaryCta : c.hero.cta}
+                </LedButton>
+                <OnMetalButton href={viralHref}>
+                  {c.finalCta.secondaryCta}
+                </OnMetalButton>
+              </div>
             </div>
-          </Surface>
+          </MetalPlate>
         </div>
       </section>
     </>

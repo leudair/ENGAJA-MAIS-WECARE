@@ -96,6 +96,18 @@ export function LedButton({ href, children, className = "" }: ButtonProps) {
   );
 }
 
+/**
+ * Botão preto para usar em cima da chapa de ouro, onde o botão de metal
+ * some no fundo. O texto sai em ouro, e o relevo é o mesmo dos outros.
+ */
+export function OnMetalButton({ href, children, className = "" }: ButtonProps) {
+  return (
+    <Link href={href} className={`btn btn-onmetal ${className}`}>
+      {children}
+    </Link>
+  );
+}
+
 /** Botão secundário, só com o fio dourado. */
 export function QuietButton({ href, children, className = "" }: ButtonProps) {
   return (

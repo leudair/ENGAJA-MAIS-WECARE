@@ -2,7 +2,7 @@ import type { Content } from "./types";
 
 export const pt: Content = {
   meta: {
-    title: "Engaja Mais WeCare — Planos mensais de engajamento",
+    title: "Engaja Mais WeCare, planos mensais de engajamento",
     description:
       "Planos mensais de engajamento para até 30 publicações por ciclo. Start, Intermediário e Premium, a partir de R$ 197.",
   },
@@ -80,7 +80,7 @@ export const pt: Content = {
     eyebrow: "O que está incluso",
     title: "O que vem em todo plano",
     subtitle:
-      "É igual nas três famílias. O que muda entre elas é o volume de engajamento.",
+      "É igual em todos os planos. O que muda de um para o outro é o volume de engajamento.",
     items: [
       {
         title: "Atendimento por publicação",
@@ -117,12 +117,12 @@ export const pt: Content = {
   limit: {
     eyebrow: "Limite do ciclo",
     title: "Até 30 publicações por ciclo. Sem letra miúda.",
-    lead: "Todo plano atende até 30 publicações dentro de um ciclo mensal. Esse é o teto, e ele vale para todas as famílias de plano.",
+    lead: "Todo plano atende até 30 publicações dentro de um ciclo mensal. Esse é o teto, e ele vale para todos os planos.",
     bullets: [
       "O ciclo é mensal e o contador de publicações recomeça a cada renovação.",
       "Se você publicar menos de 30 vezes no ciclo, o que sobra não acumula para o ciclo seguinte.",
       "Se você publicar mais de 30 vezes no ciclo, as publicações além do limite não entram no atendimento daquele ciclo.",
-      "O limite é de publicações atendidas: o que muda entre as famílias de plano é o volume de engajamento em cada uma.",
+      "O limite é de publicações atendidas: o que muda de um plano para o outro é o volume de engajamento em cada uma.",
     ],
     footnote:
       "Quer entender como esse limite se encaixa no seu calendário de conteúdo? Fale com a gente antes de contratar.",
@@ -185,8 +185,8 @@ export const pt: Content = {
   showcase: {
     eyebrow: "Exemplo de plano",
     title: "O plano mais completo",
-    lead: "O maior plano da família Premium e o que ele entrega em cada publicação do ciclo.",
-    planNote: "Plano mensal — até 30 publicações",
+    lead: "O nosso maior plano e o que ele entrega em cada publicação do ciclo.",
+    planNote: "Plano mensal, até 30 publicações",
     cta: "Quero este plano",
   },
   demo: {
@@ -194,7 +194,7 @@ export const pt: Content = {
     title: "O perfil da WeCare é a vitrine",
     lead: "Em vez de expor clientes, mostramos o nosso próprio perfil aplicando a mesma estratégia que entregamos.",
     paragraphs: [
-      "Quem contrata quer ver o serviço funcionando antes de decidir. Só que mostrar perfil de cliente significaria entregar a identidade de quem confiou na gente — e isso nós não fazemos.",
+      "Quem contrata quer ver o serviço funcionando antes de decidir. Só que mostrar perfil de cliente significaria entregar a identidade de quem confiou na gente, e isso nós não fazemos.",
       "Por isso a demonstração é o próprio perfil da WeCare. É lá que você observa o ritmo de publicação e o comportamento do engajamento ao longo do ciclo, com a mesma estratégia dos planos.",
     ],
     cta: "Ver o perfil da WeCare",
@@ -248,7 +248,7 @@ export const pt: Content = {
       {
         question: "Qual é a diferença entre os planos?",
         answer:
-          "Todas as famílias atendem até 30 publicações por ciclo. O que muda é o volume de engajamento entregue em cada uma.",
+          "Todos os planos atendem até 30 publicações por ciclo. O que muda é o volume de engajamento entregue em cada uma.",
       },
       {
         question: "Engajamento mensal é a mesma coisa que Crescimento Viral?",

@@ -159,8 +159,32 @@ export default async function EngagementPage({
       <section id="planos" className="px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-6xl">
           <Eyebrow center>{c.plans.eyebrow}</Eyebrow>
-          <SectionTitle center>{c.plans.title}</SectionTitle>
+          {/* Corpo menor no celular para o título caber numa linha só. */}
+          <SectionTitle center className="!text-[1.45rem] sm:!text-4xl">
+            {c.plans.title}
+          </SectionTitle>
           <Lead center>{c.plans.subtitle}</Lead>
+
+          {/* O teto do ciclo é a dúvida número um de quem compra, então ele
+              aparece numa chapa própria, antes dos preços. */}
+          <div className="mx-auto mt-9 max-w-2xl">
+            <MetalPlate kind="gold">
+              <div className="flex items-center gap-4 px-4 py-4 sm:gap-6 sm:px-7 sm:py-6">
+                <p className="display shrink-0 text-[3.2rem] leading-none text-onmetal sm:text-[4rem]">
+                  {c.plans.highlight.amount}
+                </p>
+                <span className="w-px shrink-0 self-stretch bg-black/30" />
+                <div className="min-w-0">
+                  <p className="text-[0.66rem] font-bold tracking-[0.18em] text-onmetal uppercase sm:text-xs sm:tracking-[0.2em]">
+                    {c.plans.highlight.unit}
+                  </p>
+                  <p className="mt-1.5 text-[0.78rem] leading-snug text-pretty text-onmetal-soft/85 sm:text-sm">
+                    {c.plans.highlight.note}
+                  </p>
+                </div>
+              </div>
+            </MetalPlate>
+          </div>
 
           <div className="mt-12 grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-3 lg:gap-7">
             {families.map((family) => (

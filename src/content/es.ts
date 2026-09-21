@@ -19,7 +19,7 @@ export const es: Content = {
     logoAlt: "Agencia WeCare Medios Sociales",
     eyebrow: "Engagement mensual",
     titleTop: "Engagement en",
-    titleBottom: "cada post del mes.",
+    titleBottom: "cada publicación del mes.",
     paragraph:
       "Un plan por mes. Hasta 30 publicaciones atendidas. Tú eliges cuánto engagement recibe cada publicación.",
     cta: "Ver los planes",
@@ -85,7 +85,7 @@ export const es: Content = {
       {
         title: "Atención por publicación",
         description:
-          "El engagement acompaña las publicaciones del ciclo, no una sola publicación aislada.",
+          "El engagement acompaña las publicaciones del ciclo, no una publicación aislada.",
       },
       {
         title: "Distribución a lo largo del ciclo",
@@ -131,7 +131,12 @@ export const es: Content = {
     eyebrow: "Planes",
     title: "Elige tu plan",
     subtitle:
-      "Un plan por mes, hasta 30 publicaciones. Los números de abajo son lo que recibe cada publicación.",
+      "Un plan por mes. Los números de abajo son lo que recibe cada publicación.",
+    highlight: {
+      amount: "30",
+      unit: "publicaciones al mes",
+      note: "Vale para todos los planes. Cada una de esas publicaciones recibe el engagement del plan que elijas.",
+    },
     families: {
       premium: {
         name: "Premium",
@@ -141,19 +146,19 @@ export const es: Content = {
       intermediate: {
         name: "Intermedio",
         tagline: "Volumen medio, todos los meses.",
-        pitch: "Para quien ya publica seguido y quiere constancia.",
+        pitch: "Para quien ya publica con frecuencia y quiere constancia.",
       },
       start: {
         name: "Start",
         tagline: "El plan de entrada.",
-        pitch: "Para quien empieza y quiere el perfil saliendo de cero.",
+        pitch: "Para quien empieza y quiere sacar el perfil de cero.",
       },
     },
     metricLabels: [
       "Visualizaciones",
       "Me gusta brasileños",
       "Compartidos",
-      "Reposteos",
+      "Reposts",
       "Comentarios personalizados",
     ],
     rangeSeparator: " a ",

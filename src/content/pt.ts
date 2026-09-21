@@ -19,7 +19,7 @@ export const pt: Content = {
     logoAlt: "Agência WeCare Mídias Sociais",
     eyebrow: "Engajamento mensal",
     titleTop: "Engajamento em",
-    titleBottom: "cada post do mês.",
+    titleBottom: "cada publicação do mês.",
     paragraph:
       "Um plano por mês. Até 30 publicações atendidas. Você escolhe quanto engajamento cada publicação recebe.",
     cta: "Ver os planos",
@@ -85,7 +85,7 @@ export const pt: Content = {
       {
         title: "Atendimento por publicação",
         description:
-          "O engajamento acompanha as publicações do ciclo, e não um único post isolado.",
+          "O engajamento acompanha as publicações do ciclo, e não uma publicação isolada.",
       },
       {
         title: "Distribuição ao longo do ciclo",
@@ -110,7 +110,7 @@ export const pt: Content = {
       {
         title: "Suporte direto com a WeCare",
         description:
-          "Fala direto com a equipe responsável pelo atendimento, sem intermediário.",
+          "Você fala direto com a equipe responsável pelo atendimento, sem intermediário.",
       },
     ],
   },
@@ -131,7 +131,12 @@ export const pt: Content = {
     eyebrow: "Planos",
     title: "Escolha o seu plano",
     subtitle:
-      "Um plano por mês, até 30 publicações. Os números abaixo são o que cada publicação recebe.",
+      "Um plano por mês. Os números abaixo são o que cada publicação recebe.",
+    highlight: {
+      amount: "30",
+      unit: "publicações por mês",
+      note: "Vale para todos os planos. Cada uma dessas publicações recebe o engajamento do plano que você escolher.",
+    },
     families: {
       premium: {
         name: "Premium",
@@ -146,7 +151,7 @@ export const pt: Content = {
       start: {
         name: "Start",
         tagline: "O plano de entrada.",
-        pitch: "Para quem está começando e quer o perfil saindo do zero.",
+        pitch: "Para quem está começando e quer tirar o perfil do zero.",
       },
     },
     metricLabels: [
@@ -224,7 +229,7 @@ export const pt: Content = {
           "As publicações que passarem de 30 não entram no atendimento daquele ciclo. O contador recomeça na renovação.",
       },
       {
-        question: "As publicações que eu não usei acumulam?",
+        question: "As publicações que eu não usar acumulam?",
         answer:
           "Não. O limite de 30 vale dentro do ciclo e não é transferido para o ciclo seguinte.",
       },
@@ -239,7 +244,7 @@ export const pt: Content = {
           "Não. A identidade de quem contrata fica preservada. A demonstração pública é sempre o perfil da WeCare.",
       },
       {
-        question: "Qual a diferença entre os planos?",
+        question: "Qual é a diferença entre os planos?",
         answer:
           "Todas as famílias atendem até 30 publicações por ciclo. O que muda é o volume de engajamento entregue em cada uma.",
       },

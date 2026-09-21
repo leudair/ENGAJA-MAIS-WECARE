@@ -99,6 +99,15 @@ export type Content = {
     eyebrow: string;
     title: string;
     subtitle: string;
+    /** Caixa em relevo com o teto do ciclo, logo abaixo do título. */
+    highlight: {
+      /** O número, sozinho, em corpo grande. */
+      amount: string;
+      /** O que o número conta, ex.: "publicações por mês". */
+      unit: string;
+      /** A frase que explica que o teto vale para todos os planos. */
+      note: string;
+    };
     /** Nome e linha de apoio de cada família, na ordem de `planFamilyOrder`. */
     families: Record<PlanFamilyId, PlanFamilyCopy>;
     /** Rótulos das cinco métricas, na ordem de `metrics` em `plans-data.ts`. */

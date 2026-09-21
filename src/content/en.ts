@@ -89,7 +89,7 @@ export const en: Content = {
       {
         title: "Spread across the cycle",
         description:
-          "Delivery is distributed over the contracted period, so the profile keeps steady movement.",
+          "Delivery is spread across the period you pay for, so the profile keeps moving.",
       },
       {
         title: "No access to your account",
@@ -121,7 +121,7 @@ export const en: Content = {
       "The cycle is monthly and the post counter resets at every renewal.",
       "If you post fewer than 30 times in a cycle, the remainder does not roll over to the next one.",
       "If you post more than 30 times in a cycle, posts beyond the limit are not covered in that cycle.",
-      "The limit is about posts covered: what changes between plan families is the engagement volume on each one.",
+      "The limit counts posts covered. What changes between the plans is the engagement volume.",
     ],
     footnote:
       "Want to check how this limit fits your content calendar? Talk to us before signing up.",
@@ -129,8 +129,12 @@ export const en: Content = {
   plans: {
     eyebrow: "Plans",
     title: "Choose your plan",
-    subtitle:
-      "One plan a month, up to 30 posts. The numbers below are what each post gets.",
+    subtitle: "One plan a month. The numbers below are what each post gets.",
+    highlight: {
+      amount: "30",
+      unit: "posts a month",
+      note: "It applies to every plan. Each of those posts receives the engagement of the plan you choose.",
+    },
     families: {
       premium: {
         name: "Premium",
@@ -153,7 +157,7 @@ export const en: Content = {
       "Brazilian likes",
       "Shares",
       "Reposts",
-      "Personalised comments",
+      "Personalized comments",
     ],
     rangeSeparator: " to ",
     fromLabel: "From",
@@ -169,7 +173,7 @@ export const en: Content = {
     recommended: "Recommended",
     metricsTitle: "Per post",
     noFollowers:
-      "These are engagement plans: they do not include followers. Comments are personalised.",
+      "These are engagement plans: they do not include followers. Comments are personalized.",
     cta: "I want this plan",
     disclaimer:
       "The numbers apply to each post covered in the cycle, up to 30. Prices are in Brazilian reais in all three languages. Activation and renewal are confirmed when you get in touch.",
@@ -204,7 +208,7 @@ export const en: Content = {
   viral: {
     eyebrow: "The WeCare Method",
     title: "Viral Growth",
-    lead: "Dedicated strategies for the content you want to stand out.",
+    lead: "Dedicated strategies for the content you want to highlight.",
     cta: "See the strategy",
     note: "A separate track from the monthly engagement plans.",
   },
@@ -263,7 +267,7 @@ export const en: Content = {
     backCta: "Back to Engagement",
   },
   footer: {
-    tagline: "Monthly engagement for profiles that really publish.",
+    tagline: "Monthly engagement for profiles that actually post.",
     rights: "All rights reserved.",
     engagement: "Engagement",
     viralGrowth: "Viral Growth",

@@ -75,7 +75,7 @@ export function PlanFamilyCard({
       )}
 
       <MetalPlate kind={family.metal} className="h-full">
-        <div className="flex h-full flex-col px-5 py-7 sm:px-7 sm:py-9">
+        <div className="flex h-full flex-col px-5 pt-7 pb-9 sm:px-7 sm:pt-9 sm:pb-11">
           <div
             className="overflow-hidden transition-[height] duration-300 ease-out"
             style={height ? { height } : undefined}
@@ -276,7 +276,7 @@ export function PlanComparison({
               {family.plans.map((plan) => (
                 <div
                   key={plan.id}
-                  className="flex flex-col rounded-[14px] border border-white/10 bg-ink-800/70 px-4 py-4"
+                  className="flex flex-col rounded-[14px] border border-white/10 bg-ink-800/70 px-4 pt-4 pb-5"
                 >
                   <p className="display-caps text-[0.78rem] text-gold-bright">
                     {plan.name}

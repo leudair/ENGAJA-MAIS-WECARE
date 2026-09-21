@@ -331,100 +331,168 @@ body {
     border-color 0.18s ease;
 }
 
-/* Botão de metal: bisel com aresta clara em cima e escura embaixo. */
+/*
+ * Os três botões são chapas com espessura de verdade: uma pilha de sombras
+ * sólidas desenha a parede lateral, o brilho de cima arredonda o topo e a
+ * sombra difusa apoia a peça no preto. No hover a parede cresce e a chapa
+ * sobe; no clique ela afunda até quase encostar.
+ */
+
+/* Botão de metal: o padrão da página. */
 .btn-metal {
   border: 1px solid var(--color-gold-edge);
-  border-top-color: rgb(255 246 214 / 0.75);
-  background-image: var(--brush-lines), var(--metal-gold);
+  border-top-color: rgb(255 249 226 / 0.9);
+  background-image:
+    linear-gradient(180deg, rgb(255 252 236 / 0.45), transparent 42%),
+    var(--brush-lines), var(--metal-gold);
   background-size:
+    100% 100%,
     100% 2px,
     100% 100%;
   color: var(--color-onmetal);
-  text-shadow: 0 1px 0 rgb(255 250 227 / 0.4);
+  text-shadow: 0 1px 0 rgb(255 250 227 / 0.55);
   box-shadow:
-    inset 0 1px 0 rgb(255 252 240 / 0.7),
-    inset 0 -3px 6px rgb(74 53 8 / 0.42),
+    inset 0 1px 0 rgb(255 253 243 / 0.9),
+    inset 0 2px 4px rgb(255 250 227 / 0.4),
+    inset 0 -7px 12px rgb(74 53 8 / 0.45),
+    0 1px 0 #8a6524,
+    0 2px 0 #7b5a1f,
     0 3px 0 #6b4f1c,
-    0 8px 16px -6px rgb(0 0 0 / 0.8);
+    0 4px 0 #5c4318,
+    0 5px 0 #4d3714,
+    0 6px 0 #3f2d10,
+    0 9px 12px -3px rgb(0 0 0 / 0.55),
+    0 18px 30px -10px rgb(0 0 0 / 0.9);
 }
 
 .btn-metal:hover {
   transform: translateY(-2px);
   box-shadow:
-    inset 0 1px 0 rgb(255 252 240 / 0.85),
-    inset 0 -3px 6px rgb(74 53 8 / 0.42),
-    0 5px 0 #6b4f1c,
-    0 12px 20px -6px rgb(0 0 0 / 0.85);
+    inset 0 1px 0 rgb(255 253 243 / 1),
+    inset 0 2px 4px rgb(255 250 227 / 0.5),
+    inset 0 -7px 12px rgb(74 53 8 / 0.45),
+    0 1px 0 #8a6524,
+    0 2px 0 #7b5a1f,
+    0 3px 0 #6b4f1c,
+    0 4px 0 #5c4318,
+    0 5px 0 #4d3714,
+    0 6px 0 #3f2d10,
+    0 7px 0 #34250d,
+    0 8px 0 #2a1e0a,
+    0 12px 16px -3px rgb(0 0 0 / 0.6),
+    0 24px 38px -12px rgb(0 0 0 / 0.95);
 }
 
 .btn-metal:active {
-  transform: translateY(2px);
+  transform: translateY(4px);
   box-shadow:
-    inset 0 2px 5px rgb(74 53 8 / 0.5),
+    inset 0 3px 7px rgb(74 53 8 / 0.55),
+    inset 0 -1px 0 rgb(255 250 227 / 0.35),
     0 1px 0 #6b4f1c,
-    0 3px 8px -3px rgb(0 0 0 / 0.8);
+    0 2px 0 #4d3714,
+    0 4px 8px -3px rgb(0 0 0 / 0.75);
 }
 
 /* CTA de conversão: preto dentro da moldura rubi, com brilho difuso. */
 .btn-ruby {
   border: 1.5px solid var(--color-ruby-500);
+  border-top-color: #e0343b;
   background:
-    linear-gradient(180deg, rgb(181 24 31 / 0.16), transparent 58%),
+    linear-gradient(180deg, rgb(255 255 255 / 0.1), transparent 30%),
+    linear-gradient(180deg, rgb(181 24 31 / 0.3), transparent 62%),
     var(--color-ink-900);
   color: var(--color-paper);
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.6);
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.1),
-    0 3px 0 var(--color-ruby-900),
-    0 0 26px -6px rgb(181 24 31 / 0.55);
+    inset 0 1px 0 rgb(255 255 255 / 0.18),
+    inset 0 -8px 16px rgb(181 24 31 / 0.28),
+    0 1px 0 #8f1014,
+    0 2px 0 #7d0e13,
+    0 3px 0 #6b0b11,
+    0 4px 0 #5c090f,
+    0 5px 0 #4b070c,
+    0 6px 0 #3b0509,
+    0 9px 12px -3px rgb(0 0 0 / 0.6),
+    0 0 32px -6px rgb(181 24 31 / 0.6);
 }
 
 .btn-ruby:hover {
   transform: translateY(-2px);
   border-color: #d1252c;
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.14),
-    0 5px 0 var(--color-ruby-900),
-    0 0 38px -6px rgb(181 24 31 / 0.75);
+    inset 0 1px 0 rgb(255 255 255 / 0.24),
+    inset 0 -8px 16px rgb(181 24 31 / 0.38),
+    0 1px 0 #8f1014,
+    0 2px 0 #7d0e13,
+    0 3px 0 #6b0b11,
+    0 4px 0 #5c090f,
+    0 5px 0 #4b070c,
+    0 6px 0 #3b0509,
+    0 7px 0 #2e0407,
+    0 8px 0 #220306,
+    0 12px 16px -3px rgb(0 0 0 / 0.65),
+    0 0 46px -6px rgb(181 24 31 / 0.8);
 }
 
 .btn-ruby:active {
-  transform: translateY(2px);
+  transform: translateY(4px);
   box-shadow:
-    inset 0 2px 6px rgb(0 0 0 / 0.6),
-    0 1px 0 var(--color-ruby-900),
-    0 0 20px -8px rgb(181 24 31 / 0.5);
+    inset 0 3px 8px rgb(0 0 0 / 0.7),
+    inset 0 -1px 0 rgb(255 255 255 / 0.08),
+    0 1px 0 #6b0b11,
+    0 2px 0 #4b070c,
+    0 4px 8px -3px rgb(0 0 0 / 0.75),
+    0 0 22px -8px rgb(181 24 31 / 0.5);
 }
 
-/* Botão discreto: só o fio dourado. */
+/* Botão discreto: mesma espessura, só que sem a chapa cheia. */
 .btn-quiet {
-  border: 1px solid rgb(210 174 100 / 0.45);
-  border-top-color: rgb(242 217 147 / 0.6);
+  border: 1px solid rgb(210 174 100 / 0.5);
+  border-top-color: rgb(242 217 147 / 0.75);
   background: linear-gradient(
     180deg,
-    rgb(255 255 255 / 0.06),
-    rgb(0 0 0 / 0.22)
+    rgb(255 255 255 / 0.1),
+    rgb(0 0 0 / 0.26)
   );
   color: var(--color-gold-bright);
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.5);
   box-shadow:
-    inset 0 1px 0 rgb(242 217 147 / 0.2),
-    0 3px 0 rgb(123 84 32 / 0.55),
-    0 8px 15px -6px rgb(0 0 0 / 0.7);
+    inset 0 1px 0 rgb(242 217 147 / 0.3),
+    inset 0 -6px 12px rgb(0 0 0 / 0.35),
+    0 1px 0 rgb(140 97 38 / 0.85),
+    0 2px 0 rgb(123 84 32 / 0.85),
+    0 3px 0 rgb(104 71 27 / 0.85),
+    0 4px 0 rgb(84 57 22 / 0.85),
+    0 5px 0 rgb(64 43 16 / 0.85),
+    0 8px 12px -3px rgb(0 0 0 / 0.6),
+    0 16px 26px -10px rgb(0 0 0 / 0.85);
 }
 
 .btn-quiet:hover {
   transform: translateY(-2px);
-  border-color: rgb(242 217 147 / 0.85);
+  border-color: rgb(242 217 147 / 0.9);
   box-shadow:
-    inset 0 1px 0 rgb(242 217 147 / 0.28),
-    0 5px 0 rgb(123 84 32 / 0.6),
-    0 12px 20px -6px rgb(0 0 0 / 0.78);
+    inset 0 1px 0 rgb(242 217 147 / 0.4),
+    inset 0 -6px 12px rgb(0 0 0 / 0.35),
+    0 1px 0 rgb(140 97 38 / 0.9),
+    0 2px 0 rgb(123 84 32 / 0.9),
+    0 3px 0 rgb(104 71 27 / 0.9),
+    0 4px 0 rgb(84 57 22 / 0.9),
+    0 5px 0 rgb(64 43 16 / 0.9),
+    0 6px 0 rgb(48 32 12 / 0.9),
+    0 7px 0 rgb(34 23 8 / 0.9),
+    0 11px 16px -3px rgb(0 0 0 / 0.65),
+    0 22px 34px -12px rgb(0 0 0 / 0.9);
 }
 
 .btn-quiet:active {
-  transform: translateY(2px);
+  transform: translateY(4px);
   box-shadow:
-    inset 0 2px 5px rgb(0 0 0 / 0.55),
-    0 1px 0 rgb(123 84 32 / 0.55);
+    inset 0 3px 7px rgb(0 0 0 / 0.6),
+    inset 0 -1px 0 rgb(242 217 147 / 0.18),
+    0 1px 0 rgb(104 71 27 / 0.85),
+    0 2px 0 rgb(64 43 16 / 0.85),
+    0 4px 8px -3px rgb(0 0 0 / 0.7);
 }
 
 /* ------------------------------------------------------------------ */

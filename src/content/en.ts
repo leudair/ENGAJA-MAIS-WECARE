@@ -17,11 +17,11 @@ export const en: Content = {
   },
   hero: {
     logoAlt: "WeCare Social Media Agency",
-    eyebrow: "The WeCare Method",
-    titleTop: "Engagement that",
-    titleBottom: "keeps pace with your month.",
+    eyebrow: "Monthly engagement",
+    titleTop: "Engagement on",
+    titleBottom: "every post you publish.",
     paragraph:
-      "Monthly plans that strengthen the presence of your posts with strategy, consistency and a professional finish.",
+      "One plan a month. Up to 30 posts covered. You pick how much engagement each post gets.",
     cta: "See the plans",
     badge: {
       brand: "Engaja Mais",
@@ -44,43 +44,42 @@ export const en: Content = {
       },
       {
         title: "From R$ 197",
-        description: "per monthly cycle, on the Start plan",
+        description: "per month, on the Start plan",
       },
     ],
   },
   howItWorks: {
     eyebrow: "How it works",
-    title: "Simple from start to finish",
+    title: "Four steps",
     subtitle:
-      "From signing up to delivery, the process is designed so you never have to manage anything day to day.",
+      "Pick a plan, send us your profile, keep posting. We handle the rest.",
     steps: [
       {
         title: "Pick your plan",
         description:
-          "Choose the family that matches your posting rhythm: Start, Intermediate or Premium.",
+          "Start, Intermediate or Premium. Pick it by the volume you want.",
       },
       {
         title: "Share your profile",
         description:
-          "You send us the profile to be covered. We never ask for your password and never log into your account.",
+          "You send us the profile to be covered. We never ask for your password.",
       },
       {
         title: "Post as usual",
         description:
-          "Keep your own content calendar. Every new post in the cycle joins the queue.",
+          "Keep your own calendar. Every new post in the cycle joins the queue.",
       },
       {
         title: "Follow the cycle",
-        description:
-          "Engagement is spread across the monthly cycle, within the limit of up to 30 posts.",
+        description: "Engagement is spread across the month, up to 30 posts.",
       },
     ],
   },
   included: {
     eyebrow: "What's included",
-    title: "Built for people who actually post",
+    title: "What every plan includes",
     subtitle:
-      "The same care across every plan family. What changes between them is the delivery volume.",
+      "The same in all three families. What changes between them is the engagement volume.",
     items: [
       {
         title: "Coverage per post",
@@ -129,28 +128,24 @@ export const en: Content = {
   },
   plans: {
     eyebrow: "Plans",
-    title: "Three families, nine monthly combos",
+    title: "Choose your plan",
     subtitle:
-      "All of them cover up to 30 posts per cycle. The ranges are per post, and each family opens three price options.",
+      "One plan a month, up to 30 posts. The numbers below are what each post gets.",
     families: {
       premium: {
         name: "Premium",
-        tagline:
-          "Authority and exclusivity for the profile that is the storefront.",
-        pitch:
-          "The complete combo for a profile that needs to show up and reach people who have not found it yet.",
+        tagline: "The highest volume we deliver.",
+        pitch: "For the profile that wants maximum reach every month.",
       },
       intermediate: {
         name: "Intermediate",
-        tagline: "Growth and consistency for profiles already posting often.",
-        pitch:
-          "The combo that keeps the profile visible every month, without depending on one lucky post.",
+        tagline: "Steady volume, every month.",
+        pitch: "For profiles already posting often that want consistency.",
       },
       start: {
         name: "Start",
-        tagline: "An accessible entry point for profiles building a rhythm.",
-        pitch:
-          "The entry combo for a profile that needs to get moving and start being seen.",
+        tagline: "The entry plan.",
+        pitch: "For profiles starting out that want to get moving.",
       },
     },
     metricLabels: [
@@ -170,20 +165,19 @@ export const en: Content = {
     nextLabel: "Next offer",
     counter: "{n} of {total}",
     compareLabel: "Compare every plan",
-    compareNote:
-      "All nine combos side by side, with price and per-post ranges.",
+    compareNote: "All nine plans, with price and per-post numbers.",
     recommended: "Recommended",
     metricsTitle: "Per post",
     noFollowers:
       "These are engagement plans: they do not include followers. Comments are personalised.",
     cta: "I want this plan",
     disclaimer:
-      "The ranges apply to each post covered in the cycle, up to the limit of 30. Prices are in Brazilian reais in all three languages. Activation and renewal conditions are confirmed when you get in touch, before you sign up.",
+      "The numbers apply to each post covered in the cycle, up to 30. Prices are in Brazilian reais in all three languages. Activation and renewal are confirmed when you get in touch.",
   },
   showcase: {
     eyebrow: "Plan example",
-    title: "What a plan looks like",
-    lead: "The most complete combo in the Premium family, with the ranges it delivers on every post of the cycle.",
+    title: "The most complete plan",
+    lead: "The biggest plan in the Premium family, and what it delivers on every post of the cycle.",
     planNote: "Monthly plan — up to 30 posts",
     cta: "I want this plan",
   },
@@ -258,7 +252,7 @@ export const en: Content = {
   finalCta: {
     title: "Ready to give your profile a rhythm?",
     subtitle:
-      "Talk to WeCare, tell us what your posting calendar looks like, and we'll point you to the plan family that makes sense.",
+      "Tell us how often you post and we'll point you to the right plan.",
     primaryCta: "Talk to WeCare",
     secondaryCta: "Explore Viral Growth",
   },

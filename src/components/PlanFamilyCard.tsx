@@ -12,7 +12,7 @@ function PlanMetrics({ metrics }: { metrics: PlanCard["metrics"] }) {
       {metrics.map((metric) => (
         <li
           key={metric.label}
-          className="flex items-baseline justify-between gap-3 border-b border-black/15 py-2 last:border-0"
+          className="flex items-baseline justify-between gap-3 border-b border-black/30 py-2.5 last:border-0"
         >
           <span className="text-[0.78rem] leading-snug text-onmetal-soft/85">
             {metric.label}
@@ -109,11 +109,14 @@ export function PlanFamilyCard({
                   {c.plans.cycleLabel}
                 </p>
 
-                <span className="mt-6 block h-px bg-black/20" />
+                <span className="mt-6 block h-px bg-black/35" />
 
-                <ul className="mt-5 space-y-2.5">
+                <ul className="mt-5">
                   {c.plans.metricLabels.map((label) => (
-                    <li key={label} className="flex items-start gap-2.5">
+                    <li
+                      key={label}
+                      className="flex items-start gap-2.5 border-b border-black/30 py-2.5 last:border-0"
+                    >
                       <Bullet />
                       <span className="text-[0.85rem] leading-snug text-onmetal-soft">
                         {label}
@@ -150,7 +153,7 @@ export function PlanFamilyCard({
                     {c.plans.priceNote}
                   </p>
 
-                  <span className="mt-5 block h-px bg-black/20" />
+                  <span className="mt-5 block h-px bg-black/35" />
 
                   <p className="mt-4 text-[0.6rem] font-bold tracking-[0.24em] text-onmetal-soft/70 uppercase">
                     {c.plans.metricsTitle}
@@ -267,7 +270,7 @@ export function PlanComparison({
         <ChevronIcon className="text-gold-bright transition-transform duration-200 group-open:rotate-180" />
       </summary>
 
-      <div className="border-t border-white/8 py-5">
+      <div className="border-t border-white/12 py-5">
         {families.map((family) => (
           <div key={family.id} className="mb-8 last:mb-0">
             <p className="eyebrow">{family.name}</p>
@@ -289,7 +292,7 @@ export function PlanComparison({
                     {plan.metrics.map((metric) => (
                       <li
                         key={metric.label}
-                        className="flex items-baseline justify-between gap-2 border-t border-white/8 py-1.5"
+                        className="flex items-baseline justify-between gap-2 border-t border-white/12 py-1.5"
                       >
                         <span className="text-[0.7rem] leading-snug text-paper-weak">
                           {metric.label}

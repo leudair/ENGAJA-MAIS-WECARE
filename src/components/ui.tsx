@@ -110,8 +110,8 @@ const metalClass: Record<MetalKind, string> = {
 
 /**
  * Chapa de metal escovado. É a superfície dos cards de família e do card
- * de exemplo: o degradê e a estria são CSS, então preço e métrica seguem
- * sendo texto que dá para selecionar e traduzir.
+ * de exemplo: o degradê, a estria e a espessura são CSS, então preço e
+ * métrica seguem sendo texto que dá para selecionar e traduzir.
  */
 export function MetalPlate({
   kind,
@@ -123,13 +123,9 @@ export function MetalPlate({
   className?: string;
 }) {
   return (
-    <div
-      className={`metal ${metalClass[kind]} rounded-[20px] shadow-[0_26px_50px_-28px_rgba(0,0,0,0.95)] ${className}`}
-    >
-      {/* Aresta escura por fora, para a chapa não encostar no preto. */}
-      <div className="relative rounded-[20px] ring-1 ring-black/45 ring-inset">
-        {children}
-      </div>
+    <div className={`metal plate ${metalClass[kind]} ${className}`}>
+      {/* Quina de dentro: aresta escura por fora e fio claro logo depois. */}
+      <div className="plate-rim relative">{children}</div>
     </div>
   );
 }

@@ -102,8 +102,13 @@
   );
 }
 
-* {
-  border-color: rgb(255 255 255 / 0.07);
+/* Cor padrão de borda. Precisa ficar na camada base: solta, ela venceria
+   qualquer utilitário de cor de borda do Tailwind e todos os riscos da
+   página sairiam nesta mesma cor. */
+@layer base {
+  * {
+    border-color: rgb(255 255 255 / 0.07);
+  }
 }
 
 html {
@@ -241,14 +246,61 @@ body {
 
 .metal-gold {
   --metal: var(--metal-gold);
+  --plate-1: #8a6524;
+  --plate-2: #6b4f1c;
+  --plate-3: #4d3714;
+  --plate-4: #33240c;
 }
 
 .metal-silver {
   --metal: var(--metal-silver);
+  --plate-1: #6f7071;
+  --plate-2: #59595b;
+  --plate-3: #434345;
+  --plate-4: #2c2c2e;
 }
 
 .metal-bronze {
   --metal: var(--metal-bronze);
+  --plate-1: #6f4a2d;
+  --plate-2: #5a3b23;
+  --plate-3: #452d1a;
+  --plate-4: #301f12;
+}
+
+/*
+ * A chapa dos cards: canto bem arredondado e espessura de verdade. A pilha
+ * de sombras sólidas desenha a parede lateral na cor do próprio metal, o
+ * fio claro em cima arredonda a quina e a sombra difusa apoia a peça no
+ * preto. É o mesmo princípio dos botões, só que maior.
+ */
+.plate {
+  border-radius: 28px;
+  box-shadow:
+    inset 0 2px 0 rgb(255 255 255 / 0.55),
+    inset 0 -4px 10px rgb(0 0 0 / 0.28),
+    0 1px 0 var(--plate-1),
+    0 2px 0 var(--plate-1),
+    0 3px 0 var(--plate-1),
+    0 4px 0 var(--plate-2),
+    0 5px 0 var(--plate-2),
+    0 6px 0 var(--plate-2),
+    0 7px 0 var(--plate-3),
+    0 8px 0 var(--plate-3),
+    0 9px 0 var(--plate-3),
+    0 10px 0 var(--plate-4),
+    0 11px 0 var(--plate-4),
+    0 12px 0 var(--plate-4),
+    0 18px 22px -6px rgb(0 0 0 / 0.65),
+    0 38px 60px -22px rgb(0 0 0 / 0.95);
+}
+
+/* A quina de dentro, para a chapa não encostar direto no preto. */
+.plate-rim {
+  border-radius: 28px;
+  box-shadow:
+    inset 0 0 0 1px rgb(0 0 0 / 0.45),
+    inset 0 0 0 2px rgb(255 255 255 / 0.12);
 }
 
 /* Texto em ouro escovado, para títulos grandes. */
@@ -537,7 +589,17 @@ body {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  box-shadow: 0 6px 18px -6px rgb(181 24 31 / 0.85);
+  border-top-color: #e0343b;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.45);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.4),
+    inset 0 -4px 8px rgb(0 0 0 / 0.28),
+    0 1px 0 #8f1014,
+    0 2px 0 #7d0e13,
+    0 3px 0 #61090f,
+    0 4px 0 #46070b,
+    0 7px 10px -3px rgb(0 0 0 / 0.65),
+    0 0 26px -6px rgb(181 24 31 / 0.85);
 }
 
 /* Marcador circular rubi das listas dos cards. */

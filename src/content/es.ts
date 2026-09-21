@@ -17,12 +17,12 @@ export const es: Content = {
   },
   hero: {
     logoAlt: "Agencia WeCare Medios Sociales",
-    eyebrow: "Metodología WeCare",
-    titleTop: "Engagement que",
-    titleBottom: "acompaña tu mes.",
+    eyebrow: "Engagement mensual",
+    titleTop: "Engagement en",
+    titleBottom: "cada post del mes.",
     paragraph:
-      "Planes mensuales para fortalecer la presencia de tus publicaciones con estrategia, constancia y presentación profesional.",
-    cta: "Conocer los planes",
+      "Un plan por mes. Hasta 30 publicaciones atendidas. Tú eliges cuánto engagement recibe cada publicación.",
+    cta: "Ver los planes",
     badge: {
       brand: "Engaja Mais",
       amount: "Hasta 30",
@@ -44,43 +44,43 @@ export const es: Content = {
       },
       {
         title: "Desde R$ 197",
-        description: "por ciclo mensual, en el plan Start",
+        description: "por mes, en el plan Start",
       },
     ],
   },
   howItWorks: {
     eyebrow: "Cómo funciona",
-    title: "Simple de principio a fin",
+    title: "Cuatro pasos",
     subtitle:
-      "Desde la contratación hasta la entrega, el proceso está pensado para que no tengas que ocuparte de nada en el día a día.",
+      "Eliges el plan, indicas el perfil y sigues publicando. El resto lo hacemos nosotros.",
     steps: [
       {
         title: "Elige el plan",
         description:
-          "Selecciona la familia que encaja con tu ritmo de publicación: Start, Intermedio o Premium.",
+          "Start, Intermedio o Premium. Elige por el volumen que quieres.",
       },
       {
         title: "Indica el perfil",
         description:
-          "Nos envías el perfil que será atendido. No pedimos contraseña ni accedemos a tu cuenta.",
+          "Nos envías el perfil que será atendido. No pedimos contraseña.",
       },
       {
         title: "Publica con normalidad",
         description:
-          "Sigue tu calendario de contenido. Cada nueva publicación del ciclo entra en la fila de atención.",
+          "Sigue tu calendario. Cada publicación nueva del ciclo entra en la fila.",
       },
       {
         title: "Acompaña el ciclo",
         description:
-          "El engagement se reparte a lo largo del ciclo mensual, respetando el límite de hasta 30 publicaciones.",
+          "El engagement se reparte a lo largo del mes, hasta 30 publicaciones.",
       },
     ],
   },
   included: {
     eyebrow: "Qué incluye",
-    title: "Pensado para quien publica de verdad",
+    title: "Lo que trae todo plan",
     subtitle:
-      "El mismo cuidado en todas las familias de plan. Lo que cambia entre ellas es el volumen de entrega.",
+      "Es igual en las tres familias. Lo que cambia entre ellas es el volumen de engagement.",
     items: [
       {
         title: "Atención por publicación",
@@ -129,29 +129,24 @@ export const es: Content = {
   },
   plans: {
     eyebrow: "Planes",
-    title: "Tres familias, nueve combos mensuales",
+    title: "Elige tu plan",
     subtitle:
-      "Todas atienden hasta 30 publicaciones por ciclo. Los rangos son por publicación y cada familia abre tres opciones de precio.",
+      "Un plan por mes, hasta 30 publicaciones. Los números de abajo son lo que recibe cada publicación.",
     families: {
       premium: {
         name: "Premium",
-        tagline:
-          "Autoridad y exclusividad para el perfil que es el escaparate.",
-        pitch:
-          "El combo completo para que el perfil aparezca más y llegue a quien todavía no te conoce.",
+        tagline: "El mayor volumen que entregamos.",
+        pitch: "Para el perfil que quiere el máximo alcance cada mes.",
       },
       intermediate: {
         name: "Intermedio",
-        tagline: "Evolución y constancia para quien ya publica con frecuencia.",
-        pitch:
-          "El combo que mantiene el perfil visible todos los meses, sin depender de un post con suerte.",
+        tagline: "Volumen medio, todos los meses.",
+        pitch: "Para quien ya publica seguido y quiere constancia.",
       },
       start: {
         name: "Start",
-        tagline:
-          "Entrada accesible para quien empieza a darle ritmo al perfil.",
-        pitch:
-          "El combo de entrada para que el perfil se mueva y empiece a ser visto.",
+        tagline: "El plan de entrada.",
+        pitch: "Para quien empieza y quiere el perfil saliendo de cero.",
       },
     },
     metricLabels: [
@@ -171,20 +166,19 @@ export const es: Content = {
     nextLabel: "Siguiente oferta",
     counter: "{n} de {total}",
     compareLabel: "Comparar todos los planes",
-    compareNote:
-      "Los nueve combos lado a lado, con precio y rangos por publicación.",
+    compareNote: "Los nueve planes, con precio y números por publicación.",
     recommended: "Recomendado",
     metricsTitle: "Por publicación",
     noFollowers:
-      "Son planes de engagement: no incluyen seguidores. Los comentarios son personalizados.",
+      "Estos planes no incluyen seguidores. Los comentarios son personalizados.",
     cta: "Quiero este plan",
     disclaimer:
-      "Los rangos valen para cada publicación atendida en el ciclo, hasta el límite de 30. Precios en reales en los tres idiomas. Las condiciones de activación y renovación se confirman durante la atención, antes de contratar.",
+      "Los números valen para cada publicación atendida en el ciclo, hasta 30. Precios en reales en los tres idiomas. La activación y la renovación se confirman durante la atención.",
   },
   showcase: {
     eyebrow: "Ejemplo de plan",
-    title: "Cómo se ve un plan",
-    lead: "El combo más completo de la familia Premium, con los rangos que entrega en cada publicación del ciclo.",
+    title: "El plan más completo",
+    lead: "El mayor plan de la familia Premium y lo que entrega en cada publicación del ciclo.",
     planNote: "Plan mensual — hasta 30 publicaciones",
     cta: "Quiero este plan",
   },
@@ -259,7 +253,7 @@ export const es: Content = {
   finalCta: {
     title: "¿Listo para darle ritmo a tu perfil?",
     subtitle:
-      "Habla con WeCare, cuéntanos cómo es tu calendario de publicaciones y te indicamos la familia de plan que tiene sentido.",
+      "Cuéntanos cuántas veces publicas al mes y te indicamos el plan correcto.",
     primaryCta: "Hablar con WeCare",
     secondaryCta: "Conocer Crecimiento Viral",
   },

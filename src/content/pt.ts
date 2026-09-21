@@ -17,12 +17,12 @@ export const pt: Content = {
   },
   hero: {
     logoAlt: "Agência WeCare Mídias Sociais",
-    eyebrow: "Metodologia WeCare",
-    titleTop: "Engajamento que",
-    titleBottom: "acompanha seu mês.",
+    eyebrow: "Engajamento mensal",
+    titleTop: "Engajamento em",
+    titleBottom: "cada post do mês.",
     paragraph:
-      "Planos mensais para fortalecer a presença das suas publicações com estratégia, constância e apresentação profissional.",
-    cta: "Conhecer os planos",
+      "Um plano por mês. Até 30 publicações atendidas. Você escolhe quanto engajamento cada publicação recebe.",
+    cta: "Ver os planos",
     badge: {
       brand: "Engaja Mais",
       amount: "Até 30",
@@ -44,43 +44,43 @@ export const pt: Content = {
       },
       {
         title: "A partir de R$ 197",
-        description: "por ciclo mensal, no plano Start",
+        description: "por mês, no plano Start",
       },
     ],
   },
   howItWorks: {
     eyebrow: "Como funciona",
-    title: "Simples do começo ao fim",
+    title: "Quatro passos",
     subtitle:
-      "Do contrato à entrega, o processo foi desenhado para você não precisar acompanhar nada no dia a dia.",
+      "Você escolhe o plano, informa o perfil e continua publicando. O resto é com a gente.",
     steps: [
       {
         title: "Escolha o plano",
         description:
-          "Selecione a família que combina com o seu ritmo de publicação: Start, Intermediário ou Premium.",
+          "Start, Intermediário ou Premium. Escolha pelo volume que você quer.",
       },
       {
         title: "Informe o perfil",
         description:
-          "Você envia o perfil que será atendido. Não pedimos senha e não acessamos sua conta.",
+          "Você envia o perfil que será atendido. Não pedimos senha.",
       },
       {
         title: "Publique normalmente",
         description:
-          "Siga o seu calendário de conteúdo. Cada nova publicação do ciclo entra na fila de atendimento.",
+          "Siga o seu calendário. Cada publicação nova do ciclo entra na fila.",
       },
       {
         title: "Acompanhe o ciclo",
         description:
-          "O engajamento é distribuído ao longo do ciclo mensal, respeitando o limite de até 30 publicações.",
+          "O engajamento é distribuído ao longo do mês, até 30 publicações.",
       },
     ],
   },
   included: {
     eyebrow: "O que está incluso",
-    title: "Tudo pensado para o dia a dia de quem publica",
+    title: "O que vem em todo plano",
     subtitle:
-      "O mesmo cuidado em todas as famílias de plano. O que muda entre elas é o volume de entrega.",
+      "É igual nas três famílias. O que muda entre elas é o volume de engajamento.",
     items: [
       {
         title: "Atendimento por publicação",
@@ -129,27 +129,24 @@ export const pt: Content = {
   },
   plans: {
     eyebrow: "Planos",
-    title: "Três famílias, nove combos mensais",
+    title: "Escolha o seu plano",
     subtitle:
-      "Todas atendem até 30 publicações por ciclo. As faixas são por publicação, e cada família abre três opções de preço.",
+      "Um plano por mês, até 30 publicações. Os números abaixo são o que cada publicação recebe.",
     families: {
       premium: {
         name: "Premium",
-        tagline: "Autoridade e exclusividade para o perfil que é a vitrine.",
-        pitch:
-          "O combo completo para o perfil aparecer mais e chegar em quem ainda não te conhece.",
+        tagline: "O maior volume que entregamos.",
+        pitch: "Para o perfil que quer o máximo de alcance todo mês.",
       },
       intermediate: {
         name: "Intermediário",
-        tagline: "Evolução e consistência para quem já publica com frequência.",
-        pitch:
-          "O combo que mantém o perfil visível todo mês, sem depender de um post sortudo.",
+        tagline: "Volume médio, todo mês.",
+        pitch: "Para quem já publica com frequência e quer constância.",
       },
       start: {
         name: "Start",
-        tagline: "Entrada acessível para quem está começando a dar ritmo.",
-        pitch:
-          "O combo de entrada para o perfil sair do lugar e começar a ser visto.",
+        tagline: "O plano de entrada.",
+        pitch: "Para quem está começando e quer o perfil saindo do zero.",
       },
     },
     metricLabels: [
@@ -169,20 +166,19 @@ export const pt: Content = {
     nextLabel: "Próxima oferta",
     counter: "{n} de {total}",
     compareLabel: "Comparar todos os planos",
-    compareNote:
-      "Os nove combos lado a lado, com preço e faixas por publicação.",
+    compareNote: "Os nove planos, com preço e números por publicação.",
     recommended: "Recomendado",
     metricsTitle: "Por publicação",
     noFollowers:
-      "São planos de engajamento: não incluem seguidores. Os comentários são personalizados.",
+      "Estes planos não incluem seguidores. Os comentários são personalizados.",
     cta: "Quero este plano",
     disclaimer:
-      "As faixas valem para cada publicação atendida no ciclo, até o limite de 30. Preços em reais nos três idiomas. Condições de ativação e renovação são confirmadas no atendimento antes da contratação.",
+      "Os números valem para cada publicação atendida no ciclo, até 30. Preços em reais nos três idiomas. Ativação e renovação são confirmadas no atendimento.",
   },
   showcase: {
     eyebrow: "Exemplo de plano",
-    title: "Como um plano chega até você",
-    lead: "O combo mais completo da família Premium, com as faixas que ele entrega em cada publicação do ciclo.",
+    title: "O plano mais completo",
+    lead: "O maior plano da família Premium e o que ele entrega em cada publicação do ciclo.",
     planNote: "Plano mensal — até 30 publicações",
     cta: "Quero este plano",
   },
@@ -257,7 +253,7 @@ export const pt: Content = {
   finalCta: {
     title: "Pronto para dar ritmo ao seu perfil?",
     subtitle:
-      "Fale com a WeCare, conte como é o seu calendário de publicações e a gente indica a família de plano que faz sentido.",
+      "Conte quantas vezes você publica por mês e a gente indica o plano certo.",
     primaryCta: "Falar com a WeCare",
     secondaryCta: "Conhecer Crescimento Viral",
   },

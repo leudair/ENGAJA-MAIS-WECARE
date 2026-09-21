@@ -57,6 +57,8 @@ export type PlanFamilyCard = {
   id: PlanFamilyId;
   name: string;
   tagline: string;
+  /** Fecho de venda da primeira página do card. */
+  pitch: string;
   /** Metal da chapa: bronze na entrada, prata no meio, ouro no topo. */
   metal: MetalKind;
   /** Menor preço da família, já formatado, para o "a partir de". */
@@ -102,6 +104,7 @@ export function getPlanFamilies(locale: Locale, c: Content): PlanFamilyCard[] {
       id: familyId,
       name: c.plans.families[familyId].name,
       tagline: c.plans.families[familyId].tagline,
+      pitch: c.plans.families[familyId].pitch,
       metal: familyMetal[familyId],
       fromPrice: formatPrice(
         locale,

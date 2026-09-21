@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 import { Logo } from "@/components/Logo";
+import { PlanComparison, PlanFamilyCard } from "@/components/PlanFamilyCard";
 import {
   ArrowIcon,
   Bullet,
-  ChevronIcon,
   Eyebrow,
   Lead,
   MetalButton,
@@ -162,104 +162,18 @@ export default async function EngagementPage({
           <SectionTitle center>{c.plans.title}</SectionTitle>
           <Lead center>{c.plans.subtitle}</Lead>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-3 lg:gap-7">
+          <div className="mt-12 grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-3 lg:gap-7">
             {families.map((family) => (
-              <div key={family.id} className="relative">
-                {family.recommended && (
-                  <span className="badge-ruby absolute -top-3 right-5 z-10">
-                    {c.plans.recommended}
-                  </span>
-                )}
-
-                <MetalPlate kind={family.metal} className="h-full">
-                  <div className="flex h-full flex-col px-4 py-7 sm:px-7 sm:py-9">
-                    <h3 className="display-caps text-xl text-onmetal sm:text-2xl">
-                      {family.name}
-                    </h3>
-                    <p className="mt-2 text-[0.82rem] leading-snug text-pretty text-onmetal-soft/80">
-                      {family.tagline}
-                    </p>
-
-                    <p className="mt-7 text-[0.62rem] font-bold tracking-[0.26em] text-onmetal-soft/75 uppercase">
-                      {c.plans.fromLabel}
-                    </p>
-                    <p className="display mt-1 text-[2.6rem] leading-none text-onmetal">
-                      {family.fromPrice}
-                    </p>
-                    <p className="mt-2 text-[0.66rem] font-bold tracking-[0.2em] text-onmetal-soft/80 uppercase">
-                      {c.plans.cycleLabel}
-                    </p>
-
-                    <span className="mt-6 block h-px bg-black/20" />
-
-                    <ul className="mt-5 space-y-2.5">
-                      {c.plans.metricLabels.map((label) => (
-                        <li key={label} className="flex items-start gap-2.5">
-                          <Bullet />
-                          <span className="text-[0.85rem] leading-snug text-onmetal-soft">
-                            {label}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* O CTA abre as três opções de preço da família. */}
-                    <details className="group mt-7 flex-1">
-                      <summary
-                        className={`btn w-full cursor-pointer list-none marker:content-none ${
-                          family.recommended ? "btn-ruby" : "btn-metal"
-                        }`}
-                      >
-                        {c.plans.openLabel}
-                        <ChevronIcon className="transition-transform duration-200 group-open:rotate-180" />
-                      </summary>
-
-                      <div className="mt-5 rounded-[14px] bg-ink-950/90 px-3 py-5 ring-1 ring-black/40 sm:px-4">
-                        <p className="eyebrow text-center text-[0.58rem]">
-                          {c.plans.optionsTitle}
-                        </p>
-
-                        <div className="mt-4 space-y-3">
-                          {family.plans.map((plan) => (
-                            <div
-                              key={plan.id}
-                              className="surface-gold px-4 py-4"
-                            >
-                              <p className="display-caps text-[0.8rem] text-gold-bright">
-                                {plan.name}
-                              </p>
-                              <p className="display mt-1.5 text-[1.7rem] leading-none text-paper">
-                                {plan.price}
-                              </p>
-                              <p className="mt-1 text-[0.66rem] tracking-wide text-paper-weak">
-                                {c.plans.priceNote}
-                              </p>
-
-                              <p className="eyebrow mt-4 text-[0.55rem]">
-                                {c.plans.metricsTitle}
-                              </p>
-                              <div className="mt-1">
-                                <PlanMetrics metrics={plan.metrics} />
-                              </div>
-
-                              <div className="mt-4">
-                                <QuietButton
-                                  href={contactHref}
-                                  className="w-full text-[0.62rem]"
-                                >
-                                  {c.plans.cta}
-                                </QuietButton>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </details>
-                  </div>
-                </MetalPlate>
-              </div>
+              <PlanFamilyCard
+                key={family.id}
+                family={family}
+                c={c}
+                contactHref={contactHref}
+              />
             ))}
           </div>
+
+          <PlanComparison families={families} c={c} contactHref={contactHref} />
 
           <p className="mt-12 text-center text-sm text-pretty text-gold-label">
             {c.plans.noFollowers}

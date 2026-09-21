@@ -28,6 +28,8 @@ export type { PlanFamilyId };
 export type PlanFamilyCopy = {
   name: string;
   tagline: string;
+  /** Fecho de venda da primeira tela do card, antes das ofertas. */
+  pitch: string;
 };
 
 export type FaqItem = {
@@ -109,10 +111,18 @@ export type Content = {
     cycleLabel: string;
     /** Sob o preço dos combos, ex.: "por ciclo mensal". */
     priceNote: string;
-    /** Abre as três opções de preço da família. */
+    /** Vira o card para a primeira oferta da família. */
     openLabel: string;
-    /** Título da lista de opções, dentro da família aberta. */
-    optionsTitle: string;
+    /** Volta da primeira oferta para a tela de venda. */
+    backLabel: string;
+    /** Botões de virar página, para leitores de tela. */
+    prevLabel: string;
+    nextLabel: string;
+    /** Posição da oferta no folheio, ex.: "2 de 3". */
+    counter: string;
+    /** Lista de comparação, fechada, abaixo dos três cards. */
+    compareLabel: string;
+    compareNote: string;
     /** Selo da família recomendada. */
     recommended: string;
     /** Título da lista de entrega dentro de cada combo. */

@@ -137,14 +137,20 @@ export const en: Content = {
         name: "Premium",
         tagline:
           "Authority and exclusivity for the profile that is the storefront.",
+        pitch:
+          "The complete combo for a profile that needs to show up and reach people who have not found it yet.",
       },
       intermediate: {
         name: "Intermediate",
         tagline: "Growth and consistency for profiles already posting often.",
+        pitch:
+          "The combo that keeps the profile visible every month, without depending on one lucky post.",
       },
       start: {
         name: "Start",
         tagline: "An accessible entry point for profiles building a rhythm.",
+        pitch:
+          "The entry combo for a profile that needs to get moving and start being seen.",
       },
     },
     metricLabels: [
@@ -158,8 +164,14 @@ export const en: Content = {
     fromLabel: "From",
     cycleLabel: "Up to 30 posts",
     priceNote: "per monthly cycle",
-    openLabel: "See plans",
-    optionsTitle: "Three options in this family",
+    openLabel: "See the plans",
+    backLabel: "Back",
+    prevLabel: "Previous offer",
+    nextLabel: "Next offer",
+    counter: "{n} of {total}",
+    compareLabel: "Compare every plan",
+    compareNote:
+      "All nine combos side by side, with price and per-post ranges.",
     recommended: "Recommended",
     metricsTitle: "Per post",
     noFollowers:

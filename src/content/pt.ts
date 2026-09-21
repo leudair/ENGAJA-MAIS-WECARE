@@ -136,14 +136,20 @@ export const pt: Content = {
       premium: {
         name: "Premium",
         tagline: "Autoridade e exclusividade para o perfil que é a vitrine.",
+        pitch:
+          "O combo completo para o perfil aparecer mais e chegar em quem ainda não te conhece.",
       },
       intermediate: {
         name: "Intermediário",
         tagline: "Evolução e consistência para quem já publica com frequência.",
+        pitch:
+          "O combo que mantém o perfil visível todo mês, sem depender de um post sortudo.",
       },
       start: {
         name: "Start",
         tagline: "Entrada acessível para quem está começando a dar ritmo.",
+        pitch:
+          "O combo de entrada para o perfil sair do lugar e começar a ser visto.",
       },
     },
     metricLabels: [
@@ -157,8 +163,14 @@ export const pt: Content = {
     fromLabel: "A partir de",
     cycleLabel: "Até 30 publicações",
     priceNote: "por ciclo mensal",
-    openLabel: "Ver planos",
-    optionsTitle: "Três opções nesta família",
+    openLabel: "Ver os planos",
+    backLabel: "Voltar",
+    prevLabel: "Oferta anterior",
+    nextLabel: "Próxima oferta",
+    counter: "{n} de {total}",
+    compareLabel: "Comparar todos os planos",
+    compareNote:
+      "Os nove combos lado a lado, com preço e faixas por publicação.",
     recommended: "Recomendado",
     metricsTitle: "Por publicação",
     noFollowers:

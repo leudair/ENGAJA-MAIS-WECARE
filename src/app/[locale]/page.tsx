@@ -261,11 +261,13 @@ export default async function EngagementPage({
           <SectionTitle center>{c.howItWorks.title}</SectionTitle>
           <Lead center>{c.howItWorks.subtitle}</Lead>
 
-          <ol className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4 lg:grid-cols-4">
+          {/* A parede da moldura ocupa espaço embaixo: por isso o vão
+              vertical é maior que o horizontal. */}
+          <ol className="mt-10 grid grid-cols-2 gap-x-3 gap-y-5 sm:mt-12 sm:gap-x-4 sm:gap-y-6 lg:grid-cols-4">
             {c.howItWorks.steps.map((step, index) => (
               <li
                 key={step.title}
-                className="surface px-4 py-6 sm:px-6 sm:py-7"
+                className="gold-frame px-4 py-6 sm:px-6 sm:py-7"
               >
                 <span
                   className="display text-metal-gold block text-2xl sm:text-3xl"
@@ -273,7 +275,7 @@ export default async function EngagementPage({
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-4 text-[0.68rem] font-bold tracking-[0.18em] text-paper uppercase sm:text-[0.72rem]">
+                <h3 className="mt-4 text-[0.68rem] font-bold tracking-[0.18em] text-gold-bright uppercase sm:text-[0.72rem]">
                   {step.title}
                 </h3>
                 <p className="mt-2.5 text-xs leading-relaxed text-pretty text-paper-dim sm:text-sm">

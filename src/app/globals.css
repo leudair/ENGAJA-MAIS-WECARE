@@ -358,6 +358,34 @@ body {
     rgb(17 17 19 / 0.9);
 }
 
+/*
+ * Caixa preta com moldura de ouro escovado. A moldura é o próprio metal da
+ * página, não um fio de cor: entra como fundo da borda (`border-box`),
+ * enquanto o preto fica no `padding-box`. Embaixo dela vai uma parede curta,
+ * para a caixa ficar levantada como as chapas dos planos.
+ */
+.gold-frame {
+  border: 3px solid transparent;
+  border-radius: 20px;
+  background-image:
+    linear-gradient(180deg, #121214 0%, #08080a 100%), var(--brush-lines),
+    var(--metal-gold);
+  background-origin: padding-box, border-box, border-box;
+  background-clip: padding-box, border-box, border-box;
+  background-size:
+    auto,
+    100% 2px,
+    100% 100%;
+  box-shadow:
+    inset 0 0 0 1px rgb(0 0 0 / 0.7),
+    inset 0 1px 0 rgb(242 217 147 / 0.09),
+    0 1px 0 #6b4f1c,
+    0 2px 0 #56400f,
+    0 3px 0 #41300b,
+    0 4px 0 #33240c,
+    0 12px 20px -7px rgb(0 0 0 / 0.8);
+}
+
 /* ------------------------------------------------------------------ */
 /* A caixa da oferta, dentro do card                                   */
 /* ------------------------------------------------------------------ */

@@ -196,6 +196,7 @@ export const en: Content = {
       "Everything we offer can be seen working on our own profile. It is our reference, and the proof that our growth and engagement strategies really do deliver results.",
     ],
     cta: "See the WeCare profile",
+    art: "/perfil-wecare-en.webp",
     artAlt:
       "The WeCare agency profile on Instagram and the numbers recorded over the last 90 days.",
   },

@@ -410,10 +410,11 @@ export default async function EngagementPage({
 
           {/* Vitrine do perfil da própria WeCare, sem dado de cliente. A arte
               já vem com moldura e fundo preto, por isso a moldura de ouro aqui
-              fica rente, como o vidro de um quadro. */}
+              fica rente, como o vidro de um quadro. Cada idioma tem a sua
+              versão da arte, então ela troca junto com o resto da página. */}
           <figure className="gold-frame mx-auto w-full max-w-sm p-2">
             <img
-              src="/perfil-wecare.webp"
+              src={c.demo.art}
               alt={c.demo.artAlt}
               width={900}
               height={1599}

@@ -162,6 +162,8 @@ export type Content = {
     lead: string;
     paragraphs: string[];
     cta: string;
+    /** A arte do perfil no idioma da página: cada idioma tem a sua. */
+    art: string;
     /** Descrição da arte do perfil, para quem navega ouvindo a página. */
     artAlt: string;
   };

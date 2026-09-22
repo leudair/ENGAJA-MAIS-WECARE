@@ -23,6 +23,10 @@ const localeFlags: Record<Locale, string> = {
 };
 
 /**
+ * A lista é uma chapa escura opaca de propósito: ela abre por cima do título
+ * da página, e qualquer transparência faz as bandeiras sumirem no meio das
+ * letras.
+ *
  * Troca de idioma: um botão só, com a bandeira do idioma aberto, que abre a
  * lista dos três. Antes eram três abas lado a lado, que não cabiam na barra do
  * celular e por isso ficavam escondidas dentro do menu. Quem compra está nos
@@ -81,7 +85,7 @@ export function LocaleSwitcher({
       {open && (
         <nav
           aria-label={label}
-          className="absolute top-full right-0 z-30 mt-2 min-w-44 overflow-hidden rounded-[11px] border border-gold-edge/60 bg-ink-950 py-1 shadow-[0_18px_34px_-10px_rgb(0_0_0/0.9)]"
+          className="absolute top-full right-0 z-30 mt-2 min-w-44 overflow-hidden rounded-[11px] border border-gold-edge/60 bg-linear-to-b from-[#141417] to-[#08080a] py-1 shadow-[inset_0_1px_0_rgb(242_217_147/0.1),0_2px_0_#000,0_22px_38px_-10px_rgb(0_0_0/0.95)]"
         >
           {locales.map((locale) => {
             const active = locale === current;

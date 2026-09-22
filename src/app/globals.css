@@ -715,6 +715,30 @@ body {
     0 0 46px -6px rgb(181 24 31 / 0.8);
 }
 
+/* Botão do topo: o mesmo rubi em relevo, só que menor, numa linha só, e com
+   as letras brancas estampadas em relevo. O botão grande continua sendo o da
+   página; aqui ele divide a barra com a logo, o idioma e o menu. */
+.btn-nav {
+  min-height: 2.25rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 9px;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  /* Letra em relevo: luz em cima, sombra embaixo, como as chapas da página. */
+  text-shadow:
+    0 -1px 0 rgb(0 0 0 / 0.55),
+    0 1px 0 rgb(255 255 255 / 0.35),
+    0 2px 3px rgb(0 0 0 / 0.55);
+}
+@media (min-width: 640px) {
+  .btn-nav {
+    min-height: 2.5rem;
+    padding: 0.5rem 1.15rem;
+    font-size: 0.68rem;
+  }
+}
+
 .btn-ruby:active {
   transform: translateY(4px);
   box-shadow:

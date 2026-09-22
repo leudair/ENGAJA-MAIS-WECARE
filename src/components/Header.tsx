@@ -36,8 +36,11 @@ export function Header({
     { href: `${home}#faq`, label: content.nav.faq },
   ];
 
+  // z-50 na barra: a seção do hero é uma camada isolada por causa do campo de
+  // energia, e sem z-index a barra fica atrás dela. O sintoma é o título da
+  // página passar por cima da lista de idiomas e engolir os cliques.
   return (
-    <header className="px-4 pt-4 sm:px-6 sm:pt-6">
+    <header className="relative z-50 px-4 pt-4 sm:px-6 sm:pt-6">
       <div className="metal metal-gold mx-auto flex max-w-6xl items-center gap-3 rounded-[16px] px-3 py-2.5 shadow-[0_18px_36px_-22px_rgba(0,0,0,0.95)] ring-1 ring-black/40 sm:gap-5 sm:px-5 sm:py-3">
         <Link
           href={home}
@@ -67,7 +70,7 @@ export function Header({
 
           <Link
             href={`${home}#planos`}
-            className="btn btn-ruby min-h-[2.5rem] px-3 py-2 text-[0.6rem] tracking-[0.1em] sm:min-h-[2.75rem] sm:px-5 sm:text-[0.7rem]"
+            className="btn btn-ruby btn-nav"
             onClick={() => setOpen(false)}
           >
             {content.nav.cta}

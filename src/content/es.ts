@@ -192,12 +192,14 @@ export const es: Content = {
   demo: {
     eyebrow: "Demostración",
     title: "El perfil de WeCare es el escaparate",
-    lead: "En lugar de exponer clientes, mostramos nuestro propio perfil aplicando la misma estrategia que entregamos.",
+    lead: "Nuestro perfil es nuestro mayor caso de éxito.",
     paragraphs: [
-      "Quien contrata quiere ver el servicio funcionando antes de decidir. Pero mostrar el perfil de un cliente significaría entregar la identidad de quien confió en nosotros, y eso no lo hacemos.",
-      "Por eso la demostración es el propio perfil de WeCare. Ahí puedes observar el ritmo de publicación y el comportamiento del engagement a lo largo del ciclo, con la misma estrategia de los planes.",
+      "Por respeto a la privacidad de nuestros clientes, no divulgamos los contactos ni los perfiles de quienes contratan nuestros servicios.",
+      "Todo lo que ofrecemos se puede ver funcionando en nuestro propio perfil. Es nuestra referencia y la prueba de que nuestras estrategias de crecimiento y engagement realmente entregan resultados.",
     ],
     cta: "Ver el perfil de WeCare",
+    artAlt:
+      "El perfil de la agencia WeCare en Instagram y los números registrados en los últimos 90 días.",
   },
   privacy: {
     eyebrow: "Discreción",

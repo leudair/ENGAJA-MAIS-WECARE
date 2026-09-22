@@ -162,6 +162,8 @@ export type Content = {
     lead: string;
     paragraphs: string[];
     cta: string;
+    /** Descrição da arte do perfil, para quem navega ouvindo a página. */
+    artAlt: string;
   };
   privacy: {
     eyebrow: string;

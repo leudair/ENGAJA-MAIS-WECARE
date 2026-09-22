@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import { HeroField } from "@/components/HeroField";
-import { Logo } from "@/components/Logo";
 import { MetricIcon } from "@/components/MetricIcon";
 import { PeopleRow } from "@/components/PeopleRow";
 import { PlanComparison, PlanFamilyCard } from "@/components/PlanFamilyCard";
@@ -409,43 +408,23 @@ export default async function EngagementPage({
             )}
           </div>
 
-          {/* Vitrine do perfil da própria WeCare, sem dado de cliente. */}
-          <div className="gold-frame mx-auto w-full max-w-sm px-7 py-9">
-            <div className="flex flex-col items-center text-center">
-              <Eyebrow>{c.demo.eyebrow}</Eyebrow>
-              <div className="mt-5">
-                <Logo alt={c.hero.logoAlt} className="max-w-[12rem]" />
-              </div>
-              <span className="rule-gold mt-6 h-px w-full opacity-60" />
-            </div>
-
-            {/* Mosaico do perfil: um marcador rubi no centro, sem nenhuma
-                imagem de cliente. */}
-            <div className="mt-6 grid grid-cols-3 gap-1.5" aria-hidden>
-              {Array.from({ length: 9 }).map((_, index) => {
-                const center = index === 4;
-                return (
-                  <div
-                    key={index}
-                    className={`flex aspect-square items-center justify-center rounded-[6px] border ${
-                      center
-                        ? "border-ruby-500/60 bg-linear-to-br from-ruby-500/20 to-transparent"
-                        : "border-white/8 bg-linear-to-br from-white/[0.05] to-transparent"
-                    }`}
-                  >
-                    {center && (
-                      <span className="bullet-ruby size-2" aria-hidden />
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-
-            <span className="rule-gold mt-6 block h-px w-full opacity-30" />
-            <p className="mt-4 text-center text-xs leading-relaxed text-paper">
+          {/* Vitrine do perfil da própria WeCare, sem dado de cliente. A arte
+              já vem com moldura e fundo preto, por isso a moldura de ouro aqui
+              fica rente, como o vidro de um quadro. */}
+          <figure className="gold-frame mx-auto w-full max-w-sm p-2">
+            <img
+              src="/perfil-wecare.webp"
+              alt={c.demo.artAlt}
+              width={900}
+              height={1599}
+              loading="lazy"
+              decoding="async"
+              className="block h-auto w-full rounded-[13px]"
+            />
+            <figcaption className="px-4 pt-4 pb-2 text-center text-xs leading-relaxed text-paper">
               {c.privacy.bullets[2]}
-            </p>
-          </div>
+            </figcaption>
+          </figure>
         </div>
       </section>
 

@@ -190,12 +190,14 @@ export const en: Content = {
   demo: {
     eyebrow: "Demonstration",
     title: "The WeCare profile is the showcase",
-    lead: "Instead of exposing clients, we show our own profile running the same strategy we deliver.",
+    lead: "Our own profile is our biggest success story.",
     paragraphs: [
-      "People want to see the service working before they decide. But showing a client profile would mean handing over the identity of someone who trusted us, and we don't do that.",
-      "So the demonstration is WeCare's own profile. That's where you can watch the posting rhythm and how engagement behaves across the cycle, with the same strategy used in the plans.",
+      "Out of respect for our clients' privacy, we never share the contacts or the profiles of the people who hire us.",
+      "Everything we offer can be seen working on our own profile. It is our reference, and the proof that our growth and engagement strategies really do deliver results.",
     ],
     cta: "See the WeCare profile",
+    artAlt:
+      "The WeCare agency profile on Instagram and the numbers recorded over the last 90 days.",
   },
   privacy: {
     eyebrow: "Discretion",

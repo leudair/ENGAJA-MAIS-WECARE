@@ -38,6 +38,13 @@ export type PlanData = {
   featured?: boolean;
   /** Tarja de posicionamento, quando o combo tem uma. */
   crown?: "influencer";
+  /**
+   * Link de pagamento do Stripe deste plano, e só dele. Fica colado no preço
+   * de propósito: link trocado é cliente pagando o valor errado. Enquanto for
+   * `null`, o botão leva para a seção de contato da própria página, sem
+   * prometer um checkout que ainda não existe.
+   */
+  checkoutUrl: string | null;
 };
 
 export const planFamilyOrder: readonly PlanFamilyId[] = [
@@ -54,6 +61,7 @@ export const plansData: readonly PlanData[] = [
     name: "Executivo Black",
     crown: "influencer",
     priceBRL: 4987,
+    checkoutUrl: null,
     metrics: [
       [80000, 120000],
       [1000, 1600],
@@ -68,6 +76,7 @@ export const plansData: readonly PlanData[] = [
     family: "premium",
     name: "Prime",
     priceBRL: 2997,
+    checkoutUrl: null,
     metrics: [
       [50000, 80000],
       [700, 1000],
@@ -81,6 +90,7 @@ export const plansData: readonly PlanData[] = [
     family: "premium",
     name: "Executivo",
     priceBRL: 1997,
+    checkoutUrl: null,
     metrics: [
       [30000, 50000],
       [500, 800],
@@ -97,6 +107,7 @@ export const plansData: readonly PlanData[] = [
     name: null,
     suffix: "max",
     priceBRL: 1497,
+    checkoutUrl: null,
     metrics: [
       [20000, 35000],
       [350, 600],
@@ -112,6 +123,7 @@ export const plansData: readonly PlanData[] = [
     name: null,
     suffix: "plus",
     priceBRL: 997,
+    checkoutUrl: null,
     metrics: [
       [12000, 20000],
       [250, 400],
@@ -125,6 +137,7 @@ export const plansData: readonly PlanData[] = [
     family: "intermediate",
     name: null,
     priceBRL: 697,
+    checkoutUrl: null,
     metrics: [
       [8000, 12000],
       [150, 250],
@@ -140,6 +153,7 @@ export const plansData: readonly PlanData[] = [
     family: "start",
     name: "Start Max",
     priceBRL: 497,
+    checkoutUrl: null,
     metrics: [
       [5000, 8000],
       [100, 180],
@@ -154,6 +168,7 @@ export const plansData: readonly PlanData[] = [
     family: "start",
     name: "Start Plus",
     priceBRL: 297,
+    checkoutUrl: null,
     metrics: [
       [3000, 5000],
       [60, 100],
@@ -167,6 +182,7 @@ export const plansData: readonly PlanData[] = [
     family: "start",
     name: "Start",
     priceBRL: 197,
+    checkoutUrl: null,
     metrics: [
       [1500, 3000],
       [30, 60],
@@ -176,3 +192,15 @@ export const plansData: readonly PlanData[] = [
     ],
   },
 ];
+
+/**
+ * Um link de pagamento errado cobra o valor errado, então um link fora do
+ * padrão derruba a construção do site em vez de ir para o ar quieto.
+ */
+for (const plan of plansData) {
+  if (plan.checkoutUrl && !plan.checkoutUrl.startsWith("https://")) {
+    throw new Error(
+      `Link de pagamento inválido no plano "${plan.id}": tem que ser um endereço https.`,
+    );
+  }
+}

@@ -17,7 +17,7 @@ import {
   Rule,
   SectionTitle,
 } from "@/components/ui";
-import { contactHref, getContent, siteConfig, type Locale } from "@/content";
+import { getContent, siteConfig, type Locale } from "@/content";
 import { getPlanFamilies, getShowcasePlan, type PlanCard } from "@/lib/plans";
 import { isLocale, viralGrowthPath } from "@/lib/routes";
 
@@ -198,16 +198,11 @@ export default async function EngagementPage({
 
           <div className="mt-12 grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-3 lg:gap-7">
             {families.map((family) => (
-              <PlanFamilyCard
-                key={family.id}
-                family={family}
-                c={c}
-                contactHref={contactHref}
-              />
+              <PlanFamilyCard key={family.id} family={family} c={c} />
             ))}
           </div>
 
-          <PlanComparison families={families} c={c} contactHref={contactHref} />
+          <PlanComparison families={families} c={c} />
 
           <p className="mt-12 text-center text-sm text-pretty text-gold-label">
             {c.plans.noFollowers}
@@ -250,7 +245,7 @@ export default async function EngagementPage({
                 </div>
 
                 <div className="mt-7">
-                  <RubyButton href={contactHref} className="w-full">
+                  <RubyButton href={showcase.href} className="w-full">
                     {c.showcase.cta}
                   </RubyButton>
                 </div>

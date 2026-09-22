@@ -2,7 +2,9 @@
  * Configuração comercial do site.
  *
  * PENDENTE DE DEFINIÇÃO (não preencher com suposições):
- * - contactUrl: link de contato/checkout usado pelos botões de plano.
+ * - contactUrl: link de contato geral, usado enquanto um plano não tem
+ *   checkout próprio. O link de pagamento de CADA plano não fica aqui: fica
+ *   em `checkoutUrl`, junto do preço dele, em `plans-data.ts`.
  * - wecareProfileUrl: link do perfil da WeCare usado na seção de demonstração.
  * - logoUrl: arquivo da logo oficial, em `public/`. O arquivo atual foi gerado
  *   a partir da logo enviada pelo Leudair, com o fundo branco recortado para a

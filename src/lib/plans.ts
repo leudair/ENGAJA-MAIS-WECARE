@@ -6,6 +6,7 @@ import {
   type Range,
 } from "@/content/plans-data";
 import type { MetalKind } from "@/components/ui";
+import { contactHref } from "@/content/site";
 import type { Content, Locale } from "@/content/types";
 
 /**
@@ -58,6 +59,11 @@ export type PlanCard = {
    * acabamento da oferta: 1 é a chapa em relevo, 3 é a caixa simples.
    */
   tier: 1 | 2 | 3;
+  /**
+   * Para onde vai o botão deste plano: o checkout dele no Stripe, ou a seção
+   * de contato enquanto o link não existir.
+   */
+  href: string;
 };
 
 export type PlanFamilyCard = {
@@ -106,6 +112,7 @@ function toCard(
     featured: plan.featured === true,
     crown: plan.crown ? c.plans.crowns[plan.crown] : null,
     tier,
+    href: plan.checkoutUrl ?? contactHref,
   };
 }
 

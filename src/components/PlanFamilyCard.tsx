@@ -54,11 +54,9 @@ const offerClass: Record<1 | 2 | 3, string> = {
 export function PlanFamilyCard({
   family,
   c,
-  contactHref,
 }: {
   family: PlanFamilyCard;
   c: Content;
-  contactHref: string;
 }) {
   const [page, setPage] = useState(0);
   const [height, setHeight] = useState<number | undefined>(undefined);
@@ -189,14 +187,14 @@ export function PlanFamilyCard({
 
               {offer.tier === 1 ? (
                 <LedButton
-                  href={contactHref}
+                  href={offer.href}
                   className="flex-1 px-2 text-[0.62rem] sm:text-[0.7rem]"
                 >
                   {c.plans.cta}
                 </LedButton>
               ) : (
                 <MetalButton
-                  href={contactHref}
+                  href={offer.href}
                   className="flex-1 px-2 text-[0.62rem] sm:text-[0.7rem]"
                 >
                   {c.plans.cta}
@@ -250,11 +248,9 @@ export function PlanFamilyCard({
 export function PlanComparison({
   families,
   c,
-  contactHref,
 }: {
   families: PlanFamilyCard[];
   c: Content;
-  contactHref: string;
 }) {
   return (
     <details className="surface group mt-10 px-4 py-1 sm:px-6">
@@ -312,14 +308,14 @@ export function PlanComparison({
 
                   {plan.tier === 1 ? (
                     <LedButton
-                      href={contactHref}
+                      href={plan.href}
                       className="mt-4 w-full px-2 text-[0.6rem]"
                     >
                       {c.plans.cta}
                     </LedButton>
                   ) : (
                     <MetalButton
-                      href={contactHref}
+                      href={plan.href}
                       className="mt-4 w-full px-2 text-[0.6rem]"
                     >
                       {c.plans.cta}

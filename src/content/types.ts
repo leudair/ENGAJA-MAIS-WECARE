@@ -73,6 +73,16 @@ export type Content = {
       unit: string;
       note: string;
     };
+    /**
+     * Fileira de pessoas embaixo do botão. A frase ao lado tem que ser um
+     * fato já definido: aqui não entra número de clientes, contador de
+     * gente online nem nada que a gente não possa comprovar.
+     */
+    people: {
+      text: string;
+      /** Parte em destaque, no fim da frase. */
+      strong: string;
+    };
     /** Faixa de provas abaixo do hero. Só fatos já definidos. */
     proofs: { title: string; description: string }[];
   };

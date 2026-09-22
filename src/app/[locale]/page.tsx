@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { Logo } from "@/components/Logo";
+import { PeopleRow } from "@/components/PeopleRow";
 import { PlanComparison, PlanFamilyCard } from "@/components/PlanFamilyCard";
 import {
   ArrowIcon,
@@ -90,6 +91,10 @@ export default async function EngagementPage({
 
             <div className="mt-9">
               <RubyButton href="#planos">{c.hero.cta}</RubyButton>
+            </div>
+
+            <div className="mt-6">
+              <PeopleRow c={c} />
             </div>
           </div>
 

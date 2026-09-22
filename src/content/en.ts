@@ -23,6 +23,10 @@ export const en: Content = {
     paragraph:
       "One plan a month. Up to 30 posts covered. You pick how much engagement each post gets.",
     cta: "See the plans",
+    people: {
+      text: "Handled by the",
+      strong: "WeCare team",
+    },
     badge: {
       brand: "Engaja Mais",
       amount: "Up to 30",

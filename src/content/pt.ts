@@ -23,6 +23,10 @@ export const pt: Content = {
     paragraph:
       "Um plano por mês. Até 30 publicações atendidas. Você escolhe quanto engajamento cada publicação recebe.",
     cta: "Ver os planos",
+    people: {
+      text: "Quem atende é a",
+      strong: "equipe da WeCare",
+    },
     badge: {
       brand: "Engaja Mais",
       amount: "Até 30",

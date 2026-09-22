@@ -63,11 +63,7 @@ export function Header({
         </nav>
 
         <div className="relative ml-auto flex items-center gap-2 sm:gap-3">
-          <LocaleSwitcher
-            current={locale}
-            label={content.nav.languageLabel}
-            className="hidden sm:flex"
-          />
+          <LocaleSwitcher current={locale} label={content.nav.languageLabel} />
 
           <Link
             href={`${home}#planos`}
@@ -123,11 +119,6 @@ export function Header({
               </Link>
             ))}
           </nav>
-          <LocaleSwitcher
-            current={locale}
-            label={content.nav.languageLabel}
-            className="mt-3 sm:hidden"
-          />
         </div>
       )}
     </header>

@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { HeroField } from "@/components/HeroField";
 import { Logo } from "@/components/Logo";
 import { MetricIcon } from "@/components/MetricIcon";
 import { PeopleRow } from "@/components/PeopleRow";
@@ -78,7 +79,10 @@ export default async function EngagementPage({
       {/* ---------------------------------------------------------------- */}
       {/* Hero: texto à esquerda, chapa de bronze à direita                 */}
       {/* ---------------------------------------------------------------- */}
-      <section className="px-4 pt-10 pb-6 sm:px-6 sm:pt-16 sm:pb-10">
+      <section className="relative isolate px-4 pt-10 pb-6 sm:px-6 sm:pt-16 sm:pb-10">
+        {/* Colmeia de energia dourada atrás do topo, que reage ao toque. */}
+        <HeroField />
+
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[3fr_2fr] lg:items-center lg:gap-14">
           <div>
             <Eyebrow>{c.hero.eyebrow}</Eyebrow>

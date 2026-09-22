@@ -84,12 +84,12 @@
   );
   --metal-bronze: linear-gradient(
     180deg,
-    #b6885f 0%,
-    #ab7d56 20%,
-    #b0825a 38%,
-    #9c6f4a 62%,
-    #885c39 84%,
-    #835735 100%
+    #a87b57 0%,
+    #9b6f4d 20%,
+    #a07451 38%,
+    #8a6142 62%,
+    #745030 84%,
+    #6d4a2b 100%
   );
 
   /* A estria do escovado: linhas horizontais de 2px, quase invisíveis. */
@@ -262,10 +262,10 @@ body {
 
 .metal-bronze {
   --metal: var(--metal-bronze);
-  --plate-1: #6f4a2d;
-  --plate-2: #5a3b23;
-  --plate-3: #452d1a;
-  --plate-4: #301f12;
+  --plate-1: #634026;
+  --plate-2: #4f321d;
+  --plate-3: #3c2615;
+  --plate-4: #291a0e;
 }
 
 /*
@@ -436,13 +436,23 @@ body {
   width: 1.4rem;
   height: 1.4rem;
   border-radius: 999px;
-  background: linear-gradient(180deg, #c8222a 0%, #8e1016 100%);
-  color: #ffe9ea;
+  /* Gema esmaltada: o ponto de luz alto à esquerda é o que faz o olho ler
+     vidro em vez de disco pintado. O aro usa o metal do card, por isso a cor
+     vem de --plate-2 e não de um valor fixo. */
+  background:
+    radial-gradient(
+      118% 118% at 32% 20%,
+      rgb(255 255 255 / 0.55),
+      rgb(255 255 255 / 0) 44%
+    ),
+    linear-gradient(180deg, #cf262f 0%, #7c0d12 100%);
+  color: #fff1f1;
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.35),
-    inset 0 -2px 4px rgb(0 0 0 / 0.3),
-    0 1px 0 #5a0a0d,
-    0 2px 3px rgb(0 0 0 / 0.35);
+    inset 0 1px 0 rgb(255 255 255 / 0.4),
+    inset 0 -3px 5px rgb(0 0 0 / 0.42),
+    0 0 0 1.5px var(--plate-2, rgb(210 174 100 / 0.55)),
+    0 1px 0 var(--plate-4, rgb(0 0 0 / 0.6)),
+    0 2px 4px rgb(0 0 0 / 0.42);
 }
 
 /* ------------------------------------------------------------------ */
@@ -456,45 +466,49 @@ body {
  * fio dourado, e a do plano de maior volume é uma chapa à parte, levantada
  * do card, com parede lateral como os botões.
  */
+/*
+ * A caixa das entregas é escavada na própria chapa do card, no mesmo metal, e
+ * contornada por um fio de LED rubi contínuo. Antes cada faixa tinha um
+ * tratamento diferente; agora as três falam a mesma língua e só o metal muda,
+ * que já vem do card por --metal.
+ *
+ * O fio fica num ::after e não na borda do elemento para o brilho poder sair
+ * para fora sem empurrar o conteúdo nem somar largura à caixa.
+ */
 .offer {
+  position: relative;
   border-radius: 16px;
   padding: 0.9rem 1rem 0.3rem;
-}
-
-/* Entrada: um rebaixo discreto na própria chapa. */
-.offer-3 {
-  background: rgb(0 0 0 / 0.07);
-  box-shadow:
-    inset 0 2px 4px rgb(0 0 0 / 0.22),
-    inset 0 -1px 0 rgb(255 255 255 / 0.28);
-}
-
-/* Meio: o mesmo rebaixo, com o fio dourado em volta. */
-.offer-2 {
-  background: rgb(0 0 0 / 0.11);
-  box-shadow:
-    inset 0 0 0 1px rgb(123 84 32 / 0.5),
-    inset 0 3px 6px rgb(0 0 0 / 0.26),
-    inset 0 -1px 0 rgb(255 255 255 / 0.3);
-}
-
-/* Maior volume: chapa de ouro escovado levantada, com espessura. */
-.offer-1 {
-  background-image: var(--brush-lines), var(--metal-gold);
+  /* A primeira camada é a sombra do rebaixo: sem ela o metal da caixa fica
+     igual ao da face do card e o olho lê tudo no mesmo plano. */
+  background-image:
+    linear-gradient(
+      180deg,
+      rgb(0 0 0 / 0.3),
+      rgb(0 0 0 / 0.16) 30%,
+      rgb(0 0 0 / 0.26)
+    ),
+    var(--brush-lines), var(--metal);
   background-size:
+    100% 100%,
     100% 2px,
     100% 100%;
   box-shadow:
-    inset 0 1px 0 rgb(255 253 243 / 0.85),
-    inset 0 0 0 1px rgb(123 84 32 / 0.65),
-    inset 0 -6px 12px rgb(74 53 8 / 0.3),
-    0 1px 0 #8a6524,
-    0 2px 0 #7b5a1f,
-    0 3px 0 #6b4f1c,
-    0 4px 0 #56400f,
-    0 5px 0 #41300b,
-    0 6px 0 #2d2108,
-    0 12px 18px -6px rgb(0 0 0 / 0.55);
+    inset 0 0 0 1px rgb(0 0 0 / 0.55),
+    inset 0 4px 9px rgb(0 0 0 / 0.5),
+    inset 0 -2px 0 rgb(255 255 255 / 0.24);
+}
+.offer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1.5px solid #c8222a;
+  pointer-events: none;
+  box-shadow:
+    0 0 5px rgb(181 24 31 / 0.8),
+    0 0 14px -1px rgb(181 24 31 / 0.5),
+    inset 0 0 5px -1px rgb(181 24 31 / 0.45);
 }
 
 /*
@@ -556,6 +570,23 @@ body {
  * Número em relevo. O fio claro em cima e a sombra embaixo dão a letra
  * gravada na chapa, sem estourar o espaço da linha.
  */
+/*
+ * Nome do plano e preço: peça fundida em preto, com a face de cima pegando luz
+ * e uma parede descendo. Empilhar sombras sólidas de 1px em 1px é o que dá a
+ * parede; a sombra difusa no fim descola a letra da chapa.
+ */
+.display-3d {
+  color: #191512;
+  text-shadow:
+    0 -1px 0 rgb(255 255 255 / 0.32),
+    0 1px 0 #342c27,
+    0 2px 0 #2b2420,
+    0 3px 0 #231d1a,
+    0 4px 0 #1b1614,
+    0 5px 0 #13100e,
+    0 7px 9px rgb(0 0 0 / 0.45);
+}
+
 .num-emboss {
   text-shadow:
     0 1px 0 rgb(255 255 255 / 0.55),
@@ -805,6 +836,89 @@ body {
 }
 
 /* Botão discreto: mesma espessura, só que sem a chapa cheia. */
+/*
+ * Tecla no metal do próprio card: o botão central da oferta e as setas de
+ * folhear. O metal e a parede lateral vêm de --metal e --plate-*, que o card
+ * define, então a mesma classe sai em ouro, aço ou bronze sem variante.
+ *
+ * O berço é desenhado por duas sombras finais: um anel escuro, que é o
+ * rebaixo, e um halo rubi fraco por fora.
+ */
+.btn-key {
+  border: 1px solid rgb(0 0 0 / 0.5);
+  border-top-color: rgb(255 255 255 / 0.55);
+  background-image:
+    linear-gradient(
+      180deg,
+      rgb(255 255 255 / 0.26),
+      transparent 38%,
+      rgb(0 0 0 / 0.16) 78%,
+      rgb(0 0 0 / 0.26)
+    ),
+    var(--brush-lines), var(--metal);
+  background-size:
+    100% 100%,
+    100% 2px,
+    100% 100%;
+  color: var(--color-onmetal);
+  text-shadow:
+    0 1px 0 rgb(255 255 255 / 0.45),
+    0 -1px 0 rgb(0 0 0 / 0.3);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.8),
+    inset 0 -8px 14px rgb(0 0 0 / 0.42),
+    0 1px 0 var(--plate-2),
+    0 2px 0 var(--plate-2),
+    0 3px 0 var(--plate-3),
+    0 4px 0 var(--plate-3),
+    0 5px 0 var(--plate-4),
+    0 6px 0 var(--plate-4),
+    0 9px 13px -4px rgb(0 0 0 / 0.68),
+    0 0 0 3.5px rgb(0 0 0 / 0.45),
+    0 0 18px 2px rgb(181 24 31 / 0.55);
+}
+.btn-key:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.9),
+    inset 0 -8px 14px rgb(0 0 0 / 0.4),
+    0 1px 0 var(--plate-2),
+    0 2px 0 var(--plate-2),
+    0 3px 0 var(--plate-3),
+    0 4px 0 var(--plate-3),
+    0 5px 0 var(--plate-4),
+    0 6px 0 var(--plate-4),
+    0 7px 0 var(--plate-4),
+    0 8px 0 var(--plate-4),
+    0 13px 17px -4px rgb(0 0 0 / 0.7),
+    0 0 0 3.5px rgb(0 0 0 / 0.45),
+    0 0 24px 3px rgb(181 24 31 / 0.7);
+}
+.btn-key:active {
+  transform: translateY(4px);
+  box-shadow:
+    inset 0 3px 7px rgb(0 0 0 / 0.55),
+    inset 0 -1px 0 rgb(255 255 255 / 0.2),
+    0 1px 0 var(--plate-4),
+    0 4px 7px -3px rgb(0 0 0 / 0.75),
+    0 0 0 3.5px rgb(0 0 0 / 0.45),
+    0 0 12px 0 rgb(181 24 31 / 0.4);
+}
+
+/* A mesma tecla, quadrada, para as setas. A seta em si é gravada: escura, com
+   um fio de luz embaixo, como se estivesse cavada no metal. */
+.btn-arrow {
+  border-radius: 10px;
+  padding: 0;
+  color: var(--color-onmetal);
+}
+.btn-arrow svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  /* Gravado: a seta é escura e o fio de luz embaixo faz o sulco. */
+  filter: drop-shadow(0 1px 0 rgb(255 255 255 / 0.55));
+}
+
 .btn-quiet {
   border: 1px solid rgb(210 174 100 / 0.5);
   border-top-color: rgb(242 217 147 / 0.75);

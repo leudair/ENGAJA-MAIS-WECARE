@@ -108,6 +108,32 @@ export function OnMetalButton({ href, children, className = "" }: ButtonProps) {
   );
 }
 
+/**
+ * Tecla física no metal do card: o botão de contratar dentro do plano. Herda o
+ * metal do card, então sai em ouro, aço ou bronze sem precisar de variante.
+ */
+export function KeyButton({ href, children, className = "" }: ButtonProps) {
+  return (
+    <Link href={href} className={`btn btn-key ${className}`}>
+      {children}
+    </Link>
+  );
+}
+
+/** Estrela de quatro pontas do rodapé do card, só enfeite. */
+export function SparkIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      aria-hidden
+      className={`size-3.5 ${className}`}
+    >
+      <path d="M8 0c.5 3.6 3.9 7 7.5 8-3.6 1-7 4.4-7.5 8-.5-3.6-3.9-7-7.5-8 3.6-1 7-4.4 7.5-8Z" />
+    </svg>
+  );
+}
+
 /** Botão secundário, só com o fio dourado. */
 export function QuietButton({ href, children, className = "" }: ButtonProps) {
   return (

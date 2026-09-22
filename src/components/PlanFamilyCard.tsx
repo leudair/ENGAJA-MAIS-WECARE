@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef, useState, type TouchEvent } from "react";
 import type { Content } from "@/content";
 import type { PlanCard, PlanFamilyCard } from "@/lib/plans";
 import { MetricIcon } from "./MetricIcon";
-import { ChevronIcon, LedButton, MetalButton, MetalPlate } from "./ui";
+import { ChevronIcon, KeyButton, MetalPlate, SparkIcon } from "./ui";
 
 /** Lista de entrega por publicação, com o valor alinhado à direita. */
 function PlanMetrics({ metrics }: { metrics: PlanCard["metrics"] }) {
@@ -41,11 +41,6 @@ const comboMetal: Record<1 | 2 | 3, string> = {
 };
 
 /** Quanto mais caro o plano, mais trabalhada é a caixa da oferta. */
-const offerClass: Record<1 | 2 | 3, string> = {
-  1: "offer offer-1",
-  2: "offer offer-2",
-  3: "offer offer-3",
-};
 
 /**
  * Card de uma família de planos.
@@ -146,14 +141,14 @@ export function PlanFamilyCard({
                   )}
 
                   <h4
-                    className={`display-caps text-onmetal ${
+                    className={`display-caps display-3d ${
                       plan.crown ? "mt-3" : ""
                     } ${plan.tier === 1 ? "text-2xl sm:text-[1.7rem]" : "text-lg sm:text-xl"}`}
                   >
                     {plan.name}
                   </h4>
                   <p
-                    className={`display mt-2 leading-none text-onmetal ${
+                    className={`display display-3d mt-2 leading-none ${
                       plan.tier === 1 ? "text-[2.9rem]" : "text-[2.4rem]"
                     }`}
                   >
@@ -164,7 +159,7 @@ export function PlanFamilyCard({
                   </p>
 
                   {/* A caixa das entregas: o acabamento sobe com o preço. */}
-                  <div className={`mt-5 ${offerClass[plan.tier]}`}>
+                  <div className="offer mt-5">
                     <p className="text-[0.58rem] font-bold tracking-[0.24em] text-onmetal-soft uppercase">
                       {c.plans.metricsTitle}
                     </p>
@@ -184,32 +179,23 @@ export function PlanFamilyCard({
                 type="button"
                 onClick={() => go(-1)}
                 aria-label={c.plans.prevLabel}
-                className="btn btn-quiet min-h-12 w-12 shrink-0 px-0"
+                className="btn btn-key btn-arrow min-h-12 w-12 shrink-0"
               >
                 <ChevronIcon className="rotate-90" />
               </button>
 
-              {offer.tier === 1 ? (
-                <LedButton
-                  href={offer.href}
-                  className="flex-1 px-2 text-[0.62rem] sm:text-[0.7rem]"
-                >
-                  {c.plans.cta}
-                </LedButton>
-              ) : (
-                <MetalButton
-                  href={offer.href}
-                  className="flex-1 px-2 text-[0.62rem] sm:text-[0.7rem]"
-                >
-                  {c.plans.cta}
-                </MetalButton>
-              )}
+              <KeyButton
+                href={offer.href}
+                className="flex-1 px-2 text-[0.62rem] sm:text-[0.7rem]"
+              >
+                {c.plans.cta}
+              </KeyButton>
 
               <button
                 type="button"
                 onClick={() => go(1)}
                 aria-label={c.plans.nextLabel}
-                className="btn btn-quiet min-h-12 w-12 shrink-0 px-0"
+                className="btn btn-key btn-arrow min-h-12 w-12 shrink-0"
               >
                 <ChevronIcon className="-rotate-90" />
               </button>
@@ -234,9 +220,12 @@ export function PlanFamilyCard({
               </span>
             </div>
 
-            <p className="mt-5 text-[0.82rem] leading-snug text-pretty text-onmetal-soft/85">
-              {family.pitch}
-            </p>
+            <div className="mt-5 flex items-end justify-between gap-3">
+              <p className="text-[0.82rem] leading-snug text-pretty text-onmetal-soft/85">
+                {family.pitch}
+              </p>
+              <SparkIcon className="display-3d shrink-0 translate-y-[-2px]" />
+            </div>
           </div>
         </div>
       </MetalPlate>
@@ -287,10 +276,10 @@ export function PlanComparison({
                     </span>
                   )}
 
-                  <p className="display-caps text-[0.84rem] text-onmetal">
+                  <p className="display-caps display-3d text-[0.84rem]">
                     {plan.name}
                   </p>
-                  <p className="display num-emboss mt-1 text-2xl text-onmetal">
+                  <p className="display display-3d mt-1 text-2xl">
                     {plan.price}
                   </p>
 
@@ -313,21 +302,12 @@ export function PlanComparison({
                     ))}
                   </ul>
 
-                  {plan.tier === 1 ? (
-                    <LedButton
-                      href={plan.href}
-                      className="mt-4 w-full px-2 text-[0.6rem]"
-                    >
-                      {c.plans.cta}
-                    </LedButton>
-                  ) : (
-                    <MetalButton
-                      href={plan.href}
-                      className="mt-4 w-full px-2 text-[0.6rem]"
-                    >
-                      {c.plans.cta}
-                    </MetalButton>
-                  )}
+                  <KeyButton
+                    href={plan.href}
+                    className="mt-4 w-full px-2 text-[0.6rem]"
+                  >
+                    {c.plans.cta}
+                  </KeyButton>
                 </div>
               ))}
             </div>

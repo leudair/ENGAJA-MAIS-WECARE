@@ -235,10 +235,10 @@ export default async function EngagementPage({
           <div className="rounded-[23px] p-[2px] shadow-[0_0_44px_-16px_rgba(181,24,31,0.55)] ring-2 ring-ruby-500/80">
             <MetalPlate kind="gold">
               <div className="px-6 py-8 sm:px-9 sm:py-10">
-                <h3 className="display-caps text-2xl text-onmetal sm:text-[2rem]">
+                <h3 className="display-caps display-3d text-2xl sm:text-[2rem]">
                   {showcase.name}
                 </h3>
-                <p className="display mt-3 text-[3rem] leading-none text-onmetal sm:text-[3.6rem]">
+                <p className="display display-3d mt-3 text-[3rem] leading-none sm:text-[3.6rem]">
                   {showcase.price}
                 </p>
                 <p className="mt-3 text-[0.68rem] font-bold tracking-[0.2em] text-onmetal-soft/85 uppercase">

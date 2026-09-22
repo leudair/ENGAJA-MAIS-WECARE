@@ -27,3 +27,13 @@ export function switchLocalePath(pathname: string, target: Locale): string {
   }
   return `/${target}`;
 }
+
+/** Caminho dos Termos de Uso no idioma indicado. */
+export function termsPath(locale: Locale): string {
+  return `/${locale}/termos-de-uso`;
+}
+
+/** Caminho da Política de Privacidade no idioma indicado. */
+export function privacyPath(locale: Locale): string {
+  return `/${locale}/politica-de-privacidade`;
+}

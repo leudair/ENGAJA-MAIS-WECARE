@@ -279,4 +279,20 @@ export const es: Content = {
     engagement: "Engagement",
     viralGrowth: "Crecimiento Viral",
   },
+  legal: {
+    updatedLabel: "Última actualización",
+    backCta: "Volver a los planes",
+    languageNote:
+      "Este documento se publica en portugués, el idioma en que fue redactado y en el que tiene validez. Si lo necesitas en español antes de contratar, escribe a contato@agenciawecare.com.br y te lo enviamos.",
+    terms: {
+      navLabel: "Términos de Uso",
+      title: "Términos de Uso",
+      eyebrow: "Documento",
+    },
+    privacy: {
+      navLabel: "Política de Privacidad",
+      title: "Política de Privacidad",
+      eyebrow: "Documento",
+    },
+  },
 };

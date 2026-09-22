@@ -279,4 +279,19 @@ export const pt: Content = {
     engagement: "Engajamento",
     viralGrowth: "Crescimento Viral",
   },
+  legal: {
+    updatedLabel: "Última atualização",
+    backCta: "Voltar para os planos",
+    languageNote: null,
+    terms: {
+      navLabel: "Termos de Uso",
+      title: "Termos de Uso",
+      eyebrow: "Documento",
+    },
+    privacy: {
+      navLabel: "Política de Privacidade",
+      title: "Política de Privacidade",
+      eyebrow: "Documento",
+    },
+  },
 };

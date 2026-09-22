@@ -1,7 +1,12 @@
 import Link from "next/link";
 import type { Content, Locale } from "@/content";
 import { siteConfig } from "@/content";
-import { engagementPath, viralGrowthPath } from "@/lib/routes";
+import {
+  engagementPath,
+  privacyPath,
+  termsPath,
+  viralGrowthPath,
+} from "@/lib/routes";
 import { Logo } from "./Logo";
 
 export function Footer({
@@ -42,6 +47,26 @@ export function Footer({
             className="eyebrow transition-colors hover:text-gold-bright"
           >
             {content.nav.faq}
+          </Link>
+        </nav>
+
+        {/* Os dois documentos ficam visíveis no rodapé de todas as páginas,
+            como o documento enviado pela WeCare pede. */}
+        <nav
+          aria-label={content.legal.terms.navLabel}
+          className="flex flex-col gap-3"
+        >
+          <Link
+            href={termsPath(locale)}
+            className="eyebrow transition-colors hover:text-gold-bright"
+          >
+            {content.legal.terms.navLabel}
+          </Link>
+          <Link
+            href={privacyPath(locale)}
+            className="eyebrow transition-colors hover:text-gold-bright"
+          >
+            {content.legal.privacy.navLabel}
           </Link>
         </nav>
       </div>

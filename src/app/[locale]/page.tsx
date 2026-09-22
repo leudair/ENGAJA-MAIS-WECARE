@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { HeroField } from "@/components/HeroField";
 import { MetricIcon } from "@/components/MetricIcon";
@@ -20,7 +21,12 @@ import {
 } from "@/components/ui";
 import { getContent, siteConfig, type Locale } from "@/content";
 import { getPlanFamilies, getShowcasePlan, type PlanCard } from "@/lib/plans";
-import { isLocale, viralGrowthPath } from "@/lib/routes";
+import {
+  isLocale,
+  privacyPath,
+  termsPath,
+  viralGrowthPath,
+} from "@/lib/routes";
 
 /** Lista de entrega por publicação, com o valor alinhado à direita. */
 function PlanMetrics({
@@ -216,6 +222,24 @@ export default async function EngagementPage({
           </p>
           <p className="mx-auto mt-4 max-w-3xl text-center text-xs leading-relaxed text-pretty text-paper-weak">
             {c.plans.disclaimer}
+          </p>
+
+          {/* Os dois documentos também ficam aqui, junto dos botões de
+              contratar, além do rodapé. */}
+          <p className="mt-4 text-center text-xs text-paper-weak">
+            <Link
+              href={termsPath(locale)}
+              className="underline decoration-gold-edge/60 underline-offset-4 transition-colors hover:text-gold-bright"
+            >
+              {c.legal.terms.navLabel}
+            </Link>
+            <span aria-hidden> · </span>
+            <Link
+              href={privacyPath(locale)}
+              className="underline decoration-gold-edge/60 underline-offset-4 transition-colors hover:text-gold-bright"
+            >
+              {c.legal.privacy.navLabel}
+            </Link>
           </p>
         </div>
       </section>

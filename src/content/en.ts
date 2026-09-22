@@ -277,4 +277,20 @@ export const en: Content = {
     engagement: "Engagement",
     viralGrowth: "Viral Growth",
   },
+  legal: {
+    updatedLabel: "Last updated",
+    backCta: "Back to the plans",
+    languageNote:
+      "This document is published in Portuguese, the language in which it was written and in which it is binding. If you need it in English before hiring us, write to contato@agenciawecare.com.br and we will send it to you.",
+    terms: {
+      navLabel: "Terms of Use",
+      title: "Terms of Use",
+      eyebrow: "Document",
+    },
+    privacy: {
+      navLabel: "Privacy Policy",
+      title: "Privacy Policy",
+      eyebrow: "Document",
+    },
+  },
 };

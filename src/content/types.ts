@@ -204,4 +204,19 @@ export type Content = {
     engagement: string;
     viralGrowth: string;
   };
+  /**
+   * Textos em volta dos documentos legais. O contrato em si não entra aqui:
+   * ele fica em `legal-data.ts`, em português, igual nos três idiomas.
+   */
+  legal: {
+    updatedLabel: string;
+    backCta: string;
+    /**
+     * Aviso de que o documento vale em português. Fica `null` na própria
+     * página em português, onde não há nada a avisar.
+     */
+    languageNote: string | null;
+    terms: { navLabel: string; title: string; eyebrow: string };
+    privacy: { navLabel: string; title: string; eyebrow: string };
+  };
 };

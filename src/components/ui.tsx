@@ -196,6 +196,42 @@ export function ArrowIcon({ className = "" }: { className?: string }) {
   );
 }
 
+/**
+ * Seta saindo de um quadrado: o sinal de que o botão leva a pessoa para
+ * outra página. Fica nos botões que abrem o Crescimento Viral.
+ */
+export function ExternalIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden
+      className={`size-3.5 shrink-0 ${className}`}
+    >
+      <path
+        d="M9.5 2.5H13.5V6.5"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M13.5 2.5 7.5 8.5"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+      <path
+        d="M12 9.8v2.7a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 2 12.5v-7A1.5 1.5 0 0 1 3.5 4h2.7"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function ChevronIcon({ className = "" }: { className?: string }) {
   return (
     <svg

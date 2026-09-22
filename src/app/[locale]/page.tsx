@@ -5,6 +5,7 @@ import { PlanComparison, PlanFamilyCard } from "@/components/PlanFamilyCard";
 import {
   ArrowIcon,
   Bullet,
+  ExternalIcon,
   Eyebrow,
   Lead,
   LedButton,
@@ -150,7 +151,10 @@ export default async function EngagementPage({
                   {c.viral.lead}
                 </p>
                 <div className="mt-9">
-                  <MetalButton href={viralHref}>{c.viral.cta}</MetalButton>
+                  <MetalButton href={viralHref}>
+                    {c.viral.cta}
+                    <ExternalIcon />
+                  </MetalButton>
                 </div>
                 <p className="mt-6 text-xs text-paper-weak">{c.viral.note}</p>
               </div>
@@ -539,6 +543,7 @@ export default async function EngagementPage({
                 </LedButton>
                 <OnMetalButton href={viralHref}>
                   {c.finalCta.secondaryCta}
+                  <ExternalIcon />
                 </OnMetalButton>
               </div>
             </div>

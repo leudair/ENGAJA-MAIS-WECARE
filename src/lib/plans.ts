@@ -68,8 +68,6 @@ export type PlanFamilyCard = {
   pitch: string;
   /** Metal da chapa: bronze na entrada, prata no meio, ouro no topo. */
   metal: MetalKind;
-  /** Menor preço da família, já formatado, para o "a partir de". */
-  fromPrice: string;
   /** Só a família Premium leva o selo de recomendado. */
   recommended: boolean;
   plans: PlanCard[];
@@ -121,10 +119,6 @@ export function getPlanFamilies(locale: Locale, c: Content): PlanFamilyCard[] {
       tagline: c.plans.families[familyId].tagline,
       pitch: c.plans.families[familyId].pitch,
       metal: familyMetal[familyId],
-      fromPrice: formatPrice(
-        locale,
-        Math.min(...plans.map((plan) => plan.priceBRL)),
-      ),
       recommended: familyId === "premium",
       plans: plans.map((plan, index) =>
         toCard(locale, c, plan, (index + 1) as 1 | 2 | 3),

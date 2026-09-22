@@ -124,16 +124,8 @@ export type Content = {
     metricLabels: [string, string, string, string, string];
     /** Palavra entre o mínimo e o máximo de uma faixa, ex.: " a ". */
     rangeSeparator: string;
-    /** Acima do preço do card de família. */
-    fromLabel: string;
-    /** Abaixo do preço, o teto do ciclo. */
-    cycleLabel: string;
     /** Sob o preço dos combos, ex.: "por ciclo mensal". */
     priceNote: string;
-    /** Vira o card para a primeira oferta da família. */
-    openLabel: string;
-    /** Volta da primeira oferta para a tela de venda. */
-    backLabel: string;
     /** Botões de virar página, para leitores de tela. */
     prevLabel: string;
     nextLabel: string;

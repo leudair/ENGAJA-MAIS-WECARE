@@ -1,9 +1,9 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState, type TouchEvent } from "react";
 import type { Content } from "@/content";
 import type { PlanCard, PlanFamilyCard } from "@/lib/plans";
-import { Bullet, ChevronIcon, LedButton, MetalButton, MetalPlate } from "./ui";
+import { ChevronIcon, LedButton, MetalButton, MetalPlate } from "./ui";
 
 /** Lista de entrega por publicação, com o valor alinhado à direita. */
 function PlanMetrics({ metrics }: { metrics: PlanCard["metrics"] }) {
@@ -46,10 +46,10 @@ const offerClass: Record<1 | 2 | 3, string> = {
 /**
  * Card de uma família de planos.
  *
- * A primeira página é a venda: nome, copy, "a partir de" e o que entra. As
- * ofertas não empurram a página para baixo — elas entram de lado, uma por
- * vez, como folhear um livro. Assim o card mantém o tamanho e a página não
- * estica com os nove combos.
+ * O card já abre no plano mais caro da família. As outras ofertas entram de
+ * lado, uma por vez, como folhear um livro, do mais caro para o mais barato,
+ * e depois da última ele volta para a primeira. Nada empurra a página para
+ * baixo: o card mantém o tamanho e a seção não estica com os nove combos.
  */
 export function PlanFamilyCard({
   family,
@@ -63,9 +63,13 @@ export function PlanFamilyCard({
   const [page, setPage] = useState(0);
   const [height, setHeight] = useState<number | undefined>(undefined);
   const pages = useRef<(HTMLDivElement | null)[]>([]);
+  const touchX = useRef<number | null>(null);
 
-  // A altura acompanha a página aberta: sem isso o card ficaria sempre do
-  // tamanho da oferta mais alta, com um vazio embaixo da tela de venda.
+  const total = family.plans.length;
+  const offer = family.plans[page];
+
+  // A altura acompanha a oferta aberta: sem isso o card ficaria sempre do
+  // tamanho da oferta mais alta, com um vazio embaixo das outras.
   useLayoutEffect(() => {
     const measure = () => {
       const current = pages.current[page];
@@ -76,11 +80,24 @@ export function PlanFamilyCard({
     return () => window.removeEventListener("resize", measure);
   }, [page]);
 
-  const total = family.plans.length;
-  const offer = page > 0 ? family.plans[page - 1] : null;
+  // Depois da última oferta volta para a primeira, e vice-versa.
+  const go = (step: number) =>
+    setPage((current) => (current + step + total) % total);
+
+  // No celular a pessoa arrasta o card com o dedo, como num carrossel.
+  const onTouchStart = (event: TouchEvent) => {
+    touchX.current = event.touches[0].clientX;
+  };
+
+  const onTouchEnd = (event: TouchEvent) => {
+    if (touchX.current === null) return;
+    const delta = event.changedTouches[0].clientX - touchX.current;
+    touchX.current = null;
+    if (Math.abs(delta) > 40) go(delta < 0 ? 1 : -1);
+  };
 
   const counter = c.plans.counter
-    .replace("{n}", String(page))
+    .replace("{n}", String(page + 1))
     .replace("{total}", String(total));
 
   return (
@@ -93,87 +110,46 @@ export function PlanFamilyCard({
 
       <MetalPlate kind={family.metal} className="h-full">
         <div className="flex h-full flex-col px-5 pt-7 pb-9 sm:px-7 sm:pt-9 sm:pb-11">
+          {/* Cabeçalho fixo: a família não muda quando a pessoa folheia. */}
+          <h3 className="display-caps text-xl text-onmetal sm:text-2xl">
+            {family.name}
+          </h3>
+          <p className="mt-2 text-[0.82rem] leading-snug text-pretty text-onmetal-soft/80">
+            {family.tagline}
+          </p>
+
+          <span className="mt-5 block h-px bg-black/35" />
+
           <div
-            className="overflow-hidden transition-[height] duration-300 ease-out"
+            className="mt-5 overflow-hidden transition-[height] duration-300 ease-out"
             style={height ? { height } : undefined}
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
           >
             <div
               className="flex transition-transform duration-300 ease-out"
               style={{ transform: `translateX(-${page * 100}%)` }}
             >
-              {/* Página 0: a venda. */}
-              <div
-                ref={(el) => {
-                  pages.current[0] = el;
-                }}
-                className="w-full shrink-0 self-start"
-                aria-hidden={page !== 0}
-              >
-                <h3 className="display-caps text-xl text-onmetal sm:text-2xl">
-                  {family.name}
-                </h3>
-                <p className="mt-2 text-[0.82rem] leading-snug text-pretty text-onmetal-soft/80">
-                  {family.tagline}
-                </p>
-
-                <p className="mt-6 text-[0.62rem] font-bold tracking-[0.26em] text-onmetal-soft/75 uppercase">
-                  {c.plans.fromLabel}
-                </p>
-                <p className="display mt-1 text-[2.6rem] leading-none text-onmetal">
-                  {family.fromPrice}
-                </p>
-                <p className="mt-2 text-[0.66rem] font-bold tracking-[0.2em] text-onmetal-soft/80 uppercase">
-                  {c.plans.cycleLabel}
-                </p>
-
-                <span className="mt-6 block h-px bg-black/35" />
-
-                <ul className="mt-5">
-                  {c.plans.metricLabels.map((label) => (
-                    <li
-                      key={label}
-                      className="flex items-start gap-2.5 border-b border-black/30 py-2.5 last:border-0"
-                    >
-                      <Bullet />
-                      <span className="text-[0.85rem] leading-snug text-onmetal-soft">
-                        {label}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                <p className="mt-5 text-[0.82rem] leading-snug text-pretty text-onmetal-soft/85">
-                  {family.pitch}
-                </p>
-              </div>
-
-              {/* Páginas 1..n: uma oferta por vez. */}
               {family.plans.map((plan, index) => (
                 <div
                   key={plan.id}
                   ref={(el) => {
-                    pages.current[index + 1] = el;
+                    pages.current[index] = el;
                   }}
                   className="w-full shrink-0 self-start"
-                  aria-hidden={page !== index + 1}
+                  aria-hidden={page !== index}
                 >
-                  <p className="text-[0.6rem] font-bold tracking-[0.26em] text-onmetal-soft uppercase">
-                    {family.name}
-                  </p>
-
                   {plan.crown && (
-                    <span className="offer-crown mt-3">{plan.crown}</span>
+                    <span className="offer-crown">{plan.crown}</span>
                   )}
 
-                  <h3
+                  <h4
                     className={`display-caps text-onmetal ${
-                      plan.tier === 1
-                        ? "mt-3 text-2xl sm:text-[1.7rem]"
-                        : "mt-2 text-lg sm:text-xl"
-                    }`}
+                      plan.crown ? "mt-3" : ""
+                    } ${plan.tier === 1 ? "text-2xl sm:text-[1.7rem]" : "text-lg sm:text-xl"}`}
                   >
                     {plan.name}
-                  </h3>
+                  </h4>
                   <p
                     className={`display mt-2 leading-none text-onmetal ${
                       plan.tier === 1 ? "text-[2.9rem]" : "text-[2.4rem]"
@@ -201,81 +177,64 @@ export function PlanFamilyCard({
 
           {/* Controles: a seta leva para a oferta seguinte, e a página vira. */}
           <div className="mt-7 flex-1">
-            {page === 0 ? (
+            <div className="flex items-center gap-2">
               <button
                 type="button"
-                onClick={() => setPage(1)}
-                className={`btn w-full ${
-                  family.recommended ? "btn-ruby" : "btn-metal"
-                }`}
+                onClick={() => go(-1)}
+                aria-label={c.plans.prevLabel}
+                className="btn btn-quiet min-h-12 w-12 shrink-0 px-0"
               >
-                {c.plans.openLabel}
+                <ChevronIcon className="rotate-90" />
+              </button>
+
+              {offer.tier === 1 ? (
+                <LedButton
+                  href={contactHref}
+                  className="flex-1 px-2 text-[0.62rem] sm:text-[0.7rem]"
+                >
+                  {c.plans.cta}
+                </LedButton>
+              ) : (
+                <MetalButton
+                  href={contactHref}
+                  className="flex-1 px-2 text-[0.62rem] sm:text-[0.7rem]"
+                >
+                  {c.plans.cta}
+                </MetalButton>
+              )}
+
+              <button
+                type="button"
+                onClick={() => go(1)}
+                aria-label={c.plans.nextLabel}
+                className="btn btn-quiet min-h-12 w-12 shrink-0 px-0"
+              >
                 <ChevronIcon className="-rotate-90" />
               </button>
-            ) : (
-              <>
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setPage(page - 1)}
-                    aria-label={
-                      page === 1 ? c.plans.backLabel : c.plans.prevLabel
-                    }
-                    className="btn btn-quiet min-h-12 w-12 shrink-0 px-0"
-                  >
-                    <ChevronIcon className="rotate-90" />
-                  </button>
+            </div>
 
-                  {offer &&
-                    (offer.tier === 1 ? (
-                      <LedButton
-                        href={contactHref}
-                        className="flex-1 px-2 text-[0.62rem] sm:text-[0.7rem]"
-                      >
-                        {c.plans.cta}
-                      </LedButton>
-                    ) : (
-                      <MetalButton
-                        href={contactHref}
-                        className="flex-1 px-2 text-[0.62rem] sm:text-[0.7rem]"
-                      >
-                        {c.plans.cta}
-                      </MetalButton>
-                    ))}
+            {/* Onde a pessoa está no folheio. */}
+            <div className="mt-4 flex items-center justify-center gap-2">
+              {family.plans.map((plan, index) => (
+                <button
+                  key={plan.id}
+                  type="button"
+                  onClick={() => setPage(index)}
+                  aria-label={plan.name}
+                  aria-current={page === index}
+                  className={`h-1.5 rounded-full transition-all ${
+                    page === index ? "w-6 bg-black/55" : "w-1.5 bg-black/25"
+                  }`}
+                />
+              ))}
+              <span className="ml-2 text-[0.62rem] font-bold tracking-[0.14em] text-onmetal-soft/70 uppercase">
+                {counter}
+              </span>
+            </div>
 
-                  <button
-                    type="button"
-                    onClick={() => setPage(page + 1)}
-                    disabled={page === total}
-                    aria-label={c.plans.nextLabel}
-                    className="btn btn-quiet min-h-12 w-12 shrink-0 px-0 disabled:pointer-events-none disabled:opacity-35"
-                  >
-                    <ChevronIcon className="-rotate-90" />
-                  </button>
-                </div>
-
-                {/* Onde a pessoa está no folheio. */}
-                <div className="mt-4 flex items-center justify-center gap-2">
-                  {family.plans.map((plan, index) => (
-                    <button
-                      key={plan.id}
-                      type="button"
-                      onClick={() => setPage(index + 1)}
-                      aria-label={plan.name}
-                      aria-current={page === index + 1}
-                      className={`h-1.5 rounded-full transition-all ${
-                        page === index + 1
-                          ? "w-6 bg-black/55"
-                          : "w-1.5 bg-black/25"
-                      }`}
-                    />
-                  ))}
-                  <span className="ml-2 text-[0.62rem] font-bold tracking-[0.14em] text-onmetal-soft/70 uppercase">
-                    {counter}
-                  </span>
-                </div>
-              </>
-            )}
+            <p className="mt-5 text-[0.82rem] leading-snug text-pretty text-onmetal-soft/85">
+              {family.pitch}
+            </p>
           </div>
         </div>
       </MetalPlate>

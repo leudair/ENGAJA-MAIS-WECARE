@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { Logo } from "@/components/Logo";
+import { MetricIcon } from "@/components/MetricIcon";
 import { PeopleRow } from "@/components/PeopleRow";
 import { PlanComparison, PlanFamilyCard } from "@/components/PlanFamilyCard";
 import {
@@ -38,12 +39,15 @@ function PlanMetrics({
       {metrics.map((metric) => (
         <li
           key={metric.label}
-          className={`flex flex-col gap-0.5 border-b py-2 last:border-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4 sm:py-2.5 ${line}`}
+          className={`flex flex-col gap-1 border-b py-2 last:border-0 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:py-2.5 ${line}`}
         >
-          <span
-            className={`text-[0.78rem] leading-snug sm:text-[0.82rem] ${label}`}
-          >
-            {metric.label}
+          <span className="flex items-center gap-2.5">
+            <MetricIcon name={metric.icon} />
+            <span
+              className={`text-[0.78rem] leading-snug sm:text-[0.82rem] ${label}`}
+            >
+              {metric.label}
+            </span>
           </span>
           <span
             className={`display text-[0.95rem] sm:shrink-0 sm:text-right ${value}`}

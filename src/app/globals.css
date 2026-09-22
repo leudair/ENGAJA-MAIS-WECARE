@@ -424,6 +424,27 @@ body {
     0 2px 3px rgb(0 0 0 / 0.6);
 }
 
+/*
+ * Selo rubi do ícone de cada serviço, dentro das ofertas e dos combos. Tem
+ * relevo como os botões, mas não é botão: ninguém clica nele.
+ */
+.metric-icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #c8222a 0%, #8e1016 100%);
+  color: #ffe9ea;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.35),
+    inset 0 -2px 4px rgb(0 0 0 / 0.3),
+    0 1px 0 #5a0a0d,
+    0 2px 3px rgb(0 0 0 / 0.35);
+}
+
 /* ------------------------------------------------------------------ */
 /* A caixa da oferta, dentro do card                                   */
 /* ------------------------------------------------------------------ */

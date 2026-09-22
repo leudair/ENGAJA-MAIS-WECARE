@@ -3,6 +3,7 @@
 import { useLayoutEffect, useRef, useState, type TouchEvent } from "react";
 import type { Content } from "@/content";
 import type { PlanCard, PlanFamilyCard } from "@/lib/plans";
+import { MetricIcon } from "./MetricIcon";
 import { ChevronIcon, LedButton, MetalButton, MetalPlate } from "./ui";
 
 /** Lista de entrega por publicação, com o valor alinhado à direita. */
@@ -12,10 +13,13 @@ function PlanMetrics({ metrics }: { metrics: PlanCard["metrics"] }) {
       {metrics.map((metric) => (
         <li
           key={metric.label}
-          className="flex items-baseline justify-between gap-3 border-b border-black/25 py-2.5 last:border-0"
+          className="flex items-center justify-between gap-3 border-b border-black/25 py-2.5 last:border-0"
         >
-          <span className="text-[0.84rem] leading-snug font-bold text-onmetal">
-            {metric.label}
+          <span className="flex items-center gap-2.5">
+            <MetricIcon name={metric.icon} />
+            <span className="text-[0.84rem] leading-snug font-bold text-onmetal">
+              {metric.label}
+            </span>
           </span>
           <span className="display num-emboss shrink-0 text-right text-[1.02rem] text-onmetal">
             {metric.value}
@@ -294,10 +298,13 @@ export function PlanComparison({
                     {plan.metrics.map((metric) => (
                       <li
                         key={metric.label}
-                        className="flex items-baseline justify-between gap-2 border-t border-black/25 py-1.5"
+                        className="flex items-center justify-between gap-2 border-t border-black/25 py-1.5"
                       >
-                        <span className="text-[0.76rem] leading-snug font-bold text-onmetal">
-                          {metric.label}
+                        <span className="flex items-center gap-2">
+                          <MetricIcon name={metric.icon} />
+                          <span className="text-[0.76rem] leading-snug font-bold text-onmetal">
+                            {metric.label}
+                          </span>
                         </span>
                         <span className="display num-emboss shrink-0 text-right text-[0.86rem] text-onmetal">
                           {metric.value}

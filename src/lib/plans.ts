@@ -5,6 +5,7 @@ import {
   type PlanFamilyId,
   type Range,
 } from "@/content/plans-data";
+import { metricIconOrder, type MetricIconName } from "@/components/MetricIcon";
 import type { MetalKind } from "@/components/ui";
 import { contactHref } from "@/content/site";
 import type { Content, Locale } from "@/content/types";
@@ -50,7 +51,7 @@ export type PlanCard = {
   id: string;
   name: string;
   price: string;
-  metrics: { label: string; value: string }[];
+  metrics: { label: string; value: string; icon: MetricIconName }[];
   featured: boolean;
   /** Tarja de posicionamento, já traduzida, quando o combo tem uma. */
   crown: string | null;
@@ -108,6 +109,7 @@ function toCard(
     metrics: plan.metrics.map((range, i) => ({
       label: c.plans.metricLabels[i],
       value: formatRange(locale, range, c.plans.rangeSeparator),
+      icon: metricIconOrder[i],
     })),
     featured: plan.featured === true,
     crown: plan.crown ? c.plans.crowns[plan.crown] : null,

@@ -22,7 +22,7 @@ export const en: Content = {
     titleBottom: "every post you publish.",
     paragraph:
       "One plan a month. Up to 30 posts covered. You pick how much engagement each post gets.",
-    cta: "See the plans",
+    cta: "See plans",
     people: {
       text: "Handled by the",
       strong: "WeCare team",

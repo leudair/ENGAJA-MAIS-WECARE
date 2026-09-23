@@ -22,7 +22,7 @@ export const pt: Content = {
     titleBottom: "cada publicação do mês.",
     paragraph:
       "Um plano por mês. Até 30 publicações atendidas. Você escolhe quanto engajamento cada publicação recebe.",
-    cta: "Ver os planos",
+    cta: "Ver planos",
     people: {
       text: "Quem atende é a",
       strong: "equipe da WeCare",

@@ -1178,11 +1178,11 @@ body {
     linear-gradient(180deg, #171412 0%, #100d0b 52%, #0d0b0a 100%),
     linear-gradient(
       180deg,
-      #f7e6bb 0%,
-      #d9b878 26%,
-      #a8823c 58%,
-      #74551f 82%,
-      #e6cf99 100%
+      #ecd0ad 0%,
+      #cda98a 22%,
+      #8b6950 54%,
+      #543829 82%,
+      #b7947a 100%
     );
   background-origin: padding-box, border-box;
   background-clip: padding-box, border-box;
@@ -1190,10 +1190,10 @@ body {
   box-shadow:
     inset 0 1px 0 rgb(245 235 215 / 0.12),
     inset 0 -3px 8px rgb(0 0 0 / 0.7),
-    0 1px 0 #6f5225,
-    0 2px 0 #56401c,
-    0 3px 0 #3f2f14,
-    0 4px 0 #2a1f0d,
+    0 1px 0 #5b3e2b,
+    0 2px 0 #47301f,
+    0 3px 0 #342316,
+    0 4px 0 #23170e,
     0 9px 15px -5px rgb(0 0 0 / 0.78);
   transition:
     transform 0.14s ease,
@@ -1217,10 +1217,10 @@ button.obsidian:hover {
   box-shadow:
     inset 0 1px 0 rgb(245 235 215 / 0.18),
     inset 0 -3px 8px rgb(0 0 0 / 0.7),
-    0 1px 0 #6f5225,
-    0 2px 0 #56401c,
-    0 3px 0 #3f2f14,
-    0 4px 0 #2a1f0d,
+    0 1px 0 #5b3e2b,
+    0 2px 0 #47301f,
+    0 3px 0 #342316,
+    0 4px 0 #23170e,
     0 5px 0 #1d1508,
     0 13px 18px -5px rgb(0 0 0 / 0.8);
 }
@@ -1230,7 +1230,7 @@ button.obsidian:active {
   transform: translateY(3px);
   box-shadow:
     inset 0 2px 5px rgb(0 0 0 / 0.8),
-    0 1px 0 #3f2f14,
+    0 1px 0 #342316,
     0 4px 8px -3px rgb(0 0 0 / 0.7);
 }
 
@@ -1240,16 +1240,15 @@ button.obsidian:active {
 }
 
 /*
- * Botão compacto, usado na chamada do topo. O Leudair achou o botão de
- * tamanho cheio grande demais no celular, e pediu um botão pequeno com a
- * fileira de quem atende logo abaixo. A altura fica em 44px, que ainda é
- * confortável para o dedo.
+ * Botão da chamada do topo, medido em cima da arte que o Leudair mandou:
+ * 178 por 50 pontos numa tela de 390, com a fileira de quem atende logo
+ * abaixo. Medir de novo na arte antes de mexer nesses valores.
  */
 .btn-compact {
-  min-height: 2.75rem;
-  height: 2.75rem;
-  padding: 0 1.1rem;
-  font-size: 0.66rem;
+  min-height: 3rem;
+  height: 3rem;
+  padding: 0 2.75rem;
+  font-size: 0.72rem;
   letter-spacing: 0.1em;
   white-space: nowrap;
 }

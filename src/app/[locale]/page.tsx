@@ -105,7 +105,9 @@ export default async function EngagementPage({
             </p>
 
             <div className="mt-9">
-              <ObsidianButton href="#planos">{c.hero.cta}</ObsidianButton>
+              <ObsidianButton href="#planos" className="btn-compact">
+                {c.hero.cta}
+              </ObsidianButton>
             </div>
 
             <div className="mt-6">

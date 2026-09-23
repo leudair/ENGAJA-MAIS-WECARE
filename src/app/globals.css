@@ -1238,3 +1238,18 @@ button.obsidian:active {
 .obsidian-pill {
   --obsidian-radius: 999px;
 }
+
+/*
+ * Botão compacto, usado na chamada do topo. O Leudair achou o botão de
+ * tamanho cheio grande demais no celular, e pediu um botão pequeno com a
+ * fileira de quem atende logo abaixo. A altura fica em 44px, que ainda é
+ * confortável para o dedo.
+ */
+.btn-compact {
+  min-height: 2.75rem;
+  height: 2.75rem;
+  padding: 0 1.1rem;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}

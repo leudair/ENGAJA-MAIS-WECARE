@@ -167,6 +167,7 @@ export const pt: Content = {
     ],
     rangeSeparator: " a ",
     priceNote: "por ciclo mensal",
+    priceApprox: "cerca de {value}",
     prevLabel: "Oferta anterior",
     nextLabel: "Próxima oferta",
     counter: "{n} de {total}",
@@ -186,7 +187,7 @@ export const pt: Content = {
       cancel: "Voltar",
     },
     disclaimer:
-      "Os números valem para cada publicação atendida no ciclo, até 30. Preços em reais nos três idiomas. Ativação e renovação são confirmadas no atendimento.",
+      "Os números valem para cada publicação atendida no ciclo, até 30. O preço é em reais e o valor em dólar embaixo é só referência, para quem mora fora. Ativação e renovação são confirmadas no atendimento.",
   },
   showcase: {
     eyebrow: "Exemplo de plano",

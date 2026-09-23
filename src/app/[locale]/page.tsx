@@ -296,6 +296,11 @@ export default async function EngagementPage({
                   <p className="display display-3d mt-3 text-[3rem] leading-none sm:text-[3.6rem]">
                     {showcase.price}
                   </p>
+                  {showcase.priceAlt && (
+                    <p className="mt-1.5 text-[0.82rem] font-semibold text-onmetal-soft">
+                      {showcase.priceAlt}
+                    </p>
+                  )}
                   <p className="mt-3 text-[0.68rem] font-bold tracking-[0.2em] text-onmetal-soft/85 uppercase">
                     {c.showcase.planNote}
                   </p>

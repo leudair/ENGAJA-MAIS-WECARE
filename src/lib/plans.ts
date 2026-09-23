@@ -11,8 +11,8 @@ import { contactHref, showsPix } from "@/content/site";
 import type { Content, Locale } from "@/content/types";
 
 /**
- * Locale do `Intl` usado para formatar números e preços. Os preços são sempre
- * em reais: o idioma muda a pontuação, não a moeda.
+ * Locale do `Intl` usado para formatar números e preços. Ele manda só na
+ * pontuação do número. A moeda é decidida por `priceLocales`, logo abaixo.
  */
 const numberLocale: Record<Locale, string> = {
   pt: "pt-BR",
@@ -31,12 +31,48 @@ function number(locale: Locale, value: number): string {
 }
 
 /**
- * Preço sempre em reais, com o símbolo escrito à mão: o `Intl` em espanhol
- * devolve "4987 BRL", que não é como o preço aparece no material comercial.
- * O idioma muda só a pontuação do número.
+ * Idiomas que compram em real. Os outros veem o preço em dólar, que é o
+ * público dos Estados Unidos para quem a página foi escrita. Anda junto com
+ * `pixLocales` em `site.ts`: quem paga em real paga por Pix, quem paga em
+ * dólar paga no cartão.
+ */
+const brlLocales: readonly Locale[] = ["pt"];
+
+/**
+ * Os símbolos são escritos à mão de propósito: o `Intl` em espanhol devolve
+ * "4987 BRL" e "957 USD", que não é como o preço aparece no material
+ * comercial. Em inglês o cifrão sozinho já é dólar; em português e espanhol
+ * ele precisa do "US" na frente para não ser confundido com a moeda local.
  */
 export function formatPrice(locale: Locale, priceBRL: number): string {
   return `R$ ${number(locale, priceBRL)}`;
+}
+
+export function formatPriceUSD(locale: Locale, priceUSD: number): string {
+  const value = number(locale, priceUSD);
+  return locale === "en" ? `$${value}` : `US$ ${value}`;
+}
+
+/**
+ * O preço principal do card e, quando existe, a mesma quantia na outra moeda,
+ * que fica embaixo em letra menor. Só o português mostra as duas: é o
+ * brasileiro que mora fora e quer saber quanto dá em dólar.
+ */
+function planPrices(
+  locale: Locale,
+  c: Content,
+  plan: PlanData,
+): { price: string; priceAlt: string | null } {
+  if (!brlLocales.includes(locale)) {
+    return { price: formatPriceUSD(locale, plan.priceUSD), priceAlt: null };
+  }
+  return {
+    price: formatPrice(locale, plan.priceBRL),
+    priceAlt: c.plans.priceApprox.replace(
+      "{value}",
+      formatPriceUSD(locale, plan.priceUSD),
+    ),
+  };
 }
 
 export function formatRange(
@@ -51,6 +87,11 @@ export type PlanCard = {
   id: string;
   name: string;
   price: string;
+  /**
+   * A mesma quantia na outra moeda, em letra menor embaixo do preço, ou
+   * `null` quando o idioma mostra uma moeda só.
+   */
+  priceAlt: string | null;
   metrics: { label: string; value: string; icon: MetricIconName }[];
   featured: boolean;
   /** Tarja de posicionamento, já traduzida, quando o combo tem uma. */
@@ -115,7 +156,7 @@ function toCard(
   return {
     id: plan.id,
     name: cardName(c, plan),
-    price: formatPrice(locale, plan.priceBRL),
+    ...planPrices(locale, c, plan),
     metrics: plan.metrics.map((range, i) => ({
       label: c.plans.metricLabels[i],
       value: formatRange(locale, range, c.plans.rangeSeparator),

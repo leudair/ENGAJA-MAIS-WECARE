@@ -161,6 +161,14 @@ export function PlanFamilyCard({
                   <p className="mt-1.5 text-[0.66rem] font-bold tracking-[0.18em] text-onmetal-soft uppercase">
                     {c.plans.priceNote}
                   </p>
+                  {/* A mesma quantia em dólar, para o brasileiro que mora
+                      fora. Fica em letra menor porque quem compra aqui paga
+                      em real: o dólar é referência, não é o preço. */}
+                  {plan.priceAlt && (
+                    <p className="mt-1 text-[0.72rem] font-semibold text-onmetal-soft">
+                      {plan.priceAlt}
+                    </p>
+                  )}
 
                   {/* A caixa das entregas: o acabamento sobe com o preço. */}
                   <div className="offer mt-5">
@@ -293,6 +301,11 @@ export function PlanComparison({
                   <p className="display display-3d mt-1 text-2xl">
                     {plan.price}
                   </p>
+                  {plan.priceAlt && (
+                    <p className="text-[0.66rem] font-semibold text-onmetal-soft">
+                      {plan.priceAlt}
+                    </p>
+                  )}
 
                   <ul className="mt-3 flex-1 space-y-0">
                     {plan.metrics.map((metric) => (

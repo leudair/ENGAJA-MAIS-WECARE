@@ -126,6 +126,11 @@ export type Content = {
     rangeSeparator: string;
     /** Sob o preço dos combos, ex.: "por ciclo mensal". */
     priceNote: string;
+    /**
+     * Linha menor embaixo do preço, com a mesma quantia na outra moeda.
+     * `{value}` é trocado pelo valor já formatado. Só aparece em português.
+     */
+    priceApprox: string;
     /** Botões de virar página, para leitores de tela. */
     prevLabel: string;
     nextLabel: string;

@@ -165,6 +165,7 @@ export const en: Content = {
     ],
     rangeSeparator: " to ",
     priceNote: "per monthly cycle",
+    priceApprox: "about {value}",
     prevLabel: "Previous offer",
     nextLabel: "Next offer",
     counter: "{n} of {total}",
@@ -184,7 +185,7 @@ export const en: Content = {
       cancel: "Back",
     },
     disclaimer:
-      "The numbers apply to each post covered in the cycle, up to 30. Prices are in Brazilian reais in all three languages. Activation and renewal are confirmed when you get in touch.",
+      "The numbers apply to each post covered in the cycle, up to 30. Prices are in US dollars and you pay by credit card. Activation and renewal are confirmed when you get in touch.",
   },
   showcase: {
     eyebrow: "Plan example",

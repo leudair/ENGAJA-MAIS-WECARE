@@ -12,7 +12,12 @@
  * - São planos só de engajamento: não incluem seguidores.
  * - Salvamentos estão no escopo mas a quantidade ainda não foi definida, então
  *   não aparecem em lugar nenhum do site.
- * - Preços em reais nos três idiomas: o idioma muda a formatação, não a moeda.
+ * - Cada plano tem dois preços, o mesmo plano nas duas moedas. Em português o
+ *   preço em reais é o principal e o dólar aparece embaixo, como referência
+ *   para brasileiro que mora fora. Em inglês e espanhol o preço é o dólar.
+ * - Os valores em dólar foram fechados pelo Leudair em 23/09/2026, com o dólar
+ *   a R$ 5,20 e terminando em 7, como os preços em real. São valores de tabela,
+ *   não uma conversão automática: mudança de câmbio não mexe neles sozinha.
  */
 
 export type PlanFamilyId = "premium" | "intermediate" | "start";
@@ -32,6 +37,8 @@ export type PlanData = {
    */
   suffix?: "max" | "plus";
   priceBRL: number;
+  /** Preço de tabela em dólar. Ver a nota de moeda no topo do arquivo. */
+  priceUSD: number;
   /** Na ordem dos rótulos em `plans.metricLabels`. */
   metrics: readonly [Range, Range, Range, Range, Range];
   /** Card em destaque na família. Um por família. */
@@ -68,6 +75,7 @@ export const plansData: readonly PlanData[] = [
     name: "Executivo Black",
     crown: "influencer",
     priceBRL: 4987,
+    priceUSD: 957,
     checkoutUrl: null,
     pixUrl: null,
     metrics: [
@@ -84,6 +92,7 @@ export const plansData: readonly PlanData[] = [
     family: "premium",
     name: "Prime",
     priceBRL: 2997,
+    priceUSD: 577,
     checkoutUrl: null,
     pixUrl: null,
     metrics: [
@@ -99,6 +108,7 @@ export const plansData: readonly PlanData[] = [
     family: "premium",
     name: "Executivo",
     priceBRL: 1997,
+    priceUSD: 387,
     checkoutUrl: null,
     pixUrl: null,
     metrics: [
@@ -117,6 +127,7 @@ export const plansData: readonly PlanData[] = [
     name: null,
     suffix: "max",
     priceBRL: 1497,
+    priceUSD: 287,
     checkoutUrl: null,
     pixUrl: null,
     metrics: [
@@ -134,6 +145,7 @@ export const plansData: readonly PlanData[] = [
     name: null,
     suffix: "plus",
     priceBRL: 997,
+    priceUSD: 197,
     checkoutUrl: null,
     pixUrl: null,
     metrics: [
@@ -149,6 +161,7 @@ export const plansData: readonly PlanData[] = [
     family: "intermediate",
     name: null,
     priceBRL: 697,
+    priceUSD: 137,
     checkoutUrl: null,
     pixUrl: null,
     metrics: [
@@ -166,6 +179,7 @@ export const plansData: readonly PlanData[] = [
     family: "start",
     name: "Start Max",
     priceBRL: 497,
+    priceUSD: 97,
     checkoutUrl: null,
     pixUrl: null,
     metrics: [
@@ -182,6 +196,7 @@ export const plansData: readonly PlanData[] = [
     family: "start",
     name: "Start Plus",
     priceBRL: 297,
+    priceUSD: 57,
     checkoutUrl: null,
     pixUrl: null,
     metrics: [
@@ -197,6 +212,7 @@ export const plansData: readonly PlanData[] = [
     family: "start",
     name: "Start",
     priceBRL: 197,
+    priceUSD: 37,
     checkoutUrl: null,
     pixUrl: null,
     metrics: [

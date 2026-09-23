@@ -167,6 +167,7 @@ export const es: Content = {
     ],
     rangeSeparator: " a ",
     priceNote: "por ciclo mensual",
+    priceApprox: "unos {value}",
     prevLabel: "Oferta anterior",
     nextLabel: "Siguiente oferta",
     counter: "{n} de {total}",
@@ -186,7 +187,7 @@ export const es: Content = {
       cancel: "Volver",
     },
     disclaimer:
-      "Los números valen para cada publicación atendida en el ciclo, hasta 30. Precios en reales en los tres idiomas. La activación y la renovación se confirman durante la atención.",
+      "Los números valen para cada publicación atendida en el ciclo, hasta 30. Los precios son en dólares y el pago es con tarjeta de crédito. La activación y la renovación se confirman durante la atención.",
   },
   showcase: {
     eyebrow: "Ejemplo de plan",

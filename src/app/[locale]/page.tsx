@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { InkAmount } from "@/components/InkAmount";
 import { HeroField } from "@/components/HeroField";
 import { MetricIcon } from "@/components/MetricIcon";
 import { PeopleRow } from "@/components/PeopleRow";
@@ -115,22 +114,32 @@ export default async function EngagementPage({
             </div>
           </div>
 
-          {/* Chapa de bronze com o limite do mês, o dado que mais pesa. */}
+          {/* Chapa de bronze com o limite do mês, o dado que mais pesa. A
+              moldura escavada fica numa caixa por dentro da chapa, com folga
+              das bordas, para o friso duplo ter onde aparecer. */}
           <MetalPlate kind="bronze" className="mx-auto w-full max-w-sm">
-            <div className="px-7 py-9 text-center sm:px-9 sm:py-11">
-              <p className="display-caps text-[1.05rem] tracking-[0.14em] text-onmetal sm:text-[1.3rem]">
-                {c.hero.badge.brand}
-              </p>
-              <InkAmount
-                text={c.hero.badge.amount}
-                src={`/selo-30-${locale}.svg`}
-              />
-              <p className="mt-3 text-[0.72rem] font-bold tracking-[0.2em] text-onmetal-soft uppercase">
-                {c.hero.badge.unit}
-              </p>
-              <p className="mt-5 text-sm leading-relaxed text-onmetal-soft/90">
-                {c.hero.badge.note}
-              </p>
+            <div className="p-3 sm:p-4">
+              <div className="plate-chamfer px-5 py-8 text-center sm:px-7 sm:py-10">
+                <p className="display-caps text-obsidian text-[1.15rem] tracking-[0.16em] sm:text-[1.4rem]">
+                  {c.hero.badge.brand}
+                </p>
+
+                {/* Cápsula de acrílico com o número. O 30 continua texto, e
+                    não desenho, porque é a métrica que sustenta a venda. */}
+                <div className="glass-capsule mx-auto mt-5 w-fit px-7 py-2.5 sm:px-9 sm:py-3">
+                  <p className="display text-bronze-3d relative text-[3.1rem] leading-none font-bold sm:text-[3.7rem]">
+                    {c.hero.badge.amount}
+                  </p>
+                </div>
+
+                <p className="display-caps text-obsidian mt-4 text-[0.82rem] tracking-[0.18em] sm:text-[0.95rem]">
+                  {c.hero.badge.unit}
+                </p>
+
+                <p className="mt-5 text-sm leading-relaxed text-[#1a1a1a]">
+                  {c.hero.badge.note}
+                </p>
+              </div>
             </div>
           </MetalPlate>
         </div>

@@ -394,16 +394,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  border: 1px solid rgb(123 84 32 / 0.65);
-  border-top-color: rgb(242 217 147 / 0.45);
-  border-radius: 999px;
-  padding: 0.3rem 0.35rem;
-  background: linear-gradient(180deg, #16161a 0%, #0a0a0c 100%);
-  box-shadow:
-    inset 0 1px 0 rgb(242 217 147 / 0.12),
-    0 1px 0 #2a1e0c,
-    0 2px 0 #1d1508,
-    0 6px 12px -4px rgb(0 0 0 / 0.7);
+  padding: 0.3rem 0.9rem 0.3rem 0.35rem;
 }
 
 .people-face {
@@ -414,7 +405,7 @@ body {
   overflow: hidden;
   background: #1a1411;
   box-shadow:
-    0 0 0 1.5px #d4af37,
+    0 0 0 1.5px #c5a059,
     0 0 0 3.5px #0a0a0c,
     0 2px 4px rgb(0 0 0 / 0.6);
 }
@@ -745,9 +736,10 @@ body {
    as letras brancas estampadas em relevo. O botão grande continua sendo o da
    página; aqui ele divide a barra com a logo, o idioma e o menu. */
 .btn-nav {
-  min-height: 2.25rem;
-  padding: 0.4rem 0.85rem;
-  border-radius: 9px;
+  min-height: 2.5rem;
+  height: 2.5rem;
+  padding: 0 0.9rem;
+  border-radius: 13px;
   font-size: 0.6rem;
   letter-spacing: 0.1em;
   white-space: nowrap;
@@ -1161,4 +1153,88 @@ body {
     0 3px 0 #2b1909,
     0 4px 0 #211206,
     0 6px 10px rgb(0 0 0 / 0.5);
+}
+
+/* ------------------------------------------------------------------ */
+/* Acabamento obsidiana: um só para botões e cápsulas interativas      */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Moldura de bronze polido em volta de um miolo de obsidiana fumê. A moldura
+ * é metal de verdade, e não um risco de cor: o degradê dourado entra pelo
+ * `border-box` e o miolo escuro pelo `padding-box`, então a borda tem luz em
+ * cima e sombra embaixo como uma peça chanfrada. A pilha de sombras sólidas
+ * embaixo desenha a parede lateral, que é o que dá a espessura.
+ *
+ * Vale para o trio do topo, para o botão grande da primeira tela e para a
+ * cápsula de quem atende, que é o que a arte de referência mostra.
+ */
+.obsidian {
+  --obsidian-radius: 13px;
+  position: relative;
+  border: 2px solid transparent;
+  border-radius: var(--obsidian-radius);
+  background-image:
+    linear-gradient(180deg, #171412 0%, #100d0b 52%, #0d0b0a 100%),
+    linear-gradient(
+      180deg,
+      #f7e6bb 0%,
+      #d9b878 26%,
+      #a8823c 58%,
+      #74551f 82%,
+      #e6cf99 100%
+    );
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+  color: #f5ebd7;
+  box-shadow:
+    inset 0 1px 0 rgb(245 235 215 / 0.12),
+    inset 0 -3px 8px rgb(0 0 0 / 0.7),
+    0 1px 0 #6f5225,
+    0 2px 0 #56401c,
+    0 3px 0 #3f2f14,
+    0 4px 0 #2a1f0d,
+    0 9px 15px -5px rgb(0 0 0 / 0.78);
+  transition:
+    transform 0.14s ease,
+    box-shadow 0.14s ease;
+}
+
+/* O texto de dentro: creme champanhe, caixa alta, com luz na aresta de cima. */
+.obsidian-label {
+  color: #f5ebd7;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-shadow:
+    0 1px 0 rgb(0 0 0 / 0.8),
+    0 0 10px rgb(245 235 215 / 0.14);
+}
+
+a.obsidian:hover,
+button.obsidian:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgb(245 235 215 / 0.18),
+    inset 0 -3px 8px rgb(0 0 0 / 0.7),
+    0 1px 0 #6f5225,
+    0 2px 0 #56401c,
+    0 3px 0 #3f2f14,
+    0 4px 0 #2a1f0d,
+    0 5px 0 #1d1508,
+    0 13px 18px -5px rgb(0 0 0 / 0.8);
+}
+
+a.obsidian:active,
+button.obsidian:active {
+  transform: translateY(3px);
+  box-shadow:
+    inset 0 2px 5px rgb(0 0 0 / 0.8),
+    0 1px 0 #3f2f14,
+    0 4px 8px -3px rgb(0 0 0 / 0.7);
+}
+
+/* Cápsula: a mesma moldura, só que redonda de ponta a ponta. */
+.obsidian-pill {
+  --obsidian-radius: 999px;
 }

@@ -124,7 +124,7 @@ function Retrato({ pessoa, id }: { pessoa: Pessoa; id: string }) {
 
 export function PeopleRow({ c }: { c: Content }) {
   return (
-    <div className="people-row">
+    <div className="people-row obsidian obsidian-pill">
       <div className="flex items-center">
         {equipe.map((pessoa, index) => (
           <span

@@ -69,7 +69,7 @@ export function LocaleSwitcher({
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
         aria-label={label}
-        className="flex min-h-10 items-center gap-1.5 rounded-[9px] border border-black/45 bg-linear-to-b from-[#232326] to-[#0c0c0e] px-2.5 text-gold-bright shadow-[inset_0_1px_0_rgb(242_217_147/0.16),0_1px_0_#0a0a0b,0_2px_0_#08080a,0_5px_9px_-3px_rgb(0_0_0/0.6)] transition-colors hover:border-gold-edge/70 sm:px-3"
+        className="obsidian flex h-10 items-center gap-1.5 px-2.5 sm:px-3"
       >
         <span aria-hidden className="text-sm leading-none">
           {localeFlags[current]}

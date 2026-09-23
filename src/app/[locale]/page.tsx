@@ -13,11 +13,10 @@ import {
   Eyebrow,
   Lead,
   LedButton,
-  MetalButton,
   MetalPlate,
+  ObsidianButton,
   OnMetalButton,
   QuietButton,
-  RubyButton,
   Rule,
   SectionTitle,
 } from "@/components/ui";
@@ -106,7 +105,7 @@ export default async function EngagementPage({
             </p>
 
             <div className="mt-9">
-              <RubyButton href="#planos">{c.hero.cta}</RubyButton>
+              <ObsidianButton href="#planos">{c.hero.cta}</ObsidianButton>
             </div>
 
             <div className="mt-6">
@@ -176,10 +175,10 @@ export default async function EngagementPage({
                   {c.viral.lead}
                 </p>
                 <div className="mt-9">
-                  <MetalButton href={viralHref}>
+                  <ObsidianButton href={viralHref}>
                     {c.viral.cta}
                     <ExternalIcon />
-                  </MetalButton>
+                  </ObsidianButton>
                 </div>
                 <p className="mt-6 text-xs text-paper-weak">{c.viral.note}</p>
               </div>

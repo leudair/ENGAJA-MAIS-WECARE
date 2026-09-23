@@ -78,6 +78,23 @@ export function RubyButton({ href, children, className = "" }: ButtonProps) {
   );
 }
 
+/**
+ * Botão obsidiana com moldura de bronze polido: o acabamento único que o
+ * Leudair fechou pela arte de referência. Usado no trio do topo, no botão
+ * grande da primeira tela e em qualquer peça que precise do mesmo tratamento.
+ */
+export function ObsidianButton({
+  href,
+  children,
+  className = "",
+}: ButtonProps) {
+  return (
+    <Link href={href} className={`btn obsidian obsidian-label ${className}`}>
+      {children}
+    </Link>
+  );
+}
+
 /** Botão de metal escovado, o padrão da página. */
 export function MetalButton({ href, children, className = "" }: ButtonProps) {
   return (

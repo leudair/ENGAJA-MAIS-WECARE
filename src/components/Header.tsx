@@ -70,7 +70,7 @@ export function Header({
 
           <Link
             href={`${home}#planos`}
-            className="btn btn-ruby btn-nav"
+            className="btn obsidian obsidian-label btn-nav"
             onClick={() => setOpen(false)}
           >
             {content.nav.cta}
@@ -82,7 +82,7 @@ export function Header({
             aria-expanded={open}
             aria-controls="menu-principal"
             aria-label={content.nav.plans}
-            className="inline-flex size-10 items-center justify-center rounded-[9px] border border-black/35 bg-black/15 text-onmetal transition-colors hover:bg-black/25 lg:hidden"
+            className="obsidian inline-flex size-10 items-center justify-center lg:hidden"
           >
             <svg viewBox="0 0 20 20" fill="none" aria-hidden className="size-5">
               {open ? (

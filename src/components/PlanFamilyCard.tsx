@@ -4,7 +4,8 @@ import { useLayoutEffect, useRef, useState, type TouchEvent } from "react";
 import type { Content } from "@/content";
 import type { PlanCard, PlanFamilyCard } from "@/lib/plans";
 import { MetricIcon } from "./MetricIcon";
-import { ChevronIcon, KeyButton, MetalPlate, SparkIcon } from "./ui";
+import { PlanCta } from "./PlanCta";
+import { ChevronIcon, MetalPlate, SparkIcon } from "./ui";
 
 /** Lista de entrega por publicação, com o valor alinhado à direita. */
 function PlanMetrics({ metrics }: { metrics: PlanCard["metrics"] }) {
@@ -58,6 +59,7 @@ export function PlanFamilyCard({
   c: Content;
 }) {
   const [page, setPage] = useState(0);
+  const [paying, setPaying] = useState(false);
   const [height, setHeight] = useState<number | undefined>(undefined);
   const pages = useRef<(HTMLDivElement | null)[]>([]);
   const touchX = useRef<number | null>(null);
@@ -78,8 +80,10 @@ export function PlanFamilyCard({
   }, [page]);
 
   // Depois da última oferta volta para a primeira, e vice-versa.
-  const go = (step: number) =>
+  const go = (step: number) => {
+    setPaying(false);
     setPage((current) => (current + step + total) % total);
+  };
 
   // No celular a pessoa arrasta o card com o dedo, como num carrossel.
   const onTouchStart = (event: TouchEvent) => {
@@ -175,30 +179,37 @@ export function PlanFamilyCard({
           {/* Controles: a seta leva para a oferta seguinte, e a página vira. */}
           <div className="mt-7 flex-1">
             <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => go(-1)}
-                aria-label={c.plans.prevLabel}
-                className="btn btn-key btn-arrow min-h-12 w-12 shrink-0"
-              >
-                <ChevronIcon className="rotate-90" />
-              </button>
+              {!paying && (
+                <button
+                  type="button"
+                  onClick={() => go(-1)}
+                  aria-label={c.plans.prevLabel}
+                  className="btn btn-key btn-arrow min-h-12 w-12 shrink-0"
+                >
+                  <ChevronIcon className="rotate-90" />
+                </button>
+              )}
 
-              <KeyButton
-                href={offer.href}
+              {/* A chave é o id da oferta: ao folhear, a escolha de pagamento
+                  fecha sozinha em vez de seguir aberta no plano seguinte. */}
+              <PlanCta
+                key={offer.id}
+                plan={offer}
+                c={c}
+                onOpenChange={setPaying}
                 className="flex-1 px-2 text-[0.62rem] sm:text-[0.7rem]"
-              >
-                {c.plans.cta}
-              </KeyButton>
+              />
 
-              <button
-                type="button"
-                onClick={() => go(1)}
-                aria-label={c.plans.nextLabel}
-                className="btn btn-key btn-arrow min-h-12 w-12 shrink-0"
-              >
-                <ChevronIcon className="-rotate-90" />
-              </button>
+              {!paying && (
+                <button
+                  type="button"
+                  onClick={() => go(1)}
+                  aria-label={c.plans.nextLabel}
+                  className="btn btn-key btn-arrow min-h-12 w-12 shrink-0"
+                >
+                  <ChevronIcon className="-rotate-90" />
+                </button>
+              )}
             </div>
 
             {/* Onde a pessoa está no folheio. */}
@@ -302,12 +313,11 @@ export function PlanComparison({
                     ))}
                   </ul>
 
-                  <KeyButton
-                    href={plan.href}
+                  <PlanCta
+                    plan={plan}
+                    c={c}
                     className="mt-4 w-full px-2 text-[0.6rem]"
-                  >
-                    {c.plans.cta}
-                  </KeyButton>
+                  />
                 </div>
               ))}
             </div>

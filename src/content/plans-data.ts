@@ -45,6 +45,13 @@ export type PlanData = {
    * prometer um checkout que ainda não existe.
    */
   checkoutUrl: string | null;
+  /**
+   * Link de pagamento por Pix deste plano. Mesma regra do `checkoutUrl`: fica
+   * colado no preço, e enquanto for `null` o Pix simplesmente não aparece
+   * como opção. Pix é sistema brasileiro, então esse botão só é mostrado nos
+   * idiomas listados em `pixLocales`, em `site.ts`.
+   */
+  pixUrl: string | null;
 };
 
 export const planFamilyOrder: readonly PlanFamilyId[] = [
@@ -62,6 +69,7 @@ export const plansData: readonly PlanData[] = [
     crown: "influencer",
     priceBRL: 4987,
     checkoutUrl: null,
+    pixUrl: null,
     metrics: [
       [80000, 120000],
       [1000, 1600],
@@ -77,6 +85,7 @@ export const plansData: readonly PlanData[] = [
     name: "Prime",
     priceBRL: 2997,
     checkoutUrl: null,
+    pixUrl: null,
     metrics: [
       [50000, 80000],
       [700, 1000],
@@ -91,6 +100,7 @@ export const plansData: readonly PlanData[] = [
     name: "Executivo",
     priceBRL: 1997,
     checkoutUrl: null,
+    pixUrl: null,
     metrics: [
       [30000, 50000],
       [500, 800],
@@ -108,6 +118,7 @@ export const plansData: readonly PlanData[] = [
     suffix: "max",
     priceBRL: 1497,
     checkoutUrl: null,
+    pixUrl: null,
     metrics: [
       [20000, 35000],
       [350, 600],
@@ -124,6 +135,7 @@ export const plansData: readonly PlanData[] = [
     suffix: "plus",
     priceBRL: 997,
     checkoutUrl: null,
+    pixUrl: null,
     metrics: [
       [12000, 20000],
       [250, 400],
@@ -138,6 +150,7 @@ export const plansData: readonly PlanData[] = [
     name: null,
     priceBRL: 697,
     checkoutUrl: null,
+    pixUrl: null,
     metrics: [
       [8000, 12000],
       [150, 250],
@@ -154,6 +167,7 @@ export const plansData: readonly PlanData[] = [
     name: "Start Max",
     priceBRL: 497,
     checkoutUrl: null,
+    pixUrl: null,
     metrics: [
       [5000, 8000],
       [100, 180],
@@ -169,6 +183,7 @@ export const plansData: readonly PlanData[] = [
     name: "Start Plus",
     priceBRL: 297,
     checkoutUrl: null,
+    pixUrl: null,
     metrics: [
       [3000, 5000],
       [60, 100],
@@ -183,6 +198,7 @@ export const plansData: readonly PlanData[] = [
     name: "Start",
     priceBRL: 197,
     checkoutUrl: null,
+    pixUrl: null,
     metrics: [
       [1500, 3000],
       [30, 60],
@@ -198,9 +214,14 @@ export const plansData: readonly PlanData[] = [
  * padrão derruba a construção do site em vez de ir para o ar quieto.
  */
 for (const plan of plansData) {
-  if (plan.checkoutUrl && !plan.checkoutUrl.startsWith("https://")) {
-    throw new Error(
-      `Link de pagamento inválido no plano "${plan.id}": tem que ser um endereço https.`,
-    );
+  for (const [meio, url] of [
+    ["cartão", plan.checkoutUrl],
+    ["Pix", plan.pixUrl],
+  ] as const) {
+    if (url && !url.startsWith("https://")) {
+      throw new Error(
+        `Link de pagamento por ${meio} inválido no plano "${plan.id}": tem que ser um endereço https.`,
+      );
+    }
   }
 }

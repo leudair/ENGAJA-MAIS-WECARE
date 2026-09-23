@@ -21,3 +21,17 @@ export const siteConfig = {
 } as const;
 
 export const contactHref = siteConfig.contactUrl ?? "#contato";
+
+/**
+ * Idiomas em que o Pix aparece como opção de pagamento.
+ *
+ * Pix é um sistema brasileiro: só funciona para quem tem conta em banco no
+ * Brasil. Mostrar esse botão para o comprador americano não ajuda em nada, só
+ * confunde, então ele fica restrito à página em português. Para liberar em
+ * outro idioma, basta acrescentar o código dele aqui.
+ */
+export const pixLocales = ["pt"] as const;
+
+export function showsPix(locale: string): boolean {
+  return (pixLocales as readonly string[]).includes(locale);
+}

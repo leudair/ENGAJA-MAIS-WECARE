@@ -177,6 +177,12 @@ export const en: Content = {
     noFollowers:
       "These are engagement plans: they do not include followers. Comments are personalized.",
     cta: "I want this plan",
+    pay: {
+      question: "How would you like to pay?",
+      card: "Credit card",
+      pix: "Pix",
+      cancel: "Back",
+    },
     disclaimer:
       "The numbers apply to each post covered in the cycle, up to 30. Prices are in Brazilian reais in all three languages. Activation and renewal are confirmed when you get in touch.",
   },

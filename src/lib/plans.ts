@@ -7,7 +7,7 @@ import {
 } from "@/content/plans-data";
 import { metricIconOrder, type MetricIconName } from "@/components/MetricIcon";
 import type { MetalKind } from "@/components/ui";
-import { contactHref } from "@/content/site";
+import { contactHref, showsPix } from "@/content/site";
 import type { Content, Locale } from "@/content/types";
 
 /**
@@ -61,10 +61,16 @@ export type PlanCard = {
    */
   tier: 1 | 2 | 3;
   /**
-   * Para onde vai o botão deste plano: o checkout dele no Stripe, ou a seção
-   * de contato enquanto o link não existir.
+   * Para onde vai o botão deste plano quando não há escolha a fazer: o único
+   * meio de pagamento disponível, ou a seção de contato enquanto nenhum link
+   * existir.
    */
   href: string;
+  /**
+   * Os dois meios de pagamento deste plano. Quando os dois existem, o botão
+   * abre a escolha em vez de ir direto. O Pix já vem filtrado por idioma.
+   */
+  payment: { card: string | null; pix: string | null };
 };
 
 export type PlanFamilyCard = {
@@ -102,6 +108,10 @@ function toCard(
   plan: PlanData,
   tier: 1 | 2 | 3,
 ): PlanCard {
+  // Pix só existe para quem tem banco no Brasil, então ele nem chega ao card
+  // nos outros idiomas.
+  const pix = showsPix(locale) ? plan.pixUrl : null;
+
   return {
     id: plan.id,
     name: cardName(c, plan),
@@ -114,7 +124,8 @@ function toCard(
     featured: plan.featured === true,
     crown: plan.crown ? c.plans.crowns[plan.crown] : null,
     tier,
-    href: plan.checkoutUrl ?? contactHref,
+    href: plan.checkoutUrl ?? pix ?? contactHref,
+    payment: { card: plan.checkoutUrl, pix },
   };
 }
 

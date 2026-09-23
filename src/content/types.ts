@@ -145,6 +145,16 @@ export type Content = {
     /** Aviso de que os planos não incluem seguidores. */
     noFollowers: string;
     cta: string;
+    /**
+     * Escolha do meio de pagamento, mostrada depois que a pessoa clica no
+     * plano. Só aparece quando aquele plano tem os dois links.
+     */
+    pay: {
+      question: string;
+      card: string;
+      pix: string;
+      cancel: string;
+    };
     disclaimer: string;
   };
   /** Exemplo de um plano real, em chapa de ouro com borda rubi. */

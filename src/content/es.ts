@@ -179,6 +179,12 @@ export const es: Content = {
     noFollowers:
       "Estos planes no incluyen seguidores. Los comentarios son personalizados.",
     cta: "Quiero este plan",
+    pay: {
+      question: "¿Cómo prefieres pagar?",
+      card: "Tarjeta de crédito",
+      pix: "Pix",
+      cancel: "Volver",
+    },
     disclaimer:
       "Los números valen para cada publicación atendida en el ciclo, hasta 30. Precios en reales en los tres idiomas. La activación y la renovación se confirman durante la atención.",
   },

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { HeroField } from "@/components/HeroField";
 import { MetricIcon } from "@/components/MetricIcon";
 import { PeopleRow } from "@/components/PeopleRow";
+import { PlanCta } from "@/components/PlanCta";
 import { PlanComparison, PlanFamilyCard } from "@/components/PlanFamilyCard";
 import {
   ArrowIcon,
@@ -276,9 +277,13 @@ export default async function EngagementPage({
                 </div>
 
                 <div className="mt-7">
-                  <RubyButton href={showcase.href} className="w-full">
-                    {c.showcase.cta}
-                  </RubyButton>
+                  <PlanCta
+                    plan={showcase}
+                    c={c}
+                    variant="ruby"
+                    label={c.showcase.cta}
+                    className="w-full"
+                  />
                 </div>
               </div>
             </MetalPlate>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { GlassLogo } from "@/components/GlassLogo";
 import { HeroField } from "@/components/HeroField";
 import { MetricIcon } from "@/components/MetricIcon";
 import { PeopleRow } from "@/components/PeopleRow";
@@ -546,8 +547,16 @@ export default async function EngagementPage({
       {/* ---------------------------------------------------------------- */}
       {/* CTA final                                                         */}
       {/* ---------------------------------------------------------------- */}
-      <section id="contato" className="px-4 py-16 sm:px-6 sm:py-24">
+      <section
+        id="contato"
+        className="overflow-x-clip px-4 py-16 sm:px-6 sm:py-24"
+      >
         <div className="mx-auto max-w-4xl">
+          {/* A logo em vidro maciço abre o fecho da página, o único momento em
+              que a marca aparece grande. Fica aqui, e não no topo, porque o
+              topo já tem a colmeia de energia e a chapa do limite de 30. */}
+          <GlassLogo alt={c.hero.logoAlt} />
+
           {/* O fecho da página é a chapa de ouro inteira, com o botão de
               conversão em cima dela. */}
           <MetalPlate kind="gold">

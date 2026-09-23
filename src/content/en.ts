@@ -30,13 +30,13 @@ export const en: Content = {
     badge: {
       brand: "Engaja Mais",
       amount: "Up to 30",
-      unit: "posts per cycle",
-      note: "Engagement per post",
+      unit: "posts per month",
+      note: "Each post gets what your plan delivers.",
     },
     proofs: [
       {
         title: "Up to 30 posts",
-        description: "covered within each monthly cycle",
+        description: "covered within each month",
       },
       {
         title: "No password",

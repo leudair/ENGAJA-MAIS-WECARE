@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { GlassLogo } from "@/components/GlassLogo";
+import { GlassAmount } from "@/components/GlassAmount";
 import { HeroField } from "@/components/HeroField";
 import { MetricIcon } from "@/components/MetricIcon";
 import { PeopleRow } from "@/components/PeopleRow";
@@ -115,20 +115,20 @@ export default async function EngagementPage({
             </div>
           </div>
 
-          {/* Chapa de bronze com o limite do ciclo, o dado que mais pesa. */}
+          {/* Chapa de bronze com o limite do mês, o dado que mais pesa. */}
           <MetalPlate kind="bronze" className="mx-auto w-full max-w-sm">
             <div className="px-7 py-9 text-center sm:px-9 sm:py-11">
-              <p className="text-[0.66rem] font-bold tracking-[0.3em] text-onmetal-soft/80 uppercase">
+              <p className="display-caps text-[1.05rem] tracking-[0.14em] text-onmetal sm:text-[1.3rem]">
                 {c.hero.badge.brand}
               </p>
-              <p className="display mt-4 text-[3.4rem] leading-none text-onmetal sm:text-[4rem]">
-                {c.hero.badge.amount}
-              </p>
+              <GlassAmount
+                text={c.hero.badge.amount}
+                src={`/selo-30-${locale}.png`}
+              />
               <p className="mt-3 text-[0.72rem] font-bold tracking-[0.2em] text-onmetal-soft uppercase">
                 {c.hero.badge.unit}
               </p>
-              <span className="mx-auto mt-6 block h-px w-16 bg-black/25" />
-              <p className="mt-4 text-sm text-onmetal-soft/90">
+              <p className="mt-5 text-sm leading-relaxed text-onmetal-soft/90">
                 {c.hero.badge.note}
               </p>
             </div>
@@ -547,16 +547,8 @@ export default async function EngagementPage({
       {/* ---------------------------------------------------------------- */}
       {/* CTA final                                                         */}
       {/* ---------------------------------------------------------------- */}
-      <section
-        id="contato"
-        className="overflow-x-clip px-4 py-16 sm:px-6 sm:py-24"
-      >
+      <section id="contato" className="px-4 py-16 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-4xl">
-          {/* A logo em vidro maciço abre o fecho da página, o único momento em
-              que a marca aparece grande. Fica aqui, e não no topo, porque o
-              topo já tem a colmeia de energia e a chapa do limite de 30. */}
-          <GlassLogo alt={c.hero.logoAlt} />
-
           {/* O fecho da página é a chapa de ouro inteira, com o botão de
               conversão em cima dela. */}
           <MetalPlate kind="gold">

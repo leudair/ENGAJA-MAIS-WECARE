@@ -30,13 +30,13 @@ export const pt: Content = {
     badge: {
       brand: "Engaja Mais",
       amount: "Até 30",
-      unit: "publicações por ciclo",
-      note: "Engajamento por publicação",
+      unit: "publicações por mês",
+      note: "Cada publicação recebe o que o seu plano entrega.",
     },
     proofs: [
       {
         title: "Até 30 publicações",
-        description: "atendidas dentro de cada ciclo mensal",
+        description: "atendidas dentro de cada mês",
       },
       {
         title: "Sem senha",

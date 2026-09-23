@@ -115,28 +115,28 @@ export default async function EngagementPage({
           </div>
 
           {/* Chapa de bronze com o limite do mês, o dado que mais pesa. A
-              moldura escavada fica numa caixa por dentro da chapa, com folga
-              das bordas, para o friso duplo ter onde aparecer. */}
+              moldura é feita de dois degraus escavados, um dentro do outro,
+              como numa peça de metal fundido. */}
           <MetalPlate kind="bronze" className="mx-auto w-full max-w-sm">
-            <div className="p-3 sm:p-4">
-              <div className="plate-chamfer px-5 py-8 text-center sm:px-7 sm:py-10">
-                <p className="display-caps text-obsidian text-[1.15rem] tracking-[0.16em] sm:text-[1.4rem]">
+            <div className="chamfer-step chamfer-outer m-2.5 sm:m-3">
+              <div className="chamfer-step chamfer-inner m-2.5 px-4 py-7 text-center sm:m-3 sm:px-6 sm:py-9">
+                <p className="display-caps bronze-emboss text-[1.5rem] tracking-[0.1em] sm:text-[1.8rem]">
                   {c.hero.badge.brand}
                 </p>
 
-                {/* Cápsula de acrílico com o número. O 30 continua texto, e
+                {/* Painel de acrílico com o número. O 30 continua texto, e
                     não desenho, porque é a métrica que sustenta a venda. */}
-                <div className="glass-capsule mx-auto mt-5 w-fit px-7 py-2.5 sm:px-9 sm:py-3">
-                  <p className="display text-bronze-3d relative text-[3.1rem] leading-none font-bold sm:text-[3.7rem]">
+                <div className="glass-panel mt-4 px-4 py-2.5 sm:px-6 sm:py-3">
+                  <p className="display bronze-emboss-lg text-[3.2rem] leading-none sm:text-[3.8rem]">
                     {c.hero.badge.amount}
                   </p>
                 </div>
 
-                <p className="display-caps text-obsidian mt-4 text-[0.82rem] tracking-[0.18em] sm:text-[0.95rem]">
+                <p className="display-caps bronze-emboss mt-4 text-[0.95rem] tracking-[0.09em] sm:text-[1.1rem]">
                   {c.hero.badge.unit}
                 </p>
 
-                <p className="mt-5 text-sm leading-relaxed text-[#1a1a1a]">
+                <p className="mt-4 text-sm leading-relaxed text-[#1a1a1a]">
                   {c.hero.badge.note}
                 </p>
               </div>

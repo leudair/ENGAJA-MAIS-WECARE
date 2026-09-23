@@ -406,22 +406,17 @@ body {
     0 6px 12px -4px rgb(0 0 0 / 0.7);
 }
 
-.people-disc {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.85rem;
-  height: 1.85rem;
+.people-face {
+  display: inline-block;
+  width: 1.95rem;
+  height: 1.95rem;
   border-radius: 999px;
-  background-image: var(--brush-lines), var(--metal);
-  background-size:
-    100% 2px,
-    100% 100%;
+  overflow: hidden;
+  background: #1a1411;
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.6),
-    inset 0 -2px 4px rgb(0 0 0 / 0.3),
-    0 0 0 2px #0a0a0c,
-    0 2px 3px rgb(0 0 0 / 0.6);
+    0 0 0 1.5px #d4af37,
+    0 0 0 3.5px #0a0a0c,
+    0 2px 4px rgb(0 0 0 / 0.6);
 }
 
 /*
@@ -1081,103 +1076,89 @@ body {
 }
 
 /* ------------------------------------------------------------------ */
-/* Chapa do topo: moldura escavada, cápsula de acrílico e texto bronze */
+/* Chapa do topo: moldura em dois degraus, vidro e letras em relevo    */
 /* ------------------------------------------------------------------ */
 
 /*
- * Friso duplo em relevo por dentro da chapa. São dois anéis: o de fora e o
- * de dentro, cada um com o seu risco escuro e o seu fio claro por cima, e
- * entre os dois um vão levemente iluminado. O conjunto lê como se a chapa
- * tivesse sido escavada, não como uma borda desenhada.
+ * A moldura da chapa é feita de dois degraus escavados, um dentro do outro,
+ * e não de um risco desenhado. Cada degrau tem a sombra em cima e o fio
+ * claro embaixo, que é como uma peça de metal fundido responde à luz que
+ * vem de cima. Entre um degrau e o outro fica uma faixa lisa do próprio
+ * bronze, que é o que dá a espessura.
  */
-.plate-chamfer {
-  border-radius: 20px;
+.chamfer-step {
   box-shadow:
-    inset 0 0 0 1px rgb(0 0 0 / 0.45),
-    inset 0 2px 0 -1px rgb(255 255 255 / 0.4),
-    inset 0 0 0 4px rgb(255 255 255 / 0.07),
-    inset 0 0 0 5px rgb(0 0 0 / 0.4),
-    inset 0 7px 0 -5px rgb(255 255 255 / 0.22),
-    inset 0 8px 16px -6px rgb(0 0 0 / 0.32);
+    inset 0 3px 5px -1px rgb(0 0 0 / 0.55),
+    inset 0 -3px 4px -1px rgb(255 255 255 / 0.3),
+    inset 0 0 0 1px rgb(0 0 0 / 0.22);
+}
+
+.chamfer-outer {
+  border-radius: 22px;
+}
+
+.chamfer-inner {
+  border-radius: 16px;
 }
 
 /*
- * Cápsula de acrílico lapidado, embutida na chapa. O interior é fumê de
- * propósito: bronze sobre bronze não tem contraste, e o número é o dado
- * que precisa ser lido primeiro. O reflexo de cima vem do ::before.
+ * Painel de acrílico com o número, embutido na chapa. O interior é quase
+ * transparente de propósito: o contraste do número vem do relevo das
+ * letras, não de escurecer o fundo. O reflexo de cima vem do ::before.
  */
-.glass-capsule {
+.glass-panel {
   position: relative;
   isolation: isolate;
-  border-radius: 999px;
+  border-radius: 16px;
   background: linear-gradient(
     180deg,
-    rgb(28 18 10 / 0.5) 0%,
-    rgb(18 11 6 / 0.62) 52%,
-    rgb(36 24 14 / 0.46) 100%
+    rgb(150 108 68 / 0.22) 0%,
+    rgb(40 25 14 / 0.26) 55%,
+    rgb(120 85 52 / 0.16) 100%
   );
-  -webkit-backdrop-filter: blur(2px) saturate(118%);
-  backdrop-filter: blur(2px) saturate(118%);
   box-shadow:
-    inset 0 0 0 1px rgb(0 0 0 / 0.55),
-    inset 0 2px 5px rgb(0 0 0 / 0.55),
-    inset 0 -1px 0 rgb(255 255 255 / 0.16),
-    0 1px 0 rgb(255 255 255 / 0.3),
-    0 6px 14px -8px rgb(0 0 0 / 0.6);
+    inset 0 3px 7px rgb(0 0 0 / 0.5),
+    inset 0 0 0 1px rgb(0 0 0 / 0.28),
+    inset 0 -2px 0 rgb(255 255 255 / 0.22),
+    0 1px 0 rgb(255 255 255 / 0.28);
 }
 
-.glass-capsule::before {
+.glass-panel::before {
   content: "";
   position: absolute;
-  inset: 3px 6px auto 6px;
-  height: 44%;
-  border-radius: 999px;
+  inset: 3px 4px auto 4px;
+  height: 46%;
+  border-radius: 13px 13px 20px 20px;
   pointer-events: none;
   background: linear-gradient(
     180deg,
     rgb(255 255 255 / 0.3) 0%,
-    rgb(255 255 255 / 0.07) 58%,
+    rgb(255 255 255 / 0.06) 62%,
     transparent 100%
   );
 }
 
 /*
- * Número em bronze escovado com a aresta em ouro polido. O `paint-order`
- * é o que faz o contorno ficar por baixo do preenchimento, senão o fio
- * dourado come a letra. As sombras entram por `filter`, porque com o
- * preenchimento transparente um `text-shadow` apareceria dentro da letra.
+ * Letras levantadas do próprio bronze: fio claro na aresta de cima, parede
+ * escura descendo e sombra no pé. É a mesma lógica de relevo das chapas e
+ * dos botões, aplicada ao texto.
  */
-.text-bronze-3d {
-  background-image:
-    var(--brush-lines),
-    linear-gradient(
-      180deg,
-      #fbeec4 0%,
-      #e7c98c 16%,
-      #c99a57 40%,
-      #a06f38 62%,
-      #85562a 82%,
-      #d8b171 100%
-    );
-  background-size:
-    100% 3px,
-    100% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1px rgb(242 217 147 / 0.55);
-  paint-order: stroke fill;
-  filter: drop-shadow(0 -1px 0 rgb(255 246 219 / 0.42))
-    drop-shadow(0 2px 0 rgb(48 30 13 / 0.75))
-    drop-shadow(0 5px 7px rgb(0 0 0 / 0.5));
+.bronze-emboss {
+  color: #5f3c21;
+  text-shadow:
+    0 -1px 0 rgb(255 236 203 / 0.5),
+    0 1px 0 #38230f,
+    0 2px 0 #2c1a0b,
+    0 3px 3px rgb(0 0 0 / 0.42);
 }
 
-/* Texto escuro em relevo sobre metal, mais suave que o .display-3d. */
-.text-obsidian {
-  color: #1f1c1a;
+.bronze-emboss-lg {
+  color: #6d4626;
   text-shadow:
-    0 1px 0 rgb(255 255 255 / 0.4),
-    0 -1px 0 rgb(0 0 0 / 0.3),
-    0 2px 3px rgb(0 0 0 / 0.26);
+    0 -1px 0 rgb(255 241 214 / 0.62),
+    0 1px 0 #3e2712,
+    0 2px 0 #35200e,
+    0 3px 0 #2b1909,
+    0 4px 0 #211206,
+    0 6px 10px rgb(0 0 0 / 0.5);
 }

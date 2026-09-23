@@ -31,7 +31,7 @@ export const en: Content = {
       brand: "Engaja Mais",
       amount: "Up to 30",
       unit: "posts per month",
-      note: "Each post gets what your plan delivers.",
+      note: "Grow your reach with strategic, high value posts.",
     },
     proofs: [
       {

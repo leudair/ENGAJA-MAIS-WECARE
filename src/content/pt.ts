@@ -31,7 +31,7 @@ export const pt: Content = {
       brand: "Engaja Mais",
       amount: "Até 30",
       unit: "publicações por mês",
-      note: "Cada publicação recebe o que o seu plano entrega.",
+      note: "Aumente seu alcance com postagens estratégicas de alto valor.",
     },
     proofs: [
       {

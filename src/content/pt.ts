@@ -275,9 +275,10 @@ export const pt: Content = {
     secondaryCta: "Conhecer Crescimento Viral",
   },
   viralPage: {
-    eyebrow: "Em construção",
-    title: "Crescimento Viral",
-    lead: "Esta página está sendo preparada. Enquanto isso, os planos mensais de engajamento já estão disponíveis.",
+    eyebrow: "Estratégia Viral",
+    title: "Um crescimento que parece natural. Porque tem motivo.",
+    lead: "A estratégia começa pelo engajamento das suas publicações e só depois sobe os seguidores. Quem entra no seu perfil vê alcance, curtidas e comentários que justificam cada novo seguidor.",
+    soon: "As quantidades e os valores desta estratégia entram aqui em breve.",
     backCta: "Voltar para Engajamento",
   },
   footer: {

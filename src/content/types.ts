@@ -211,6 +211,8 @@ export type Content = {
     eyebrow: string;
     title: string;
     lead: string;
+    /** Aviso de que as quantidades e os valores ainda estão para entrar. */
+    soon: string;
     backCta: string;
   };
   footer: {

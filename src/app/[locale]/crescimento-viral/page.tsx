@@ -37,8 +37,11 @@ export async function generateMetadata({
 /**
  * Página de Crescimento Viral.
  *
- * O conteúdo definitivo será construído na próxima frente de trabalho. Esta
- * rota já existe para que o botão da página de engajamento tenha destino real.
+ * O topo já traz a chamada que o Leudair escolheu: a estratégia começa pelo
+ * engajamento e só depois sobe os seguidores, que é o argumento da página
+ * inteira. As quantidades e os valores ainda não foram definidos, então
+ * abaixo da chamada só existe o aviso de que eles entram aqui, e nenhum
+ * número aparece.
  */
 export default async function ViralGrowthPage({
   params,
@@ -55,11 +58,17 @@ export default async function ViralGrowthPage({
       <div className="mx-auto max-w-3xl">
         <Surface gold className="px-6 py-14 text-center sm:px-14 sm:py-16">
           <Eyebrow center>{c.viralPage.eyebrow}</Eyebrow>
-          <h1 className="display-caps mt-4 text-[1.9rem] text-balance text-paper sm:text-5xl">
+          {/* A chamada é uma frase de duas partes, então vai na serifa sem
+              caixa alta: em maiúsculas ela grita e deixa de se ler. O ouro
+              escovado é o destaque que ele pediu. */}
+          <h1 className="display text-metal-gold mt-4 text-[1.75rem] leading-tight text-balance sm:text-[2.6rem]">
             {c.viralPage.title}
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-pretty text-paper-dim sm:text-base">
+          <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-pretty text-paper sm:text-base">
             {c.viralPage.lead}
+          </p>
+          <p className="mx-auto mt-6 max-w-md text-xs leading-relaxed text-pretty text-paper-dim">
+            {c.viralPage.soon}
           </p>
           <div className="mt-9 flex justify-center">
             <QuietButton href={engagementPath(locale)}>

@@ -165,7 +165,7 @@ export function PlanFamilyCard({
                       fora. Fica em letra menor porque quem compra aqui paga
                       em real: o dólar é referência, não é o preço. */}
                   {plan.priceAlt && (
-                    <p className="mt-1 text-[0.72rem] font-semibold text-onmetal-soft">
+                    <p className="display-3d-sm mt-1.5 text-[0.72rem] font-semibold">
                       {plan.priceAlt}
                     </p>
                   )}
@@ -302,7 +302,7 @@ export function PlanComparison({
                     {plan.price}
                   </p>
                   {plan.priceAlt && (
-                    <p className="text-[0.66rem] font-semibold text-onmetal-soft">
+                    <p className="display-3d-sm text-[0.66rem] font-semibold">
                       {plan.priceAlt}
                     </p>
                   )}

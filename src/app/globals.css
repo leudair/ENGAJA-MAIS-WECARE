@@ -573,6 +573,21 @@ body {
     0 7px 9px rgb(0 0 0 / 0.45);
 }
 
+/*
+ * A mesma peça fundida do preço, em corpo pequeno. A parede do `.display-3d`
+ * tem cinco degraus, que num texto de 11 pixels fecha o buraco das letras e
+ * vira um borrão: aqui ela tem dois, e a mesma cor, para a linha do valor em
+ * dólar ler como o preço e não como uma legenda.
+ */
+.display-3d-sm {
+  color: #191512;
+  text-shadow:
+    0 -1px 0 rgb(255 255 255 / 0.42),
+    0 1px 0 #342c27,
+    0 2px 0 #231d1a,
+    0 3px 4px rgb(0 0 0 / 0.4);
+}
+
 .num-emboss {
   text-shadow:
     0 1px 0 rgb(255 255 255 / 0.55),

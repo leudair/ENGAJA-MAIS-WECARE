@@ -208,18 +208,26 @@ export default async function EngagementPage({
               aparece numa chapa própria, antes dos preços. */}
           <div className="mx-auto mt-9 max-w-2xl">
             <MetalPlate kind="gold">
-              <div className="flex items-center gap-4 px-4 py-4 sm:gap-6 sm:px-7 sm:py-6">
-                <p className="display shrink-0 text-[3.2rem] leading-none text-onmetal sm:text-[4rem]">
-                  {c.plans.highlight.amount}
-                </p>
-                <span className="w-px shrink-0 self-stretch bg-black/30" />
-                <div className="min-w-0">
-                  <p className="text-[0.66rem] font-bold tracking-[0.18em] text-onmetal uppercase sm:text-xs sm:tracking-[0.2em]">
-                    {c.plans.highlight.unit}
-                  </p>
-                  <p className="mt-1.5 text-[0.78rem] leading-snug text-pretty text-onmetal-soft/85 sm:text-sm">
-                    {c.plans.highlight.note}
-                  </p>
+              <div className="chamfer-band">
+                <div className="chamfer-step chamfer-rim m-1.5 sm:m-2">
+                  <div className="flex items-center gap-3 px-2.5 py-3 sm:gap-5 sm:px-5 sm:py-4">
+                    <div className="sunken-panel shrink-0 px-3 py-1 sm:px-5 sm:py-1.5">
+                      <p className="display gold-emboss-lg text-[3.4rem] leading-none sm:text-[4.1rem]">
+                        {c.plans.highlight.amount}
+                      </p>
+                    </div>
+
+                    <span className="hairline-gold shrink-0 self-stretch" />
+
+                    <div className="min-w-0">
+                      <p className="text-[0.66rem] font-bold tracking-[0.16em] text-[#2b2015] uppercase sm:text-xs sm:tracking-[0.2em]">
+                        {c.plans.highlight.unit}
+                      </p>
+                      <p className="mt-1.5 text-[0.72rem] leading-snug text-pretty text-[#3a2c1c] sm:text-[0.82rem]">
+                        {c.plans.highlight.note}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </MetalPlate>

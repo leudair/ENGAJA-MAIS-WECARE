@@ -1276,3 +1276,89 @@ button.obsidian:active {
   will-change: transform;
   filter: drop-shadow(0 22px 26px rgb(0 0 0 / 0.55));
 }
+
+/*
+ * Card das 30 publicações, na seção de planos. Refeito em cima da arte que
+ * o Leudair mandou, com as cores tiradas dela: o campo vai de #fff9d2 no
+ * alto a #a58d5c na aresta de baixo, e o número tem fio de luz quase branco
+ * (#ffffde) e parede quase preta (#1c0b00).
+ *
+ * O número é o mesmo ouro do fundo, levantado, e não uma cor por cima. É
+ * isso que faz a peça parecer metal moldado em vez de texto colorido.
+ */
+/*
+ * A faixa em volta do campo, na arte, é uma aresta de verdade e não um
+ * contorno chato: sobe clara em cima e à esquerda e cai escura embaixo e à
+ * direita, com a luz vindo de cima. Fica numa caixa própria porque é ela
+ * que ocupa a faixa inteira, entre a quina da chapa e o campo de dentro.
+ */
+.chamfer-band {
+  border-radius: 27px;
+  box-shadow:
+    inset 0 4px 3px -2px rgb(255 252 228 / 0.8),
+    inset 4px 0 4px -3px rgb(255 250 220 / 0.5),
+    inset 0 -5px 4px -2px rgb(70 44 8 / 0.42),
+    inset -4px 0 4px -3px rgb(70 44 8 / 0.28);
+}
+
+.chamfer-rim {
+  border-radius: 19px;
+  /* O canal em volta do campo. Na arte ele é fundo de verdade: escuro em
+     cima e à esquerda, claro embaixo e à direita, que é o desenho de um
+     degrau cavado com a luz vindo de cima. */
+  box-shadow:
+    inset 0 0 0 1px rgb(46 28 4 / 0.34),
+    inset 0 6px 8px -2px rgb(46 28 4 / 0.62),
+    inset 4px 0 7px -3px rgb(46 28 4 / 0.42),
+    inset 0 -5px 6px -2px rgb(255 252 228 / 0.72),
+    inset -4px 0 7px -3px rgb(255 252 228 / 0.5);
+}
+.sunken-panel {
+  border-radius: 16px;
+  background: linear-gradient(
+    180deg,
+    rgb(92 68 33 / 0.18) 0%,
+    rgb(255 246 214 / 0.1) 68%,
+    rgb(255 250 226 / 0.2) 100%
+  );
+  box-shadow:
+    inset 0 5px 9px -1px rgb(46 28 4 / 0.5),
+    inset 0 0 0 1px rgb(46 28 4 / 0.2),
+    inset 0 -2px 3px rgb(255 252 228 / 0.55),
+    0 1px 0 rgb(255 252 228 / 0.6);
+}
+.gold-emboss-lg {
+  /* O número é o mesmo ouro do fundo, levantado, e não uma cor por cima.
+     Só sombra de texto não chega lá: na arte a face do algarismo tem uma
+     rampa de luz, clara no alto à esquerda e escura embaixo à direita.
+
+     Por isso a face é um degradê recortado no próprio texto, e o relevo
+     vem de `drop-shadow` empilhado, que enxerga o recorte. Com
+     `text-shadow` a sombra apareceria por dentro do algarismo, que fica
+     transparente nesse recorte. */
+  background-image: linear-gradient(
+    158deg,
+    #fffbe8 0%,
+    #efdcac 20%,
+    #cfb072 46%,
+    #a8873f 70%,
+    #dcc086 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 -1px 0 #fffade) drop-shadow(1px 1px 0 #8a6f3a)
+    drop-shadow(1px 2px 0 #6a5430) drop-shadow(2px 4px 3px rgb(40 30 14 / 0.7))
+    drop-shadow(3px 8px 10px rgb(28 11 0 / 0.48));
+}
+.hairline-gold {
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgb(46 28 4 / 0.3) 16%,
+    rgb(46 28 4 / 0.3) 84%,
+    transparent 100%
+  );
+  box-shadow: 1px 0 0 rgb(255 250 226 / 0.45);
+}

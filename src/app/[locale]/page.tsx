@@ -4,6 +4,7 @@ import { HeroField } from "@/components/HeroField";
 import { MetricIcon } from "@/components/MetricIcon";
 import { PeopleRow } from "@/components/PeopleRow";
 import { PlanCta } from "@/components/PlanCta";
+import { ShowcaseFlame } from "@/components/ShowcaseFlame";
 import { PlanComparison, PlanFamilyCard } from "@/components/PlanFamilyCard";
 import {
   ArrowIcon,
@@ -248,7 +249,11 @@ export default async function EngagementPage({
       {/* ---------------------------------------------------------------- */}
       {/* Exemplo de plano real                                             */}
       {/* ---------------------------------------------------------------- */}
-      <section className="px-4 py-12 sm:px-6 sm:py-16">
+      {/* overflow-x-clip: o fogo é desenhado num canvas maior que o card, que
+          transborda de propósito. Sem cortar essa sobra na horizontal, o
+          celular ganha rolagem lateral. O clip corta só a largura, então a
+          chama continua subindo livre por cima. */}
+      <section className="overflow-x-clip px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[2fr_3fr] lg:items-center lg:gap-14">
           <div>
             <Eyebrow>{c.showcase.eyebrow}</Eyebrow>
@@ -256,38 +261,42 @@ export default async function EngagementPage({
             <Lead>{c.showcase.lead}</Lead>
           </div>
 
-          {/* Chapa de ouro com borda rubi: o card de exemplo do documento. */}
-          <div className="rounded-[23px] p-[2px] shadow-[0_0_44px_-16px_rgba(181,24,31,0.55)] ring-2 ring-ruby-500/80">
-            <MetalPlate kind="gold">
-              <div className="px-6 py-8 sm:px-9 sm:py-10">
-                <h3 className="display-caps display-3d text-2xl sm:text-[2rem]">
-                  {showcase.name}
-                </h3>
-                <p className="display display-3d mt-3 text-[3rem] leading-none sm:text-[3.6rem]">
-                  {showcase.price}
-                </p>
-                <p className="mt-3 text-[0.68rem] font-bold tracking-[0.2em] text-onmetal-soft/85 uppercase">
-                  {c.showcase.planNote}
-                </p>
+          {/* Chapa de ouro com borda rubi: o card de exemplo do documento.
+              Em volta dele, o fogo: é o único lugar da página com esse efeito,
+              e é o plano mais forte, então a chama diz isso sem uma palavra. */}
+          <ShowcaseFlame>
+            <div className="rounded-[23px] p-[2px] shadow-[0_0_44px_-16px_rgba(181,24,31,0.55)] ring-2 ring-ruby-500/80">
+              <MetalPlate kind="gold">
+                <div className="px-6 py-8 sm:px-9 sm:py-10">
+                  <h3 className="display-caps display-3d text-2xl sm:text-[2rem]">
+                    {showcase.name}
+                  </h3>
+                  <p className="display display-3d mt-3 text-[3rem] leading-none sm:text-[3.6rem]">
+                    {showcase.price}
+                  </p>
+                  <p className="mt-3 text-[0.68rem] font-bold tracking-[0.2em] text-onmetal-soft/85 uppercase">
+                    {c.showcase.planNote}
+                  </p>
 
-                <span className="mt-6 block h-px bg-black/20" />
+                  <span className="mt-6 block h-px bg-black/20" />
 
-                <div className="mt-4">
-                  <PlanMetrics metrics={showcase.metrics} tone="metal" />
+                  <div className="mt-4">
+                    <PlanMetrics metrics={showcase.metrics} tone="metal" />
+                  </div>
+
+                  <div className="mt-7">
+                    <PlanCta
+                      plan={showcase}
+                      c={c}
+                      variant="ruby"
+                      label={c.showcase.cta}
+                      className="w-full"
+                    />
+                  </div>
                 </div>
-
-                <div className="mt-7">
-                  <PlanCta
-                    plan={showcase}
-                    c={c}
-                    variant="ruby"
-                    label={c.showcase.cta}
-                    className="w-full"
-                  />
-                </div>
-              </div>
-            </MetalPlate>
-          </div>
+              </MetalPlate>
+            </div>
+          </ShowcaseFlame>
         </div>
       </section>
 

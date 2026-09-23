@@ -1252,3 +1252,27 @@ button.obsidian:active {
   letter-spacing: 0.1em;
   white-space: nowrap;
 }
+
+/*
+ * Chapa que gira com o dedo. A caixa de fora só abre a perspectiva, e quem
+ * gira é a de dentro. `will-change` evita o tranco no primeiro toque no
+ * celular, e a sombra embaixo cresce um pouco para a peça parecer que
+ * descolou do fundo. Ver src/components/TiltPlate.tsx.
+ */
+.tilt-frame {
+  perspective: 900px;
+  perspective-origin: 50% 45%;
+  cursor: grab;
+  /* Sem isso, arrastar a chapa pinta o texto de seleção azul no meio do
+     giro, que é justamente a cor que a direção visual proíbe. */
+  -webkit-user-select: none;
+  user-select: none;
+}
+.tilt-frame:active {
+  cursor: grabbing;
+}
+.tilt-plate {
+  transform-style: preserve-3d;
+  will-change: transform;
+  filter: drop-shadow(0 22px 26px rgb(0 0 0 / 0.55));
+}

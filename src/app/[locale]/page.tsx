@@ -6,6 +6,7 @@ import { PeopleRow } from "@/components/PeopleRow";
 import { PlanCta } from "@/components/PlanCta";
 import { ShowcaseFlame } from "@/components/ShowcaseFlame";
 import { PlanComparison, PlanFamilyCard } from "@/components/PlanFamilyCard";
+import { TiltPlate } from "@/components/TiltPlate";
 import {
   ArrowIcon,
   Bullet,
@@ -118,31 +119,33 @@ export default async function EngagementPage({
           {/* Chapa de bronze com o limite do mês, o dado que mais pesa. A
               moldura é feita de dois degraus escavados, um dentro do outro,
               como numa peça de metal fundido. */}
-          <MetalPlate kind="bronze" className="mx-auto w-full max-w-sm">
-            <div className="chamfer-step chamfer-outer m-2.5 sm:m-3">
-              <div className="chamfer-step chamfer-inner m-2.5 px-4 py-7 text-center sm:m-3 sm:px-6 sm:py-9">
-                <p className="display-caps bronze-emboss text-[1.5rem] tracking-[0.1em] sm:text-[1.8rem]">
-                  {c.hero.badge.brand}
-                </p>
+          <TiltPlate className="mx-auto w-full max-w-sm">
+            <MetalPlate kind="bronze">
+              <div className="chamfer-step chamfer-outer m-2.5 sm:m-3">
+                <div className="chamfer-step chamfer-inner m-2.5 px-4 py-7 text-center sm:m-3 sm:px-6 sm:py-9">
+                  <p className="display-caps bronze-emboss text-[1.5rem] tracking-[0.1em] sm:text-[1.8rem]">
+                    {c.hero.badge.brand}
+                  </p>
 
-                {/* Painel de acrílico com o número. O 30 continua texto, e
+                  {/* Painel de acrílico com o número. O 30 continua texto, e
                     não desenho, porque é a métrica que sustenta a venda. */}
-                <div className="glass-panel mt-4 px-4 py-2.5 sm:px-6 sm:py-3">
-                  <p className="display bronze-emboss-lg text-[3.2rem] leading-none sm:text-[3.8rem]">
-                    {c.hero.badge.amount}
+                  <div className="glass-panel mt-4 px-4 py-2.5 sm:px-6 sm:py-3">
+                    <p className="display bronze-emboss-lg text-[3.2rem] leading-none sm:text-[3.8rem]">
+                      {c.hero.badge.amount}
+                    </p>
+                  </div>
+
+                  <p className="display-caps bronze-emboss mt-4 text-[0.95rem] tracking-[0.09em] sm:text-[1.1rem]">
+                    {c.hero.badge.unit}
+                  </p>
+
+                  <p className="mt-4 text-sm leading-relaxed text-[#1a1a1a]">
+                    {c.hero.badge.note}
                   </p>
                 </div>
-
-                <p className="display-caps bronze-emboss mt-4 text-[0.95rem] tracking-[0.09em] sm:text-[1.1rem]">
-                  {c.hero.badge.unit}
-                </p>
-
-                <p className="mt-4 text-sm leading-relaxed text-[#1a1a1a]">
-                  {c.hero.badge.note}
-                </p>
               </div>
-            </div>
-          </MetalPlate>
+            </MetalPlate>
+          </TiltPlate>
         </div>
 
         {/* Faixa de selos: só fatos já definidos. */}

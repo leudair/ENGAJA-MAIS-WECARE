@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { GlassAmount } from "@/components/GlassAmount";
+import { InkAmount } from "@/components/InkAmount";
 import { HeroField } from "@/components/HeroField";
 import { MetricIcon } from "@/components/MetricIcon";
 import { PeopleRow } from "@/components/PeopleRow";
@@ -121,9 +121,9 @@ export default async function EngagementPage({
               <p className="display-caps text-[1.05rem] tracking-[0.14em] text-onmetal sm:text-[1.3rem]">
                 {c.hero.badge.brand}
               </p>
-              <GlassAmount
+              <InkAmount
                 text={c.hero.badge.amount}
-                src={`/selo-30-${locale}.png`}
+                src={`/selo-30-${locale}.svg`}
               />
               <p className="mt-3 text-[0.72rem] font-bold tracking-[0.2em] text-onmetal-soft uppercase">
                 {c.hero.badge.unit}

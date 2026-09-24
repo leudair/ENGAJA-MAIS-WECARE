@@ -222,6 +222,12 @@ export type Content = {
     bandRecommended: string;
     /** Linha pequena do topo do painel, ex.: "Estratégia de crescimento viral". */
     strategyLabel: string;
+    /**
+     * Exemplo curto abaixo da explicação, numa cor à parte para ninguém
+     * confundir com o que a meta escolhida entrega. `{n}` é a meta e `{v}` é
+     * quantos vídeos já publicados entram nela.
+     */
+    exampleNote: string;
     /** O que a oferta entrega, ex.: "seguidores orgânicos". */
     followersUnit: string;
     /** Título de cada um dos três vídeos. `{n}` vira 1, 2 ou 3. */
@@ -230,6 +236,15 @@ export type Content = {
     viewsLabel: string;
     /** As outras quatro entregas do vídeo, nesta ordem. */
     videoLabels: [string, string, string, string];
+    /**
+     * Os mesmos cinco nomes em versão curta, na ordem visualizações,
+     * curtidas, comentários, repostagens e compartilhamentos. Dentro do
+     * quadro de vídeo há cerca de cem pixels de largura, e o nome por
+     * extenso não cabe ao lado do número.
+     */
+    videoShortLabels: [string, string, string, string, string];
+    /** Lingueta do quadro de vídeo. `{n}` vira 1, 2 ou 3. */
+    videoTab: string;
     /**
      * Faixa dos vídeos já publicados. `{n}` vira quantos entram no trabalho,
      * que muda de oferta para oferta.

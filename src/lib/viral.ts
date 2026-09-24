@@ -6,18 +6,30 @@ import {
   type ViralBandId,
   type ViralPackageData,
 } from "@/content/viral-data";
-import { formatPrice, formatPriceUSD, formatRange, number } from "./plans";
+import {
+  formatPrice,
+  formatPriceUSD,
+  formatRange,
+  number,
+  shortNumber,
+} from "./plans";
 import type { MetalKind } from "@/components/ui";
 
 /** Uma linha de entrega: o rótulo, o número e o ícone do serviço. */
 export type ViralStat = {
   label: string;
   value: string;
+  /** Nome curto, para dentro do quadro de vídeo. */
+  short?: string;
+  /** O número por extenso, para leitores de tela. */
+  full?: string;
 };
 
 export type ViralVideoCard = {
   /** O número do vídeo, 1, 2 ou 3, para a lingueta do quadro. */
   n: number;
+  /** "1º vídeo", já traduzido, para a lingueta. */
+  tab: string;
   /** "Vídeo viral 1", já traduzido, para leitores de tela. */
   title: string;
   /**
@@ -84,13 +96,18 @@ function toVideoCard(
     video.reposts,
     video.shares,
   ];
+  // O nome longo continua existindo, mas só para quem usa leitor de tela: no
+  // quadro cabe o curto, que é o que o Leudair pediu em 24/09/2026.
   const labels = [c.viralPage.viewsLabel, ...c.viralPage.videoLabels];
   return {
     n: index + 1,
+    tab: c.viralPage.videoTab.replace("{n}", String(index + 1)),
     title: c.viralPage.videoLabel.replace("{n}", String(index + 1)),
     stats: labels.map((label, i) => ({
       label,
-      value: number(locale, counts[i]),
+      short: c.viralPage.videoShortLabels[i],
+      value: shortNumber(locale, counts[i]),
+      full: number(locale, counts[i]),
     })),
   };
 }

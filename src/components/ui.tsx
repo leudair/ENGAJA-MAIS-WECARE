@@ -151,6 +151,23 @@ export function SparkIcon({ className = "" }: { className?: string }) {
   );
 }
 
+/**
+ * Alfinete de publicação fixada, o mesmo desenho que o Instagram usa. Marca
+ * os três vídeos virais, que são justamente os que ficam fixados no perfil.
+ */
+export function PinIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      aria-hidden
+      className={`size-3 ${className}`}
+    >
+      <path d="M10.1 1.2a1 1 0 0 1 1.4 0l3.3 3.3a1 1 0 0 1-.6 1.7l-1.5.2-2.4 2.4.5 2a1 1 0 0 1-1.7 1L6.4 9.4l-3.6 3.6a1 1 0 0 1-1.4-1.4l3.6-3.6-2.4-2.7a1 1 0 0 1 1-1.7l2 .5 2.4-2.4.2-1.5a1 1 0 0 1 .3-.6Z" />
+    </svg>
+  );
+}
+
 /** Botão secundário, só com o fio dourado. */
 export function QuietButton({ href, children, className = "" }: ButtonProps) {
   return (

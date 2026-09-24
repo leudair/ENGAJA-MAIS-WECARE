@@ -279,7 +279,8 @@ export const pt: Content = {
     lead: "A estratégia começa pelo engajamento das suas publicações e só depois sobe os seguidores. Quem entra no seu perfil vê alcance, curtidas e comentários que justificam cada novo seguidor.",
     packagesTitle: "Escolha a sua meta",
     packagesSubtitle:
-      "São nove metas de crescimento, em três faixas. Cada meta traz três vídeos virais, que ficam fixados no seu perfil, e o trabalho nos vídeos que você já publicou.",
+      "Vamos trabalhar em três vídeos fixados no seu perfil, que são os que viralizam. E vamos trabalhar também nos vídeos abaixo deles, conforme a meta que você escolher.",
+    exampleNote: "Exemplo: na meta de {n}, trabalhamos nos {v} vídeos abaixo.",
     bands: {
       premium: {
         name: "Premium",
@@ -308,6 +309,14 @@ export const pt: Content = {
       "Repostagens",
       "Compartilhamentos",
     ],
+    videoShortLabels: [
+      "views",
+      "likes",
+      "comentário",
+      "repost",
+      "compartilhamento",
+    ],
+    videoTab: "{n}º vídeo",
     recentTitle: "Também trabalhamos nos seus últimos {n} vídeos",
     recentLabels: [
       "Visualizações",

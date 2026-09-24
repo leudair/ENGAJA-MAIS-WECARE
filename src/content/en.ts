@@ -277,7 +277,8 @@ export const en: Content = {
     lead: "The strategy starts with the engagement on your posts and only then raises your follower count. Anyone who opens your profile sees the reach, the likes and the comments that justify every new follower.",
     packagesTitle: "Pick your goal",
     packagesSubtitle:
-      "There are nine growth goals, in three ranges. Each goal brings three viral videos, pinned to your profile, plus work on the videos you have already posted.",
+      "We work on three videos pinned to your profile, which are the ones that go viral. And we also work on the videos below them, according to the goal you pick.",
+    exampleNote: "Example: on the {n} goal, we work on the {v} videos below.",
     bands: {
       premium: {
         name: "Premium",
@@ -301,6 +302,8 @@ export const en: Content = {
     videoLabel: "Viral video {n}",
     viewsLabel: "views",
     videoLabels: ["Likes", "Comments", "Reposts", "Shares"],
+    videoShortLabels: ["views", "likes", "comments", "reposts", "shares"],
+    videoTab: "Video {n}",
     recentTitle: "We also work on your last {n} videos",
     recentLabels: ["Views", "Likes", "Reposts", "Shares"],
     recentNote: "each video",

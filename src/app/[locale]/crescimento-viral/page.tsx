@@ -10,6 +10,7 @@ import {
 import { ViralBand, ViralComparison } from "@/components/ViralPackages";
 import { getContent, localeHtmlLang, locales, type Locale } from "@/content";
 import { engagementPath, isLocale } from "@/lib/routes";
+import { viralPackages } from "@/content/viral-data";
 import { getViralBands } from "@/lib/viral";
 
 export function generateStaticParams() {
@@ -60,20 +61,24 @@ export default async function ViralGrowthPage({
   const locale = raw as Locale;
   const c = getContent(locale);
   const bands = getViralBands(locale, c);
+  // O exemplo do texto sai da meta mais completa da página, para não haver
+  // dois números falando da mesma coisa.
+  const biggest = bands[0].packages[0];
+  const biggestRecent = viralPackages[0].recentCount;
 
   return (
     <>
-      <section className="px-4 pt-20 pb-12 sm:px-6 sm:pt-28 sm:pb-16">
+      <section className="px-4 pt-12 pb-8 sm:px-6 sm:pt-16 sm:pb-10">
         <div className="mx-auto max-w-3xl">
-          <Surface gold className="px-6 py-14 text-center sm:px-14 sm:py-16">
+          <Surface gold className="px-5 py-8 text-center sm:px-10 sm:py-10">
             <Eyebrow center>{c.viralPage.eyebrow}</Eyebrow>
             {/* A chamada é uma frase de duas partes, então vai na serifa sem
                 caixa alta: em maiúsculas ela grita e deixa de se ler. O ouro
                 escovado é o destaque que ele pediu. */}
-            <h1 className="display text-metal-gold mt-4 text-[1.75rem] leading-tight text-balance sm:text-[2.6rem]">
+            <h1 className="display text-metal-gold mt-3 text-[1.4rem] leading-tight text-balance sm:text-[2.1rem]">
               {c.viralPage.title}
             </h1>
-            <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-pretty text-paper sm:text-base">
+            <p className="mx-auto mt-4 max-w-xl text-[0.8rem] leading-relaxed text-pretty text-paper sm:text-sm">
               {c.viralPage.lead}
             </p>
           </Surface>
@@ -106,6 +111,13 @@ export default async function ViralGrowthPage({
           <SectionTitle center>{c.viralPage.packagesTitle}</SectionTitle>
           <p className="mx-auto mt-4 max-w-xl text-center text-sm leading-relaxed text-pretty text-paper-dim">
             {c.viralPage.packagesSubtitle}
+          </p>
+          {/* O exemplo vai em ouro, e não na cor do texto, para ninguém ler
+              os 25 vídeos como se valessem para todas as metas. */}
+          <p className="mx-auto mt-3 max-w-xl text-center text-[0.82rem] leading-relaxed text-pretty text-gold-label">
+            {c.viralPage.exampleNote
+              .replace("{n}", biggest.followers)
+              .replace("{v}", String(biggestRecent))}
           </p>
 
           {/* Uma faixa embaixo da outra, e não lado a lado: cada chapa traz

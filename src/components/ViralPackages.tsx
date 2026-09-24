@@ -5,7 +5,7 @@ import type { Content } from "@/content";
 import type { ViralBandCard, ViralPackageCard } from "@/lib/viral";
 import { MetricIcon, type MetricIconName } from "./MetricIcon";
 import { PlanCta } from "./PlanCta";
-import { ChevronIcon } from "./ui";
+import { ChevronIcon, PinIcon } from "./ui";
 
 /**
  * Ícones das cinco entregas de um vídeo, na ordem da arte: visualizações,
@@ -39,35 +39,59 @@ const recentIcons: readonly MetricIconName[] = [
  * ícone conta.
  */
 function VideoCard({ video }: { video: ViralPackageCard["videos"][number] }) {
+  // As quatro primeiras entregas cabem em linha, número e nome curto lado a
+  // lado. A última não: "compartilhamento" é a palavra mais longa das cinco,
+  // então ela desce para a sobra do rodapé do quadro, que foi o que o Leudair
+  // pediu em 24/09/2026.
+  const inline = video.stats.slice(0, 4);
+  const last = video.stats[4];
+
   return (
     <div className="relative pt-2.5">
       <div className="art-card art-notch h-full">
-        <div className="art-card-face art-notch h-full px-1.5 pt-4 pb-1.5">
-          <ul>
-            {video.stats.map((stat, i) => (
+        <div className="art-card-face art-notch flex h-full flex-col px-1.5 pt-4 pb-2">
+          <ul className="flex-1">
+            {inline.map((stat, i) => (
               <li
                 key={stat.label}
-                className="flex items-center gap-1 border-t border-white/12 py-[0.3rem] first:border-t-0"
+                className="flex items-center gap-1 border-t border-white/12 py-[0.28rem] first:border-t-0"
               >
                 <MetricIcon name={videoIcons[i]} small />
-                <span className="display min-w-0 truncate text-[0.62rem] leading-none text-gold-bright sm:text-[0.78rem]">
+                <span className="display text-[0.6rem] leading-none text-gold-bright sm:text-[0.74rem]">
                   {stat.value}
                 </span>
+                <span className="min-w-0 truncate text-[0.42rem] leading-none font-bold text-paper-dim uppercase sm:text-[0.48rem]">
+                  {stat.short}
+                </span>
                 <span className="sr-only">
-                  {stat.label}, {video.title}
+                  {stat.full} {stat.label}
                 </span>
               </li>
             ))}
           </ul>
+
+          <div className="mt-auto border-t border-white/12 pt-1 text-center">
+            <span className="flex items-center justify-center gap-1">
+              <MetricIcon name={videoIcons[4]} small />
+              <span className="display text-[0.6rem] leading-none text-gold-bright sm:text-[0.74rem]">
+                {last.value}
+              </span>
+            </span>
+            <p className="mt-0.5 text-[0.4rem] leading-[1.15] font-bold break-words text-paper-dim uppercase sm:text-[0.46rem]">
+              {last.short}
+            </p>
+            <span className="sr-only">
+              {last.full} {last.label}
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* A lingueta pendurada no topo do quadro, com o número do vídeo. */}
-      <span
-        aria-hidden
-        className="art-tab absolute top-0 left-1/2 flex h-5 w-8 -translate-x-1/2 justify-center pt-0.5 text-[0.6rem] leading-none font-bold text-onmetal"
-      >
-        {video.n}
+      {/* A lingueta pendurada no topo do quadro. O alfinete é o mesmo do
+          Instagram: estes são os três vídeos que ficam fixados no perfil. */}
+      <span className="art-tab absolute top-0 left-1/2 flex h-[1.45rem] -translate-x-1/2 items-start gap-0.5 px-1.5 pt-[0.2rem] text-[0.42rem] leading-none font-bold whitespace-nowrap text-onmetal uppercase sm:text-[0.48rem]">
+        <PinIcon className="size-2 shrink-0" />
+        {video.tab}
       </span>
     </div>
   );
@@ -89,17 +113,17 @@ function OfferFace({
     <div>
       {/* Tarja fina do topo, que na arte nomeia a peça. */}
       <div className="art-bar metal px-3 py-1 text-center">
-        <span className="text-[0.56rem] font-bold tracking-[0.22em] text-onmetal uppercase">
+        <span className="display-caps display-3d-sm text-[0.8rem] tracking-[0.18em] sm:text-[0.95rem]">
           {band.name}
         </span>
       </div>
 
       {/* A chapa grande: a meta, que é o que tem que chamar a atenção. */}
       <div className="art-plate art-notch metal mt-2 px-3 py-3 text-center">
-        <p className="display display-3d text-[2.1rem] leading-none sm:text-[2.9rem]">
+        <p className="display display-3d-xl text-[2.2rem] leading-none sm:text-[3rem]">
           {pkg.followers}
         </p>
-        <p className="mt-0.5 text-[0.56rem] font-bold tracking-[0.2em] text-onmetal-soft uppercase sm:text-[0.68rem]">
+        <p className="display-3d-sm mt-1 text-[0.6rem] font-bold tracking-[0.2em] uppercase sm:text-[0.72rem]">
           {pkg.followersUnit}
         </p>
       </div>
@@ -110,18 +134,6 @@ function OfferFace({
           <VideoCard key={video.title} video={video} />
         ))}
       </div>
-
-      {/* O que cada ícone conta, já que nos quadros não cabe o rótulo. */}
-      <ul className="mt-2 flex flex-wrap justify-center gap-x-2.5 gap-y-1">
-        {pkg.videos[0].stats.map((stat, i) => (
-          <li key={stat.label} className="flex items-center gap-1">
-            <MetricIcon name={videoIcons[i]} small />
-            <span className="text-[0.5rem] font-bold tracking-[0.1em] text-paper-dim uppercase">
-              {stat.label}
-            </span>
-          </li>
-        ))}
-      </ul>
 
       {/* A régua de quatro casas: os vídeos que a pessoa já publicou. */}
       <p className="mt-3 text-center text-[0.58rem] leading-snug font-bold tracking-[0.1em] text-gold-label uppercase">

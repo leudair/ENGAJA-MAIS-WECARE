@@ -31,6 +31,25 @@ export function number(locale: Locale, value: number): string {
 }
 
 /**
+ * Número abreviado, para onde não cabe o valor por extenso: 1.500.000 sai
+ * como 1,5M e 22.000 como 22K.
+ *
+ * A abreviação só entra quando é exata com no máximo uma casa decimal. Um
+ * número como 1.125 volta inteiro, porque "1,1K" não é 1.125 e nenhuma
+ * quantidade pode aparecer arredondada numa página de venda.
+ */
+export function shortNumber(locale: Locale, value: number): string {
+  const unit = (divisor: number, suffix: string) =>
+    `${new Intl.NumberFormat(numberLocale[locale], {
+      maximumFractionDigits: 1,
+    }).format(value / divisor)}${suffix}`;
+
+  if (value >= 1_000_000 && value % 100_000 === 0) return unit(1_000_000, "M");
+  if (value >= 1_000 && value % 100 === 0) return unit(1_000, "K");
+  return number(locale, value);
+}
+
+/**
  * Idiomas que compram em real. Os outros veem o preço em dólar, que é o
  * público dos Estados Unidos para quem a página foi escrita. Anda junto com
  * `pixLocales` em `site.ts`: quem paga em real paga por Pix, quem paga em

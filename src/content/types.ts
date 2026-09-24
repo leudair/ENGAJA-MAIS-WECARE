@@ -193,8 +193,6 @@ export type Content = {
     title: string;
     lead: string;
     cta: string;
-    /** Ressalva obrigatória: a página não promete viralização. */
-    note: string;
   };
   faq: {
     eyebrow: string;

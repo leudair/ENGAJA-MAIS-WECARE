@@ -6,6 +6,7 @@ import { PeopleRow } from "@/components/PeopleRow";
 import { PlanCta } from "@/components/PlanCta";
 import { ShowcaseFlame } from "@/components/ShowcaseFlame";
 import { PlanComparison, PlanFamilyCard } from "@/components/PlanFamilyCard";
+import { ViralPlate } from "@/components/ViralPlate";
 import { TiltPlate } from "@/components/TiltPlate";
 import {
   ArrowIcon,
@@ -167,28 +168,8 @@ export default async function EngagementPage({
       {/* Banner Crescimento Viral, antes dos planos                        */}
       {/* ---------------------------------------------------------------- */}
       <section className="px-4 py-8 sm:px-6 sm:py-12">
-        <div className="mx-auto max-w-5xl">
-          {/* Moldura de ouro espessa, com o anel rubi e o interior preto. */}
-          <div className="metal metal-gold rounded-[24px] p-[3px] shadow-[0_0_40px_-14px_rgba(181,24,31,0.5)]">
-            <div className="relative rounded-[22px] ring-1 ring-ruby-500/70 ring-inset">
-              <div className="rounded-[21px] bg-ink-950 px-6 py-11 text-center sm:px-14 sm:py-14">
-                <Eyebrow center>{c.viral.eyebrow}</Eyebrow>
-                <h2 className="display-caps mt-4 text-[1.8rem] text-balance text-paper sm:text-4xl">
-                  {c.viral.title}
-                </h2>
-                <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-pretty text-paper-dim">
-                  {c.viral.lead}
-                </p>
-                <div className="mt-9">
-                  <ObsidianButton href={viralHref}>
-                    {c.viral.cta}
-                    <ExternalIcon />
-                  </ObsidianButton>
-                </div>
-                <p className="mt-6 text-xs text-paper-weak">{c.viral.note}</p>
-              </div>
-            </div>
-          </div>
+        <div className="mx-auto max-w-3xl">
+          <ViralPlate c={c} href={viralHref} />
         </div>
       </section>
 

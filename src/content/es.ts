@@ -222,9 +222,8 @@ export const es: Content = {
   viral: {
     eyebrow: "Metodología WeCare",
     title: "Crecimiento Viral",
-    lead: "Estrategias dedicadas a los contenidos que quieres destacar.",
-    cta: "Conocer la estrategia",
-    note: "Un frente separado de los planes mensuales de engagement.",
+    lead: "Estrategias exclusivas para impulsar los contenidos que quieres destacar.",
+    cta: "Conocer",
   },
   faq: {
     eyebrow: "Preguntas frecuentes",

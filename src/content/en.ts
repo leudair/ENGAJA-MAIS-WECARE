@@ -281,17 +281,17 @@ export const en: Content = {
     bands: {
       premium: {
         name: "Premium",
-        tagline: "From 10,000 to 50,000 followers.",
+        tagline: "From 5,000 to 50,000 followers.",
         pitch: "For anyone who wants to reach a lot of people at once.",
       },
       intermediate: {
         name: "Intermediate",
-        tagline: "From 3,000 to 5,000 followers.",
+        tagline: "From 1,000 to 4,000 followers.",
         pitch: "For profiles with an audience that want to grow fast.",
       },
       entry: {
         name: "Start",
-        tagline: "From 500 to 2,000 followers.",
+        tagline: "The first step, with the whole strategy.",
         pitch: "For profiles starting out that want to get moving.",
       },
     },

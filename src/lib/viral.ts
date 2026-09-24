@@ -38,10 +38,11 @@ export type ViralPackageCard = {
   recentTitle: string;
   recent: ViralStat[];
   /**
-   * Posição dentro da faixa, da meta maior para a menor. Manda no
-   * acabamento: 1 é a meta mais completa da faixa, 3 é a de entrada.
+   * Posição dentro da faixa, da meta maior para a menor, começando em 1. As
+   * faixas não têm todas o mesmo tamanho: a de cima e a do meio têm quatro
+   * metas cada, e a de entrada tem uma só.
    */
-  tier: 1 | 2 | 3;
+  tier: number;
   href: string;
   payment: { card: string | null; pix: string | null };
 };
@@ -88,7 +89,7 @@ function toPackageCard(
   locale: Locale,
   c: Content,
   pkg: ViralPackageData,
-  tier: 1 | 2 | 3,
+  tier: number,
 ): ViralPackageCard {
   // Pix só existe para quem tem banco no Brasil, igual aos planos mensais.
   const pix = showsPix(locale) ? pkg.pixUrl : null;
@@ -133,7 +134,11 @@ function toPackageCard(
  *
  * Mesma organização dos planos mensais, e pelo mesmo motivo: nove chapas
  * empilhadas fariam a pessoa rolar meia página antes de ver a segunda oferta.
- * Cada faixa abre na meta mais completa e folheia até a de entrada.
+ * Cada faixa abre na meta mais completa e folheia até a menor.
+ *
+ * As faixas não têm o mesmo tamanho, e é de propósito: a de entrada tem uma
+ * meta só, a do meio tem quatro e a de cima tem quatro. Foi assim que o
+ * Leudair dividiu em 24/09/2026, e cada faixa ganhou um acabamento próprio.
  */
 export function getViralBands(locale: Locale, c: Content): ViralBandCard[] {
   return viralBandOrder.map((bandId) => {
@@ -146,7 +151,7 @@ export function getViralBands(locale: Locale, c: Content): ViralBandCard[] {
       metal: bandMetal[bandId],
       recommended: bandId === "premium",
       packages: packages.map((pkg, index) =>
-        toPackageCard(locale, c, pkg, (index + 1) as 1 | 2 | 3),
+        toPackageCard(locale, c, pkg, index + 1),
       ),
     };
   });

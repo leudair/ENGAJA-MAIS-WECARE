@@ -283,17 +283,17 @@ export const pt: Content = {
     bands: {
       premium: {
         name: "Premium",
-        tagline: "De 10 mil a 50 mil seguidores.",
+        tagline: "De 5 mil a 50 mil seguidores.",
         pitch: "Para quem quer aparecer para muita gente de uma vez.",
       },
       intermediate: {
         name: "Intermediário",
-        tagline: "De 3 mil a 5 mil seguidores.",
+        tagline: "De 1 mil a 4 mil seguidores.",
         pitch: "Para quem já tem público e quer crescer rápido.",
       },
       entry: {
         name: "Start",
-        tagline: "De 500 a 2 mil seguidores.",
+        tagline: "O primeiro passo, com a estratégia inteira.",
         pitch: "Para quem está começando e quer sair do zero.",
       },
     },

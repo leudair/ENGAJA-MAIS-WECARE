@@ -12,8 +12,10 @@
  * nem estimativa.
  *
  * Regras que vêm junto:
- * - São nove metas em três faixas. Cada faixa abre na meta mais completa e
- *   folheia até a menor, igual aos planos mensais.
+ * - São nove metas em três faixas, do jeito que ele dividiu em 24/09/2026:
+ *   a de 500 sozinha na entrada, de 1.000 a 4.000 no meio, e de 5.000 a
+ *   50.000 em cima. Cada faixa abre na meta mais completa e folheia até a
+ *   menor, igual aos planos mensais, e cada uma tem um acabamento próprio.
  * - Toda meta entrega três vídeos virais, e são esses três que ficam fixados
  *   no perfil. O resto do trabalho acontece nos vídeos já publicados, e
  *   quantos entram muda de meta para meta.
@@ -84,7 +86,7 @@ export type ViralPackageData = {
 };
 
 export const viralPackages: readonly ViralPackageData[] = [
-  // ---- Faixa premium, de 10 mil a 50 mil -------------------------------
+  // ---- Faixa premium, de 5 mil a 50 mil --------------------------------
   {
     id: "viral-50000",
     band: "premium",
@@ -208,11 +210,9 @@ export const viralPackages: readonly ViralPackageData[] = [
     checkoutUrl: null,
     pixUrl: null,
   },
-
-  // ---- Faixa intermediária, de 3 mil a 5 mil ---------------------------
   {
     id: "viral-5000",
-    band: "intermediate",
+    band: "premium",
     followers: 5000,
     priceBRL: 2497,
     priceUSD: 477,
@@ -251,6 +251,8 @@ export const viralPackages: readonly ViralPackageData[] = [
     checkoutUrl: null,
     pixUrl: null,
   },
+
+  // ---- Faixa intermediária, de 1 mil a 4 mil ---------------------------
   {
     id: "viral-4000",
     band: "intermediate",
@@ -333,11 +335,9 @@ export const viralPackages: readonly ViralPackageData[] = [
     checkoutUrl: null,
     pixUrl: null,
   },
-
-  // ---- Faixa de entrada, de 500 a 2 mil --------------------------------
   {
     id: "viral-2000",
-    band: "entry",
+    band: "intermediate",
     followers: 2000,
     priceBRL: 997,
     priceUSD: 197,
@@ -378,7 +378,7 @@ export const viralPackages: readonly ViralPackageData[] = [
   },
   {
     id: "viral-1000",
-    band: "entry",
+    band: "intermediate",
     followers: 1000,
     priceBRL: 497,
     priceUSD: 97,
@@ -417,6 +417,8 @@ export const viralPackages: readonly ViralPackageData[] = [
     checkoutUrl: null,
     pixUrl: null,
   },
+
+  // ---- Faixa de entrada, só a meta de 500 ------------------------------
   {
     id: "viral-500",
     band: "entry",

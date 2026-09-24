@@ -24,7 +24,7 @@ const numberLocale: Record<Locale, string> = {
  * Números agrupados no padrão do idioma. `useGrouping: "always"` porque o
  * espanhol, sem isso, escreve 1000 em vez de 1.000 e desalinha com os outros.
  */
-function number(locale: Locale, value: number): string {
+export function number(locale: Locale, value: number): string {
   return new Intl.NumberFormat(numberLocale[locale], {
     useGrouping: "always",
   }).format(value);

@@ -209,8 +209,41 @@ export type Content = {
     eyebrow: string;
     title: string;
     lead: string;
-    /** Aviso de que as quantidades e os valores ainda estão para entrar. */
-    soon: string;
+    /** Cabeçalho da lista das seis ofertas, abaixo da chamada. */
+    packagesTitle: string;
+    packagesSubtitle: string;
+    /** O que a oferta entrega, ex.: "seguidores orgânicos". */
+    followersUnit: string;
+    /** Título de cada um dos três vídeos. `{n}` vira 1, 2 ou 3. */
+    videoLabel: string;
+    /** O que o número grande do vídeo conta, ex.: "visualizações". */
+    viewsLabel: string;
+    /** As outras quatro entregas do vídeo, nesta ordem. */
+    videoLabels: [string, string, string, string];
+    /**
+     * Faixa dos vídeos já publicados. `{n}` vira quantos entram no trabalho,
+     * que muda de oferta para oferta.
+     */
+    recentTitle: string;
+    recentLabels: [string, string, string, string];
+    /** Sob cada faixa, ex.: "cada vídeo". */
+    recentNote: string;
+    /** Aviso de que os três vídeos virais são os que ficam fixados. */
+    pinnedNote: string;
+    /** Preço de tabela riscado. `{value}` é o valor já formatado. */
+    fromLabel: string;
+    /** Linha curta acima do preço, ex.: "por apenas". */
+    priceNote: string;
+    cta: string;
+    /** Botões de virar página, para leitores de tela. */
+    prevLabel: string;
+    nextLabel: string;
+    /** Posição da oferta no folheio, ex.: "2 de 6". */
+    counter: string;
+    /** Lista de comparação, fechada, abaixo do folheio. */
+    compareLabel: string;
+    compareNote: string;
+    disclaimer: string;
     backCta: string;
   };
   footer: {

@@ -2,8 +2,17 @@
 
 import { useState } from "react";
 import type { Content } from "@/content";
-import type { PlanCard } from "@/lib/plans";
 import { KeyButton, RubyButton } from "./ui";
+
+/**
+ * O que o botão precisa saber de uma oferta: para onde ir e quais meios de
+ * pagamento ela tem. É só isso de propósito, para que os planos mensais e as
+ * ofertas de Crescimento Viral usem o mesmo botão sem herdar um do outro.
+ */
+export type CtaOffer = {
+  href: string;
+  payment: { card: string | null; pix: string | null };
+};
 
 /** Ícone de cartão de crédito. */
 function CardIcon() {
@@ -70,7 +79,7 @@ export function PlanCta({
   label,
   onOpenChange,
 }: {
-  plan: PlanCard;
+  plan: CtaOffer;
   c: Content;
   className?: string;
   /**

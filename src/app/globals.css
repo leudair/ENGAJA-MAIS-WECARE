@@ -1383,147 +1383,170 @@ button.obsidian:active {
 /* -------------------------------------------------------------------- */
 
 /*
- * Peça desenhada em cima da arte que o Leudair mandou em 24/09/2026: moldura
- * de ouro polido larga e chanfrada, miolo de obsidiana com poeira de ouro, e
- * o botão redondo de apertar no canto. Tudo em CSS, como o resto dos metais
- * da página.
+ * Peça copiada da arte que o Leudair mandou em 24/09/2026.
  *
- * A moldura é polida, e não escovada como as chapas dos planos: na arte ela
- * reflete em faixas largas, sem a estria fina. Por isso ela não usa
- * `.metal-gold`.
+ * A moldura dela não é uma faixa só: é um perfil de porta-retrato, com uma
+ * quina alta por fora, um degrau descendo e uma segunda moldura menor em
+ * volta do miolo. Por isso são duas caixas encaixadas, cada uma com o seu
+ * chanfro, e não um `border` de uma cor só.
+ *
+ * O bronze é quente, medido na arte: brilho #f2dcb2, meio #c49a62, parede
+ * #7a5730, fundo da sombra #46301a.
  */
-.viral-bezel {
-  border-radius: 26px;
-  padding: 12px;
+.viral-frame {
+  border-radius: 30px;
+  padding: 7px;
   background-image: linear-gradient(
-    158deg,
-    #f3dcae 0%,
-    #cda766 17%,
-    #8d6a37 45%,
-    #b8945a 63%,
-    #f0d9ab 86%,
-    #c9a463 100%
+    162deg,
+    #f6e4bf 0%,
+    #cfa96c 14%,
+    #8a663a 38%,
+    #b78f56 58%,
+    #f2dcb2 78%,
+    #9c7745 100%
   );
   box-shadow:
-    inset 0 2px 0 rgb(255 249 227 / 0.9),
-    inset 2px 0 0 rgb(255 249 227 / 0.4),
-    inset 0 -2px 0 rgb(74 50 18 / 0.75),
-    0 1px 0 #8a6a34,
-    0 2px 0 #71562a,
-    0 3px 0 #584220,
-    0 4px 0 #3f2f16,
-    0 5px 0 #2b200f,
-    0 20px 34px -12px rgb(0 0 0 / 0.85);
+    inset 0 2px 0 rgb(255 250 232 / 0.95),
+    inset 2px 0 0 rgb(255 250 232 / 0.5),
+    inset 0 -2px 0 rgb(70 48 26 / 0.8),
+    0 1px 0 #8a663a,
+    0 2px 0 #74542e,
+    0 3px 0 #5d4324,
+    0 4px 0 #46311a,
+    0 5px 0 #2f2211,
+    0 22px 36px -12px rgb(0 0 0 / 0.88);
+}
+
+/* O degrau de dentro, que na arte é a moldura menor colada no miolo. */
+.viral-frame-in {
+  border-radius: 23px;
+  padding: 8px;
+  background-image: linear-gradient(
+    162deg,
+    #d9b67c 0%,
+    #a37c48 30%,
+    #7a5730 52%,
+    #c9a267 74%,
+    #8e6c3e 100%
+  );
+  box-shadow:
+    inset 0 3px 5px -1px rgb(52 34 14 / 0.75),
+    inset 0 -2px 0 rgb(255 247 224 / 0.6),
+    inset 0 0 0 1px rgb(52 34 14 / 0.35);
 }
 
 /*
- * O miolo. A poeira de ouro da arte são dois brilhos moles nas quinas, e não
- * uma textura: em tela de celular um chuvisco de pontos vira sujeira.
+ * O miolo. A poeira de ouro da arte vive nas quinas de cima à direita e de
+ * baixo à esquerda, e não no meio: faixa atravessando a peça vira reflexo de
+ * vidro, que a arte não tem.
  */
 .viral-face {
   position: relative;
   border-radius: 16px;
   background-image:
     radial-gradient(
-      120% 95% at 76% 4%,
-      rgb(222 184 118 / 0.26) 0%,
-      transparent 56%
+      60% 50% at 92% 0%,
+      rgb(240 206 143 / 0.3) 0%,
+      transparent 70%
     ),
     radial-gradient(
-      95% 85% at 8% 98%,
-      rgb(222 184 118 / 0.2) 0%,
-      transparent 58%
+      55% 45% at 4% 100%,
+      rgb(240 206 143 / 0.22) 0%,
+      transparent 70%
     ),
-    linear-gradient(168deg, #1b1715 0%, #0d0b0a 52%, #15110f 100%);
+    linear-gradient(168deg, #2a211a 0%, #14100c 48%, #241b14 100%);
   box-shadow:
-    inset 0 0 0 1px rgb(201 164 99 / 0.55),
-    inset 0 7px 16px rgb(0 0 0 / 0.8),
-    inset 0 -5px 12px rgb(0 0 0 / 0.65);
-}
-
-/*
- * A poeira de ouro da arte, em duas faixas diagonais finas. Faixa é o que a
- * arte mostra: um chuvisco de pontos, em tela de celular, vira sujeira.
- */
-.viral-face::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background-image: radial-gradient(
-    70% 55% at 88% 2%,
-    rgb(236 202 139 / 0.14) 0%,
-    transparent 62%
-  );
+    inset 0 0 0 1px rgb(52 34 14 / 0.9),
+    inset 0 1px 0 rgb(255 247 224 / 0.18),
+    inset 0 8px 18px rgb(0 0 0 / 0.75);
 }
 
 /* Letras de ouro levantadas do fundo preto, para o título da peça. */
 .gold-relief {
   background-image: linear-gradient(
     180deg,
-    #fcf2d8 0%,
-    #e5ca92 34%,
-    #b8944f 66%,
-    #eed6a6 100%
+    #fdf4dc 0%,
+    #e8cf99 30%,
+    #b78e4c 62%,
+    #f0dcae 100%
   );
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 1px 0 #6b5026)
-    drop-shadow(0 2px 1px rgb(38 26 8 / 0.85))
-    drop-shadow(0 6px 9px rgb(0 0 0 / 0.6));
+  filter: drop-shadow(0 1px 0 #5d4324) drop-shadow(0 2px 1px rgb(30 20 6 / 0.9))
+    drop-shadow(0 6px 10px rgb(0 0 0 / 0.65));
 }
 
 /*
- * O botão redondo de apertar. A face é um disco de ouro escovado em círculo,
- * feito com `repeating-conic-gradient`; a parede sólida embaixo é o que dá a
- * altura do botão, e ela encolhe no clique.
+ * O botão. Na arte ele é um cilindro de verdade: uma base larga e escura
+ * afundada na moldura, a parede do cilindro subindo, e a face lisa em cima.
+ * São duas peças, porque uma sombra só não desenha base e parede ao mesmo
+ * tempo.
  */
+.viral-knob-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background-image: linear-gradient(
+    168deg,
+    #e2c288 0%,
+    #b08a52 34%,
+    #7b5a33 62%,
+    #c8a468 88%,
+    #8a663a 100%
+  );
+  box-shadow:
+    inset 0 3px 5px rgb(40 26 10 / 0.6),
+    inset 0 -2px 0 rgb(255 247 224 / 0.55),
+    inset 0 0 0 1px rgb(52 34 14 / 0.35),
+    0 1px 0 rgb(255 247 224 / 0.3),
+    0 6px 12px -3px rgb(0 0 0 / 0.7);
+}
+
 .viral-knob {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background-image: radial-gradient(
-    circle at 36% 28%,
-    #f2dfb2 0%,
-    #ddbe80 40%,
-    #c2a066 78%,
-    #a9884d 100%
+  background-image: linear-gradient(
+    200deg,
+    #e2c493 0%,
+    #c3a06a 32%,
+    #a2814e 62%,
+    #83673a 100%
   );
   box-shadow:
-    inset 0 2px 2px rgb(255 250 230 / 0.85),
-    inset 0 -3px 6px rgb(70 48 16 / 0.8),
-    0 0 0 5px rgb(126 96 50 / 0.75),
-    0 0 0 6px rgb(243 222 176 / 0.45),
-    0 1px 0 #7e6032,
-    0 2px 0 #6a5029,
-    0 3px 0 #55401f,
-    0 4px 0 #413015,
-    0 5px 0 #2d210e,
-    0 12px 18px -4px rgb(0 0 0 / 0.8);
-  color: #2b1d08;
+    inset 0 2px 1px rgb(255 252 240 / 0.9),
+    inset 0 -2px 3px rgb(70 48 16 / 0.6),
+    0 1px 0 #9a7745,
+    0 2px 0 #86653a,
+    0 3px 0 #72552f,
+    0 4px 0 #5e4525,
+    0 5px 0 #4a361c,
+    0 6px 0 #382814,
+    0 12px 14px -4px rgb(0 0 0 / 0.75);
+  color: #33240e;
   transition:
     transform 0.14s ease,
     box-shadow 0.14s ease;
 }
 
-/* A estria circular da face, e o fio de luz que fecha a quina do disco. */
+/* O grão fino da face, quase invisível, e o fio de luz da quina do disco. */
 .viral-knob::before {
   content: "";
   position: absolute;
-  inset: 6px;
+  inset: 4px;
   border-radius: 999px;
-  background-image: repeating-radial-gradient(
-    circle at 50% 50%,
-    rgb(255 252 240 / 0.045) 0px 1px,
-    rgb(90 66 26 / 0.035) 1px 2.5px
+  background-image: radial-gradient(
+    circle at 38% 24%,
+    rgb(255 252 240 / 0.16) 0%,
+    transparent 55%
   );
   box-shadow:
-    inset 0 1px 1px rgb(255 250 230 / 0.7),
-    inset 0 -1px 2px rgb(70 48 16 / 0.6);
+    inset 0 1px 1px rgb(255 252 240 / 0.75),
+    inset 0 -1px 2px rgb(70 48 16 / 0.5);
   pointer-events: none;
 }
 
@@ -1537,10 +1560,10 @@ button.obsidian:active {
 }
 
 .viral-knob:active {
-  transform: translateY(3px);
+  transform: translateY(4px);
   box-shadow:
     inset 0 2px 3px rgb(70 48 16 / 0.6),
-    0 1px 0 #7e6032,
-    0 2px 0 #6a5029,
-    0 6px 9px -3px rgb(0 0 0 / 0.8);
+    0 1px 0 #9a7745,
+    0 2px 0 #72552f,
+    0 7px 9px -3px rgb(0 0 0 / 0.8);
 }

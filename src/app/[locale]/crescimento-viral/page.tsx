@@ -7,10 +7,10 @@ import {
   SectionTitle,
   Surface,
 } from "@/components/ui";
-import { ViralComparison, ViralPackages } from "@/components/ViralPackages";
+import { ViralBand, ViralComparison } from "@/components/ViralPackages";
 import { getContent, localeHtmlLang, locales, type Locale } from "@/content";
 import { engagementPath, isLocale } from "@/lib/routes";
-import { getViralPackages } from "@/lib/viral";
+import { getViralBands } from "@/lib/viral";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -47,8 +47,8 @@ export async function generateMetadata({
  *
  * O topo traz a chamada que o Leudair escolheu: a estratégia começa pelo
  * engajamento e só depois sobe os seguidores, que é o argumento da página
- * inteira. Embaixo vêm as seis metas das artes de 24/09/2026, folheadas a
- * partir da mais completa, e a lista de comparação fechada.
+ * inteira. Embaixo vêm as nove metas em três faixas, cada faixa folheada a
+ * partir da meta mais completa, e a lista de comparação fechada.
  */
 export default async function ViralGrowthPage({
   params,
@@ -59,7 +59,7 @@ export default async function ViralGrowthPage({
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const c = getContent(locale);
-  const packages = getViralPackages(locale, c);
+  const bands = getViralBands(locale, c);
 
   return (
     <>
@@ -88,11 +88,16 @@ export default async function ViralGrowthPage({
             {c.viralPage.packagesSubtitle}
           </p>
 
-          <div className="mt-10">
-            <ViralPackages packages={packages} c={c} />
+          {/* Uma faixa embaixo da outra, e não lado a lado: cada chapa traz
+              três caixas de vídeo, que em um terço da tela ficariam estreitas
+              demais para o número caber numa linha. */}
+          <div className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-8 sm:gap-10">
+            {bands.map((band) => (
+              <ViralBand key={band.id} band={band} c={c} />
+            ))}
           </div>
 
-          <ViralComparison packages={packages} c={c} />
+          <ViralComparison bands={bands} c={c} />
 
           <p className="mt-8 text-center text-xs leading-relaxed text-pretty text-paper-faint">
             {c.viralPage.disclaimer}

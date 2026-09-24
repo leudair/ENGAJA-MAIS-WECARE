@@ -279,7 +279,25 @@ export const pt: Content = {
     lead: "A estratégia começa pelo engajamento das suas publicações e só depois sobe os seguidores. Quem entra no seu perfil vê alcance, curtidas e comentários que justificam cada novo seguidor.",
     packagesTitle: "Escolha a sua meta",
     packagesSubtitle:
-      "São seis metas de crescimento. Cada uma traz três vídeos virais, que ficam fixados no seu perfil, e o trabalho nos vídeos que você já publicou.",
+      "São nove metas de crescimento, em três faixas. Cada meta traz três vídeos virais, que ficam fixados no seu perfil, e o trabalho nos vídeos que você já publicou.",
+    bands: {
+      premium: {
+        name: "Premium",
+        tagline: "De 10 mil a 50 mil seguidores.",
+        pitch: "Para quem quer aparecer para muita gente de uma vez.",
+      },
+      intermediate: {
+        name: "Intermediário",
+        tagline: "De 3 mil a 5 mil seguidores.",
+        pitch: "Para quem já tem público e quer crescer rápido.",
+      },
+      entry: {
+        name: "Start",
+        tagline: "De 500 a 2 mil seguidores.",
+        pitch: "Para quem está começando e quer sair do zero.",
+      },
+    },
+    bandRecommended: "Mais completo",
     followersUnit: "seguidores orgânicos",
     videoLabel: "Vídeo viral {n}",
     viewsLabel: "visualizações",
@@ -306,7 +324,7 @@ export const pt: Content = {
     nextLabel: "Próxima meta",
     counter: "{n} de {total}",
     compareLabel: "Comparar todas as metas",
-    compareNote: "As seis metas, com preço e números lado a lado.",
+    compareNote: "As nove metas, com preço e números lado a lado.",
     disclaimer:
       "Os números acima são o que cada meta entrega. O trabalho começa pelo engajamento e os seguidores sobem depois dele.",
     backCta: "Voltar para Engajamento",

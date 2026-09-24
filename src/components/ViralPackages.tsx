@@ -2,10 +2,10 @@
 
 import { useLayoutEffect, useRef, useState, type TouchEvent } from "react";
 import type { Content } from "@/content";
-import type { ViralPackageCard, ViralStat } from "@/lib/viral";
+import type { ViralBandCard, ViralPackageCard, ViralStat } from "@/lib/viral";
 import { MetricIcon, metricIconOrder, type MetricIconName } from "./MetricIcon";
 import { PlanCta } from "./PlanCta";
-import { ChevronIcon, MetalPlate } from "./ui";
+import { ChevronIcon, MetalPlate, SparkIcon } from "./ui";
 
 /**
  * Ícones das quatro entregas de um vídeo, na ordem de `viralPage.videoLabels`:
@@ -101,7 +101,16 @@ function RecentBand({ pkg, c }: { pkg: ViralPackageCard; c: Content }) {
 function PackageFace({ pkg, c }: { pkg: ViralPackageCard; c: Content }) {
   return (
     <div>
-      <p className="display display-3d text-[2.6rem] leading-none sm:text-[3.4rem]">
+      {/* A meta mais completa da faixa é a que abre a chapa, e é a única que
+          vem em corpo maior. As outras duas descem de tamanho junto com o
+          preço, que é a mesma hierarquia dos planos mensais. */}
+      <p
+        className={`display display-3d leading-none ${
+          pkg.tier === 1
+            ? "text-[2.6rem] sm:text-[3.4rem]"
+            : "text-[2.2rem] sm:text-[2.9rem]"
+        }`}
+      >
         {pkg.followers}
       </p>
       <p className="mt-1 text-[0.68rem] font-bold tracking-[0.2em] text-onmetal-soft uppercase sm:text-[0.78rem]">
@@ -145,30 +154,24 @@ function PackageFace({ pkg, c }: { pkg: ViralPackageCard; c: Content }) {
 }
 
 /**
- * As seis metas de Crescimento Viral, numa chapa só que se folheia.
+ * Chapa de uma faixa de metas de Crescimento Viral.
  *
- * Abre na meta mais completa, a de 20.000 seguidores, e as outras entram de
- * lado, uma por vez, até a de 500, voltando para a primeira depois da última.
- * É o mesmo comportamento dos planos mensais, e pelo mesmo motivo: seis metas
- * empilhadas fariam a pessoa rolar meia página antes de ver a segunda.
+ * A chapa abre na meta mais completa da faixa e as outras entram de lado,
+ * uma por vez, até a de entrada, voltando para a primeira depois da última.
+ * É o mesmo comportamento dos planos mensais, e pelo mesmo motivo: nove
+ * metas empilhadas fariam a pessoa rolar meia página antes de ver a segunda.
  */
-export function ViralPackages({
-  packages,
-  c,
-}: {
-  packages: ViralPackageCard[];
-  c: Content;
-}) {
+export function ViralBand({ band, c }: { band: ViralBandCard; c: Content }) {
   const [page, setPage] = useState(0);
   const [paying, setPaying] = useState(false);
   const [height, setHeight] = useState<number | undefined>(undefined);
   const pages = useRef<(HTMLDivElement | null)[]>([]);
   const touchX = useRef<number | null>(null);
 
-  const total = packages.length;
-  const offer = packages[page];
+  const total = band.packages.length;
+  const offer = band.packages[page];
 
-  // A altura acompanha a meta aberta: as seis têm alturas diferentes, e sem
+  // A altura acompanha a meta aberta: as três têm alturas diferentes, e sem
   // isso a chapa ficaria sempre do tamanho da mais alta.
   useLayoutEffect(() => {
     const measure = () => {
@@ -185,6 +188,7 @@ export function ViralPackages({
     setPage((current) => (current + step + total) % total);
   };
 
+  // No celular a pessoa arrasta a chapa com o dedo, como num carrossel.
   const onTouchStart = (event: TouchEvent) => {
     touchX.current = event.touches[0].clientX;
   };
@@ -201,87 +205,115 @@ export function ViralPackages({
     .replace("{total}", String(total));
 
   return (
-    <MetalPlate kind={offer.metal} className="transition-colors duration-300">
-      <div className="px-5 pt-7 pb-9 sm:px-7 sm:pt-9 sm:pb-11">
-        <div
-          className="overflow-hidden transition-[height] duration-300 ease-out"
-          style={height ? { height } : undefined}
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
-        >
+    <div className="relative">
+      {band.recommended && (
+        <span className="badge-ruby absolute -top-3 right-5 z-10">
+          {c.viralPage.bandRecommended}
+        </span>
+      )}
+
+      <MetalPlate kind={band.metal} className="h-full">
+        <div className="flex h-full flex-col px-5 pt-7 pb-9 sm:px-7 sm:pt-9 sm:pb-11">
+          {/* Cabeçalho fixo: a faixa não muda quando a pessoa folheia. */}
+          <h3 className="display-caps text-xl text-onmetal sm:text-2xl">
+            {band.name}
+          </h3>
+          <p className="mt-2 text-[0.82rem] leading-snug text-pretty text-onmetal-soft/80">
+            {band.tagline}
+          </p>
+
+          <span className="mt-5 block h-px bg-black/35" />
+
           <div
-            className="flex transition-transform duration-300 ease-out"
-            style={{ transform: `translateX(-${page * 100}%)` }}
+            className="mt-5 overflow-hidden transition-[height] duration-300 ease-out"
+            style={height ? { height } : undefined}
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
           >
-            {packages.map((pkg, index) => (
-              <div
-                key={pkg.id}
-                ref={(el) => {
-                  pages.current[index] = el;
-                }}
-                className="w-full shrink-0 self-start"
-                aria-hidden={page !== index}
-              >
-                <PackageFace pkg={pkg} c={c} />
-              </div>
-            ))}
+            <div
+              className="flex transition-transform duration-300 ease-out"
+              style={{ transform: `translateX(-${page * 100}%)` }}
+            >
+              {band.packages.map((pkg, index) => (
+                <div
+                  key={pkg.id}
+                  ref={(el) => {
+                    pages.current[index] = el;
+                  }}
+                  className="w-full shrink-0 self-start"
+                  aria-hidden={page !== index}
+                >
+                  <PackageFace pkg={pkg} c={c} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-7 flex-1">
+            <div className="flex items-center gap-2">
+              {!paying && (
+                <button
+                  type="button"
+                  onClick={() => go(-1)}
+                  aria-label={c.viralPage.prevLabel}
+                  className="btn btn-key btn-arrow min-h-12 w-12 shrink-0"
+                >
+                  <ChevronIcon className="rotate-90" />
+                </button>
+              )}
+
+              {/* A chave é o id da meta: ao folhear, a escolha de pagamento
+                  fecha sozinha em vez de seguir aberta na meta seguinte. */}
+              <PlanCta
+                key={offer.id}
+                plan={offer}
+                c={c}
+                label={c.viralPage.cta}
+                onOpenChange={setPaying}
+                className="flex-1 px-2 text-[0.62rem] sm:text-[0.7rem]"
+              />
+
+              {!paying && (
+                <button
+                  type="button"
+                  onClick={() => go(1)}
+                  aria-label={c.viralPage.nextLabel}
+                  className="btn btn-key btn-arrow min-h-12 w-12 shrink-0"
+                >
+                  <ChevronIcon className="-rotate-90" />
+                </button>
+              )}
+            </div>
+
+            {/* Onde a pessoa está no folheio. */}
+            <div className="mt-4 flex items-center justify-center gap-2">
+              {band.packages.map((pkg, index) => (
+                <button
+                  key={pkg.id}
+                  type="button"
+                  onClick={() => setPage(index)}
+                  aria-label={`${pkg.followers} ${pkg.followersUnit}`}
+                  aria-current={page === index}
+                  className={`h-1.5 rounded-full transition-all ${
+                    page === index ? "w-6 bg-black/55" : "w-1.5 bg-black/25"
+                  }`}
+                />
+              ))}
+              <span className="ml-2 text-[0.62rem] font-bold tracking-[0.14em] text-onmetal-soft/70 uppercase">
+                {counter}
+              </span>
+            </div>
+
+            <div className="mt-5 flex items-end justify-between gap-3">
+              <p className="text-[0.82rem] leading-snug text-pretty text-onmetal-soft/85">
+                {band.pitch}
+              </p>
+              <SparkIcon className="display-3d shrink-0 translate-y-[-2px]" />
+            </div>
           </div>
         </div>
-
-        <div className="mt-7 flex items-center gap-2">
-          {!paying && (
-            <button
-              type="button"
-              onClick={() => go(-1)}
-              aria-label={c.viralPage.prevLabel}
-              className="btn btn-key btn-arrow min-h-12 w-12 shrink-0"
-            >
-              <ChevronIcon className="rotate-90" />
-            </button>
-          )}
-
-          {/* A chave é o id da meta: ao folhear, a escolha de pagamento fecha
-              sozinha em vez de seguir aberta na meta seguinte. */}
-          <PlanCta
-            key={offer.id}
-            plan={offer}
-            c={c}
-            label={c.viralPage.cta}
-            onOpenChange={setPaying}
-            className="flex-1 px-2 text-[0.62rem] sm:text-[0.7rem]"
-          />
-
-          {!paying && (
-            <button
-              type="button"
-              onClick={() => go(1)}
-              aria-label={c.viralPage.nextLabel}
-              className="btn btn-key btn-arrow min-h-12 w-12 shrink-0"
-            >
-              <ChevronIcon className="-rotate-90" />
-            </button>
-          )}
-        </div>
-
-        <div className="mt-4 flex items-center justify-center gap-2">
-          {packages.map((pkg, index) => (
-            <button
-              key={pkg.id}
-              type="button"
-              onClick={() => setPage(index)}
-              aria-label={`${pkg.followers} ${pkg.followersUnit}`}
-              aria-current={page === index}
-              className={`h-1.5 rounded-full transition-all ${
-                page === index ? "w-6 bg-black/55" : "w-1.5 bg-black/25"
-              }`}
-            />
-          ))}
-          <span className="ml-2 text-[0.62rem] font-bold tracking-[0.14em] text-onmetal-soft/70 uppercase">
-            {counter}
-          </span>
-        </div>
-      </div>
-    </MetalPlate>
+      </MetalPlate>
+    </div>
   );
 }
 
@@ -293,15 +325,15 @@ const compareTier: Record<1 | 2 | 3, string> = {
 };
 
 /**
- * Lista de comparação, fechada por padrão: as seis metas numa tela só, para
+ * Lista de comparação, fechada por padrão: as nove metas numa tela só, para
  * quem quer comparar preço sem folhear. São blocos e não tabela, porque no
- * celular uma tabela de seis colunas exigiria rolagem lateral.
+ * celular uma tabela de nove colunas exigiria rolagem lateral.
  */
 export function ViralComparison({
-  packages,
+  bands,
   c,
 }: {
-  packages: ViralPackageCard[];
+  bands: ViralBandCard[];
   c: Content;
 }) {
   return (
@@ -318,54 +350,69 @@ export function ViralComparison({
         <ChevronIcon className="text-gold-bright transition-transform duration-200 group-open:rotate-180" />
       </summary>
 
-      <div className="grid grid-cols-[minmax(0,1fr)] gap-3 border-t border-white/12 py-5 sm:grid-cols-2 lg:grid-cols-3">
-        {packages.map((pkg) => (
-          <div
-            key={pkg.id}
-            className={`combo metal ${compareTier[pkg.tier]} combo-${pkg.tier} flex flex-col`}
-          >
-            <p className="display display-3d text-2xl leading-none">
-              {pkg.followers}
-            </p>
-            <p className="mt-1 text-[0.58rem] font-bold tracking-[0.18em] text-onmetal-soft uppercase">
-              {pkg.followersUnit}
-            </p>
+      <div className="border-t border-white/12 py-5">
+        {bands.map((band) => (
+          <div key={band.id} className="mb-8 last:mb-0">
+            <p className="eyebrow">{band.name}</p>
 
-            <p className="display display-3d mt-3 text-2xl">{pkg.price}</p>
-            {pkg.priceAlt && (
-              <p className="display-3d-sm text-[0.66rem] font-semibold">
-                {pkg.priceAlt}
-              </p>
-            )}
+            <div className="mt-3 grid grid-cols-[minmax(0,1fr)] gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {band.packages.map((pkg) => (
+                <div
+                  key={pkg.id}
+                  className={`combo metal ${compareTier[pkg.tier]} combo-${pkg.tier} flex flex-col`}
+                >
+                  <p className="display display-3d text-2xl leading-none">
+                    {pkg.followers}
+                  </p>
+                  <p className="mt-1 text-[0.58rem] font-bold tracking-[0.18em] text-onmetal-soft uppercase">
+                    {pkg.followersUnit}
+                  </p>
 
-            {/* Na comparação entra só o resumo: a soma das visualizações
-                dos três vídeos virais não diz nada, então o que aparece é o
-                vídeo mais forte e a faixa dos vídeos já publicados. Em duas
-                colunas, como no card: numa linha só, "Compartilhamentos"
-                mais "300 a 500" não cabe na largura de um terço da tela. */}
-            <ul className="mt-3 grid flex-1 grid-cols-2 gap-x-3 gap-y-2 content-start">
-              <StatCell
-                stat={{
-                  label: pkg.videos[0].title,
-                  value: pkg.videos[0].views,
-                }}
-                icon={metricIconOrder[0]}
-              />
-              {pkg.recent.map((stat, i) => (
-                <StatCell key={stat.label} stat={stat} icon={recentIcons[i]} />
+                  <p className="display display-3d mt-3 text-2xl">
+                    {pkg.price}
+                  </p>
+                  {pkg.priceAlt && (
+                    <p className="display-3d-sm text-[0.66rem] font-semibold">
+                      {pkg.priceAlt}
+                    </p>
+                  )}
+
+                  {/* Na comparação entra só o resumo: a soma das visualizações
+                      dos três vídeos virais não diz nada, então o que aparece
+                      é o vídeo mais forte e a faixa dos vídeos já publicados.
+                      Em duas colunas, como no card: numa linha só,
+                      "Compartilhamentos" mais "300 a 500" não cabe na largura
+                      de um terço da tela. */}
+                  <ul className="mt-3 grid flex-1 grid-cols-2 content-start gap-x-3 gap-y-2">
+                    <StatCell
+                      stat={{
+                        label: pkg.videos[0].title,
+                        value: pkg.videos[0].views,
+                      }}
+                      icon={metricIconOrder[0]}
+                    />
+                    {pkg.recent.map((stat, i) => (
+                      <StatCell
+                        key={stat.label}
+                        stat={stat}
+                        icon={recentIcons[i]}
+                      />
+                    ))}
+                  </ul>
+
+                  <p className="mt-2 text-[0.62rem] leading-tight text-onmetal-soft/85">
+                    {pkg.recentTitle}
+                  </p>
+
+                  <PlanCta
+                    plan={pkg}
+                    c={c}
+                    label={c.viralPage.cta}
+                    className="mt-4 w-full px-2 text-[0.6rem]"
+                  />
+                </div>
               ))}
-            </ul>
-
-            <p className="mt-2 text-[0.62rem] leading-tight text-onmetal-soft/85">
-              {pkg.recentTitle}
-            </p>
-
-            <PlanCta
-              plan={pkg}
-              c={c}
-              label={c.viralPage.cta}
-              className="mt-4 w-full px-2 text-[0.6rem]"
-            />
+            </div>
           </div>
         ))}
       </div>

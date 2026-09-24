@@ -1,6 +1,11 @@
 import { contactHref, showsPix } from "@/content/site";
 import type { Content, Locale } from "@/content/types";
-import { viralPackages, type ViralPackageData } from "@/content/viral-data";
+import {
+  viralBandOrder,
+  viralPackages,
+  type ViralBandId,
+  type ViralPackageData,
+} from "@/content/viral-data";
 import { formatPrice, formatPriceUSD, formatRange, number } from "./plans";
 import type { MetalKind } from "@/components/ui";
 
@@ -33,27 +38,33 @@ export type ViralPackageCard = {
   recentTitle: string;
   recent: ViralStat[];
   /**
-   * Metal da chapa. Com seis ofertas, os metais andam de dois em dois: ouro
-   * nas duas maiores, prata nas do meio, bronze nas de entrada.
+   * Posição dentro da faixa, da meta maior para a menor. Manda no
+   * acabamento: 1 é a meta mais completa da faixa, 3 é a de entrada.
    */
-  metal: MetalKind;
-  /** Espessura da parede da caixa dos vídeos, pelo mesmo caminho do metal. */
   tier: 1 | 2 | 3;
   href: string;
   payment: { card: string | null; pix: string | null };
 };
 
-/** Ouro nas duas maiores, prata nas do meio, bronze nas duas de entrada. */
-const metalByIndex: readonly MetalKind[] = [
-  "gold",
-  "gold",
-  "silver",
-  "silver",
-  "bronze",
-  "bronze",
-];
+export type ViralBandCard = {
+  id: ViralBandId;
+  name: string;
+  tagline: string;
+  /** Fecho de venda, no rodapé da chapa. */
+  pitch: string;
+  /** Metal da chapa: ouro na faixa de cima, prata no meio, bronze na entrada. */
+  metal: MetalKind;
+  /** Só a faixa de cima leva o selo de recomendado. */
+  recommended: boolean;
+  packages: ViralPackageCard[];
+};
 
-const tierByIndex: readonly (1 | 2 | 3)[] = [1, 1, 2, 2, 3, 3];
+/** Material de cada faixa, na mesma direção visual dos planos mensais. */
+const bandMetal: Record<ViralBandId, MetalKind> = {
+  premium: "gold",
+  intermediate: "silver",
+  entry: "bronze",
+};
 
 function toVideoCard(
   locale: Locale,
@@ -77,7 +88,7 @@ function toPackageCard(
   locale: Locale,
   c: Content,
   pkg: ViralPackageData,
-  index: number,
+  tier: 1 | 2 | 3,
 ): ViralPackageCard {
   // Pix só existe para quem tem banco no Brasil, igual aos planos mensais.
   const pix = showsPix(locale) ? pkg.pixUrl : null;
@@ -111,19 +122,32 @@ function toPackageCard(
       label,
       value: formatRange(locale, pkg.recent[i], c.plans.rangeSeparator),
     })),
-    metal: metalByIndex[index],
-    tier: tierByIndex[index],
+    tier,
     href: pkg.checkoutUrl ?? pix ?? contactHref,
     payment: { card: pkg.checkoutUrl, pix },
   };
 }
 
-/** As seis ofertas já formatadas para o idioma da página, da maior para a menor. */
-export function getViralPackages(
-  locale: Locale,
-  c: Content,
-): ViralPackageCard[] {
-  return viralPackages.map((pkg, index) =>
-    toPackageCard(locale, c, pkg, index),
-  );
+/**
+ * As nove metas em três faixas, já formatadas para o idioma da página.
+ *
+ * Mesma organização dos planos mensais, e pelo mesmo motivo: nove chapas
+ * empilhadas fariam a pessoa rolar meia página antes de ver a segunda oferta.
+ * Cada faixa abre na meta mais completa e folheia até a de entrada.
+ */
+export function getViralBands(locale: Locale, c: Content): ViralBandCard[] {
+  return viralBandOrder.map((bandId) => {
+    const packages = viralPackages.filter((pkg) => pkg.band === bandId);
+    return {
+      id: bandId,
+      name: c.viralPage.bands[bandId].name,
+      tagline: c.viralPage.bands[bandId].tagline,
+      pitch: c.viralPage.bands[bandId].pitch,
+      metal: bandMetal[bandId],
+      recommended: bandId === "premium",
+      packages: packages.map((pkg, index) =>
+        toPackageCard(locale, c, pkg, (index + 1) as 1 | 2 | 3),
+      ),
+    };
+  });
 }

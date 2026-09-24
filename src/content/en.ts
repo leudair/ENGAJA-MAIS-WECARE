@@ -277,7 +277,25 @@ export const en: Content = {
     lead: "The strategy starts with the engagement on your posts and only then raises your follower count. Anyone who opens your profile sees the reach, the likes and the comments that justify every new follower.",
     packagesTitle: "Pick your goal",
     packagesSubtitle:
-      "There are six growth goals. Each one brings three viral videos, pinned to your profile, plus work on the videos you have already posted.",
+      "There are nine growth goals, in three ranges. Each goal brings three viral videos, pinned to your profile, plus work on the videos you have already posted.",
+    bands: {
+      premium: {
+        name: "Premium",
+        tagline: "From 10,000 to 50,000 followers.",
+        pitch: "For anyone who wants to reach a lot of people at once.",
+      },
+      intermediate: {
+        name: "Intermediate",
+        tagline: "From 3,000 to 5,000 followers.",
+        pitch: "For profiles with an audience that want to grow fast.",
+      },
+      entry: {
+        name: "Start",
+        tagline: "From 500 to 2,000 followers.",
+        pitch: "For profiles starting out that want to get moving.",
+      },
+    },
+    bandRecommended: "Most complete",
     followersUnit: "organic followers",
     videoLabel: "Viral video {n}",
     viewsLabel: "views",
@@ -293,7 +311,7 @@ export const en: Content = {
     nextLabel: "Next goal",
     counter: "{n} of {total}",
     compareLabel: "Compare every goal",
-    compareNote: "All six goals, with price and numbers side by side.",
+    compareNote: "All nine goals, with price and numbers side by side.",
     disclaimer:
       "The numbers above are what each goal delivers. The work starts with engagement, and the followers come after it.",
     backCta: "Back to Engagement",

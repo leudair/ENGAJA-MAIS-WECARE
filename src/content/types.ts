@@ -21,8 +21,9 @@ export const localeHtmlLang: Record<Locale, string> = {
 };
 
 import type { PlanFamilyId } from "./plans-data";
+import type { ViralBandId } from "./viral-data";
 
-export type { PlanFamilyId };
+export type { PlanFamilyId, ViralBandId };
 
 /** Textos fixos de uma família de planos (Premium, Intermediário, Start). */
 export type PlanFamilyCopy = {
@@ -209,9 +210,16 @@ export type Content = {
     eyebrow: string;
     title: string;
     lead: string;
-    /** Cabeçalho da lista das seis ofertas, abaixo da chamada. */
+    /** Cabeçalho da lista das metas, abaixo da chamada. */
     packagesTitle: string;
     packagesSubtitle: string;
+    /**
+     * Nome, linha de apoio e fecho de cada faixa de metas, na ordem de
+     * `viralBandOrder`. Mesma estrutura das famílias dos planos mensais.
+     */
+    bands: Record<ViralBandId, PlanFamilyCopy>;
+    /** Selo da faixa de cima, ex.: "Mais completo". */
+    bandRecommended: string;
     /** O que a oferta entrega, ex.: "seguidores orgânicos". */
     followersUnit: string;
     /** Título de cada um dos três vídeos. `{n}` vira 1, 2 ou 3. */

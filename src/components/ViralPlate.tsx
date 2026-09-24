@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ExternalIcon } from "@/components/ui";
 import type { Content } from "@/content/types";
 
 /**
@@ -53,15 +54,21 @@ export function ViralPlate({ c, href }: { c: Content; href: string }) {
 
         {/* A faixa de bronze da direita: é o fundo do `.viral-frame-in` que
             aparece aqui, e é onde o botão se apoia, como na arte. */}
-        <div className="-ml-6 shrink-0 pr-0.5 sm:-ml-10 sm:pr-2">
-          <span className="viral-knob-base size-[4.9rem] sm:size-32">
+        <div className="-ml-7 shrink-0 pr-0.5 sm:-ml-10 sm:pr-2">
+          <span className="viral-knob-base size-[5.6rem] sm:size-36">
             <Link
               href={href}
-              className="viral-knob size-[3.9rem] sm:size-[6.6rem]"
+              className="viral-knob size-[4.6rem] sm:size-[7.4rem]"
             >
-              <span className="px-1 text-center text-[0.42rem] leading-tight font-bold text-balance uppercase sm:text-[0.6rem]">
-                {c.viral.cta}
-                <span aria-hidden> →</span>
+              {/* O ícone de sair da página fica embaixo da palavra, e não do
+                  lado: numa peça redonda tudo que é largo rouba o espaço da
+                  palavra. Ele diz que o clique abre outra página, que foi o
+                  que o Leudair pediu. */}
+              <span className="flex flex-col items-center gap-0.5 px-1 text-center leading-tight font-bold uppercase">
+                <span className="text-[0.46rem] text-balance sm:text-[0.66rem]">
+                  {c.viral.cta}
+                </span>
+                <ExternalIcon className="size-2.5 sm:size-3.5" />
               </span>
             </Link>
           </span>

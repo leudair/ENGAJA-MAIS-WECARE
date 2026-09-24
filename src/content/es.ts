@@ -298,6 +298,7 @@ export const es: Content = {
       },
     },
     bandRecommended: "Más completo",
+    strategyLabel: "Estrategia de crecimiento viral",
     followersUnit: "seguidores orgánicos",
     videoLabel: "Video viral {n}",
     viewsLabel: "visualizaciones",

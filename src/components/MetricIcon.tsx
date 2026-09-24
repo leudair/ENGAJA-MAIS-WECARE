@@ -78,10 +78,28 @@ const paths: Record<MetricIconName, React.ReactNode> = {
   ),
 };
 
-export function MetricIcon({ name }: { name: MetricIconName }) {
+export function MetricIcon({
+  name,
+  small,
+}: {
+  name: MetricIconName;
+  /**
+   * Gema menor, para onde o espaço é curto: os três quadros de vídeo da
+   * página viral ficam lado a lado no celular, e a gema em tamanho cheio
+   * comeria metade da coluna.
+   */
+  small?: boolean;
+}) {
   return (
-    <span className="metric-icon" aria-hidden>
-      <svg viewBox="0 0 16 16" fill="none" className="size-3.5">
+    <span
+      className={small ? "metric-icon metric-icon-sm" : "metric-icon"}
+      aria-hidden
+    >
+      <svg
+        viewBox="0 0 16 16"
+        fill="none"
+        className={small ? "size-2.5" : "size-3.5"}
+      >
         {paths[name]}
       </svg>
     </span>

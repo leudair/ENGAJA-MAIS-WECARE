@@ -220,6 +220,8 @@ export type Content = {
     bands: Record<ViralBandId, PlanFamilyCopy>;
     /** Selo da faixa de cima, ex.: "Mais completo". */
     bandRecommended: string;
+    /** Linha pequena do topo do painel, ex.: "Estratégia de crescimento viral". */
+    strategyLabel: string;
     /** O que a oferta entrega, ex.: "seguidores orgânicos". */
     followersUnit: string;
     /** Título de cada um dos três vídeos. `{n}` vira 1, 2 ou 3. */

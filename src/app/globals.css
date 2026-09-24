@@ -441,6 +441,17 @@ body {
     0 2px 4px rgb(0 0 0 / 0.42);
 }
 
+/* A mesma gema, menor, para as colunas estreitas da página viral. */
+.metric-icon-sm {
+  width: 0.95rem;
+  height: 0.95rem;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.4),
+    inset 0 -2px 3px rgb(0 0 0 / 0.42),
+    0 0 0 1px var(--plate-2, rgb(210 174 100 / 0.55)),
+    0 1px 2px rgb(0 0 0 / 0.42);
+}
+
 /* ------------------------------------------------------------------ */
 /* A caixa da oferta, dentro do card                                   */
 /* ------------------------------------------------------------------ */
@@ -1648,4 +1659,136 @@ button.obsidian:active {
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.4),
     inset 0 2px 0 rgb(0 0 0 / 0.22);
+}
+
+/* -------------------------------------------------------------------- */
+/* Painel da oferta viral, copiado da arte de 24/09/2026                 */
+/* -------------------------------------------------------------------- */
+
+/*
+ * O Leudair recusou o formato anterior, em que cada meta virava uma coluna
+ * alta e a pessoa tinha que rolar meia tela para ver uma informação só. A
+ * arte que ele mandou resolve isso deitando tudo: uma tarja fina em cima, a
+ * chapa grande com a meta, os três vídeos lado a lado, uma régua de quatro
+ * casas com os vídeos já publicados, a chapa do preço e o botão.
+ *
+ * Nada aqui é ouro fixo: todas as peças puxam `--metal` e `--plate-*`, que a
+ * faixa define, então a mesma arte sai em ouro, prata ou bronze.
+ */
+
+/* Quina cortada, que na arte aparece nas chapas e nos três quadros. */
+.art-notch {
+  --notch: 10px;
+  clip-path: polygon(
+    var(--notch) 0,
+    calc(100% - var(--notch)) 0,
+    100% var(--notch),
+    100% calc(100% - var(--notch)),
+    calc(100% - var(--notch)) 100%,
+    var(--notch) 100%,
+    0 calc(100% - var(--notch)),
+    0 var(--notch)
+  );
+}
+
+/* O campo preto onde as peças de metal se assentam. */
+.art-field {
+  border: 1px solid rgb(255 255 255 / 0.07);
+  border-radius: 20px;
+  background:
+    radial-gradient(
+      120% 60% at 50% 0%,
+      rgb(210 174 100 / 0.05) 0%,
+      transparent 68%
+    ),
+    rgb(12 12 13 / 0.92);
+}
+
+/* Tarja fina do topo: a linha pequena que nomeia a estratégia. */
+.art-bar {
+  border-radius: 7px;
+  box-shadow:
+    inset 0 0 0 1px rgb(0 0 0 / 0.45),
+    inset 0 1px 0 rgb(255 255 255 / 0.6),
+    inset 0 -2px 4px rgb(0 0 0 / 0.25),
+    0 1px 0 var(--plate-2),
+    0 2px 0 var(--plate-3),
+    0 5px 8px -3px rgb(0 0 0 / 0.7);
+}
+
+/*
+ * Chapa grande, com o fio de dentro que a arte desenha colado na borda. A
+ * quina cortada come a sombra externa, então a espessura fica só nos fios
+ * internos, que é o suficiente nesse tamanho.
+ */
+.art-plate {
+  box-shadow:
+    inset 0 0 0 1px rgb(0 0 0 / 0.5),
+    inset 0 0 0 3px rgb(255 250 230 / 0.32),
+    inset 0 0 0 4px rgb(0 0 0 / 0.3),
+    inset 0 2px 0 rgb(255 255 255 / 0.5),
+    inset 0 -6px 14px rgb(0 0 0 / 0.3);
+}
+
+/* Moldura de metal dos três quadros de vídeo. */
+.art-card {
+  padding: 3px;
+  background-image: var(--brush-lines), var(--metal);
+  background-size:
+    100% 2px,
+    100% 100%;
+  filter: drop-shadow(0 4px 6px rgb(0 0 0 / 0.6));
+}
+
+/* O miolo escuro do quadro, onde ficam as cinco entregas. */
+.art-card-face {
+  --notch: 8px;
+  background-image:
+    linear-gradient(170deg, #1d1a17 0%, #0f0d0c 52%, #1a1613 100%),
+    var(--brush-lines);
+  background-size:
+    100% 100%,
+    100% 2px;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.8);
+}
+
+/* A lingueta de metal pendurada no topo do quadro, com o número do vídeo. */
+.art-tab {
+  clip-path: polygon(0 0, 100% 0, 100% 62%, 50% 100%, 0 62%);
+  background-image: var(--brush-lines), var(--metal);
+  background-size:
+    100% 2px,
+    100% 100%;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.55);
+}
+
+/* Régua de quatro casas, com os fios de metal separando uma da outra. */
+.art-cells {
+  box-shadow:
+    inset 0 0 0 1px rgb(0 0 0 / 0.45),
+    inset 0 1px 0 rgb(255 255 255 / 0.5),
+    inset 0 -4px 10px rgb(0 0 0 / 0.26),
+    0 1px 0 var(--plate-2),
+    0 2px 0 var(--plate-3),
+    0 6px 10px -4px rgb(0 0 0 / 0.7);
+}
+
+.art-cell + .art-cell {
+  box-shadow:
+    inset 1px 0 0 rgb(0 0 0 / 0.4),
+    inset 2px 0 0 rgb(255 250 230 / 0.28);
+}
+
+/* O fio partido que a arte põe entre a régua e a chapa do preço. */
+.art-hair {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--plate-1) 0%,
+    rgb(255 250 230 / 0.7) 30%,
+    transparent 34%,
+    transparent 40%,
+    rgb(255 250 230 / 0.7) 44%,
+    var(--plate-1) 100%
+  );
 }

@@ -296,6 +296,7 @@ export const en: Content = {
       },
     },
     bandRecommended: "Most complete",
+    strategyLabel: "Viral growth strategy",
     followersUnit: "organic followers",
     videoLabel: "Viral video {n}",
     viewsLabel: "views",

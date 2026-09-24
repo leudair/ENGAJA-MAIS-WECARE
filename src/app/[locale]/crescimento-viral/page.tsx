@@ -82,7 +82,27 @@ export default async function ViralGrowthPage({
 
       <section className="px-4 pb-20 sm:px-6 sm:pb-28">
         <div className="mx-auto max-w-3xl">
-          <Eyebrow center>{c.viralPage.eyebrow}</Eyebrow>
+          {/* A marca em cima da seção, como ele pediu em 24/09/2026: o
+              símbolo da WeCare, o nome da metodologia e a linha pequena da
+              estratégia, na ordem em que ele descreveu. */}
+          <div className="flex flex-col items-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/marca-wecare-ouro.webp"
+              alt=""
+              aria-hidden
+              width={400}
+              height={425}
+              className="h-12 w-auto sm:h-16"
+            />
+            <p className="display gold-relief mt-3 text-[1.05rem] leading-none tracking-wide uppercase sm:text-[1.4rem]">
+              {c.viral.eyebrow}
+            </p>
+            <p className="mt-2 text-[0.58rem] font-bold tracking-[0.22em] text-gold-label uppercase sm:text-[0.7rem]">
+              {c.viralPage.strategyLabel}
+            </p>
+          </div>
+
           <SectionTitle center>{c.viralPage.packagesTitle}</SectionTitle>
           <p className="mx-auto mt-4 max-w-xl text-center text-sm leading-relaxed text-pretty text-paper-dim">
             {c.viralPage.packagesSubtitle}

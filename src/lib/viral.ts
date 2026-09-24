@@ -16,10 +16,14 @@ export type ViralStat = {
 };
 
 export type ViralVideoCard = {
-  /** "Vídeo viral 1", já traduzido. */
+  /** O número do vídeo, 1, 2 ou 3, para a lingueta do quadro. */
+  n: number;
+  /** "Vídeo viral 1", já traduzido, para leitores de tela. */
   title: string;
-  views: string;
-  viewsLabel: string;
+  /**
+   * As cinco entregas do vídeo, na ordem da arte: visualizações, curtidas,
+   * comentários, repostagens e compartilhamentos.
+   */
   stats: ViralStat[];
 };
 
@@ -73,12 +77,18 @@ function toVideoCard(
   video: ViralPackageData["videos"][number],
   index: number,
 ): ViralVideoCard {
-  const counts = [video.likes, video.comments, video.reposts, video.shares];
+  const counts = [
+    video.views,
+    video.likes,
+    video.comments,
+    video.reposts,
+    video.shares,
+  ];
+  const labels = [c.viralPage.viewsLabel, ...c.viralPage.videoLabels];
   return {
+    n: index + 1,
     title: c.viralPage.videoLabel.replace("{n}", String(index + 1)),
-    views: number(locale, video.views),
-    viewsLabel: c.viralPage.viewsLabel,
-    stats: c.viralPage.videoLabels.map((label, i) => ({
+    stats: labels.map((label, i) => ({
       label,
       value: number(locale, counts[i]),
     })),

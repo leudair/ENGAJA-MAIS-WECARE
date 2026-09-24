@@ -28,9 +28,18 @@
  *   500, as repostagens caem pela metade e os compartilhamentos sobem 20%.
  *   Quem viraliza de verdade recebe poucas repostagens e muito
  *   compartilhamento, e é o compartilhamento que mostra que o vídeo correu.
- *   Os números foram arredondados para valores redondos depois da conta, e a
- *   meta de 1.000 ficou um pouco acima da metade para não empatar com a de
- *   500, que ele mandou manter como está.
+ *   Os números foram arredondados para valores redondos depois da conta.
+ *   Duas metas saíram da conta abaixo da meta anterior e tiveram que subir:
+ *   os compartilhamentos do terceiro vídeo de 4.000 e de 5.000, que ficavam
+ *   abaixo dos 3.000 da meta de 3.000.
+ * - Quantos vídeos já publicados entram, decidido por ele em 24/09/2026:
+ *   500 e 1.000 levam 10, a de 2.000 leva 15, a de 3.000 leva 18, a de 4.000
+ *   leva 20, e de 5.000 para cima todas levam 25. As quatro de cima repetem
+ *   o mesmo número de propósito: o que as separa é o tamanho do trabalho em
+ *   cada vídeo, não quantos vídeos entram.
+ * - A meta de 500 e a de 1.000 mostram as mesmas repostagens, porque a de
+ *   500 ficou como estava e a de 1.000 caiu pela metade até dar no mesmo
+ *   número. Ele aprovou assim, sabendo que as duas aparecem iguais.
  */
 
 import type { Range } from "./plans-data";
@@ -107,7 +116,7 @@ export const viralPackages: readonly ViralPackageData[] = [
         shares: 42000,
       },
     ],
-    recentCount: 40,
+    recentCount: 25,
     recent: [
       [30000, 60000],
       [900, 1400],
@@ -148,7 +157,7 @@ export const viralPackages: readonly ViralPackageData[] = [
         shares: 22000,
       },
     ],
-    recentCount: 30,
+    recentCount: 25,
     recent: [
       [20000, 40000],
       [600, 900],
@@ -215,24 +224,24 @@ export const viralPackages: readonly ViralPackageData[] = [
         likes: 3000,
         comments: 85,
         reposts: 1500,
-        shares: 10000,
+        shares: 9000,
       },
       {
         views: 200000,
         likes: 2250,
         comments: 50,
-        reposts: 1100,
-        shares: 7200,
+        reposts: 1125,
+        shares: 6000,
       },
       {
         views: 125000,
         likes: 1250,
         comments: 30,
-        reposts: 600,
-        shares: 4200,
+        reposts: 625,
+        shares: 3600,
       },
     ],
-    recentCount: 20,
+    recentCount: 25,
     recent: [
       [10000, 25000],
       [250, 450],
@@ -270,7 +279,7 @@ export const viralPackages: readonly ViralPackageData[] = [
         likes: 1100,
         comments: 25,
         reposts: 450,
-        shares: 3400,
+        shares: 3200,
       },
     ],
     recentCount: 20,
@@ -278,7 +287,7 @@ export const viralPackages: readonly ViralPackageData[] = [
       [9000, 20000],
       [225, 400],
       [75, 140],
-      [450, 700],
+      [450, 690],
     ],
     checkoutUrl: null,
     pixUrl: null,
@@ -314,7 +323,7 @@ export const viralPackages: readonly ViralPackageData[] = [
         shares: 3000,
       },
     ],
-    recentCount: 15,
+    recentCount: 18,
     recent: [
       [8000, 18000],
       [200, 350],
@@ -380,21 +389,21 @@ export const viralPackages: readonly ViralPackageData[] = [
         views: 50000,
         likes: 800,
         comments: 30,
-        reposts: 350,
+        reposts: 300,
         shares: 2400,
       },
       {
         views: 30000,
         likes: 600,
         comments: 12,
-        reposts: 150,
+        reposts: 125,
         shares: 1800,
       },
       {
         views: 20000,
         likes: 300,
         comments: 9,
-        reposts: 90,
+        reposts: 75,
         shares: 1200,
       },
     ],
@@ -402,7 +411,7 @@ export const viralPackages: readonly ViralPackageData[] = [
     recent: [
       [5000, 10000],
       [100, 200],
-      [30, 60],
+      [25, 50],
       [180, 360],
     ],
     checkoutUrl: null,

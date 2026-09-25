@@ -68,7 +68,9 @@ export function PlanFamilyCard({
   const offer = family.plans[page];
 
   // A altura acompanha a oferta aberta: sem isso o card ficaria sempre do
-  // tamanho da oferta mais alta, com um vazio embaixo das outras.
+  // tamanho da oferta mais alta, com um vazio embaixo das outras. `paying`
+  // entra na conta porque a escolha de pagamento cresce dentro da oferta, e
+  // sem remedir os botões de baixo ficariam cortados.
   useLayoutEffect(() => {
     const measure = () => {
       const current = pages.current[page];
@@ -77,7 +79,7 @@ export function PlanFamilyCard({
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
-  }, [page]);
+  }, [page, paying]);
 
   // Depois da última oferta volta para a primeira, e vice-versa.
   const go = (step: number) => {

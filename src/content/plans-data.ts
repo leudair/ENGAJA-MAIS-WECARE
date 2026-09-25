@@ -61,6 +61,12 @@ export type PlanData = {
    */
   cardUrlBR: string | null;
   /**
+   * Link do Mercado Pago deste plano que só aceita Pix. É um link separado do
+   * cartão de propósito: assim cada meio de pagamento tem o seu, e o extrato
+   * mostra direto por onde o cliente pagou.
+   */
+  pixUrlBR: string | null;
+  /**
    * Código Pix copia e cola deste plano, gerado no banco já com o valor. É o
    * caminho sem taxa de intermediário, então é o primeiro que o site oferece
    * em português. Conferido contra o preço na construção do site.
@@ -85,6 +91,7 @@ export const plansData: readonly PlanData[] = [
     priceUSD: 957,
     checkoutUrl: null,
     cardUrlBR: null,
+    pixUrlBR: null,
     pixCode: null,
     metrics: [
       [80000, 120000],
@@ -103,6 +110,7 @@ export const plansData: readonly PlanData[] = [
     priceUSD: 577,
     checkoutUrl: null,
     cardUrlBR: null,
+    pixUrlBR: null,
     pixCode: null,
     metrics: [
       [50000, 80000],
@@ -120,6 +128,7 @@ export const plansData: readonly PlanData[] = [
     priceUSD: 387,
     checkoutUrl: null,
     cardUrlBR: null,
+    pixUrlBR: null,
     pixCode: null,
     metrics: [
       [30000, 50000],
@@ -140,6 +149,7 @@ export const plansData: readonly PlanData[] = [
     priceUSD: 287,
     checkoutUrl: null,
     cardUrlBR: null,
+    pixUrlBR: null,
     pixCode: null,
     metrics: [
       [20000, 35000],
@@ -159,6 +169,7 @@ export const plansData: readonly PlanData[] = [
     priceUSD: 197,
     checkoutUrl: null,
     cardUrlBR: null,
+    pixUrlBR: null,
     pixCode: null,
     metrics: [
       [12000, 20000],
@@ -176,6 +187,7 @@ export const plansData: readonly PlanData[] = [
     priceUSD: 137,
     checkoutUrl: null,
     cardUrlBR: null,
+    pixUrlBR: null,
     pixCode: null,
     metrics: [
       [8000, 12000],
@@ -195,6 +207,7 @@ export const plansData: readonly PlanData[] = [
     priceUSD: 97,
     checkoutUrl: null,
     cardUrlBR: null,
+    pixUrlBR: null,
     pixCode: null,
     metrics: [
       [5000, 8000],
@@ -213,6 +226,7 @@ export const plansData: readonly PlanData[] = [
     priceUSD: 57,
     checkoutUrl: null,
     cardUrlBR: null,
+    pixUrlBR: null,
     pixCode: null,
     metrics: [
       [3000, 5000],
@@ -230,6 +244,7 @@ export const plansData: readonly PlanData[] = [
     priceUSD: 37,
     checkoutUrl: null,
     cardUrlBR: null,
+    pixUrlBR: null,
     pixCode: null,
     metrics: [
       [1500, 3000],

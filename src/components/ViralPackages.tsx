@@ -235,7 +235,9 @@ export function ViralBand({ band, c }: { band: ViralBandCard; c: Content }) {
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
-  }, [page]);
+    // `paying` entra na conta porque a escolha de pagamento cresce dentro da
+    // oferta, e sem remedir os botões de baixo ficariam cortados.
+  }, [page, paying]);
 
   const go = (step: number) => {
     setPaying(false);

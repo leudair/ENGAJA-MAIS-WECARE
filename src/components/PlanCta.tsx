@@ -71,10 +71,10 @@ type Modo = "fechado" | "escolha" | "pix";
  * Botão de contratar um plano.
  *
  * São três caminhos possíveis, e a oferta pode ter qualquer combinação deles:
- * o código Pix copia e cola, que a pessoa cola no aplicativo do próprio banco;
- * o cartão brasileiro, que vai para o Mercado Pago em real; e o cartão
- * internacional, que vai para o Stripe em dólar. Os dois primeiros só existem
- * na página em português, porque dependem de banco no Brasil.
+ * o Pix, que ou abre o código copia e cola aqui mesmo ou leva para o link do
+ * Mercado Pago; o cartão brasileiro, que vai para o Mercado Pago em real; e o
+ * cartão internacional, que vai para o Stripe em dólar. Os dois primeiros só
+ * existem na página em português, porque dependem de banco no Brasil.
  *
  * Quando há mais de um caminho, o botão abre a escolha ali mesmo, sem sair da
  * página. Quando há um só, ele leva direto, e quando não há nenhum leva para o
@@ -113,6 +113,9 @@ export function PlanCta({
   const Button = variant === "key" ? KeyButton : RubyButton;
   const text = label ?? c.plans.cta;
   const soPix = quantos === 1 && ways.pix !== null;
+  // Quando a oferta tem um caminho de Pix próprio, o link de cartão é só de
+  // cartão. Sem ele, o link do Mercado Pago aceita os dois, e o botão diz isso.
+  const temPix = ways.pix !== null || ways.pixLink !== null;
 
   // Um caminho só, e ele tem endereço: a tecla leva direto.
   if (quantos <= 1 && !soPix) {
@@ -162,10 +165,20 @@ export function PlanCta({
         </button>
       )}
 
+      {ways.pixLink && (
+        <Button
+          href={ways.pixLink}
+          className="w-full gap-2 px-2 text-[0.62rem]"
+        >
+          <PixIcon />
+          {c.plans.pay.pix}
+        </Button>
+      )}
+
       {ways.cardBR && (
         <Button href={ways.cardBR} className="w-full gap-2 px-2 text-[0.62rem]">
           <CardIcon />
-          {ways.pix ? c.plans.pay.cardBR : c.plans.pay.cardBRWithPix}
+          {temPix ? c.plans.pay.cardBR : c.plans.pay.cardBRWithPix}
         </Button>
       )}
 

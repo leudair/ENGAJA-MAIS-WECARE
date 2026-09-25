@@ -8,7 +8,13 @@ export type MeiosDePagamento = {
   checkoutUrl: string | null;
   /** Link do Mercado Pago, em real, para cartão brasileiro. */
   cardUrlBR: string | null;
-  /** Código Pix copia e cola, em real, gerado no banco. */
+  /** Link do Mercado Pago, em real, que só aceita Pix. */
+  pixUrlBR: string | null;
+  /**
+   * Código Pix copia e cola, em real, gerado no banco. Quando existe, ele
+   * ganha do link: o código aparece na própria página, sem a pessoa sair
+   * daqui, e não passa por intermediário.
+   */
   pixCode: string | null;
 };
 
@@ -28,6 +34,7 @@ export function conferirPagamento(
   for (const [nome, url] of [
     ["cartão internacional", meios.checkoutUrl],
     ["cartão do Brasil", meios.cardUrlBR],
+    ["Pix", meios.pixUrlBR],
   ] as const) {
     if (url && !url.startsWith("https://")) {
       throw new Error(
@@ -68,8 +75,13 @@ export type PaymentWays = {
   card: string | null;
   /** Mercado Pago, em real. */
   cardBR: string | null;
-  /** Pix copia e cola, com o valor já escrito por extenso para a tela. */
+  /**
+   * Pix copia e cola, com o valor já escrito por extenso para a tela. Quando
+   * existe, é ele que o botão de Pix abre.
+   */
   pix: { code: string; amount: string } | null;
+  /** Link de Pix do Mercado Pago, usado quando não há código copia e cola. */
+  pixLink: string | null;
 };
 
 /**
@@ -83,16 +95,22 @@ export function paymentWays(
   amount: string,
 ): PaymentWays {
   const brasileiro = showsPix(locale);
+  const pix =
+    brasileiro && meios.pixCode ? { code: meios.pixCode, amount } : null;
   return {
     card: meios.checkoutUrl,
     cardBR: brasileiro ? meios.cardUrlBR : null,
-    pix: brasileiro && meios.pixCode ? { code: meios.pixCode, amount } : null,
+    pix,
+    // O código e o link fazem a mesma coisa para quem compra, então a oferta
+    // mostra um botão de Pix só, nunca dois.
+    pixLink: brasileiro && !pix ? meios.pixUrlBR : null,
   };
 }
 
 /** Quantos caminhos esta oferta tem. Mais de um abre a escolha. */
 export function paymentCount(ways: PaymentWays): number {
-  return [ways.card, ways.cardBR, ways.pix].filter(Boolean).length;
+  return [ways.card, ways.cardBR, ways.pix ?? ways.pixLink].filter(Boolean)
+    .length;
 }
 
 /**
@@ -101,5 +119,5 @@ export function paymentCount(ways: PaymentWays): number {
  * endereço.
  */
 export function paymentHref(ways: PaymentWays): string {
-  return ways.card ?? ways.cardBR ?? contactHref;
+  return ways.pixLink ?? ways.card ?? ways.cardBR ?? contactHref;
 }

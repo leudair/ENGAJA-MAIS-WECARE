@@ -86,6 +86,8 @@ export type ViralPackageData = {
   checkoutUrl: string | null;
   /** Link do Mercado Pago, em real, para cartão brasileiro. */
   cardUrlBR: string | null;
+  /** Link do Mercado Pago, em real, que só aceita Pix. */
+  pixUrlBR: string | null;
   /** Código Pix copia e cola, gerado no banco já com o valor. */
   pixCode: string | null;
 };
@@ -132,6 +134,7 @@ export const viralPackages: readonly ViralPackageData[] = [
     ],
     checkoutUrl: null,
     cardUrlBR: null,
+    pixUrlBR: "https://mpago.la/16B3KYv",
     pixCode: null,
   },
   {
@@ -174,6 +177,7 @@ export const viralPackages: readonly ViralPackageData[] = [
     ],
     checkoutUrl: null,
     cardUrlBR: null,
+    pixUrlBR: null,
     pixCode: null,
   },
   {
@@ -216,6 +220,7 @@ export const viralPackages: readonly ViralPackageData[] = [
     ],
     checkoutUrl: null,
     cardUrlBR: null,
+    pixUrlBR: null,
     pixCode: null,
   },
   {
@@ -258,6 +263,7 @@ export const viralPackages: readonly ViralPackageData[] = [
     ],
     checkoutUrl: null,
     cardUrlBR: null,
+    pixUrlBR: null,
     pixCode: null,
   },
 
@@ -302,6 +308,7 @@ export const viralPackages: readonly ViralPackageData[] = [
     ],
     checkoutUrl: null,
     cardUrlBR: null,
+    pixUrlBR: null,
     pixCode: null,
   },
   {
@@ -344,6 +351,7 @@ export const viralPackages: readonly ViralPackageData[] = [
     ],
     checkoutUrl: null,
     cardUrlBR: null,
+    pixUrlBR: null,
     pixCode: null,
   },
   {
@@ -386,6 +394,7 @@ export const viralPackages: readonly ViralPackageData[] = [
     ],
     checkoutUrl: null,
     cardUrlBR: null,
+    pixUrlBR: null,
     pixCode: null,
   },
   {
@@ -428,6 +437,7 @@ export const viralPackages: readonly ViralPackageData[] = [
     ],
     checkoutUrl: null,
     cardUrlBR: null,
+    pixUrlBR: null,
     pixCode: null,
   },
 
@@ -472,6 +482,7 @@ export const viralPackages: readonly ViralPackageData[] = [
     ],
     checkoutUrl: null,
     cardUrlBR: null,
+    pixUrlBR: null,
     pixCode: null,
   },
 ];

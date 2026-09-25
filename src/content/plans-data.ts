@@ -225,7 +225,7 @@ export const plansData: readonly PlanData[] = [
     priceBRL: 297,
     priceUSD: 57,
     checkoutUrl: null,
-    cardUrlBR: null,
+    cardUrlBR: "https://mpago.la/1y1FW32",
     pixUrlBR: null,
     pixCode: null,
     metrics: [

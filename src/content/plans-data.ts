@@ -53,10 +53,11 @@ export type PlanData = {
    */
   checkoutUrl: string | null;
   /**
-   * Link de pagamento por Pix deste plano. Mesma regra do `checkoutUrl`: fica
-   * colado no preço, e enquanto for `null` o Pix simplesmente não aparece
-   * como opção. Pix é sistema brasileiro, então esse botão só é mostrado nos
-   * idiomas listados em `pixLocales`, em `site.ts`.
+   * Link brasileiro de pagamento deste plano, no Mercado Pago, em real. O
+   * mesmo link aceita Pix e cartão do Brasil na mesma tela. Mesma regra do
+   * `checkoutUrl`: fica colado no preço, e enquanto for `null` essa opção
+   * simplesmente não aparece. Os dois meios são brasileiros, então o botão só
+   * é mostrado nos idiomas listados em `pixLocales`, em `site.ts`.
    */
   pixUrl: string | null;
 };

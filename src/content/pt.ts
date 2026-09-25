@@ -182,12 +182,12 @@ export const pt: Content = {
     cta: "Quero este plano",
     pay: {
       question: "Como você prefere pagar?",
-      card: "Cartão de crédito",
-      pix: "Pix",
+      card: "Cartão internacional",
+      pix: "Pix ou cartão do Brasil",
       cancel: "Voltar",
     },
     disclaimer:
-      "Os números valem para cada publicação atendida no ciclo, até 30. O preço é em reais e o valor em dólar embaixo é só referência, para quem mora fora. Ativação e renovação são confirmadas no atendimento.",
+      "Os números valem para cada publicação atendida no ciclo, até 30. O preço é em reais no Pix e no cartão do Brasil. Quem mora fora paga o valor em dólar no cartão internacional. Ativação e renovação são confirmadas no atendimento.",
   },
   showcase: {
     eyebrow: "Exemplo de plano",

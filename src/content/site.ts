@@ -25,10 +25,11 @@ export const contactHref = siteConfig.contactUrl ?? "#contato";
 /**
  * Idiomas em que o Pix aparece como opção de pagamento.
  *
- * Pix é um sistema brasileiro: só funciona para quem tem conta em banco no
- * Brasil. Mostrar esse botão para o comprador americano não ajuda em nada, só
- * confunde, então ele fica restrito à página em português. Para liberar em
- * outro idioma, basta acrescentar o código dele aqui.
+ * O caminho brasileiro é o Mercado Pago, que cobra em real e aceita Pix e
+ * cartão do Brasil. Nenhum dos dois serve para quem está nos Estados Unidos,
+ * e mostrar esse botão lá só confunde, então ele fica restrito à página em
+ * português. Para liberar em outro idioma, basta acrescentar o código dele
+ * aqui.
  */
 export const pixLocales = ["pt"] as const;
 

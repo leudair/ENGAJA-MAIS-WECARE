@@ -11,6 +11,11 @@ import { KeyButton, RubyButton } from "./ui";
  */
 export type CtaOffer = {
   href: string;
+  /**
+   * `card` é o link internacional, em dólar. `pix` é o link brasileiro, em
+   * real, que aceita Pix e cartão do Brasil. Os nomes são antigos, de quando o
+   * segundo caminho era só Pix.
+   */
   payment: { card: string | null; pix: string | null };
 };
 
@@ -66,10 +71,15 @@ function PixIcon() {
 /**
  * Botão de contratar um plano.
  *
- * Quando o plano tem cartão e Pix, o botão abre a escolha ali mesmo, sem sair
- * da página nem empurrar o card para baixo de repente. Quando só um dos dois
- * existe, ele leva direto, e quando nenhum existe leva para o contato: assim
- * a página nunca promete um pagamento que ainda não foi configurado.
+ * Quando a oferta tem os dois caminhos, o botão abre a escolha ali mesmo, sem
+ * sair da página nem empurrar o card para baixo de repente. Quando só um dos
+ * dois existe, ele leva direto, e quando nenhum existe leva para o contato:
+ * assim a página nunca promete um pagamento que ainda não foi configurado.
+ *
+ * Os dois caminhos são o brasileiro e o internacional, e a ordem é essa de
+ * propósito: a escolha só aparece em português, onde a maioria paga em real.
+ * O link brasileiro é do Mercado Pago e aceita Pix e cartão do Brasil na
+ * mesma tela; o internacional é do Stripe e cobra em dólar.
  */
 export function PlanCta({
   plan,
@@ -133,19 +143,19 @@ export function PlanCta({
       </p>
 
       <Button
-        href={plan.payment.card as string}
-        className="w-full gap-2 px-2 text-[0.62rem]"
-      >
-        <CardIcon />
-        {c.plans.pay.card}
-      </Button>
-
-      <Button
         href={plan.payment.pix as string}
         className="w-full gap-2 px-2 text-[0.62rem]"
       >
         <PixIcon />
         {c.plans.pay.pix}
+      </Button>
+
+      <Button
+        href={plan.payment.card as string}
+        className="w-full gap-2 px-2 text-[0.62rem]"
+      >
+        <CardIcon />
+        {c.plans.pay.card}
       </Button>
 
       <button

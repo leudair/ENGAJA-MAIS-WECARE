@@ -82,6 +82,7 @@ export type ViralPackageData = {
   recent: readonly [Range, Range, Range, Range];
   /** Mesma regra dos planos: link colado no preço, e nulo enquanto não existe. */
   checkoutUrl: string | null;
+  /** Link do Mercado Pago, em real, que aceita Pix e cartão do Brasil. */
   pixUrl: string | null;
 };
 

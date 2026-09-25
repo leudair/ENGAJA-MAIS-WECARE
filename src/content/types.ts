@@ -157,7 +157,12 @@ export type Content = {
      */
     pay: {
       question: string;
+      /** Cartão internacional, cobrado em dólar. */
       card: string;
+      /**
+       * O caminho brasileiro: um link só, que aceita Pix e cartão do Brasil,
+       * cobrado em real. O nome do campo é antigo, de quando só havia Pix.
+       */
       pix: string;
       cancel: string;
     };

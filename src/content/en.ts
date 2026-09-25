@@ -180,8 +180,14 @@ export const en: Content = {
     cta: "I want this plan",
     pay: {
       question: "How would you like to pay?",
-      card: "Credit card",
+      card: "International card",
+      cardBR: "Brazilian card",
       pix: "Pix",
+      pixTitle: "Pay with Pix",
+      pixCopy: "Copy code",
+      pixCopied: "Code copied",
+      pixHelp:
+        "Open your bank app, choose Pix copy and paste, and paste the code. The amount is already set. After paying, send us the receipt on WhatsApp so we can start.",
       cancel: "Back",
     },
     disclaimer:

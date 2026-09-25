@@ -1,4 +1,4 @@
-import { contactHref, showsPix } from "@/content/site";
+import { paymentHref, paymentWays, type PaymentWays } from "./pagamento";
 import type { Content, Locale } from "@/content/types";
 import {
   viralBandOrder,
@@ -60,7 +60,7 @@ export type ViralPackageCard = {
    */
   tier: number;
   href: string;
-  payment: { card: string | null; pix: string | null };
+  payment: PaymentWays;
 };
 
 export type ViralBandCard = {
@@ -118,8 +118,7 @@ function toPackageCard(
   pkg: ViralPackageData,
   tier: number,
 ): ViralPackageCard {
-  // Pix só existe para quem tem banco no Brasil, igual aos planos mensais.
-  const pix = showsPix(locale) ? pkg.pixUrl : null;
+  const payment = paymentWays(locale, pkg, formatPrice(locale, pkg.priceBRL));
   const inBRL = locale === "pt";
 
   return {
@@ -151,8 +150,8 @@ function toPackageCard(
       value: formatRange(locale, pkg.recent[i], c.plans.rangeSeparator),
     })),
     tier,
-    href: pkg.checkoutUrl ?? pix ?? contactHref,
-    payment: { card: pkg.checkoutUrl, pix },
+    href: paymentHref(payment),
+    payment,
   };
 }
 

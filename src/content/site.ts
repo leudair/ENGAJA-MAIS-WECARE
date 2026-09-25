@@ -25,9 +25,10 @@ export const contactHref = siteConfig.contactUrl ?? "#contato";
 /**
  * Idiomas em que o Pix aparece como opção de pagamento.
  *
- * O caminho brasileiro é o Mercado Pago, que cobra em real e aceita Pix e
- * cartão do Brasil. Nenhum dos dois serve para quem está nos Estados Unidos,
- * e mostrar esse botão lá só confunde, então ele fica restrito à página em
+ * Os caminhos brasileiros são dois: o código Pix copia e cola, que a pessoa
+ * cola no aplicativo do próprio banco, e o link do Mercado Pago para cartão
+ * brasileiro. Nenhum dos dois serve para quem está nos Estados Unidos, e
+ * mostrar esses botões lá só confunde, então ficam restritos à página em
  * português. Para liberar em outro idioma, basta acrescentar o código dele
  * aqui.
  */

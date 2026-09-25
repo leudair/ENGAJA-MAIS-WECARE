@@ -47,6 +47,8 @@
 import type { Range } from "./plans-data";
 
 /** As três faixas, da mais completa para a de entrada. */
+import { conferirPagamento } from "@/lib/pagamento";
+
 export type ViralBandId = "premium" | "intermediate" | "entry";
 
 export const viralBandOrder: readonly ViralBandId[] = [
@@ -82,8 +84,10 @@ export type ViralPackageData = {
   recent: readonly [Range, Range, Range, Range];
   /** Mesma regra dos planos: link colado no preço, e nulo enquanto não existe. */
   checkoutUrl: string | null;
-  /** Link do Mercado Pago, em real, que aceita Pix e cartão do Brasil. */
-  pixUrl: string | null;
+  /** Link do Mercado Pago, em real, para cartão brasileiro. */
+  cardUrlBR: string | null;
+  /** Código Pix copia e cola, gerado no banco já com o valor. */
+  pixCode: string | null;
 };
 
 export const viralPackages: readonly ViralPackageData[] = [
@@ -127,7 +131,8 @@ export const viralPackages: readonly ViralPackageData[] = [
       [1500, 2200],
     ],
     checkoutUrl: null,
-    pixUrl: null,
+    cardUrlBR: null,
+    pixCode: null,
   },
   {
     id: "viral-20000",
@@ -168,7 +173,8 @@ export const viralPackages: readonly ViralPackageData[] = [
       [1000, 1300],
     ],
     checkoutUrl: null,
-    pixUrl: null,
+    cardUrlBR: null,
+    pixCode: null,
   },
   {
     id: "viral-10000",
@@ -209,7 +215,8 @@ export const viralPackages: readonly ViralPackageData[] = [
       [600, 900],
     ],
     checkoutUrl: null,
-    pixUrl: null,
+    cardUrlBR: null,
+    pixCode: null,
   },
   {
     id: "viral-5000",
@@ -250,7 +257,8 @@ export const viralPackages: readonly ViralPackageData[] = [
       [540, 780],
     ],
     checkoutUrl: null,
-    pixUrl: null,
+    cardUrlBR: null,
+    pixCode: null,
   },
 
   // ---- Faixa intermediária, de 1 mil a 4 mil ---------------------------
@@ -293,7 +301,8 @@ export const viralPackages: readonly ViralPackageData[] = [
       [450, 690],
     ],
     checkoutUrl: null,
-    pixUrl: null,
+    cardUrlBR: null,
+    pixCode: null,
   },
   {
     id: "viral-3000",
@@ -334,7 +343,8 @@ export const viralPackages: readonly ViralPackageData[] = [
       [360, 600],
     ],
     checkoutUrl: null,
-    pixUrl: null,
+    cardUrlBR: null,
+    pixCode: null,
   },
   {
     id: "viral-2000",
@@ -375,7 +385,8 @@ export const viralPackages: readonly ViralPackageData[] = [
       [300, 540],
     ],
     checkoutUrl: null,
-    pixUrl: null,
+    cardUrlBR: null,
+    pixCode: null,
   },
   {
     id: "viral-1000",
@@ -416,7 +427,8 @@ export const viralPackages: readonly ViralPackageData[] = [
       [180, 360],
     ],
     checkoutUrl: null,
-    pixUrl: null,
+    cardUrlBR: null,
+    pixCode: null,
   },
 
   // ---- Faixa de entrada, só a meta de 500 ------------------------------
@@ -459,6 +471,15 @@ export const viralPackages: readonly ViralPackageData[] = [
       [75, 150],
     ],
     checkoutUrl: null,
-    pixUrl: null,
+    cardUrlBR: null,
+    pixCode: null,
   },
 ];
+
+/**
+ * Mesma conferência dos planos mensais: meio de pagamento fora do padrão
+ * derruba a construção do site.
+ */
+for (const pkg of viralPackages) {
+  conferirPagamento(pkg.id, pkg, pkg.priceBRL);
+}

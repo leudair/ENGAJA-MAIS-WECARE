@@ -182,8 +182,14 @@ export const es: Content = {
     cta: "Quiero este plan",
     pay: {
       question: "¿Cómo prefieres pagar?",
-      card: "Tarjeta de crédito",
+      card: "Tarjeta internacional",
+      cardBR: "Tarjeta de Brasil",
       pix: "Pix",
+      pixTitle: "Pagar con Pix",
+      pixCopy: "Copiar código",
+      pixCopied: "Código copiado",
+      pixHelp:
+        "Abre la aplicación de tu banco, elige Pix copiar y pegar y pega el código. El importe ya viene correcto. Después de pagar, envíanos el comprobante por WhatsApp para empezar.",
       cancel: "Volver",
     },
     disclaimer:
@@ -280,7 +286,8 @@ export const es: Content = {
     packagesTitle: "Elige tu meta",
     packagesSubtitle:
       "Vamos a trabajar en tres videos fijados en tu perfil, que son los que se vuelven virales. Y también en los videos que están abajo, según la meta que elijas.",
-    exampleNote: "Ejemplo: en la meta de {n}, trabajamos en los {v} videos de abajo.",
+    exampleNote:
+      "Ejemplo: en la meta de {n}, trabajamos en los {v} videos de abajo.",
     bands: {
       premium: {
         name: "Premium",
@@ -304,13 +311,7 @@ export const es: Content = {
     videoLabel: "Video viral {n}",
     viewsLabel: "visualizaciones",
     videoLabels: ["Me gusta", "Comentarios", "Reposteos", "Compartidos"],
-    videoShortLabels: [
-      "views",
-      "likes",
-      "comentario",
-      "repost",
-      "compartido",
-    ],
+    videoShortLabels: ["views", "likes", "comentario", "repost", "compartido"],
     videoTab: "Video {n}",
     recentTitle: "También trabajamos en tus últimos {n} videos",
     recentLabels: ["Visualizaciones", "Me gusta", "Reposteos", "Compartidos"],

@@ -183,7 +183,13 @@ export const pt: Content = {
     pay: {
       question: "Como você prefere pagar?",
       card: "Cartão internacional",
-      pix: "Pix ou cartão do Brasil",
+      cardBR: "Cartão do Brasil",
+      pix: "Pix",
+      pixTitle: "Pagar com Pix",
+      pixCopy: "Copiar código",
+      pixCopied: "Código copiado",
+      pixHelp:
+        "Abra o aplicativo do seu banco, escolha Pix copia e cola e cole o código. O valor já vem certo. Depois de pagar, envie o comprovante no nosso WhatsApp para começarmos.",
       cancel: "Voltar",
     },
     disclaimer:

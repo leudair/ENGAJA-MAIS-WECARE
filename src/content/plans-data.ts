@@ -20,6 +20,8 @@
  *   não uma conversão automática: mudança de câmbio não mexe neles sozinha.
  */
 
+import { conferirPagamento } from "@/lib/pagamento";
+
 export type PlanFamilyId = "premium" | "intermediate" | "start";
 
 /** Faixa mínima e máxima de uma métrica, por publicação. */
@@ -53,13 +55,17 @@ export type PlanData = {
    */
   checkoutUrl: string | null;
   /**
-   * Link brasileiro de pagamento deste plano, no Mercado Pago, em real. O
-   * mesmo link aceita Pix e cartão do Brasil na mesma tela. Mesma regra do
-   * `checkoutUrl`: fica colado no preço, e enquanto for `null` essa opção
-   * simplesmente não aparece. Os dois meios são brasileiros, então o botão só
-   * é mostrado nos idiomas listados em `pixLocales`, em `site.ts`.
+   * Link do Mercado Pago deste plano, em real, para quem paga no cartão
+   * brasileiro. Mesma regra do `checkoutUrl`: fica colado no preço, e
+   * enquanto for `null` essa opção não aparece.
    */
-  pixUrl: string | null;
+  cardUrlBR: string | null;
+  /**
+   * Código Pix copia e cola deste plano, gerado no banco já com o valor. É o
+   * caminho sem taxa de intermediário, então é o primeiro que o site oferece
+   * em português. Conferido contra o preço na construção do site.
+   */
+  pixCode: string | null;
 };
 
 export const planFamilyOrder: readonly PlanFamilyId[] = [
@@ -78,7 +84,8 @@ export const plansData: readonly PlanData[] = [
     priceBRL: 4987,
     priceUSD: 957,
     checkoutUrl: null,
-    pixUrl: null,
+    cardUrlBR: null,
+    pixCode: null,
     metrics: [
       [80000, 120000],
       [1000, 1600],
@@ -95,7 +102,8 @@ export const plansData: readonly PlanData[] = [
     priceBRL: 2997,
     priceUSD: 577,
     checkoutUrl: null,
-    pixUrl: null,
+    cardUrlBR: null,
+    pixCode: null,
     metrics: [
       [50000, 80000],
       [700, 1000],
@@ -111,7 +119,8 @@ export const plansData: readonly PlanData[] = [
     priceBRL: 1997,
     priceUSD: 387,
     checkoutUrl: null,
-    pixUrl: null,
+    cardUrlBR: null,
+    pixCode: null,
     metrics: [
       [30000, 50000],
       [500, 800],
@@ -130,7 +139,8 @@ export const plansData: readonly PlanData[] = [
     priceBRL: 1497,
     priceUSD: 287,
     checkoutUrl: null,
-    pixUrl: null,
+    cardUrlBR: null,
+    pixCode: null,
     metrics: [
       [20000, 35000],
       [350, 600],
@@ -148,7 +158,8 @@ export const plansData: readonly PlanData[] = [
     priceBRL: 997,
     priceUSD: 197,
     checkoutUrl: null,
-    pixUrl: null,
+    cardUrlBR: null,
+    pixCode: null,
     metrics: [
       [12000, 20000],
       [250, 400],
@@ -164,7 +175,8 @@ export const plansData: readonly PlanData[] = [
     priceBRL: 697,
     priceUSD: 137,
     checkoutUrl: null,
-    pixUrl: null,
+    cardUrlBR: null,
+    pixCode: null,
     metrics: [
       [8000, 12000],
       [150, 250],
@@ -182,7 +194,8 @@ export const plansData: readonly PlanData[] = [
     priceBRL: 497,
     priceUSD: 97,
     checkoutUrl: null,
-    pixUrl: null,
+    cardUrlBR: null,
+    pixCode: null,
     metrics: [
       [5000, 8000],
       [100, 180],
@@ -199,7 +212,8 @@ export const plansData: readonly PlanData[] = [
     priceBRL: 297,
     priceUSD: 57,
     checkoutUrl: null,
-    pixUrl: null,
+    cardUrlBR: null,
+    pixCode: null,
     metrics: [
       [3000, 5000],
       [60, 100],
@@ -215,7 +229,8 @@ export const plansData: readonly PlanData[] = [
     priceBRL: 197,
     priceUSD: 37,
     checkoutUrl: null,
-    pixUrl: null,
+    cardUrlBR: null,
+    pixCode: null,
     metrics: [
       [1500, 3000],
       [30, 60],
@@ -227,18 +242,9 @@ export const plansData: readonly PlanData[] = [
 ];
 
 /**
- * Um link de pagamento errado cobra o valor errado, então um link fora do
- * padrão derruba a construção do site em vez de ir para o ar quieto.
+ * Um meio de pagamento errado cobra o valor errado, então qualquer coisa fora
+ * do padrão derruba a construção do site em vez de ir para o ar quieta.
  */
 for (const plan of plansData) {
-  for (const [meio, url] of [
-    ["cartão", plan.checkoutUrl],
-    ["Pix", plan.pixUrl],
-  ] as const) {
-    if (url && !url.startsWith("https://")) {
-      throw new Error(
-        `Link de pagamento por ${meio} inválido no plano "${plan.id}": tem que ser um endereço https.`,
-      );
-    }
-  }
+  conferirPagamento(plan.id, plan, plan.priceBRL);
 }

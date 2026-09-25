@@ -157,13 +157,18 @@ export type Content = {
      */
     pay: {
       question: string;
-      /** Cartão internacional, cobrado em dólar. */
+      /** Cartão internacional, no Stripe, cobrado em dólar. */
       card: string;
-      /**
-       * O caminho brasileiro: um link só, que aceita Pix e cartão do Brasil,
-       * cobrado em real. O nome do campo é antigo, de quando só havia Pix.
-       */
+      /** Cartão brasileiro, no Mercado Pago, cobrado em real. */
+      cardBR: string;
+      /** A tecla que abre a tela do código Pix. */
       pix: string;
+      /** Título da tela do código. */
+      pixTitle: string;
+      pixCopy: string;
+      pixCopied: string;
+      /** O que fazer com o código depois de copiar. */
+      pixHelp: string;
       cancel: string;
     };
     disclaimer: string;

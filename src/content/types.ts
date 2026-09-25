@@ -161,6 +161,12 @@ export type Content = {
       card: string;
       /** Cartão brasileiro, no Mercado Pago, cobrado em real. */
       cardBR: string;
+      /**
+       * O mesmo botão quando a oferta não tem código Pix próprio: aí o link do
+       * Mercado Pago é o único caminho brasileiro e cobre os dois meios, então
+       * o rótulo precisa dizer isso.
+       */
+      cardBRWithPix: string;
       /** A tecla que abre a tela do código Pix. */
       pix: string;
       /** Título da tela do código. */

@@ -165,7 +165,7 @@ export function PlanCta({
       {ways.cardBR && (
         <Button href={ways.cardBR} className="w-full gap-2 px-2 text-[0.62rem]">
           <CardIcon />
-          {c.plans.pay.cardBR}
+          {ways.pix ? c.plans.pay.cardBR : c.plans.pay.cardBRWithPix}
         </Button>
       )}
 

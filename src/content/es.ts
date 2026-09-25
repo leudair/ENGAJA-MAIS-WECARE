@@ -184,6 +184,7 @@ export const es: Content = {
       question: "¿Cómo prefieres pagar?",
       card: "Tarjeta internacional",
       cardBR: "Tarjeta de Brasil",
+      cardBRWithPix: "Pix o tarjeta de Brasil",
       pix: "Pix",
       pixTitle: "Pagar con Pix",
       pixCopy: "Copiar código",

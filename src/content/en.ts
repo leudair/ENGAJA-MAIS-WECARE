@@ -182,6 +182,7 @@ export const en: Content = {
       question: "How would you like to pay?",
       card: "International card",
       cardBR: "Brazilian card",
+      cardBRWithPix: "Pix or Brazilian card",
       pix: "Pix",
       pixTitle: "Pay with Pix",
       pixCopy: "Copy code",

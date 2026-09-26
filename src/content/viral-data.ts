@@ -307,7 +307,7 @@ export const viralPackages: readonly ViralPackageData[] = [
       [450, 690],
     ],
     checkoutUrl: null,
-    cardUrlBR: "https://mpago.la/1LNR46F",
+    cardUrlBR: "https://mpago.la/31n2cNe",
     pixUrlBR: "https://mpago.la/2k7gCJ7",
     pixCode: null,
   },

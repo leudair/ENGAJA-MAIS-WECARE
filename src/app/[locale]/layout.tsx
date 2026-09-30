@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { getContent, locales, localeHtmlLang, type Locale } from "@/content";
 import { isLocale } from "@/lib/routes";
+import { siteConfig } from "@/content/site";
 import "../globals.css";
 
 const inter = Inter({
@@ -34,6 +35,7 @@ export async function generateMetadata({
   if (!isLocale(locale)) return {};
   const content = getContent(locale);
   return {
+    metadataBase: new URL(siteConfig.url),
     title: content.meta.title,
     description: content.meta.description,
     alternates: {

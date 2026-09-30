@@ -4,7 +4,7 @@ export const es: Content = {
   meta: {
     title: "Engaja Mais WeCare, planes mensuales de engagement",
     description:
-      "Planes mensuales de engagement para hasta 30 publicaciones por ciclo. Start, Intermedio y Premium, desde R$ 197.",
+      "Planes mensuales de engagement para hasta 30 publicaciones por ciclo. Start, Intermedio y Premium, desde US$ 37.",
   },
   nav: {
     plans: "Planes",

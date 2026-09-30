@@ -15,6 +15,9 @@
  */
 export const siteConfig = {
   brand: "Engaja Mais WeCare",
+  // Domínio próprio, comprado em 30/09/2026. É a partir dele que o Next monta
+  // os endereços absolutos das páginas, para buscador e para prévia de link.
+  url: "https://www.wecarefeed.com",
   contactUrl: null as string | null,
   logoUrl: "/logo-wecare.png" as string | null,
   wecareProfileUrl: null as string | null,

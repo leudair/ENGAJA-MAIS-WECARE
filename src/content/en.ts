@@ -4,7 +4,7 @@ export const en: Content = {
   meta: {
     title: "Engaja Mais WeCare, monthly engagement plans",
     description:
-      "Monthly engagement plans covering up to 30 posts per cycle. Start, Intermediate and Premium, from R$ 197.",
+      "Monthly engagement plans covering up to 30 posts per cycle. Start, Intermediate and Premium, from $37.",
   },
   nav: {
     plans: "Plans",

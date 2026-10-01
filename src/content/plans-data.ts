@@ -108,7 +108,7 @@ export const plansData: readonly PlanData[] = [
     name: "Prime",
     priceBRL: 2997,
     priceUSD: 577,
-    checkoutUrl: null,
+    checkoutUrl: "https://buy.stripe.com/eVqaEXdi815peuF3x08N202",
     cardUrlBR: "https://mpago.la/1XLD4Xm",
     pixUrlBR: "https://mpago.la/1EbJ9pV",
     pixCode: null,

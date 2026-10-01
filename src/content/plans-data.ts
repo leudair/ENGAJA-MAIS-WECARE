@@ -89,7 +89,7 @@ export const plansData: readonly PlanData[] = [
     crown: "influencer",
     priceBRL: 4987,
     priceUSD: 957,
-    checkoutUrl: null,
+    checkoutUrl: "https://buy.stripe.com/7sYfZh6TK6pJ9al2sW8N200",
     cardUrlBR: "https://mpago.la/1VFY9fB",
     pixUrlBR: "https://mpago.la/1knKZxr",
     pixCode: null,

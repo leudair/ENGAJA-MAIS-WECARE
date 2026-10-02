@@ -194,7 +194,7 @@ export const es: Content = {
       cancel: "Volver",
     },
     disclaimer:
-      "Los números valen para cada publicación atendida en el ciclo, hasta 30. Los precios se muestran en dólares y el equipo acuerda el pago contigo por WhatsApp. La activación y la renovación se confirman durante la atención.",
+      "Los números valen para cada publicación atendida en el ciclo, hasta 30. Los precios se muestran en dólares. Desde fuera de Brasil puedes pagar con Wise, Remitly, Western Union o el servicio de transferencia que ya uses. Habla con nuestro equipo por WhatsApp, te enviamos los datos y tu mes empieza en cuanto llega la transferencia.",
   },
   showcase: {
     eyebrow: "Ejemplo de plan",
@@ -328,7 +328,7 @@ export const es: Content = {
     compareLabel: "Comparar todas las metas",
     compareNote: "Las nueve metas, con precio y números lado a lado.",
     disclaimer:
-      "Los números de arriba son lo que entrega cada meta. El trabajo empieza por el engagement y los seguidores suben después.",
+      "Los números de arriba son lo que entrega cada meta. El trabajo empieza por el engagement y los seguidores suben después. Desde fuera de Brasil puedes pagar con Wise, Remitly, Western Union o el servicio de transferencia que ya uses. Habla con nuestro equipo por WhatsApp y te enviamos los datos.",
     backCta: "Volver a Engagement",
   },
   footer: {

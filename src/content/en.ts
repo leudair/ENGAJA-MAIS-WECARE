@@ -192,7 +192,7 @@ export const en: Content = {
       cancel: "Back",
     },
     disclaimer:
-      "The numbers apply to each post covered in the cycle, up to 30. Prices are shown in US dollars, and our team arranges payment with you on WhatsApp. Activation and renewal are confirmed when you get in touch.",
+      "The numbers apply to each post covered in the cycle, up to 30. Prices are shown in US dollars. From outside Brazil you can pay with Wise, Remitly, Western Union or any transfer service you already use. Talk to our team on WhatsApp, we send you the details, and your month starts as soon as the transfer arrives.",
   },
   showcase: {
     eyebrow: "Plan example",
@@ -324,7 +324,7 @@ export const en: Content = {
     compareLabel: "Compare every goal",
     compareNote: "All nine goals, with price and numbers side by side.",
     disclaimer:
-      "The numbers above are what each goal delivers. The work starts with engagement, and the followers come after it.",
+      "The numbers above are what each goal delivers. The work starts with engagement, and the followers come after it. From outside Brazil you can pay with Wise, Remitly, Western Union or any transfer service you already use. Talk to our team on WhatsApp and we send you the details.",
     backCta: "Back to Engagement",
   },
   footer: {

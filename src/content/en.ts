@@ -192,7 +192,7 @@ export const en: Content = {
       cancel: "Back",
     },
     disclaimer:
-      "The numbers apply to each post covered in the cycle, up to 30. Prices are in US dollars and you pay by credit card. Activation and renewal are confirmed when you get in touch.",
+      "The numbers apply to each post covered in the cycle, up to 30. Prices are shown in US dollars, and our team arranges payment with you on WhatsApp. Activation and renewal are confirmed when you get in touch.",
   },
   showcase: {
     eyebrow: "Plan example",

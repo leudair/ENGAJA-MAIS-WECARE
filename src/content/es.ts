@@ -194,7 +194,7 @@ export const es: Content = {
       cancel: "Volver",
     },
     disclaimer:
-      "Los números valen para cada publicación atendida en el ciclo, hasta 30. Los precios son en dólares y el pago es con tarjeta de crédito. La activación y la renovación se confirman durante la atención.",
+      "Los números valen para cada publicación atendida en el ciclo, hasta 30. Los precios se muestran en dólares y el equipo acuerda el pago contigo por WhatsApp. La activación y la renovación se confirman durante la atención.",
   },
   showcase: {
     eyebrow: "Ejemplo de plan",

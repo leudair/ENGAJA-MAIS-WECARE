@@ -3,6 +3,7 @@ import { Cinzel, Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { VendedoraProvider } from "@/components/VendedoraProvider";
 import { getContent, locales, localeHtmlLang, type Locale } from "@/content";
 import { isLocale } from "@/lib/routes";
 import { siteConfig } from "@/content/site";
@@ -97,9 +98,13 @@ export default async function LocaleLayout({
         >
           {content.nav.skipToContent}
         </a>
-        <Header locale={locale} content={content} />
-        <main id="conteudo">{children}</main>
-        <Footer locale={locale} content={content} />
+        {/* Guarda por qual vendedora a pessoa chegou, para a compra cair nos
+            links dela e a comissão ter de onde sair. */}
+        <VendedoraProvider>
+          <Header locale={locale} content={content} />
+          <main id="conteudo">{children}</main>
+          <Footer locale={locale} content={content} />
+        </VendedoraProvider>
       </body>
     </html>
   );

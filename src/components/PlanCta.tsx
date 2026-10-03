@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import type { Content } from "@/content";
-import { paymentCount, type PaymentWays } from "@/lib/pagamento";
+import { paymentCount, paymentHref, type PaymentWays } from "@/lib/pagamento";
+import { comVendedora } from "@/lib/vendedora";
+import { useVendedora } from "./VendedoraProvider";
 import { KeyButton, RubyButton } from "./ui";
 
 /**
@@ -11,6 +13,8 @@ import { KeyButton, RubyButton } from "./ui";
  * ofertas de Crescimento Viral usem o mesmo botão sem herdar um do outro.
  */
 export type CtaOffer = {
+  /** Mesmo id da oferta nos dados, que é como a vendedora acha o link dela. */
+  id: string;
   href: string;
   payment: PaymentWays;
 };
@@ -108,7 +112,12 @@ export function PlanCta({
     onOpenChange?.(proximo !== "fechado");
   };
 
-  const ways = plan.payment;
+  // Quem chegou pelo endereço de uma vendedora paga nos links dela, para a
+  // venda chegar identificada. Sem vendedora, ou sem link próprio para esta
+  // oferta, fica tudo como está nos dados.
+  const vendedora = useVendedora();
+  const ways = comVendedora(plan.payment, plan.id, vendedora);
+  const href = vendedora ? paymentHref(ways) : plan.href;
   const quantos = paymentCount(ways);
   const Button = variant === "key" ? KeyButton : RubyButton;
   const text = label ?? c.plans.cta;
@@ -120,7 +129,7 @@ export function PlanCta({
   // Um caminho só, e ele tem endereço: a tecla leva direto.
   if (quantos <= 1 && !soPix) {
     return (
-      <Button href={plan.href} className={className}>
+      <Button href={href} className={className}>
         {text}
       </Button>
     );

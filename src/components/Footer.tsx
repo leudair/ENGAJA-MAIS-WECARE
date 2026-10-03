@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Content, Locale } from "@/content";
+import { VendedoraMarca } from "./VendedoraProvider";
 import { siteConfig } from "@/content";
 import {
   engagementPath,
@@ -75,6 +76,7 @@ export function Footer({
 
       <p className="mx-auto max-w-6xl px-5 py-6 text-xs text-paper-weak sm:px-8">
         © {new Date().getFullYear()} {siteConfig.brand}. {content.footer.rights}
+        <VendedoraMarca />
       </p>
     </footer>
   );

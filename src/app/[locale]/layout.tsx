@@ -45,8 +45,26 @@ export async function generateMetadata({
     openGraph: {
       title: content.meta.title,
       description: content.meta.description,
+      siteName: siteConfig.brand,
       locale: localeHtmlLang[locale],
       type: "website",
+      url: `/${locale}`,
+      // A capa que o WhatsApp e as redes mostram ao lado do link. Tem uma por
+      // idioma porque a frase na chapa é a mesma do topo da página.
+      images: [
+        {
+          url: `/og-${locale}.jpg`,
+          width: 1200,
+          height: 630,
+          alt: content.meta.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: content.meta.title,
+      description: content.meta.description,
+      images: [`/og-${locale}.jpg`],
     },
   };
 }

@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { VendedoraProvider } from "@/components/VendedoraProvider";
 import { getContent, locales, localeHtmlLang, type Locale } from "@/content";
 import { isLocale } from "@/lib/routes";
+import { metadadosDaPagina } from "@/lib/seo";
 import { siteConfig } from "@/content/site";
 import "../globals.css";
 
@@ -37,36 +38,11 @@ export async function generateMetadata({
   const content = getContent(locale);
   return {
     metadataBase: new URL(siteConfig.url),
-    title: content.meta.title,
-    description: content.meta.description,
-    alternates: {
-      canonical: `/${locale}`,
-      languages: Object.fromEntries(locales.map((l) => [l, `/${l}`])),
-    },
-    openGraph: {
+    ...metadadosDaPagina({
+      locale,
       title: content.meta.title,
       description: content.meta.description,
-      siteName: siteConfig.brand,
-      locale: localeHtmlLang[locale],
-      type: "website",
-      url: `/${locale}`,
-      // A capa que o WhatsApp e as redes mostram ao lado do link. Tem uma por
-      // idioma porque a frase na chapa é a mesma do topo da página.
-      images: [
-        {
-          url: `/og-${locale}.jpg`,
-          width: 1200,
-          height: 630,
-          alt: content.meta.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: content.meta.title,
-      description: content.meta.description,
-      images: [`/og-${locale}.jpg`],
-    },
+    }),
   };
 }
 

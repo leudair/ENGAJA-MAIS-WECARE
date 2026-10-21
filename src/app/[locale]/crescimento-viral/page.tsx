@@ -10,6 +10,7 @@ import {
 import { ViralBand, ViralComparison } from "@/components/ViralPackages";
 import { getContent, localeHtmlLang, locales, type Locale } from "@/content";
 import { engagementPath, isLocale } from "@/lib/routes";
+import { metadadosDaPagina } from "@/lib/seo";
 import { viralPackages } from "@/content/viral-data";
 import { getViralBands } from "@/lib/viral";
 
@@ -25,22 +26,13 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const c = getContent(locale);
-  return {
+  return metadadosDaPagina({
+    locale,
     title: `${c.viralPage.title}, ${c.footer.tagline}`,
+    cardTitle: c.viralPage.title,
     description: c.viral.lead,
-    alternates: {
-      canonical: `/${locale}/crescimento-viral`,
-      languages: Object.fromEntries(
-        locales.map((l) => [l, `/${l}/crescimento-viral`]),
-      ),
-    },
-    openGraph: {
-      title: c.viralPage.title,
-      description: c.viral.lead,
-      locale: localeHtmlLang[locale],
-      type: "website",
-    },
-  };
+    caminho: "crescimento-viral",
+  });
 }
 
 /**

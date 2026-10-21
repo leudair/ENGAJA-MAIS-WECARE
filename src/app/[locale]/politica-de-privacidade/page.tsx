@@ -4,6 +4,7 @@ import { LegalDocumentPage } from "@/components/LegalDocument";
 import { getContent, localeHtmlLang, locales, type Locale } from "@/content";
 import { privacyDocument } from "@/content/legal-data";
 import { isLocale } from "@/lib/routes";
+import { metadadosDaPagina } from "@/lib/seo";
 
 const path = "politica-de-privacidade";
 
@@ -19,18 +20,13 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const c = getContent(locale);
-  return {
+  return metadadosDaPagina({
+    locale,
     title: `${c.legal.privacy.title}, ${c.footer.tagline}`,
-    alternates: {
-      canonical: `/${locale}/${path}`,
-      languages: Object.fromEntries(locales.map((l) => [l, `/${l}/${path}`])),
-    },
-    openGraph: {
-      title: c.legal.privacy.title,
-      locale: localeHtmlLang[locale],
-      type: "website",
-    },
-  };
+    cardTitle: c.legal.privacy.title,
+    description: c.meta.description,
+    caminho: path,
+  });
 }
 
 export default async function PrivacyPage({

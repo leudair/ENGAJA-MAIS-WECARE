@@ -278,6 +278,16 @@ export const pt: Content = {
     offer: "Oi! Vi o site do Engaja Mais e quero contratar um plano.",
     code: "Código do atendimento: {code}",
   },
+  variantB: {
+    eyebrow: "Engajamento mensal",
+    title: "Seu perfil publicando com movimento, todo mês.",
+    lead: "Você escolhe o plano, a gente cuida de até 30 publicações dentro do mês. Sem contrato e sem fidelidade.",
+    cta: "Falar com a equipe",
+    ctaNote: "Abre o WhatsApp. A gente responde e indica o plano certo.",
+    plansTitle: "Escolha o seu plano",
+    plansLead: "Os números valem para cada publicação atendida no mês.",
+    closingTitle: "Comece pelo seu próximo post.",
+  },
   finalCta: {
     title: "Pronto para dar ritmo ao seu perfil?",
     subtitle:

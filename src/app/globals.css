@@ -41,6 +41,12 @@
   --color-bronze-500: #885c39;
   --color-bronze-700: #835735;
 
+  /* Folha clara, só na versão B do teste. O osso é quente de propósito:
+     branco puro ao lado do ouro da marca sai azulado. */
+  --color-bone: #f4f0e7;
+  --color-bone-soft: #ebe5d8;
+  --color-bone-line: #d8cfbc;
+
   /* Rubi: só no plano recomendado, nos CTAs principais e nos marcadores. */
   --color-ruby-500: #b5181f;
   --color-ruby-600: #a61412;
@@ -1823,4 +1829,129 @@ button.obsidian:active {
     rgb(255 250 230 / 0.7) 44%,
     var(--plate-1) 100%
   );
+}
+
+/* ------------------------------------------------------------------ */
+/* Versão B do teste A/B                                               */
+/* ------------------------------------------------------------------ */
+/* A B existe para ser comparada com a A no anúncio, então ela precisa
+   ser visivelmente outra coisa: folha clara em vez de preto, texto
+   escuro, um vermelho só de destaque e um fio de ouro fino para a marca
+   continuar sendo a mesma. Nada de chapa escovada aqui: a chapa é a
+   linguagem da A, e repetir faria o teste não medir nada.
+
+   A casca da página (fundo preto, textura, moldura, barra do topo e
+   rodapé) é montada no layout, que é compartilhado. Em vez de refazer o
+   layout, a folha clara se anuncia com `data-tema="claro"` e o `:has()`
+   abaixo apaga a casca escura. A B traz o próprio topo e o próprio pé
+   dentro dela, que é o que uma página de anúncio precisa: curta, sem
+   menu e com um caminho só. */
+
+body:has([data-tema="claro"]) {
+  background: var(--color-bone);
+}
+
+body:has([data-tema="claro"]) > .page-texture,
+body:has([data-tema="claro"]) > .page-frame,
+body:has([data-tema="claro"]) > header,
+body:has([data-tema="claro"]) > footer {
+  display: none;
+}
+
+.folha-clara {
+  min-height: 100dvh;
+  background: var(--color-bone);
+  color: var(--color-onmetal);
+}
+
+/* Cartão da folha: papel um tom abaixo do fundo, com fio de ouro fino.
+   O relevo aqui é discreto de propósito, para não virar a chapa da A. */
+.cartao-claro {
+  border: 1px solid var(--color-bone-line);
+  border-radius: 14px;
+  background: var(--color-bone-soft);
+  box-shadow: 0 1px 0 #fff inset;
+}
+
+.cartao-claro-destaque {
+  border-color: var(--color-gold-500);
+  box-shadow:
+    0 1px 0 #fff inset,
+    0 0 0 1px rgb(176 144 84 / 0.25);
+}
+
+/* Fio de ouro usado como separador dentro da folha. */
+.fio-ouro {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-gold-500),
+    transparent
+  );
+}
+
+/* Botão da folha clara: preto chapado com texto claro, que é o contrário
+   do botão da A, onde o metal é claro e o texto escuro. */
+.btn-folha {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 52px;
+  padding: 0 1.5rem;
+  border-radius: 10px;
+  background: var(--color-ruby-500);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  transition:
+    transform 120ms ease,
+    background-color 120ms ease;
+}
+
+.btn-folha:hover {
+  background: var(--color-ruby-600);
+  transform: translateY(-1px);
+}
+
+.btn-folha:active {
+  transform: translateY(1px);
+}
+
+.btn-folha-vazado {
+  background: transparent;
+  color: var(--color-onmetal);
+  border: 1px solid var(--color-bone-line);
+}
+
+.btn-folha-vazado:hover {
+  background: #fff;
+  border-color: var(--color-gold-500);
+}
+
+/* O botão de plano é o mesmo componente da A, e lá ele é uma tecla cravada
+   na chapa de metal: o fundo vem de `--metal`, que a chapa define. Na folha
+   clara não existe chapa, então a tecla sairia sem fundo nenhum. Aqui ela
+   vira o mesmo botão vermelho do resto da B. */
+.folha-clara .btn-key {
+  border: none;
+  background: var(--color-ruby-500);
+  background-image: none;
+  color: #fff;
+  text-shadow: none;
+  box-shadow: none;
+}
+
+.folha-clara .btn-key:hover {
+  background: var(--color-ruby-600);
+  box-shadow: none;
+}
+
+/* Os títulos pequenos da escolha de pagamento também são claros na A. */
+.folha-clara .text-onmetal-soft\/70,
+.folha-clara .text-onmetal-soft {
+  color: var(--color-onmetal-soft);
 }

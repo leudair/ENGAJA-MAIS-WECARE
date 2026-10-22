@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import type { VendedoraData } from "@/content/vendedoras-data";
 import { acharVendedora } from "@/lib/vendedora";
 import {
@@ -83,6 +83,32 @@ export function VisitaProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <VisitaContext.Provider value={visita}>{children}</VisitaContext.Provider>
+  );
+}
+
+/**
+ * Fixa a variante da página para o rastreio.
+ *
+ * A versão B mora num endereço próprio e não traz `?ab=` nenhum, então quem
+ * diz que aquilo é a B é a própria página. Um `?ab=` no endereço continua
+ * ganhando, para dar para forçar uma variante na hora de conferir.
+ */
+export function VarianteFixa({
+  valor,
+  children,
+}: {
+  valor: string;
+  children: React.ReactNode;
+}) {
+  const visita = useVisita();
+  const comVariante = useMemo(
+    () => ({ ...visita, variante: visita.variante ?? valor }),
+    [visita, valor],
+  );
+  return (
+    <VisitaContext.Provider value={comVariante}>
+      {children}
+    </VisitaContext.Provider>
   );
 }
 

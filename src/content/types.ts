@@ -216,6 +216,19 @@ export type Content = {
     title: string;
     items: FaqItem[];
   };
+  /**
+   * A mensagem que o botão escreve na conversa do WhatsApp. `{code}` é
+   * trocado pelo código da origem, que o atendimento usa para saber de onde a
+   * pessoa veio.
+   */
+  whatsapp: {
+    /** Quem clicou no botão geral da página. */
+    general: string;
+    /** Quem clicou no botão de uma oferta, onde não há pagamento direto. */
+    offer: string;
+    /** A linha do código, no fim da mensagem. */
+    code: string;
+  };
   finalCta: {
     title: string;
     subtitle: string;

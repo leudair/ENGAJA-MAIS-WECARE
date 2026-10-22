@@ -19,6 +19,10 @@ export const siteConfig = {
   // os endereços absolutos das páginas, para buscador e para prévia de link.
   url: "https://www.wecarefeed.com",
   contactUrl: null as string | null,
+  // Único canal de atendimento hoje. Só os dígitos, como o wa.me pede: código
+  // do país, DDD e número. É daqui que sai o botão de conversa de todas as
+  // páginas, e cada vendedora pode ter o seu em `vendedoras-data.ts`.
+  whatsappNumber: "5547992626235",
   logoUrl: "/logo-wecare.png" as string | null,
   wecareProfileUrl: null as string | null,
 } as const;

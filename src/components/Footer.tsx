@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Content, Locale } from "@/content";
-import { VendedoraMarca } from "./VendedoraProvider";
+import { VendedoraMarca } from "./VisitaProvider";
 import { siteConfig } from "@/content";
 import {
   engagementPath,

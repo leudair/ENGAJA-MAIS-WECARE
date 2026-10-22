@@ -273,6 +273,12 @@ export const es: Content = {
       },
     ],
   },
+  whatsapp: {
+    general:
+      "¡Hola! Vi el sitio de Engaja Mais y quiero saber sobre los planes mensuales.",
+    offer: "¡Hola! Vi el sitio de Engaja Mais y quiero contratar un plan.",
+    code: "Código de atención: {code}",
+  },
   finalCta: {
     title: "¿Listo para darle ritmo a tu perfil?",
     subtitle:

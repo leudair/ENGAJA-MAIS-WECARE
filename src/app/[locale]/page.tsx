@@ -4,6 +4,7 @@ import { HeroField } from "@/components/HeroField";
 import { MetricIcon } from "@/components/MetricIcon";
 import { PeopleRow } from "@/components/PeopleRow";
 import { PlanCta } from "@/components/PlanCta";
+import { WhatsAppCta } from "@/components/WhatsAppCta";
 import { ShowcaseFlame } from "@/components/ShowcaseFlame";
 import { PlanComparison, PlanFamilyCard } from "@/components/PlanFamilyCard";
 import { ViralPlate } from "@/components/ViralPlate";
@@ -567,9 +568,7 @@ export default async function EngagementPage({
                 {c.finalCta.subtitle}
               </p>
               <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center">
-                <LedButton href={siteConfig.contactUrl ?? "#planos"}>
-                  {siteConfig.contactUrl ? c.finalCta.primaryCta : c.hero.cta}
-                </LedButton>
+                <WhatsAppCta c={c} label={c.finalCta.primaryCta} />
                 <OnMetalButton href={viralHref}>
                   {c.finalCta.secondaryCta}
                   <ExternalIcon />

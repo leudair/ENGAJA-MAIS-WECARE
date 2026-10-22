@@ -4,7 +4,8 @@ import { useState } from "react";
 import type { Content } from "@/content";
 import { paymentCount, paymentHref, type PaymentWays } from "@/lib/pagamento";
 import { comVendedora } from "@/lib/vendedora";
-import { useVendedora } from "./VendedoraProvider";
+import { useVendedora } from "./VisitaProvider";
+import { useWhatsAppHref } from "./WhatsAppCta";
 import { KeyButton, RubyButton } from "./ui";
 
 /**
@@ -117,8 +118,12 @@ export function PlanCta({
   // oferta, fica tudo como está nos dados.
   const vendedora = useVendedora();
   const ways = comVendedora(plan.payment, plan.id, vendedora);
-  const href = vendedora ? paymentHref(ways) : plan.href;
   const quantos = paymentCount(ways);
+  // Sem nenhum caminho de pagamento, que é o caso em inglês e espanhol, o
+  // botão leva para a conversa no WhatsApp, já dizendo qual oferta foi.
+  const noWhatsApp = useWhatsAppHref(c, plan.id);
+  const href =
+    quantos === 0 ? noWhatsApp : vendedora ? paymentHref(ways) : plan.href;
   const Button = variant === "key" ? KeyButton : RubyButton;
   const text = label ?? c.plans.cta;
   const soPix = quantos === 1 && ways.pix !== null;

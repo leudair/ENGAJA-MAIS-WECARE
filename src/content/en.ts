@@ -271,6 +271,13 @@ export const en: Content = {
       },
     ],
   },
+  whatsapp: {
+    general:
+      "Hi! I saw the Engaja Mais site and I would like to know about the monthly plans.",
+    offer:
+      "Hi! I saw the Engaja Mais site and I would like to sign up for a plan.",
+    code: "Service code: {code}",
+  },
   finalCta: {
     title: "Ready to give your profile a rhythm?",
     subtitle:

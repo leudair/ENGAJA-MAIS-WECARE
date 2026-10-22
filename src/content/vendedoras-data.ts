@@ -30,6 +30,12 @@ export type VendedoraData = {
   codigo: string;
   /** Nome de quem é, só para esta lista. Não aparece em lugar nenhum do site. */
   nome: string;
+  /**
+   * WhatsApp dela, só os dígitos, com código do país e DDD. Quem chega pelo
+   * endereço dela cai nessa conversa em vez de na geral. Sem número, cai na
+   * geral de `site.ts`.
+   */
+  whatsapp: string | null;
   links: Record<string, LinksDaVendedora>;
 };
 
@@ -53,6 +59,12 @@ for (const vendedora of vendedorasData) {
     throw new Error(`Código de vendedora repetido: "${vendedora.codigo}".`);
   }
   vistos.add(vendedora.codigo);
+
+  if (vendedora.whatsapp && !/^\d{10,15}$/.test(vendedora.whatsapp)) {
+    throw new Error(
+      `WhatsApp da vendedora ${vendedora.codigo} inválido: só dígitos, com código do país e DDD, como 5547992626235.`,
+    );
+  }
 
   for (const [oferta, links] of Object.entries(vendedora.links)) {
     for (const url of [links.pixUrlBR, links.cardUrlBR]) {

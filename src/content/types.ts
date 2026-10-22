@@ -229,26 +229,6 @@ export type Content = {
     /** A linha do código, no fim da mensagem. */
     code: string;
   };
-  /**
-   * Versão B do teste A/B, servida em outro domínio.
-   *
-   * Só os textos que mudam. Os números, os nomes dos planos, o limite de 30
-   * publicações, as perguntas e os documentos legais são os mesmos da A de
-   * propósito: se a oferta mudasse junto com o visual, o teste não diria qual
-   * das duas coisas ganhou.
-   */
-  variantB: {
-    eyebrow: string;
-    title: string;
-    lead: string;
-    /** Botão principal, repetido no topo e no fim. */
-    cta: string;
-    /** Frase embaixo do botão, dizendo o que acontece ao clicar. */
-    ctaNote: string;
-    plansTitle: string;
-    plansLead: string;
-    closingTitle: string;
-  };
   finalCta: {
     title: string;
     subtitle: string;

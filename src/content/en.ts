@@ -278,16 +278,6 @@ export const en: Content = {
       "Hi! I saw the Engaja Mais site and I would like to sign up for a plan.",
     code: "Service code: {code}",
   },
-  variantB: {
-    eyebrow: "Monthly engagement",
-    title: "Your profile posting with momentum, every month.",
-    lead: "You pick the plan, we cover up to 30 posts within the month. No contract and no lock in.",
-    cta: "Talk to the team",
-    ctaNote: "Opens WhatsApp. We answer and point you to the right plan.",
-    plansTitle: "Choose your plan",
-    plansLead: "The numbers apply to each post covered in the month.",
-    closingTitle: "Start with your next post.",
-  },
   finalCta: {
     title: "Ready to give your profile a rhythm?",
     subtitle:

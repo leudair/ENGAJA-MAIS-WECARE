@@ -13,7 +13,6 @@ import {
   ArrowIcon,
   Bullet,
   ExternalIcon,
-  Eyebrow,
   Lead,
   LedButton,
   MetalPlate,
@@ -94,9 +93,8 @@ export default async function EngagementPage({
 
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[3fr_2fr] lg:items-center lg:gap-14">
           <div>
-            <Eyebrow>{c.hero.eyebrow}</Eyebrow>
 
-            <h1 className="display-caps mt-5 text-[2.1rem] text-balance sm:text-5xl lg:text-[3.6rem]">
+            <h1 className="display-caps text-[2.1rem] text-balance sm:text-5xl lg:text-[3.6rem]">
               <span className="block text-paper">{c.hero.titleTop}</span>
               <span className="text-metal-gold mt-1 block">
                 {c.hero.titleBottom}
@@ -179,7 +177,6 @@ export default async function EngagementPage({
       {/* ---------------------------------------------------------------- */}
       <section id="planos" className="px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-6xl">
-          <Eyebrow center>{c.plans.eyebrow}</Eyebrow>
           {/* Corpo menor no celular para o título caber numa linha só. */}
           <SectionTitle center className="!text-[1.45rem] sm:!text-4xl">
             {c.plans.title}
@@ -232,14 +229,13 @@ export default async function EngagementPage({
 
           {/* Os dois documentos também ficam aqui, junto dos botões de
               contratar, além do rodapé. */}
-          <p className="mt-4 text-center text-xs text-paper-weak">
+          <p className="mt-4 flex justify-center gap-x-6 text-xs text-paper-weak">
             <Link
               href={termsPath(locale)}
               className="underline decoration-gold-edge/60 underline-offset-4 transition-colors hover:text-gold-bright"
             >
               {c.legal.terms.navLabel}
             </Link>
-            <span aria-hidden> · </span>
             <Link
               href={privacyPath(locale)}
               className="underline decoration-gold-edge/60 underline-offset-4 transition-colors hover:text-gold-bright"
@@ -260,7 +256,6 @@ export default async function EngagementPage({
       <section className="overflow-x-clip px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[2fr_3fr] lg:items-center lg:gap-14">
           <div>
-            <Eyebrow>{c.showcase.eyebrow}</Eyebrow>
             <SectionTitle>{c.showcase.title}</SectionTitle>
             <Lead>{c.showcase.lead}</Lead>
           </div>
@@ -316,7 +311,6 @@ export default async function EngagementPage({
       {/* ---------------------------------------------------------------- */}
       <section id="como-funciona" className="px-4 py-14 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <Eyebrow center>{c.howItWorks.eyebrow}</Eyebrow>
           <SectionTitle center>{c.howItWorks.title}</SectionTitle>
           <Lead center>{c.howItWorks.subtitle}</Lead>
 
@@ -332,7 +326,7 @@ export default async function EngagementPage({
                   className="display text-metal-gold block text-2xl sm:text-3xl"
                   aria-hidden
                 >
-                  {String(index + 1).padStart(2, "0")}
+                  {index + 1}
                 </span>
                 <h3 className="mt-4 text-[0.68rem] font-bold tracking-[0.18em] text-gold-bright uppercase sm:text-[0.72rem]">
                   {step.title}
@@ -351,7 +345,6 @@ export default async function EngagementPage({
       {/* ---------------------------------------------------------------- */}
       <section className="px-4 py-14 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <Eyebrow center>{c.included.eyebrow}</Eyebrow>
           <SectionTitle center>{c.included.title}</SectionTitle>
           <Lead center>{c.included.subtitle}</Lead>
 
@@ -433,7 +426,6 @@ export default async function EngagementPage({
       <section className="px-4 py-14 sm:px-6 sm:py-20">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div>
-            <Eyebrow>{c.demo.eyebrow}</Eyebrow>
             <SectionTitle>{c.demo.title}</SectionTitle>
             <Lead>{c.demo.lead}</Lead>
             {c.demo.paragraphs.map((paragraph) => (
@@ -481,7 +473,6 @@ export default async function EngagementPage({
       {/* ---------------------------------------------------------------- */}
       <section className="px-4 py-14 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <Eyebrow center>{c.privacy.eyebrow}</Eyebrow>
           <SectionTitle center>{c.privacy.title}</SectionTitle>
           <Lead center>{c.privacy.lead}</Lead>
 
@@ -514,7 +505,6 @@ export default async function EngagementPage({
       {/* ---------------------------------------------------------------- */}
       <section id="faq" className="px-4 py-14 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-5xl">
-          <Eyebrow center>{c.faq.eyebrow}</Eyebrow>
           <SectionTitle center>{c.faq.title}</SectionTitle>
 
           <div className="mt-10 grid grid-cols-2 gap-x-3 gap-y-5 sm:mt-12 sm:gap-x-4 sm:gap-y-6">

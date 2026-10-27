@@ -43,7 +43,6 @@ export default async function TermsPage({
     <LegalDocumentPage
       document={termsDocument}
       title={c.legal.terms.title}
-      eyebrow={c.legal.terms.eyebrow}
       locale={locale}
       c={c}
     />

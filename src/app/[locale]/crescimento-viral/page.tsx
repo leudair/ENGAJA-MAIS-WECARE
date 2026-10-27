@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
   ArrowIcon,
-  Eyebrow,
   QuietButton,
   SectionTitle,
   Surface,
@@ -63,11 +62,10 @@ export default async function ViralGrowthPage({
       <section className="px-4 pt-12 pb-8 sm:px-6 sm:pt-16 sm:pb-10">
         <div className="mx-auto max-w-3xl">
           <Surface gold className="px-5 py-8 text-center sm:px-10 sm:py-10">
-            <Eyebrow center>{c.viralPage.eyebrow}</Eyebrow>
             {/* A chamada é uma frase de duas partes, então vai na serifa sem
                 caixa alta: em maiúsculas ela grita e deixa de se ler. O ouro
                 escovado é o destaque que ele pediu. */}
-            <h1 className="display text-metal-gold mt-3 text-[1.4rem] leading-tight text-balance sm:text-[2.1rem]">
+            <h1 className="display text-metal-gold text-[1.4rem] leading-tight text-balance sm:text-[2.1rem]">
               {c.viralPage.title}
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-[0.8rem] leading-relaxed text-pretty text-paper sm:text-sm">

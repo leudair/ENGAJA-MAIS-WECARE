@@ -61,7 +61,6 @@ export type Content = {
   hero: {
     /** Texto alternativo da logo, para leitores de tela. */
     logoAlt: string;
-    eyebrow: string;
     /** H1 em duas linhas: a primeira branca, a segunda em ouro. */
     titleTop: string;
     titleBottom: string;
@@ -88,13 +87,11 @@ export type Content = {
     proofs: { title: string; description: string }[];
   };
   howItWorks: {
-    eyebrow: string;
     title: string;
     subtitle: string;
     steps: Step[];
   };
   included: {
-    eyebrow: string;
     title: string;
     subtitle: string;
     items: { title: string; description: string }[];
@@ -107,7 +104,6 @@ export type Content = {
     footnote: string;
   };
   plans: {
-    eyebrow: string;
     title: string;
     subtitle: string;
     /** Caixa em relevo com o teto do ciclo, logo abaixo do título. */
@@ -181,7 +177,6 @@ export type Content = {
   };
   /** Exemplo de um plano real, em chapa de ouro com borda rubi. */
   showcase: {
-    eyebrow: string;
     title: string;
     lead: string;
     /** Linha sob o nome do plano, ex.: "Plano mensal, até 30 publicações". */
@@ -189,7 +184,6 @@ export type Content = {
     cta: string;
   };
   demo: {
-    eyebrow: string;
     title: string;
     lead: string;
     paragraphs: string[];
@@ -200,7 +194,6 @@ export type Content = {
     artAlt: string;
   };
   privacy: {
-    eyebrow: string;
     title: string;
     lead: string;
     bullets: string[];
@@ -212,7 +205,6 @@ export type Content = {
     cta: string;
   };
   faq: {
-    eyebrow: string;
     title: string;
     items: FaqItem[];
   };
@@ -236,7 +228,6 @@ export type Content = {
     secondaryCta: string;
   };
   viralPage: {
-    eyebrow: string;
     title: string;
     lead: string;
     /** Cabeçalho da lista das metas, abaixo da chamada. */
@@ -318,7 +309,7 @@ export type Content = {
      * página em português, onde não há nada a avisar.
      */
     languageNote: string | null;
-    terms: { navLabel: string; title: string; eyebrow: string };
-    privacy: { navLabel: string; title: string; eyebrow: string };
+    terms: { navLabel: string; title: string };
+    privacy: { navLabel: string; title: string };
   };
 };

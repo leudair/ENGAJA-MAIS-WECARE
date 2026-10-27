@@ -33,19 +33,19 @@ export function Footer({
         >
           <Link
             href={engagementPath(locale)}
-            className="eyebrow transition-colors hover:text-gold-bright"
+            className="text-sm font-semibold text-gold-label transition-colors hover:text-gold-bright"
           >
             {content.footer.engagement}
           </Link>
           <Link
             href={viralGrowthPath(locale)}
-            className="eyebrow transition-colors hover:text-gold-bright"
+            className="text-sm font-semibold text-gold-label transition-colors hover:text-gold-bright"
           >
             {content.footer.viralGrowth}
           </Link>
           <Link
             href={`${engagementPath(locale)}#faq`}
-            className="eyebrow transition-colors hover:text-gold-bright"
+            className="text-sm font-semibold text-gold-label transition-colors hover:text-gold-bright"
           >
             {content.nav.faq}
           </Link>
@@ -59,13 +59,13 @@ export function Footer({
         >
           <Link
             href={termsPath(locale)}
-            className="eyebrow transition-colors hover:text-gold-bright"
+            className="text-sm font-semibold text-gold-label transition-colors hover:text-gold-bright"
           >
             {content.legal.terms.navLabel}
           </Link>
           <Link
             href={privacyPath(locale)}
-            className="eyebrow transition-colors hover:text-gold-bright"
+            className="text-sm font-semibold text-gold-label transition-colors hover:text-gold-bright"
           >
             {content.legal.privacy.navLabel}
           </Link>

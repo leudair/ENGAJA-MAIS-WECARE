@@ -17,7 +17,6 @@ export const pt: Content = {
   },
   hero: {
     logoAlt: "Agência WeCare Mídias Sociais",
-    eyebrow: "Engajamento mensal",
     titleTop: "Engajamento em",
     titleBottom: "cada publicação do mês.",
     paragraph:
@@ -53,10 +52,9 @@ export const pt: Content = {
     ],
   },
   howItWorks: {
-    eyebrow: "Como funciona",
-    title: "Quatro passos",
+    title: "Como funciona",
     subtitle:
-      "Você escolhe o plano, informa o perfil e continua publicando. O resto é com a gente.",
+      "Você escolhe o plano, informa o perfil e continua publicando normalmente.",
     steps: [
       {
         title: "Escolha o plano",
@@ -81,7 +79,6 @@ export const pt: Content = {
     ],
   },
   included: {
-    eyebrow: "O que está incluso",
     title: "O que vem em todo plano",
     subtitle:
       "É igual em todos os planos. O que muda de um para o outro é o volume de engajamento.",
@@ -120,7 +117,7 @@ export const pt: Content = {
   },
   limit: {
     eyebrow: "Limite do ciclo",
-    title: "Até 30 publicações por ciclo. Sem letra miúda.",
+    title: "Como o limite funciona",
     lead: "Todo plano atende até 30 publicações dentro de um ciclo mensal. Esse é o teto, e ele vale para todos os planos.",
     bullets: [
       "O ciclo é mensal e o contador de publicações recomeça a cada renovação.",
@@ -132,7 +129,6 @@ export const pt: Content = {
       "Quer entender como esse limite se encaixa no seu calendário de conteúdo? Fale com a gente antes de contratar.",
   },
   plans: {
-    eyebrow: "Planos",
     title: "Escolha o seu plano",
     subtitle:
       "Um plano por mês. Os números abaixo são o que cada publicação recebe.",
@@ -197,14 +193,12 @@ export const pt: Content = {
       "Os números valem para cada publicação atendida no ciclo, até 30. O preço é em reais, no Pix ou no cartão do Brasil. Ativação e renovação são confirmadas no atendimento.",
   },
   showcase: {
-    eyebrow: "Exemplo de plano",
     title: "O plano mais completo",
     lead: "O nosso maior plano e o que ele entrega em cada publicação do ciclo.",
     planNote: "Plano mensal, até 30 publicações",
     cta: "Quero este plano",
   },
   demo: {
-    eyebrow: "Demonstração",
     title: "O perfil da WeCare é a vitrine",
     lead: "Nosso perfil é o nosso maior case de sucesso.",
     paragraphs: [
@@ -217,9 +211,8 @@ export const pt: Content = {
       "Perfil da agência WeCare no Instagram e os números registrados nos últimos 90 dias.",
   },
   privacy: {
-    eyebrow: "Discrição",
     title: "A identidade de quem contrata fica preservada",
-    lead: "Discrição não é um extra do plano. É parte de como a WeCare trabalha.",
+    lead: "Vale para todos os planos, sem custo extra.",
     bullets: [
       "Não divulgamos nomes, perfis ou prints de clientes atendidos.",
       "Não pedimos senha nem acesso à sua conta em nenhum momento.",
@@ -233,8 +226,7 @@ export const pt: Content = {
     cta: "Conhecer",
   },
   faq: {
-    eyebrow: "Perguntas frequentes",
-    title: "Antes de contratar",
+    title: "Perguntas frequentes",
     items: [
       {
         question: "O que conta como uma publicação do ciclo?",
@@ -279,15 +271,14 @@ export const pt: Content = {
     code: "Código do atendimento: {code}",
   },
   finalCta: {
-    title: "Pronto para dar ritmo ao seu perfil?",
+    title: "Em dúvida sobre qual plano escolher?",
     subtitle:
-      "Conte quantas vezes você publica por mês e a gente indica o plano certo.",
+      "Diga quantas vezes você publica por mês e a equipe indica o plano.",
     primaryCta: "Falar com a WeCare",
     secondaryCta: "Conhecer Crescimento Viral",
   },
   viralPage: {
-    eyebrow: "Estratégia Viral",
-    title: "Um crescimento que parece natural. Porque tem motivo.",
+    title: "Primeiro o engajamento, depois os seguidores",
     lead: "A estratégia começa pelo engajamento das suas publicações e só depois sobe os seguidores. Quem entra no seu perfil vê alcance, curtidas e comentários que justificam cada novo seguidor.",
     packagesTitle: "Escolha a sua meta",
     packagesSubtitle:
@@ -352,7 +343,7 @@ export const pt: Content = {
     backCta: "Voltar para Engajamento",
   },
   footer: {
-    tagline: "Engajamento mensal para perfis que publicam de verdade.",
+    tagline: "Planos mensais de engajamento para até 30 publicações.",
     rights: "Todos os direitos reservados.",
     engagement: "Engajamento",
     viralGrowth: "Crescimento Viral",
@@ -364,12 +355,10 @@ export const pt: Content = {
     terms: {
       navLabel: "Termos de Uso",
       title: "Termos de Uso",
-      eyebrow: "Documento",
     },
     privacy: {
       navLabel: "Política de Privacidade",
       title: "Política de Privacidade",
-      eyebrow: "Documento",
     },
   },
 };

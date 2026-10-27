@@ -43,7 +43,6 @@ export default async function PrivacyPage({
     <LegalDocumentPage
       document={privacyDocument}
       title={c.legal.privacy.title}
-      eyebrow={c.legal.privacy.eyebrow}
       locale={locale}
       c={c}
     />

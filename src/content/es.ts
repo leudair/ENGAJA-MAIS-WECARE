@@ -17,7 +17,6 @@ export const es: Content = {
   },
   hero: {
     logoAlt: "Agencia WeCare Medios Sociales",
-    eyebrow: "Engagement mensual",
     titleTop: "Engagement en",
     titleBottom: "cada publicación del mes.",
     paragraph:
@@ -31,7 +30,7 @@ export const es: Content = {
       brand: "Engaja Mais",
       amount: "Hasta 30",
       unit: "publicaciones por mes",
-      note: "Aumente su alcance con publicaciones estratégicas de alto valor.",
+      note: "Aumenta tu alcance con publicaciones estratégicas de alto valor.",
     },
     proofs: [
       {
@@ -53,10 +52,9 @@ export const es: Content = {
     ],
   },
   howItWorks: {
-    eyebrow: "Cómo funciona",
-    title: "Cuatro pasos",
+    title: "Cómo funciona",
     subtitle:
-      "Eliges el plan, indicas el perfil y sigues publicando. El resto lo hacemos nosotros.",
+      "Eliges el plan, indicas el perfil y sigues publicando con normalidad.",
     steps: [
       {
         title: "Elige el plan",
@@ -81,7 +79,6 @@ export const es: Content = {
     ],
   },
   included: {
-    eyebrow: "Qué incluye",
     title: "Lo que trae todo plan",
     subtitle:
       "Es igual en todos los planes. Lo que cambia de uno a otro es el volumen de engagement.",
@@ -120,7 +117,7 @@ export const es: Content = {
   },
   limit: {
     eyebrow: "Límite del ciclo",
-    title: "Hasta 30 publicaciones por ciclo. Sin letra pequeña.",
+    title: "Cómo funciona el límite",
     lead: "Todos los planes atienden hasta 30 publicaciones dentro de un ciclo mensual. Ese es el tope y vale para todos los planes.",
     bullets: [
       "El ciclo es mensual y el contador de publicaciones se reinicia en cada renovación.",
@@ -132,7 +129,6 @@ export const es: Content = {
       "¿Quieres saber cómo encaja este límite en tu calendario de contenido? Habla con nosotros antes de contratar.",
   },
   plans: {
-    eyebrow: "Planes",
     title: "Elige tu plan",
     subtitle:
       "Un plan por mes. Los números de abajo son lo que recibe cada publicación.",
@@ -197,14 +193,12 @@ export const es: Content = {
       "Los números valen para cada publicación atendida en el ciclo, hasta 30. Los precios se muestran en dólares. Desde fuera de Brasil puedes pagar con Wise, Remitly, Western Union o el servicio de transferencia que ya uses. Habla con nuestro equipo por WhatsApp, te enviamos los datos y tu mes empieza en cuanto llega la transferencia.",
   },
   showcase: {
-    eyebrow: "Ejemplo de plan",
     title: "El plan más completo",
     lead: "Nuestro mayor plan y lo que entrega en cada publicación del ciclo.",
     planNote: "Plan mensual, hasta 30 publicaciones",
     cta: "Quiero este plan",
   },
   demo: {
-    eyebrow: "Demostración",
     title: "El perfil de WeCare es el escaparate",
     lead: "Nuestro perfil es nuestro mayor caso de éxito.",
     paragraphs: [
@@ -217,9 +211,8 @@ export const es: Content = {
       "El perfil de la agencia WeCare en Instagram y los números registrados en los últimos 90 días.",
   },
   privacy: {
-    eyebrow: "Discreción",
     title: "La identidad de quien contrata queda preservada",
-    lead: "La discreción no es un extra del plan. Es parte de cómo trabaja WeCare.",
+    lead: "Vale para todos los planes, sin costo extra.",
     bullets: [
       "No divulgamos nombres, perfiles ni capturas de los clientes atendidos.",
       "No pedimos contraseña ni acceso a tu cuenta en ningún momento.",
@@ -233,8 +226,7 @@ export const es: Content = {
     cta: "Conocer",
   },
   faq: {
-    eyebrow: "Preguntas frecuentes",
-    title: "Antes de contratar",
+    title: "Preguntas frecuentes",
     items: [
       {
         question: "¿Qué cuenta como una publicación del ciclo?",
@@ -280,15 +272,14 @@ export const es: Content = {
     code: "Código de atención: {code}",
   },
   finalCta: {
-    title: "¿Listo para darle ritmo a tu perfil?",
+    title: "¿No sabes qué plan elegir?",
     subtitle:
-      "Cuéntanos cuántas veces publicas al mes y te indicamos el plan correcto.",
+      "Dinos cuántas veces publicas al mes y el equipo te indica el plan.",
     primaryCta: "Hablar con WeCare",
     secondaryCta: "Conocer Crecimiento Viral",
   },
   viralPage: {
-    eyebrow: "Estrategia Viral",
-    title: "Un crecimiento que parece natural. Porque tiene un motivo.",
+    title: "Primero el engagement, después los seguidores",
     lead: "La estrategia empieza por el engagement de tus publicaciones y solo después sube los seguidores. Quien entra en tu perfil ve alcance, me gusta y comentarios que justifican cada nuevo seguidor.",
     packagesTitle: "Elige tu meta",
     packagesSubtitle:
@@ -338,7 +329,7 @@ export const es: Content = {
     backCta: "Volver a Engagement",
   },
   footer: {
-    tagline: "Engagement mensual para perfiles que publican de verdad.",
+    tagline: "Planes mensuales de engagement para hasta 30 publicaciones.",
     rights: "Todos los derechos reservados.",
     engagement: "Engagement",
     viralGrowth: "Crecimiento Viral",
@@ -351,12 +342,10 @@ export const es: Content = {
     terms: {
       navLabel: "Términos de Uso",
       title: "Términos de Uso",
-      eyebrow: "Documento",
     },
     privacy: {
       navLabel: "Política de Privacidad",
       title: "Política de Privacidad",
-      eyebrow: "Documento",
     },
   },
 };

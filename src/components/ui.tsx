@@ -5,22 +5,6 @@ import type { ReactNode } from "react";
 /* Títulos                                                             */
 /* ------------------------------------------------------------------ */
 
-export function Eyebrow({
-  children,
-  center = false,
-  className = "",
-}: {
-  children: ReactNode;
-  center?: boolean;
-  className?: string;
-}) {
-  return (
-    <p className={`eyebrow ${center ? "text-center" : ""} ${className}`}>
-      {children}
-    </p>
-  );
-}
-
 export function SectionTitle({
   children,
   center = false,

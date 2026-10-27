@@ -3,7 +3,7 @@ import type { LegalBlock, LegalDocument } from "@/content/legal-data";
 import { legalUpdatedAt } from "@/content/legal-data";
 import type { Locale } from "@/content";
 import { engagementPath } from "@/lib/routes";
-import { ArrowIcon, Eyebrow, QuietButton } from "./ui";
+import { ArrowIcon, QuietButton } from "./ui";
 
 /** A data da versão escrita por extenso no idioma de quem está lendo. */
 const dateLocale: Record<Locale, string> = {
@@ -51,13 +51,11 @@ function Blocks({ blocks }: { blocks: LegalBlock[] }) {
 export function LegalDocumentPage({
   document,
   title,
-  eyebrow,
   locale,
   c,
 }: {
   document: LegalDocument;
   title: string;
-  eyebrow: string;
   locale: Locale;
   c: Content;
 }) {
@@ -69,8 +67,7 @@ export function LegalDocumentPage({
   return (
     <section className="px-4 py-12 sm:px-6 sm:py-20">
       <div className="mx-auto max-w-3xl">
-        <Eyebrow>{eyebrow}</Eyebrow>
-        <h1 className="display-caps mt-4 text-[1.9rem] text-balance text-paper sm:text-4xl">
+        <h1 className="display-caps text-[1.9rem] text-balance text-paper sm:text-4xl">
           {title}
         </h1>
         <p className="mt-3 text-xs text-paper-weak">

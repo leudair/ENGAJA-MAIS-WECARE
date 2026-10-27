@@ -17,7 +17,6 @@ export const en: Content = {
   },
   hero: {
     logoAlt: "WeCare Social Media Agency",
-    eyebrow: "Monthly engagement",
     titleTop: "Engagement on",
     titleBottom: "every post you publish.",
     paragraph:
@@ -53,10 +52,9 @@ export const en: Content = {
     ],
   },
   howItWorks: {
-    eyebrow: "How it works",
-    title: "Four steps",
+    title: "How it works",
     subtitle:
-      "Pick a plan, send us your profile, keep posting. We handle the rest.",
+      "Pick a plan, send us your profile and keep posting as usual.",
     steps: [
       {
         title: "Pick your plan",
@@ -80,7 +78,6 @@ export const en: Content = {
     ],
   },
   included: {
-    eyebrow: "What's included",
     title: "What every plan includes",
     subtitle:
       "The same in every plan. What changes from one to the next is the engagement volume.",
@@ -119,7 +116,7 @@ export const en: Content = {
   },
   limit: {
     eyebrow: "Cycle limit",
-    title: "Up to 30 posts per cycle. No fine print.",
+    title: "How the limit works",
     lead: "Every plan covers up to 30 posts within a monthly cycle. That is the ceiling, and it applies to every plan.",
     bullets: [
       "The cycle is monthly and the post counter resets at every renewal.",
@@ -131,7 +128,6 @@ export const en: Content = {
       "Want to check how this limit fits your content calendar? Talk to us before signing up.",
   },
   plans: {
-    eyebrow: "Plans",
     title: "Choose your plan",
     subtitle: "One plan a month. The numbers below are what each post gets.",
     highlight: {
@@ -195,14 +191,12 @@ export const en: Content = {
       "The numbers apply to each post covered in the cycle, up to 30. Prices are shown in US dollars. From outside Brazil you can pay with Wise, Remitly, Western Union or any transfer service you already use. Talk to our team on WhatsApp, we send you the details, and your month starts as soon as the transfer arrives.",
   },
   showcase: {
-    eyebrow: "Plan example",
     title: "The most complete plan",
     lead: "Our biggest plan, and what it delivers on every post of the cycle.",
     planNote: "Monthly plan, up to 30 posts",
     cta: "I want this plan",
   },
   demo: {
-    eyebrow: "Demonstration",
     title: "The WeCare profile is the showcase",
     lead: "Our own profile is our biggest success story.",
     paragraphs: [
@@ -215,9 +209,8 @@ export const en: Content = {
       "The WeCare agency profile on Instagram and the numbers recorded over the last 90 days.",
   },
   privacy: {
-    eyebrow: "Discretion",
     title: "Client identity stays private",
-    lead: "Discretion isn't a plan add-on. It's how WeCare works.",
+    lead: "This applies to every plan at no extra cost.",
     bullets: [
       "We don't publish names, profiles or screenshots of the clients we serve.",
       "We never ask for a password or access to your account.",
@@ -231,8 +224,7 @@ export const en: Content = {
     cta: "See more",
   },
   faq: {
-    eyebrow: "FAQ",
-    title: "Before you sign up",
+    title: "Frequently asked questions",
     items: [
       {
         question: "What counts as a post in the cycle?",
@@ -279,15 +271,14 @@ export const en: Content = {
     code: "Service code: {code}",
   },
   finalCta: {
-    title: "Ready to give your profile a rhythm?",
+    title: "Not sure which plan to pick?",
     subtitle:
-      "Tell us how often you post and we'll point you to the right plan.",
+      "Tell us how often you post each month and our team will suggest a plan.",
     primaryCta: "Talk to WeCare",
     secondaryCta: "Explore Viral Growth",
   },
   viralPage: {
-    eyebrow: "Viral Strategy",
-    title: "Growth that looks natural. Because it has a reason.",
+    title: "Engagement first, followers after",
     lead: "The strategy starts with the engagement on your posts and only then raises your follower count. Anyone who opens your profile sees the reach, the likes and the comments that justify every new follower.",
     packagesTitle: "Pick your goal",
     packagesSubtitle:
@@ -335,7 +326,7 @@ export const en: Content = {
     backCta: "Back to Engagement",
   },
   footer: {
-    tagline: "Monthly engagement for profiles that actually post.",
+    tagline: "Monthly engagement plans for up to 30 posts.",
     rights: "All rights reserved.",
     engagement: "Engagement",
     viralGrowth: "Viral Growth",
@@ -348,12 +339,10 @@ export const en: Content = {
     terms: {
       navLabel: "Terms of Use",
       title: "Terms of Use",
-      eyebrow: "Document",
     },
     privacy: {
       navLabel: "Privacy Policy",
       title: "Privacy Policy",
-      eyebrow: "Document",
     },
   },
 };
